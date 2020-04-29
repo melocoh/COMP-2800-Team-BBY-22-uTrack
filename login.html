@@ -23,17 +23,20 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/login_style.css">
-
+    <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
 </head>
 
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
+    <div class="container">
+        <h1>Hello, world! This is the login page.</h1>
 
-    <!-- Insert firebase login ui div here -->
-
-    <h1>Hello, world!</h1>
+        <!-- Firebase Login Widget -->
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -56,7 +59,8 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-    <script src="scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/login_ui.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
