@@ -1,0 +1,6 @@
+#homeMap {
+    /* set top and bot margins to 0, center horizontally */
+    margin: 0 auto;
+    width: 640px;
+    height: 480px;
+}

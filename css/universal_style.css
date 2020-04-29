@@ -1,6 +1,18 @@
-/* ------------------ */
+/* --------------------------------- */
+/* Root Element (same level as HTML) */
+/* --------------------------------- */
+:root {
+    /* Calibri font master race */
+    font-family: Calibri;
+    /* 1 rem == 16px */
+    font-size: 16px;
+
+    /* variables go below */
+}
+
+/* -------------------------------- */
 /* HTML, BODY */
-/* ------------------ */
+/* -------------------------------- */
 html, body {
     height: 100%;
     margin: 0;
