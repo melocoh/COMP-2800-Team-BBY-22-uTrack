@@ -1,0 +1,29 @@
+/* desktop view */
+@media (min-width: 1025px) {
+    #homeMap {
+        /* set top and bot margins to 0, center horizontally */
+        margin: 0 auto;
+        width: 640px;
+        height: 480px;
+    }
+}
+
+/* tablet view */
+@media (min-width: 400px) and (max-width: 1024px) {
+    #homeMap {
+        /* set top and bot margins to 0, center horizontally */
+        margin: 0 auto;
+        width: 640px;
+        height: 480px;
+    }
+}
+
+/* mobile view */
+@media (max-width: 399px) {
+    #homeMap {
+        /* set top and bot margins to 0, center horizontally */
+        margin: auto;
+        width: 80%;
+        height: 30%;
+    }
+}

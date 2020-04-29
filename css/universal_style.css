@@ -1,0 +1,77 @@
+/* desktop view */
+@media (min-width: 1025px) {
+
+    /* --------------------------------- */
+    /* Root Element (same level as HTML) */
+    /* --------------------------------- */
+    :root {
+        /* Calibri font master race */
+        font-family: Calibri;
+        /* 1 rem == 16px */
+        font-size: 16px;
+
+        /* variables go below */
+    }
+
+    /* -------------------------------- */
+    /* HTML, BODY */
+    /* -------------------------------- */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* tablet view */
+@media (min-width: 400px) and (max-width: 1024px) {
+
+    /* --------------------------------- */
+    /* Root Element (same level as HTML) */
+    /* --------------------------------- */
+    :root {
+        /* Calibri font master race */
+        font-family: Calibri;
+        /* 1 rem == 16px */
+        font-size: 16px;
+
+        /* variables go below */
+    }
+
+    /* -------------------------------- */
+    /* HTML, BODY */
+    /* -------------------------------- */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* mobile view */
+@media (max-width: 399px) {
+
+    /* --------------------------------- */
+    /* Root Element (same level as HTML) */
+    /* --------------------------------- */
+    :root {
+        /* Calibri font master race */
+        font-family: Calibri;
+        /* 1 rem == 16px */
+        font-size: 16px;
+
+        /* variables go below */
+    }
+
+    /* -------------------------------- */
+    /* HTML, BODY */
+    /* -------------------------------- */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
