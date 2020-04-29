@@ -32,6 +32,8 @@
     <!----------------------->
     <div class="container">
         <h1>Hello, world! This is the index page.</h1>
+
+        <div id="homeMap"></div>
     </div>
 
     <!----------------------------------------------->
@@ -53,11 +55,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
+    <!-- HERE Maps -->
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/login_check.js"></script>
+    <script src="./scripts/here_maps_api.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
