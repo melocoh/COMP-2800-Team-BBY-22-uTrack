@@ -50,7 +50,7 @@
     #img_logo {
         display: block;
         margin: auto;  
-        margin-top: 3em;
+        margin-top: 2em;
         width: 14em;
         height: 4em;
     }
@@ -58,7 +58,7 @@
         display: block;
         margin: auto;  
         position: absolute;
-        bottom: 3em;
+        bottom: 2em;
     }
     #img_corona {
         position: absolute;
@@ -71,21 +71,21 @@
         opacity: 20%;
     }
     #img_mask {
-        margin-top: 13em;
-        margin-left: 2em;
-        width: 6em;
-        height: 6em;
+        margin-top: 10em;
+        margin-left: 3em;
+        width: 5em;
+        height: 5em;
     }
     #img_toiletpaper {
-        margin-top: 13em;
+        margin-top: 10em;
         margin-left: 1em;
-        width: 6em;
-        height: 6em;
+        width: 5em;
+        height: 5em;
     }
     #img_handsanitizer {
-        margin-top: 13em;
+        margin-top: 10em;
         width: 6em;
-        height: 6em;
+        height: 5em;
     }
 }
 
