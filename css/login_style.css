@@ -1,46 +1,91 @@
-/* desktop view */
-@media (min-width: 1025px) {
+/* desktop and tablet view */
+@media (min-width: 400px) {
+    #img_back {
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 90%;
+        z-index: -1;
+    }
+    #img_logo {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 100px;
+    }
     #logincontainer {
         border-radius: 25px;
         background-color: white;
         position: absolute;
-        top: 50%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 350px;
-        height: 180px;   
+        height: 170px;   
     }
-    #login_backimg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px;
-        height: 500px;
+    #img_corona {
+        display: none;
     }
-}
-
-/* tablet view */
-@media (min-width: 400px) and (max-width: 1024px) {
-    #logincontainer {
-        margin: auto;
-        background-color: white;
-        margin-top: 50vh;
-        width: 350px;
-        height: 30vh;   
-        padding: 2vh;
+    #img_mask {
+        display: none;
     }
-    #login_backimg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px;
-        height: 500px;
+    #img_toiletpaper {
+        display: none;
+    }
+    #img_handsanitizer {
+        display: none;
     }
 }
 
 /* mobile view */
 @media (max-width: 399px) {
-    
+    #img_back {
+        display: none;
+    }
+    #img_logo {
+        display: block;
+        margin: auto;  
+        margin-top: 3em;
+        width: 14em;
+        height: 4em;
+    }
+    #logincontainer {
+        display: block;
+        margin: auto;  
+        position: absolute;
+        bottom: 3em;
+    }
+    #img_corona {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 30%;
+        z-index: -1;
+        opacity: 20%;
+    }
+    #img_mask {
+        margin-top: 13em;
+        margin-left: 2em;
+        width: 6em;
+        height: 6em;
+    }
+    #img_toiletpaper {
+        margin-top: 13em;
+        margin-left: 1em;
+        width: 6em;
+        height: 6em;
+    }
+    #img_handsanitizer {
+        margin-top: 13em;
+        width: 6em;
+        height: 6em;
+    }
 }
+
