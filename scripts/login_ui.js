@@ -35,7 +35,7 @@ var uiConfig = {
         // firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         // VVVVVV Might be added later
-        // firebase.auth.PhoneAuthProvider.PROVIDER_ID
+         firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
     // VVVVVV Definitely configure this later (index is placeholder)

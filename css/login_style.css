@@ -1,11 +1,43 @@
 /* desktop view */
 @media (min-width: 1025px) {
-    
+    #logincontainer {
+        margin: auto;
+        background-color: white;
+        margin-top: 50vh;
+        width: 350px;
+        height: 30vh;   
+        padding: 2vh;
+    }
+    #backimg {
+        border-radius: 25px;
+        background-image: url("images/corona.gif");
+        background-position: left top;
+        background-repeat: repeat;
+        padding: 20px;
+        width: 200px;
+        height: 150px;
+      }
 }
 
 /* tablet view */
 @media (min-width: 400px) and (max-width: 1024px) {
-    
+    #logincontainer {
+        margin: auto;
+        background-color: white;
+        margin-top: 50vh;
+        width: 350px;
+        height: 30vh;   
+        padding: 2vh;
+    }
+    #backimg {
+        border-radius: 25px;
+        background-image: url("images/corona.gif");
+        background-position: left top;
+        background-repeat: repeat;
+        padding: 20px;
+        width: 200px;
+        height: 150px;
+      }
 }
 
 /* mobile view */
