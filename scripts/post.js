@@ -3,8 +3,9 @@ let checked2 = false;
 let checked3 = false;
 let items = [];
 let stock = [];
-let postName;
 let imgUrl = localStorage.getItem(0);
+let itemsId;
+let storeId;
 const TIME = 500;
 
 //invoke functions
@@ -60,27 +61,35 @@ function setDataPost(){
     let locate = document.getElementById("address").value + ", " 
                 + document.getElementById("province").value 
                 + ", " + document.getElementById("zip").value;
-    firebase.auth().onAuthStateChanged(function(user){
+    // firebase.auth().onAuthStateChanged(function(user){
         db.collection("items").add({
             category: items,
             item_name: items,
             stock_number: stock
-        })
+        }).then(function(docRef){
+            itemsId = docRef.id;
+        }).catch(function(error){
+            console.log("Error adding document: ", error);
+        });
 
         db.collection("stores").add({
             location: locate,
             store_items: firebase.database().ref('items/' + itemsId),
             store_name: document.getElementById("nameStore").value
-        })
+        }).then(function(docRef){
+            storeId = docRef.id;
+        }).catch(function(error){
+            console.log("Error adding document: ", error);
+        });
 
         db.collection("posts").add({
             post_image: imgUrl,
-            post_date: firebase.database.ServerValue.TIMESTAMP,
+            post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
             post_name: document.getElementById("nameStore").value,
             post_items: firebase.database().ref('items/' + itemsId),
-            post_store: firebase.database().ref('stores/' + itemsId)
-        })
-    })
+            post_store: firebase.database().ref('stores/' + storeId)
+        });
+    // })
 }
 
 
