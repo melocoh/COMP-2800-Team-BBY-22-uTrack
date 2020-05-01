@@ -1,0 +1,23 @@
+#login, #signup{
+    width: 70%;
+}
+
+.modal-dialog {
+    position: absolute;
+    top: 20%;
+    right: 43px;
+    bottom: 0;
+    left: 11%;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+  }
+
+.modal-body{
+    text-align: center;
+}
+
+p#icon{
+    width: 4em;
+    height: 4em;
+}
