@@ -22,14 +22,15 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
+    <link rel="stylesheet" type="text/css" href="./css/index_style.css">
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
-    <link rel="stylesheet" type="text/css" href="./css/profile_style.css">
 </head>
 
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
+
     <div class="container">
         <nav id="menuNav">
             <div class="nav-wrapper">
@@ -40,12 +41,12 @@
                         </li>
                     </a>
                     <a href="./home.html">
-                        <li class="nav-item">
+                        <li class="nav-item nav-active">
                             Home
                         </li>
                     </a>
                     <a href="./profile.html">
-                        <li class="nav-item nav-active">
+                        <li class="nav-item">
                             Profile
                         </li>
                     </a>
@@ -67,15 +68,20 @@
             </div>
         </nav>
 
-        <div id="blank"></div>
-        <div id="content">
-            <h1 id="useronlyname"></h1><img src="./images/user.jpg" width="80px" height="80px">
-        </div>
+        <main>
+            <h1 id="username">Welcome! </h1><br>
+            <h3>What is uTrack?</h3>
+            <p>uTrack is a community-driven supply tracking web app designed to inform users of the availability of certain items most sought-after due to the CoViD-19 pandemic.</p>
+        </main>
+
+        <div id="homeMap"></div>
     </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"
+        integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -94,14 +100,20 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
+    <!-- HERE Maps -->
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="./scripts/firebase_api_uTrack.js"> </script>
-    <script src="./scripts/here_maps_api.js"></script>
-    <script src="./scripts/profile.js"></script>
+    <script src="./scripts/auth_check.js"></script>
+    <script src="./scripts/here_maps_init.js"></script>
+    <script src="./scripts/here_maps_markers.js"></script>
     <script src="./scripts/index.js"></script>
-    
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->

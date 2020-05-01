@@ -21,3 +21,10 @@ p#icon{
     width: 4em;
     height: 4em;
 }
+
+#checkedicon {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}

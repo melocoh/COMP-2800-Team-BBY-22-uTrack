@@ -26,7 +26,7 @@ var uiConfig = {
                                 favoriteStore: ""
                             }).then(function () {
                                 console.log("New user added to firestore");
-                                window.location.assign("index.html");
+                                window.location.assign("home.html");
                             })
                             .catch(function (error) {
                                 console.log("Error adding new user: " + error);
@@ -44,7 +44,7 @@ var uiConfig = {
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: 'index.html',
+    signInSuccessUrl: 'home.html',
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -57,10 +57,10 @@ var uiConfig = {
     ],
     // Terms of service url.
     // VVVVVV Definitely configure this later (index is placeholder)
-    tosUrl: 'index.html',
+    tosUrl: 'home.html',
     // Privacy policy url.
     // VVVV May configure or go with ToS later (index is placeholder)
-    privacyPolicyUrl: 'index.html'
+    privacyPolicyUrl: 'home.html'
 };
 
 // The start method will wait until the DOM is loaded.
