@@ -24,15 +24,78 @@ body,
 
 header {
     height: 60px;
+    display: block;
 }
 
+/*
 nav {
     position: fixed;
     height: 60px;
     width: 100%;
     background-color: gray;
 }
+*/
 
+#menuNav {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+}
+
+ul#ul_nav {
+    margin: 0px;
+    display: flex;
+    list-style: none;
+}
+
+li {
+    flex-grow: 5;
+    text-align: center;
+    display: inline-block; 
+    line-height: 55px; 
+}
+
+li:nth-child(1) {
+    margin-right: 5em;
+}
+
+
+.nav-item {
+    font-weight: bold;
+    color: black;
+    margin-right: 10px;
+}
+
+.nav-active {
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: tomato;
+    padding: 3px;
+    color: white;
+}
+
+
+#search_text {
+    background-color: white;
+    color: grey;
+    padding: 0 0 0 10px;
+}
+
+#search_btn {
+    background-color: grey;
+    color: white;
+}
+
+.left_col {
+    float: left;
+    width: 70%;
+}
+
+.right_col {
+    float: right;
+    width: 30%;
+}
 
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
@@ -42,4 +105,23 @@ nav {
 /* mobile view */
 @media (max-width: 419px) {
     /* insert code here */
+    ul#ul_nav {
+        padding: 5px;
+        margin: 0px;
+        display: block;
+        list-style: none;
+    }
+
+    .nav-item {
+        padding: 3px;
+        color: grey;
+    }
+
+    .nav-active {
+        border-radius: 5px;
+        background-color: grey;
+        padding: 3px;
+        color: white;
+    }
+
 }

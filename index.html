@@ -30,18 +30,43 @@
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <div class="container">
-        <header>
-            <h1>Insert logo here.</h1>
-        </header>
 
-        <nav>
-            <!-- insert navbar stuff here -->
+    <div class="container">
+        <nav id="menuNav">
+            <div class="nav-wrapper">
+                <ul id="ul_nav">
+                    <a href="./index.html">
+                        <li class="nav-item">
+                            <img src="./images/uTrack_logo.png" width="180px" height="60px">
+                        </li>
+                    </a>
+                    <li class="nav-item nav-active">
+                        Home
+                    </li>
+                    <li class="nav-item">
+                        Link
+                    </li>
+                    <li class="nav-item">
+                        Link
+                    </li>
+                    <li class="nav-item">
+                        Link
+                    </li>
+                    <li class="nav-item">
+                        <input type="text" id="search_text" class="search_bar" placeholder="Search..">
+                        <input type="button" id="search_btn" class="search_bar" value="Search">
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <main>
-            <div id="homeMap"></div>
+            <h1 id="username">Welcome! </h1>
+            <h3> What is uTrack?</h3>
+            <p>uTrack is a community-driven supply tracking web app designed to inform users of the availability of certain items most sought-after due to the CoViD-19 pandemic.</p>
         </main>
+
+        <div id="homeMap"></div>
     </div>
 
     <!----------------------------------------------->
@@ -80,6 +105,7 @@
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/here_maps_init.js"></script>
     <script src="./scripts/here_maps_markers.js"></script>
+    <script src="./scripts/index.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->

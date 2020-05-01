@@ -3,21 +3,24 @@
     overflow-x: hidden;
 }
 
+
+
 #homeMap {
-    /* set top and bot margins to 0, center horizontally */
-    margin: 0;
-    /* width: 640px; */
-    width: 100vw;
-    height: 480px;
-    /* height: 80vh; */
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 50%;
+    height: 60%;
 }
 
-/* tablet view */
-@media (min-width: 420px) and (max-width: 1024px) {
-    /* insert code here */
-}
-
-/* mobile view */
-@media (max-width: 419px) {
-    /* insert code here */
+main {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 35%;
+    height: 60%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: orange;
+    color: white;
 }
