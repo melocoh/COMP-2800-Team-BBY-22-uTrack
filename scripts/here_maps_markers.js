@@ -126,8 +126,10 @@ function addMarkers(map) {
     map.addObject(domMarker);
 }
 
-$(document).ready(function () {
-    addMarkers(map);
-})
+
+addMarkers(map);
+// $(document).ready(function () {
+//     addMarkers(map);
+// })
 
 // window.onload(addMarkers(map));
