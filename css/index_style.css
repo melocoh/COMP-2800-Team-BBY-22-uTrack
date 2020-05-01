@@ -13,7 +13,6 @@
     list-style: none;
 }
 
-
 #homeMap {
     position: absolute;
     top: 25%;
@@ -35,15 +34,25 @@ main {
 }
 
 /* mobile view */
-@media screen and (max-width: 419px) {
+@media (max-width: 419px) {
     /* insert code here */
-    /* .container {
-        overflow-x: hidden;
+    #homeMap {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
     }
     
-    #homeMap {
-        margin: 0;
-        width: 100vw;
-        height: 480px;
-    } */
+    main {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+        border-radius: 20px;
+        padding: 20px;
+        background-color: orange;
+        color: white;
+    }
 }

@@ -12,11 +12,10 @@
 }
 
 /* -------------------------------- */
-/* HTML, Body, Container */
+/* HTML, BODY */
 /* -------------------------------- */
-/* .container */
-html, body {
-    height: 100vh;
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -24,26 +23,6 @@ html, body {
     display: block;
 }
 
-/* -------------------------------- */
-/* Container */
-/* -------------------------------- */
-.container {
-    /* Override height value from previous selector */
-    /* height: 80vh;
-    display: grid;
-    grid-template-areas:
-        "header"
-        "nav"
-        "main"
-        "footer"
-    ; */
-    
-    /* grid-template-rows: 20% 10% 60% 10%; */
-}
-
-/* -------------------------------- */
-/* Header */
-/* -------------------------------- */
 header {
     height: 60px;
     display: block;
@@ -53,25 +32,14 @@ header {
     height: 150px;
     display: block;
 }
-
-/* -------------------------------- */
-/* Nav */
-/* -------------------------------- */
-/* nav {
-    grid-area: nav;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    background-color: gray;
-} */
-
+/*
 nav {
     position: fixed;
     height: 60px;
     width: 100%;
     background-color: gray;
 }
+*/
 
 #menuNav {
     position: fixed;
@@ -94,6 +62,8 @@ li {
     line-height: 55px; 
     padding: 0 30px;
 }
+
+
 
 .nav-item {
     font-weight: bold;
@@ -130,27 +100,6 @@ li {
     width: 30%;
 }
 
-/* -------------------------------- */
-/* Main */
-/* -------------------------------- */
-/* main {
-    grid-area: main;
-    margin: 0;
-    padding: 0;
-    background-color: blueviolet;
-    border: 1px solid black;
-} */
-
-/* -------------------------------- */
-/* Footer */
-/* -------------------------------- */
-/* footer {
-    grid-area: footer;
-} */
-
-/* -------------------------------- */
-/* Media Queries */
-/* -------------------------------- */
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
     /* insert code here */
@@ -178,25 +127,4 @@ li {
         color: white;
     }
 
-    .container {
-        /* grid-template-areas:
-            "header"
-            "mobile_main"
-            "mobile_nav"
-            "footer"
-        ; */
-        /* grid-template-rows: 10% 70% 20%; */
-    }
-
-    /* main {
-        grid-area: mobile_main;
-    }
-
-    nav {
-        grid-area: mobile_nav;
-    }
-
-    footer {
-        display: none;
-    } */
 }
