@@ -1,35 +1,56 @@
-// Get elements
-var uploader = document.getElementById("uploader");
-var fileButton = document.getElementById("fileButton");
+let checked1 = false;
+let checked2 = false;
+let checked3 = false;
+let items = [];
+let stock = [];
+let imgUrl = localStorage.getItem(0);
+let itemsId;
+let storeId;
+const TIME = 500;
 
-// Listen for file selection
-fileButton.addEventListener('change', function (e) {
-    // Get file
-    var file = e.target.files[0];
+//invoke functions
+removeQuantity();
+setInterval(function () {
+    checkbox();
+}, TIME);
 
-    // Create a storage ref
-    var storageRef = firebase.storage().ref('items/' + file.name);
+//check if the check box is checked or not
+function checkbox() {
 
-    // Upload file
-    var task = storageRef.put(file);
+    if (document.querySelector('#customCheck1:checked')) {
+        checked1 = true;
+        document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#textBox1').style.visibility = "visible";
+    } else {
+        checked1 = false;
+        document.querySelector('#textBox1').style.visibility = "hidden";
 
-    // Update progress bar
-    task.on('stage_changed',
-        function progress(snapshot) {
-            var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-            uploader.value = percentage;
-        },
+    }
 
-        function error(err) {
+    if (document.querySelector('#customCheck2:checked')) {
+        checked2 = true;
+        document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#textBox2').style.visibility = "visible";
+    } else {
+        checked2 = false;
+        document.querySelector('#textBox2').style.visibility = "hidden";
+    }
 
-        },
+    if (document.querySelector('#customCheck3:checked')) {
+        checked3 = true;
+        document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#textBox3').style.visibility = "visible";
+    } else {
+        checked3 = false;
+        document.querySelector('#textBox3').style.visibility = "hidden";
+    }
 
-        function complete() {
-
-        }
-
-    );
-});
+    if (!document.querySelector('#customCheck1:checked') &&
+        !document.querySelector('#customCheck2:checked') &&
+        !document.querySelector('#customCheck3:checked')) {
+        removeQuantity();
+    }
+}
 
 let itemName = document.getElementById("customCheck1").value;
 stock.push({
