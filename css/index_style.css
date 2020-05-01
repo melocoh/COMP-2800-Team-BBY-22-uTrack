@@ -3,6 +3,16 @@
     overflow-x: hidden;
 }
 
+/* #homeMap {
+    margin: 0;
+    width: 640px;
+    height: 480px;
+} */
+
+.modal-body ul {
+    list-style: none;
+}
+
 #homeMap {
     position: absolute;
     top: 25%;
