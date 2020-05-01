@@ -15,11 +15,12 @@
 /* HTML, BODY */
 /* -------------------------------- */
 html,
-body,
-.container {
-    height: 100%;
+body {
     margin: 0;
     padding: 0;
+}
+.container {
+    display: block;
 }
 
 header {
@@ -27,6 +28,10 @@ header {
     display: block;
 }
 
+#blank {
+    height: 150px;
+    display: block;
+}
 /*
 nav {
     position: fixed;
@@ -39,8 +44,9 @@ nav {
 #menuNav {
     position: fixed;
     width: 100%;
+    left: 0px;
+    top: 10px;
     background-color: white;
-    margin-top: 10px;
 }
 
 ul#ul_nav {
@@ -54,11 +60,9 @@ li {
     text-align: center;
     display: inline-block; 
     line-height: 55px; 
+    padding: 0 30px;
 }
 
-li:nth-child(1) {
-    margin-right: 5em;
-}
 
 
 .nav-item {
@@ -71,7 +75,6 @@ li:nth-child(1) {
     font-weight: bold;
     border-radius: 10px;
     background-color: tomato;
-    padding: 3px;
     color: white;
 }
 

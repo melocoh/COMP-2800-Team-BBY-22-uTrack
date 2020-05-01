@@ -1,0 +1,26 @@
+.container {
+    /* hide overflowing map to the right */
+    overflow-x: hidden;
+}
+
+
+
+#homeMap {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 50%;
+    height: 60%;
+}
+
+#company {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 35%;
+    height: 60%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: orange;
+    color: white;
+}
