@@ -52,44 +52,96 @@ function checkbox() {
     }
 }
 
-let itemName = document.getElementById("customCheck1").value;
-stock.push({
-    item: itemName,
-    units: itemQuantity
-})
+function removeQuantity() {
+    document.querySelector('#quantity').style.display = "none";
+}
 
+//write data to database
 
-if (document.querySelector('#customCheck2:checked')) {
-    items.push(document.getElementById("customCheck2").value);
-    let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
-    let itemName = document.getElementById("customCheck2").value;
-    stock.push({
-        item: itemName,
-        units: itemQuantity
+function setDataPost(){
+    let locate = document.getElementById("address").value + ", " 
+                + document.getElementById("province").value 
+                + ", " + document.getElementById("zip").value;
+    db.collection("items").add({
+        category: items,
+        item_name: items,
+        stock_number: stock
+    }).then(function(docRef){
+        itemsId= db.collection("items/").doc(docRef.id);
+        db.collection("stores").add({
+            location: locate,
+            store_items: itemsId,
+            store_name: document.getElementById("nameStore").value
+        }).then(function(docRef){
+            storeId = db.collection("stores/").doc(docRef.id);
+            db.collection("posts").add({
+                post_image: imgUrl,
+                // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
+                post_name: document.getElementById("nameStore").value,
+                post_items: itemsId,
+                post_store: storeId
+            }).then(function(docRef){
+                firebase.auth().onAuthStateChanged(function(user){
+                    db.collection("users/").doc(user.id).update({
+                        user_posts: db.collection("posts/").doc(docRef.id)
+                    });
+            })
+        }).catch(function(error){
+            console.log("Error adding document: ", error);
+        });
+    })
     })
 }
 
-if (document.querySelector('#customCheck3:checked')) {
-    items.push(document.getElementById("customCheck3").value);
-    let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
-    let itemName = document.getElementById("customCheck3").value;
-    stock.push({
-        item: itemName,
-        units: itemQuantity
-    })
-}
+//get item info 
+function getItemInfo(){
+    if (document.querySelector('#customCheck1:checked')) {
+        items.push(document.getElementById("customCheck1").value);
+        let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
+        let itemName = document.getElementById("customCheck1").value;
+        stock.push(
+            {
+                item: itemName,
+                units: itemQuantity
+            }
+        )
+    }
 
+    if (document.querySelector('#customCheck2:checked')) {
+        items.push(document.getElementById("customCheck2").value);
+        let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
+        let itemName = document.getElementById("customCheck2").value;
+        stock.push(
+            {
+                item: itemName,
+                units: itemQuantity
+            }
+        )
+    }
+   
+    if (document.querySelector('#customCheck3:checked')) {
+        items.push(document.getElementById("customCheck3").value);
+        let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
+        let itemName = document.getElementById("customCheck3").value;
+        stock.push(
+            {
+                item: itemName,
+                units: itemQuantity
+            }
+        )
+    }
+}
 
 
 //upload image to storage
 //get elements
-var uploader = document.getElementById('uploader');
 var fileButton = document.getElementById('fileButton');
 
 fileButton.addEventListener('change', function (e) {
     var file = e.target.files[0];
     //create a storage ref
     var storageRef = firebase.storage().ref().child('Image/' + file.name);
+    localStorage.setItem(0, storageRef);
     //upload file
     var task = storageRef.put(file);
     //update progress bar
