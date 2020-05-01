@@ -14,6 +14,7 @@ setInterval(function () {
     checkbox();
 }, TIME);
 
+//check if the check box is checked or not
 function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
