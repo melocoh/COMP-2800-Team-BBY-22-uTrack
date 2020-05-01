@@ -3,8 +3,6 @@
     overflow-x: hidden;
 }
 
-
-
 #homeMap {
     position: absolute;
     top: 25%;
@@ -23,4 +21,28 @@ main {
     padding: 20px;
     background-color: orange;
     color: white;
+}
+
+/* mobile view */
+@media (max-width: 419px) {
+    /* insert code here */
+    #homeMap {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+    }
+    
+    main {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+        border-radius: 20px;
+        padding: 20px;
+        background-color: orange;
+        color: white;
+    }
 }
