@@ -35,20 +35,55 @@
         <h2>Posting</h2>
     </header>
     <div class="container">
+        <form>
+            <div class="title">
+                <label for="nameStore"><b>Store name:</b></label>
+                <input type="text" class="form-control" id="nameStore" required>
+            </div>
+
+            <div class="py-2">
+                <label for="address"><b>Address</b></label>
+                <input type="text" class="form-control" id="address" required>
+            </div>
+
+            <div>
+                <label for="province"><b>Province/Territories</b></label>
+                <select class="custom-select" id="province" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="Alberta">Alberta</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="New Brunswick">New Brunswick</option>
+                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                    <option value="Nova Scotia">Nova Scotia</option>
+                    <option value="Ontario">Ontario</option>
+                    <option value="Prince Edward Island">Prince Edward Island</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Saskatchewan">Saskatchewan</option>        
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Yukon">Yukon</option>
+                    <option value="Nunavut">Nunavut</option>
+                </select>
+            </div>
+            <div class="py-2">
+                <label for="zip"><b>Zip</b></label>
+                <input type="text" class="form-control" id="zip" required>
+            </div>
+        </form>
         <div>
             <p><b>Products:</b></p>
         </div>
         <form class="p-2">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" value="faceMask">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Face masks">
                 <label class="custom-control-label" for="customCheck1">Face masks</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck2" value="toiletPaper">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" value="Toilet papers">
                 <label class="custom-control-label" for="customCheck2">Toilet paper</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3" value="handSanitizer">
+                <input type="checkbox" class="custom-control-input" id="customCheck3" value="Hand Sanitizers">
                 <label class="custom-control-label" for="customCheck3">Hand sanitizers</label>
             </div>
         </form>
@@ -91,46 +126,16 @@
         </div>
     </div>
         <br>
+        
         <div>
-            <p><b>Store:</b></p>
+            <p><b>Image</b></p>
         </div>
-        <form>
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">Store name</label>
-                <input type="text" class="form-control" id="validationDefault01" required>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label for="validationDefault03">Address</label>
-                <input type="text" class="form-control" id="validationDefault02" required>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <label for="validationDefault04">Province/Territories</label>
-                <select class="custom-select" id="validationDefault03" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option value="Alberta">Alberta</option>
-                    <option value="British Columbia">British Columbia</option>
-                    <option value="Manitoba">Manitoba</option>
-                    <option value="New Brunswick">New Brunswick</option>
-                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
-                    <option value="Nova Scotia">Nova Scotia</option>
-                    <option value="Ontario">Ontario</option>
-                    <option value="Prince Edward Island">Prince Edward Island</option>
-                    <option value="Quebec">Quebec</option>
-                    <option value="Saskatchewan">Saskatchewan</option>        
-                    <option value="Northwest Territories">Northwest Territories</option>
-                    <option value="Yukon">Yukon</option>
-                    <option value="Nunavut">Nunavut</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="validationDefault04">Zip</label>
-                <input type="text" class="form-control" id="validationDefault05" required>
-            </div>
-        </form>
+        <form class="p-3">
+            <input type = "file" value = "upload" id = 'fileButton'>
+        </form>   
+        <button class="btn btn-primary btn-block" type="submit" id="postButton" onclick="window.location.href='map.html'">Post</button>
     </div>
-    <button class="btn btn-primary btn-block" type="submit" id="postButton" onclick="window.location.href='map.html'">Post</button>
+    
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -149,6 +154,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!--------------------------------------------------------------------->
