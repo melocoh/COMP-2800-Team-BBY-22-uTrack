@@ -6,6 +6,10 @@
     height: 480px;
 }
 
+.modal-body ul {
+    list-style: none;
+}
+
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
     /* insert code here */
