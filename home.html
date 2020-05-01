@@ -32,6 +32,10 @@
     <!----------------------->
         
     <div class="container">
+        <!-- <header>
+            <span>Insert logo here.</span>
+        </header> -->
+
         <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
@@ -60,6 +64,54 @@
                 </div>
             </div>
         </nav>
+
+        <!-- This div modal MUST be a higher level than the map -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal3Label">Store Posts</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                <span>Item here</span>
+                            </li>
+                            <li>
+                                <span>Item here</span>
+                            </li>
+                            <li>
+                                <span>Item here</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <main>
+            <h1 id="username">Welcome! </h1><br>
+            <h3>What is uTrack?</h3>
+            <p>uTrack is a community-driven supply tracking web app designed to inform users of the availability of certain items most sought-after due to the CoViD-19 pandemic.</p>
+        </main>
+        <div id="homeMap"></div>
+
+        <!-- <footer>
+            <span>This is the footer</span>
+        </footer> -->
+        
         <!-- <nav id="menuNav">
             <div class="nav-wrapper">
                 <ul id="ul_nav">
@@ -96,13 +148,13 @@
             </div>
         </nav> -->
 
-        <main>
+        <!-- <main>
             <h1 id="username">Welcome! </h1><br>
             <h3>What is uTrack?</h3>
             <p>uTrack is a community-driven supply tracking web app designed to inform users of the availability of certain items most sought-after due to the CoViD-19 pandemic.</p>
-        </main>
+        </main> -->
 
-        <div id="homeMap"></div>
+        <!-- <div id="homeMap"></div> -->
     </div>
 
     <!----------------------------------------------->

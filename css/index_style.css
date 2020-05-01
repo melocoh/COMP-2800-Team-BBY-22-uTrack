@@ -3,6 +3,15 @@
     overflow-x: hidden;
 }
 
+/* #homeMap {
+    margin: 0;
+    width: 640px;
+    height: 480px;
+} */
+
+.modal-body ul {
+    list-style: none;
+}
 
 
 #homeMap {
@@ -23,4 +32,18 @@ main {
     padding: 20px;
     background-color: orange;
     color: white;
+}
+
+/* mobile view */
+@media screen and (max-width: 419px) {
+    /* insert code here */
+    /* .container {
+        overflow-x: hidden;
+    }
+    
+    #homeMap {
+        margin: 0;
+        width: 100vw;
+        height: 480px;
+    } */
 }
