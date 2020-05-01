@@ -1,0 +1,23 @@
+.container {
+    /* hide overflowing map to the right */
+    overflow-x: hidden;
+}
+
+#homeMap {
+    /* set top and bot margins to 0, center horizontally */
+    margin: 0;
+    /* width: 640px; */
+    width: 100vw;
+    height: 480px;
+    /* height: 80vh; */
+}
+
+/* tablet view */
+@media (min-width: 420px) and (max-width: 1024px) {
+    /* insert code here */
+}
+
+/* mobile view */
+@media (max-width: 419px) {
+    /* insert code here */
+}
