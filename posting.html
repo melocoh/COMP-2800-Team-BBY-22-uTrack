@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>uTrack</title>
+    <meta name="comp2800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/post_style.css">
+</head>
+
+<body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+
+    <header style="text-align: center;">
+        <h2>Posting</h2>
+    </header>
+    <div class="container">
+        <form>
+            <div class="title">
+                <label for="nameStore"><b>Store name:</b></label>
+                <input type="text" class="form-control" id="nameStore" required>
+            </div>
+
+            <div class="py-2">
+                <label for="address"><b>Address</b></label>
+                <input type="text" class="form-control" id="address" required>
+            </div>
+
+            <div>
+                <label for="province"><b>Province/Territories</b></label>
+                <select class="custom-select" id="province" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="Alberta">Alberta</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="New Brunswick">New Brunswick</option>
+                    <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                    <option value="Nova Scotia">Nova Scotia</option>
+                    <option value="Ontario">Ontario</option>
+                    <option value="Prince Edward Island">Prince Edward Island</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Saskatchewan">Saskatchewan</option>        
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Yukon">Yukon</option>
+                    <option value="Nunavut">Nunavut</option>
+                </select>
+            </div>
+            <div class="py-2">
+                <label for="zip"><b>Zip</b></label>
+                <input type="text" class="form-control" id="zip" required>
+            </div>
+        </form>
+        <div>
+            <p><b>Products:</b></p>
+        </div>
+        <form class="p-2">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Face masks">
+                <label class="custom-control-label" for="customCheck1">Face masks</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" value="Toilet papers">
+                <label class="custom-control-label" for="customCheck2">Toilet paper</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck3" value="Hand Sanitizers">
+                <label class="custom-control-label" for="customCheck3">Hand sanitizers</label>
+            </div>
+        </form>
+
+        <div id="quantity">
+            <div>
+                <p><b>Estimated quantity:</b></p>
+                <p><i>Only insert the quantity of available items</i></p>
+            </div>
+            <form class="p-2">
+                <div>
+                    <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
+                    <div class="input-group" id="textBox1">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Face masks</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
+                    </div>
+                    <br>
+                    <div>
+                        <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
+                        <div class="input-group" id="textBox2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Toilet paper</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroup2" placeholder="Item units">
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
+                        <div class="input-group" id="textBox3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Hand sanitizers</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroup3" placeholder="Item units">
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+        <br>
+        
+        <div>
+            <p><b>Image</b></p>
+        </div>
+        <form class="p-3">
+            <input type = "file" value = "upload" id = 'fileButton'>
+        </form>   
+        <button class="btn btn-primary btn-block" type="submit" id="postButton" onclick="window.location.href='map.html'">Post</button>
+    </div>
+    
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/here_maps_api.js"></script>
+    <script src="./scripts/post.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
+</body>
+
+</html>
