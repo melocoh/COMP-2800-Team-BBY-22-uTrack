@@ -21,7 +21,9 @@ var uiConfig = {
                         db.collection("users").doc(user.uid).set({
                                 name: user.displayName,
                                 email: user.email,
-                                level: 1
+                                level: 1,
+                                post: 0,
+                                favoriteStore: ""
                             }).then(function () {
                                 console.log("New user added to firestore");
                                 window.location.assign("index.html");
@@ -51,7 +53,7 @@ var uiConfig = {
         // firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         // VVVVVV Might be added later
-         firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
     // VVVVVV Definitely configure this later (index is placeholder)
