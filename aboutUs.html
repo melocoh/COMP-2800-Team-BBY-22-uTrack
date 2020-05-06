@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About-Us</title>
+    <meta charset="UTF-8">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel ="shortcut icon" type="image/png" href="./images/favicon_map.png">
+    <!-- <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/indexTeam.css" /> -->
+
+</head>
+
+<style>
+</style>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar" id="myNavbar">
+            <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#home" class="w3-bar-item w3-button">HOME</a>
+            <a href="#team" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEAM</a>
+            <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ABOUT</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="login.html" class="w3-bar-item w3-button" onclick="toggleFunction()">LOGIN</a>
+            <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+            <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TEAM</a>
+            <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- First Parallax Image with Logo Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+        <div class="w3-display-middle">
+            <span id="title">Chronos </span>
+
+            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Get Started</button></a>
+        </div>
+        <div id="learn"> <a href="#about"> Learn More </a></div>
+    </div>
+
+    <!-- Container (About Section) -->
+    <div class="backDiv" id="about">
+        <h2 class="chronosHead">What is Chronos</h2>
+
+        <div class="gallery">
+
+            <img src="bgPics/booking.png" alt="Planning" width="500" height="300">
+
+            <div class="desc" id="planningInfo">Chronos is the number one leading calendar site for CST students. With
+                ease and quickness, students can view assignments, quizzes, and exams at the tip of their fingers.</div>
+        </div>
+
+        <!--   Empowering ideas for Chronos     -->
+        <h4 class="chronosHead">Empower Yourself</h4>
+
+        <div class="responsive">
+            <div class="gallery">
+                <img src="bgPics/focus.png" alt="HTML & CSS & JS" id="focusPic" width="500" height="300"
+                    style="width: 83.5%">
+                <div class="desc">Spend less time planning and more time doing. Focus on the big things.</div>
+            </div>
+        </div>
+
+
+        <div class="responsive" style="margin-bottom: 20px">
+            <div class="gallery">
+                <img src="bgPics/progress.png" alt="Progress Chart" width="500" height="300" style="width: 75%">
+                <div class="desc">See your progress as you accomplish your goals. </div>
+            </div>
+        </div>
+
+        <div id="goGallery" class="responsive">
+            <div class="gallery">
+                <img src="bgPics/onTheGo.png" alt="On the Go" width="500" height="400" style="width: 100%">
+                <div class="desc">Be on the go! View your schedule from your phone or laptop from anywhere.</div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!--   Quote of the day     -->
+        <div id="mainQuote">
+            <p>" They always say time changes things, but you actually have to change them yourself. "</p>
+            <p id="quoteWho">Andy Warhol<br> Previous CST student</p>
+        </div>
+        <h2 id="team"><span style="color: red">Meet</span> The Team</h2>
+        <br>
+
+        <!--    Team members!    -->
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Adam" class="profileImage">
+                    <div class="container">
+                        <h2>Adam</h2>
+                        <p class="title">Founder</p>
+                        <p class="profileText">"I like work: it fascinates me. I can sit and look at it for hours."</p>
+                        <p>adam@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Charlie" class="profileImage">
+                    <div class="container">
+                        <h2>Charlie</h2>
+                        <p class="title">Founder</p>
+                        <p class="profileText">"Out of clutter, find simplicity."</p>
+                        <p>charlie@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="William" class="profileImage">
+                    <div class="container">
+                        <h2>William</h2>
+                        <p class="title">Founder</p>
+                        <p class="profileText">"Believe in yourself!"</p>
+                        <p>william@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+        // Change style of navbar on scroll
+        window.onscroll = function () { myFunction() };
+        function myFunction() {
+            var navbar = document.getElementById("myNavbar");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+            } else {
+                navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+            }
+        }
+
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function toggleFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
