@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click to get your coordinates.</p>
+
+<button onclick="getLocation()">Track me</button>
+
+<p id="demo"></p>
+
+<script>
+
+
+/**
+ * Geo location of user
+ */
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+
+  // saves data in these variables
+  latData = position.coords.latitude;
+  lonData = position.coords.longitude;
+
+  // test: prints out location tracking
+  x.innerHTML = "Latitude: " + latData + 
+  "<br>Longitude: " + lonData;
+
+}
+
+// error messages from geolocation
+function showError(error) {
+  switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessages = "User denied the request for Geolocation."
+          alert(errorMessages);
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Location information is unavailable."
+          alert(errorMessage);
+          break;
+        case error.TIMEOUT:
+          errorMessage = "The request to get user location timed out."
+          alert(errorMessage);
+          break;
+        case error.UNKNOWN_ERROR:
+          errorMessage = "An unknown error occurred."
+          alert(errorMessage);
+          break;
+      }
+}
+</script>
+
+</body>
+</html>

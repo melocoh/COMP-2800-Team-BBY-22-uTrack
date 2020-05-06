@@ -1,0 +1,205 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <title>Timestamp Test</title>
+</head>
+
+<body>
+
+  <!-- <div>
+    <nav class="navbar">
+      <a href="main.html"><img id="picture" src="./images/logo.png" alt="Picture of our tracker"></a>
+      <a id="num1" href="">About us</a>
+      <a id="num2" href="">Travel History</a>
+      <a id="num3" href="">Map</a>
+      <a id="num4" href="">Resources</a>
+      <a id="num4" href="">Declare COVID Positive</a>
+      <button id="logoutButton" type="button">Log Out</button>
+    </nav>
+  </div> -->
+
+  </br>
+
+  <h1 id="welcomeMessage">Welcome</h1>
+
+
+  <div id='container'>
+    <button type="button" class="trackMe"><span>TRACK ME</span></button>
+  </div>
+
+  <div id="buttonContainer">
+    <button type="button" id="readButton"><span>Read Info</span></button>
+  </div>
+  <div id="displayData">
+    <h2 id="timerText">Timer:</h2>
+    <h3 id="readDataTextBox"></h3>
+  </div>
+
+
+  <div class="dropup">
+    <button class="dropbtn">Notification</button>
+    <div class="dropup-content">
+      <p><i>You are exposed!</i></p>
+      <a href="#">Learn more here...</a>
+    </div>
+  </div>
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <script src="scripts/firebase.js"> </script> -->
+  <script>
+    const welcome = document.getElementById("welcomeMessage");
+    db.collection("users").onSnapshot(function (querySnapshot) {
+      console.log(firebase.auth().currentUser.displayName);
+      welcome.innerHTML = "Welcome, " + firebase.auth().currentUser.displayName;
+    });
+  </script>
+
+
+  <script>
+    //write timestamp and location to the database
+    $(document).on('click', '.trackMe', function (event) {
+      getLocation();
+      showError();
+    });
+
+
+
+    function saveData() {
+
+      var user = firebase.auth().currentUser;
+      var curDate = new Date();
+      var curTime = curDate.getTime();
+      var userID = user.uid;
+
+      var docData = {
+        lat: latData,
+        lon: lonData,
+        timeStamp: curTime
+      };
+
+      db.collection(userID + ' tracking').doc(curTime.toString()).set(docData);
+    }
+
+
+
+    //read timestamp and location from the database
+    $(document).on('click', '#readButton', function (event) {
+      var user = firebase.auth().currentUser;
+      var curDate = new Date();
+      var curTime = curDate.getTime();
+      var userID = user.uid;
+
+      db.collection(userID + ' tracking').get().then(function (snap) {
+        var i = 0;
+        var dbReadDataLat = [];
+        var dbReadDataLon = [];
+        var dbReadDataTimeStamp = [];
+        snap.forEach(function (doc) { // iterate thru collections
+          dbReadDataLat[i] = doc.data().lat;
+          dbReadDataLon[i] = doc.data().lon;
+          dbReadDataTimeStamp[i] = doc.data().timeStamp;
+
+          i += 1;
+        });
+
+        var newHtml = "<ul>";
+        for (i = 0; i < dbReadDataLat.length; i++) {
+          newHtml += "<li><b>lat:</b> " + dbReadDataLat[i] + " ";
+          newHtml += "<b>lon:</b> " + dbReadDataLon[i] + " ";
+          var s = new Date(dbReadDataTimeStamp[i]).toLocaleDateString("en-US") +" "+ new Date(dbReadDataTimeStamp[i]).toLocaleTimeString("en-US");
+          newHtml += "<b>time:</b> " + s + "</li>";
+        }
+        newHtml += "</ul>";
+        $('#readDataTextBox').html(newHtml);
+      });
+    });
+
+
+    //timer
+    timeCounter = 0;
+
+    function displayTimer() {
+      $('#timerText').html("Timer: " + timeCounter.toString());
+      timeCounter++;
+      setTimeout(displayTimer, 1000);
+    }
+    displayTimer();
+
+
+
+    //GPS Code
+    errorMessage = "";
+    latData = -1;
+    lonData = -1;
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        errorMessage = "Geolocation is not supported by this browser.";
+      }
+    }
+
+
+
+    function showPosition(position) {
+      latData = position.coords.latitude;
+      lonData = position.coords.longitude;
+      saveData();
+    }
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessages = "User denied the request for Geolocation."
+          alert(errorMessages);
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Location information is unavailable."
+          alert(errorMessage);
+          break;
+        case error.TIMEOUT:
+          errorMessage = "The request to get user location timed out."
+          alert(errorMessage);
+          break;
+        case error.UNKNOWN_ERROR:
+          errorMessage = "An unknown error occurred."
+          alert(errorMessage);
+          break;
+      }
+    }
+
+    //Logout function
+    $("#logoutButton").on('click', function () {
+      firebase.auth().signOut().then(function () {
+        //console.log("Singout Successful");
+        window.location.href = "index.html";
+      }, function (error) {
+        //console.log("Some error occured");
+      });
+    })
+  </script>
+
+</body>
+
+</html>
