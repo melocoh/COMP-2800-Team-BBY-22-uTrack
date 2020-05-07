@@ -14,13 +14,14 @@
 /* -------------------------------- */
 /* HTML, BODY */
 /* -------------------------------- */
-html,
-body {
+html, body, .container {
     margin: 0;
     padding: 0;
 }
+
 .container {
-    display: block;
+    display: grid;
+    margin-top: 70px;
 }
 
 header {
@@ -44,7 +45,11 @@ nav {
 #menuNav {
     position: fixed;
     width: 100%;
-    left: 0px;
+    top: 0;
+    left: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 70px;
     border-top: 10px solid white;
     background-color: white;
 }
@@ -55,7 +60,7 @@ ul#ul_nav {
     list-style: none;
 }
 
-li {
+#ul_nav li {
     flex-grow: 5;
     text-align: center;
     display: inline-block; 
