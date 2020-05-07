@@ -22,6 +22,7 @@ var uiConfig = {
                                 name: user.displayName,
                                 email: user.email,
                                 level: 1,
+                                points: 0,
                                 post: 0,
                                 favoriteStore: ""
                             }).then(function () {

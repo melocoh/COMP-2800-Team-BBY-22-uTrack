@@ -3,10 +3,15 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
         document.querySelector("#lv").innerHTML = snap.data().level;
-        document.querySelector("#point").innerHTML = snap.data().point;
+        document.querySelector("#point").innerHTML = snap.data().points;
 
-        let sizeArray = snap.data().user_posts;
-        console.log(sizeArray);
-        document.querySelector("#postNum").innerHTML = sizeArray.length;
+        // let sizeArray = snap.data().user_posts;
+        // console.log(sizeArray);
+        // if (sizeArray == "undefined"){
+        //     document.querySelector("#postNum").innerHTML = 0;
+        // } else{
+        //     document.querySelector("#postNum").innerHTML = sizeArray.length;
+        // }
+        
     })
 })
