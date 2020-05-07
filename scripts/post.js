@@ -4,7 +4,8 @@ let checked3 = false;
 let items = [];
 let stock = [];
 let imgUrl = localStorage.getItem(0);
-let itemsId;
+// let itemsId;
+let itemIDs = [];
 let storeId;
 const TIME = 500;
 
@@ -58,77 +59,99 @@ function removeQuantity() {
 
 //write data to database
 
-function setDataPost(){
-    let locate = document.getElementById("address").value + ", " 
-                + document.getElementById("province").value 
-                + ", " + document.getElementById("zip").value;
-    db.collection("items").add({
-        category: items,
-        item_name: items,
-        stock_number: stock
-    }).then(function(docRef){
-        itemsId= db.collection("items/").doc(docRef.id);
-        db.collection("stores").add({
-            location: locate,
-            store_items: itemsId,
-            store_name: document.getElementById("nameStore").value
-        }).then(function(docRef){
-            storeId = db.collection("stores/").doc(docRef.id);
-            db.collection("posts").add({
-                post_image: imgUrl,
-                // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
-                post_name: document.getElementById("nameStore").value,
-                post_items: itemsId,
-                post_store: storeId
-            }).then(function(docRef){
-                firebase.auth().onAuthStateChanged(function(user){
-                    db.collection("users/").doc(user.id).update({
-                        user_posts: db.collection("posts/").doc(docRef.id)
-                    });
+function setDataPost() {
+    let locate = document.getElementById("address").value + ", " +
+        document.getElementById("province").value +
+        ", " + document.getElementById("zip").value;
+
+    // iterate over each item in the items array and add them to the database
+    for (let i = 0; i < items.length; i++) {
+        db.collection("items").add({
+            category: items[i],
+            item_name: items[i],
+            stock_number: stock[i]
+        }).then(function (docRef) {
+            let itemId = db.collection("items/").doc(docRef.id);
+            console.log(itemId);
+            itemIDs.push(itemId);
+        });
+    }
+
+    db.collection("stores").add({
+        location: locate,
+        store_items: itemIDs,
+        store_name: document.getElementById("nameStore").value
+    }).then(function (docRef) {
+        storeId = db.collection("stores/").doc(docRef.id);
+        // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+        // storeId.set({
+        //     location: locate,
+        //     store_items: itemIDs,
+        //     store_name: document.getElementById("nameStore").value
+        // });
+        console.log(storeId);
+        db.collection("posts").add({
+            post_image: imgUrl,
+            // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
+            post_name: document.getElementById("nameStore").value,
+            post_items: itemIDs,
+            post_store: storeId
+        }).then(function (docRef) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                db.collection("users/").doc(user.id).update({
+                    user_posts: db.collection("posts/").doc(docRef.id)
+                });
             })
-        }).catch(function(error){
+        }).catch(function (error) {
             console.log("Error adding document: ", error);
         });
-    })
-    })
+    });
+
+    // updating item array of store (because it is blank for some reason)
+    // btw doesn't work
+    // db.collection("stores").doc(storeId).set({
+    //     location: locate,
+    //     store_items: itemIDs,
+    //     store_name: document.getElementById("nameStore").value
+    // });
+    
+    // FOR TESTING PURPOSES:
+    alert("POSTED!");
 }
 
 //get item info 
-function getItemInfo(){
+function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
-        let itemName = document.getElementById("customCheck1").value;
-        stock.push(
-            {
-                item: itemName,
-                units: itemQuantity
-            }
-        )
+        stock.push(itemQuantity);
+        // let itemName = document.getElementById("customCheck1").value;
+        // stock.push({
+        //     item: itemName,
+        //     units: itemQuantity
+        // })
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
-        let itemName = document.getElementById("customCheck2").value;
-        stock.push(
-            {
-                item: itemName,
-                units: itemQuantity
-            }
-        )
+        stock.push(itemQuantity);
+        // let itemName = document.getElementById("customCheck2").value;
+        // stock.push({
+        //     item: itemName,
+        //     units: itemQuantity
+        // })
     }
-   
+
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
-        let itemName = document.getElementById("customCheck3").value;
-        stock.push(
-            {
-                item: itemName,
-                units: itemQuantity
-            }
-        )
+        stock.push(itemQuantity);
+        // let itemName = document.getElementById("customCheck3").value;
+        // stock.push({
+        //     item: itemName,
+        //     units: itemQuantity
+        // })
     }
 }
 
