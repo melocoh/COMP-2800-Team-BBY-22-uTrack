@@ -1,15 +1,12 @@
+/* desktop view */
+@media screen and (min-width: 1024px) and (max-height: 1410px) {
+    .bgimg-1 {
+    background-image: url(../images/bg_test2.png);
+    min-height: 100%;
+    }
+
 /* desktop and tablet view */
 @media (min-width: 400px) {
-    #img_back {
-        border-radius: 25px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-        height: 90%;
-        z-index: -1;
-    }
     #img_logo {
         position: absolute;
         top: 20%;
