@@ -63,14 +63,24 @@ header {
     height: 3em;
 }
 
-.left_col {
-    float: left;
-    width: 70%;
+#homeMap {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 50%;
+    height: 60%;
 }
 
-.right_col {
-    float: right;
-    width: 30%;
+main {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 35%;
+    height: 60%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: orange;
+    color: white;
 }
 
 /* tablet view */
@@ -94,4 +104,23 @@ header {
         color: white;
     }
 
+    #homeMap {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+    }
+    
+    main {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 80%;
+        height: 30%;
+        border-radius: 20px;
+        padding: 20px;
+        background-color: orange;
+        color: white;
+    }
 }
