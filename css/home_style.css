@@ -1,0 +1,13 @@
+.container {
+    /* hide overflowing map to the right */
+    overflow-x: hidden;
+}
+
+.modal-body ul {
+    list-style: none;
+}
+
+/* mobile view */
+@media (max-width: 419px) {
+    /* insert code here */
+}
