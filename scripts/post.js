@@ -145,7 +145,7 @@ fileButton.addEventListener('change', function (e) {
     //upload file
     var task = storageRef.put(file);
     //update progress bar
-    task.on('state_changed',    
+    task.on('state_changed',
         function error(err) {
             // A full list of error codes is available at
             // https://firebase.google.com/docs/storage/web/handle-errors
