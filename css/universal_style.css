@@ -14,13 +14,14 @@
 /* -------------------------------- */
 /* HTML, BODY */
 /* -------------------------------- */
-html,
-body {
+html, body, .container {
     margin: 0;
     padding: 0;
 }
+
 .container {
-    display: block;
+    display: grid;
+    margin-top: 70px;
 }
 
 header {
@@ -33,6 +34,10 @@ header {
     display: block;
 }
 
+nav ul li {
+    justify-content: center;
+    width: 100%;
+}
 
 .nav-item {
     font-weight: bold;

@@ -36,38 +36,37 @@
     <!--  HTML Section -->
     <!----------------------->
 
+    <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
+        <!-- <div class="container"> -->
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./profile.html">Profile</a>
+                </li>
+                <li class="nav-item active nav-active">
+                    <a class="nav-link" href="./posting.html">Posting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact.html">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <input type="text" id="search_text" class="search_bar" placeholder="Search items">
+                    <input type="button" id="search_btn" class="search_bar" value="Search">
+                </li>
+            </ul>
+        </div>
+        <!-- </div> -->
+    </nav>
+
     <div class="container">
-        <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar1">
-                    <ul class="navbar-nav nav nav-fill w-100">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./home.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./profile.html">Profile</a>
-                        </li>
-                        <li class="nav-item active nav-active">
-                            <a class="nav-link" href="./posting.html">Posting</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./contact.html">Contact us</a>
-                        </li>
-                        <li class="nav-item" style="display:none;" id="moderator_view">
-                            <a class="nav-link" href="./moderator.html">Manage Page</a>
-                        </li>
-                        <li class="nav-item">
-                        <input type="text" id="search_text" class="search_bar" placeholder="Search items">
-                        <input type="button" id="search_btn" class="search_bar" value="Search">
-                    </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        
         <!-- <nav id="menuNav">
             <div class="nav-wrapper">
                 <ul id="ul_nav">
