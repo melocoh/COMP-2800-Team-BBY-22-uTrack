@@ -32,14 +32,7 @@ header {
     height: 150px;
     display: block;
 }
-/*
-nav {
-    position: fixed;
-    height: 60px;
-    width: 100%;
-    background-color: gray;
-}
-*/
+
 
 .nav-item {
     font-weight: bold;
@@ -52,7 +45,6 @@ nav {
     font-weight: bold;
     border-radius: 10px;
     background-color: tomato;
-    color: white;
     display: inline-block; 
     line-height: 2em; 
 }
