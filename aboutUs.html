@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About-Us</title>
+    <meta charset="UTF-8">
+
+    <!----------------------------------------------->
+    <!-----------------  Favicon  ------------------->
+    <!----------------------------------------------->
+    <link rel ="shortcut icon" type="image/png" href="./images/favicon_map.png">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link type="text/css" rel="stylesheet" href="./css/aboutUs_style.css" />
+    <link type="text/css" rel="stylesheet" href="./css/aboutUs_team_style.css" />
+
+</head>
+
+<style>
+</style>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar" id="myNavbar">
+            <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#home" class="w3-bar-item w3-button">HOME</a>
+            <a href="#team" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEAM</a>
+            <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ABOUT</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="login.html" class="w3-bar-item w3-button" onclick="toggleFunction()">LOGIN</a>
+            <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+            <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TEAM</a>
+            <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- First Parallax Image with Logo Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+        <div class="w3-display-middle">
+            <span id="title">uTrack </span>
+
+            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Get Started</button></a>
+        </div>
+        <div id="learn"> <a href="#about"> Learn More </a></div>
+    </div>
+
+    <!-- Container (About Section) -->
+    <div class="backDiv" id="about">
+        <h2 class="utrackHead">uTrack</h2>
+
+        <div class="gallery">
+
+            <img src="./images/hand_sanitizer.png" alt="Intro" width="500" height="300">
+
+            <div class="desc" id="planningInfo">uTrack is a community-driven supply tracking web application designed to inform users
+                of the availability of essential items during CoViD-19.</div>
+        </div>
+
+        <!--   Our Mission in uTrack     -->
+        <h4 class="utrackHead">Our Mission</h4>
+
+        <div class="responsive">
+            <div class="gallery">
+                <img src="./images/hand_sanitizer.png" alt="Supply Essentials" width="500" height="400" style="width: 100%">
+                <div class="desc">Information regarding supply stocks is provided by the users who go out of their way to
+                    report the current status of items they find while shopping.</div>
+            </div>
+        </div>
+
+
+        <div class="responsive" style="margin-bottom: 20px">
+            <div class="gallery">
+                <img src="./images/hand_sanitizer.png" alt="Community Engangement"  width="500" height="400" style="width: 100%">
+                <div class="desc">The more they post and contribute to their local community, the more points they will
+                    accumulate, which can be redeemed for in-app cosmetics. </div>
+            </div>
+        </div>
+
+        <div id="goGallery" class="responsive">
+            <div class="gallery">
+                <img src="./images/hand_sanitizer.png" alt="Gaming Experience" width="500" height="400" style="width: 100%">
+                <div class="desc">Associated items on demand pertain to hygienic, clinical, and dietary needs such as
+                    toilet paper, diapers, and hand sanitizers.</div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!--   Quote of the day     -->
+        <div id="mainQuote">
+            <p>" I love uTrack because it helps me find TP when I really need it. "</p>
+            <p id="quoteWho">Billy Bob Joe<br> Next-door neighbour</p>
+        </div>
+        <h2 id="team">Our Crew</h2>
+        <br>
+
+        <!--    Team members!    -->
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Melody" class="profileImage">
+                    <div class="container">
+                        <h2>Melody</h2>
+                        <p class="title">Founder</p>
+                        <p class="profileText">"I could really go for a cool bottle of handsantizer right now. Pub?"</p>
+                        <p>Melody@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Kent" class="profileImage">
+                    <div class="container">
+                        <h2>Kent</h2>
+                        <p class="title">Founder / Coffee Delivery Boy.</p>
+                        <p class="profileText">"Life"</p>
+                        <p>Kent@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Katherine" class="profileImage">
+                    <div class="container">
+                        <h2>Katherine</h2>
+                        <p class="title">Founder / Scrum God / YugiOh Trainer</p>
+                        <p class="profileText">"Dddu duel!!"</p>
+                        <p>Katherine@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="bgPics/Profile-720.png" alt="Steve" class="profileImage">
+                    <div class="container">
+                        <h2>Steven</h2>
+                        <p class="title">Founder / Loving Husband </p>
+                        <p class="profileText">"What's a Figma?"</p>
+                        <p>Steven@mail.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+        // Change style of navbar on scroll
+        window.onscroll = function () { myFunction() };
+        function myFunction() {
+            var navbar = document.getElementById("myNavbar");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+            } else {
+                navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+            }
+        }
+
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function toggleFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
