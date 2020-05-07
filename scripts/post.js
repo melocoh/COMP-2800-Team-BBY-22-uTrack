@@ -9,6 +9,7 @@ let itemIDs = [];
 let storeId;
 let curTime;
 let dateAndTime;
+let postId;
 const TIME = 500;
 
 //invoke functions
@@ -94,15 +95,16 @@ function setDataPost() {
                     console.log(storeId);
                     db.collection("posts").add({
                         post_image: imgUrl,
-                        // post_date: dateAndTime,
-                        post_date: curTime,
+                        post_date: dateAndTime,
+                        timeStamp: curTime,
                         post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
                         post_store: storeId
                     }).then(function (docRef) {
+                        postId = db.collection("posts/").doc(docRef.id);
                         firebase.auth().onAuthStateChanged(function (user) {
                             db.collection("users/").doc(user.id).update({
-                                user_posts: db.collection("posts/").doc(docRef.id)
+                                user_posts: postId
                             });
                         })
                     }).catch(function (error) {
