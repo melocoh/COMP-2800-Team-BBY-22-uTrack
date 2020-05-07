@@ -7,6 +7,9 @@ let imgUrl = localStorage.getItem(0);
 // let itemsId;
 let itemIDs = [];
 let storeId;
+let curTime;
+let dateAndTime;
+let postId;
 const TIME = 500;
 
 //invoke functions
@@ -92,14 +95,16 @@ function setDataPost() {
                     console.log(storeId);
                     db.collection("posts").add({
                         post_image: imgUrl,
-                        // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
+                        post_date: dateAndTime,
+                        timeStamp: curTime,
                         post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
                         post_store: storeId
                     }).then(function (docRef) {
+                        postId = db.collection("posts/").doc(docRef.id);
                         firebase.auth().onAuthStateChanged(function (user) {
                             db.collection("users/").doc(user.id).update({
-                                user_posts: db.collection("posts/").doc(docRef.id)
+                                user_posts: postId
                             });
                         })
                     }).catch(function (error) {
@@ -198,7 +203,46 @@ fileButton.addEventListener('change', function (e) {
 
 function save() {
     getItemInfo();
+    getTimeStamp();
     setDataPost();
+}
+
+function getTimeStamp() {
+
+    // creates new date, formatted "Wed May 06 2020 15:23:38 GMT-0700 (Pacific Daylight Time)""
+    var curDate = new Date();
+
+    // extracts the date
+    var date = curDate.getDate();
+
+    // extracts the month
+    var month = curDate.getMonth();
+    
+    // extracts the year
+    var year = curDate.getFullYear();
+    
+    // ensures that digits are always 2
+    function pad(n) {
+	return n<10 ? '0'+n : n
+    }
+
+    // formats date to "month/day/year" 
+    var monthDateYear  = (month+1) + "/" + date + "/" + year;
+
+    // grabs current timestamp
+    curTime = curDate.getTime();
+
+    // formats timestamp to local time
+    var newTime = curDate.toLocaleTimeString()
+
+    // formats date and time together
+    dateAndTime = curDate.toLocaleString(undefined, {
+	day: 'numeric',
+	month: 'numeric',
+	year: 'numeric',
+	hour: '2-digit',
+	minute: '2-digit',
+})
 }
 
 document.getElementById("postButton").onclick = save;
