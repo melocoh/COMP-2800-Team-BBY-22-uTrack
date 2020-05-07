@@ -74,38 +74,41 @@ function setDataPost() {
             let itemId = db.collection("items/").doc(docRef.id);
             console.log(itemId);
             itemIDs.push(itemId);
+            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
+            // add the store and post once the last item has been pushed to itemIDs arrya
+            if (i == items.length - 1) {
+                db.collection("stores").add({
+                    location: locate,
+                    store_items: itemIDs,
+                    store_name: document.getElementById("nameStore").value
+                }).then(function (docRef) {
+                    storeId = db.collection("stores/").doc(docRef.id);
+                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+                    // storeId.set({
+                    //     location: locate,
+                    //     store_items: itemIDs,
+                    //     store_name: document.getElementById("nameStore").value
+                    // });
+                    console.log(storeId);
+                    db.collection("posts").add({
+                        post_image: imgUrl,
+                        // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
+                        post_name: document.getElementById("nameStore").value,
+                        post_items: itemIDs,
+                        post_store: storeId
+                    }).then(function (docRef) {
+                        firebase.auth().onAuthStateChanged(function (user) {
+                            db.collection("users/").doc(user.id).update({
+                                user_posts: db.collection("posts/").doc(docRef.id)
+                            });
+                        })
+                    }).catch(function (error) {
+                        console.log("Error adding document: ", error);
+                    });
+                });
+            }
         });
     }
-
-    db.collection("stores").add({
-        location: locate,
-        store_items: itemIDs,
-        store_name: document.getElementById("nameStore").value
-    }).then(function (docRef) {
-        storeId = db.collection("stores/").doc(docRef.id);
-        // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-        // storeId.set({
-        //     location: locate,
-        //     store_items: itemIDs,
-        //     store_name: document.getElementById("nameStore").value
-        // });
-        console.log(storeId);
-        db.collection("posts").add({
-            post_image: imgUrl,
-            // post_date: firebase.database.ServerValue.TIMESTAMP.toDate(),
-            post_name: document.getElementById("nameStore").value,
-            post_items: itemIDs,
-            post_store: storeId
-        }).then(function (docRef) {
-            firebase.auth().onAuthStateChanged(function (user) {
-                db.collection("users/").doc(user.id).update({
-                    user_posts: db.collection("posts/").doc(docRef.id)
-                });
-            })
-        }).catch(function (error) {
-            console.log("Error adding document: ", error);
-        });
-    });
 
     // updating item array of store (because it is blank for some reason)
     // btw doesn't work
@@ -114,9 +117,9 @@ function setDataPost() {
     //     store_items: itemIDs,
     //     store_name: document.getElementById("nameStore").value
     // });
-    
+
     // FOR TESTING PURPOSES:
-    alert("POSTED!");
+    alert("For testing purposes: POSTED!");
 }
 
 //get item info 
