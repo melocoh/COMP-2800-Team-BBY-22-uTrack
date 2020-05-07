@@ -84,9 +84,13 @@ function addMarkers(map) {
     // card.append(postModal);
     text_div.appendChild(text);
 
-    function closeModal(event) {
-        $("#myModal").modal("hide");
-    };
+    function initReadLatest() {
+        readLatest();
+    }
+
+    // function closeModal(event) {
+    //     $("#myModal").modal("hide");
+    // };
 
     // FOR TESTING PURPOSES:
     // function changeOpacity(event) {
@@ -98,7 +102,14 @@ function addMarkers(map) {
     // };
 
     // DOM Icon (needed for second parameter argument of H.map.DomMarker())
-    var domIcon = new H.map.DomIcon(card);
+    var domIcon = new H.map.DomIcon(card, {
+        onAttach: function (clonedElement, domIcon, domMarker) {
+            clonedElement.addEventListener("click", initReadLatest);
+        },
+        onDetach: function (clonedElement, domIcon, domMarker) {
+            clonedElement.removeEventListener("click", initReadLatest);
+        }
+    });
     // , {
     //     onAttach: function (clonedElement, domIcon, domMarker) {
     //         // clonedElement.addEventListener("click", openModal);
