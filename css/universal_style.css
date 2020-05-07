@@ -42,7 +42,7 @@ nav {
 }
 */
 
-#menuNav {
+/* #menuNav {
     position: fixed;
     width: 100%;
     top: 0;
@@ -52,23 +52,26 @@ nav {
     height: 70px;
     border-top: 10px solid white;
     background-color: white;
-}
+} */
 
-ul#ul_nav {
+/* #menuNav ul {
     margin: 0px;
     display: flex;
     list-style: none;
 }
 
-#ul_nav li {
+#menuNav li {
     flex-grow: 5;
     text-align: center;
     display: inline-block; 
     line-height: 55px; 
     padding: 0 30px;
+} */
+
+nav ul li {
+    justify-content: center;
+    width: 100%;
 }
-
-
 
 .nav-item {
     font-weight: bold;
@@ -113,12 +116,12 @@ ul#ul_nav {
 /* mobile view */
 @media (max-width: 419px) {
     /* insert code here */
-    ul#ul_nav {
+    /* ul#ul_nav {
         padding: 5px;
         margin: 0px;
         display: block;
         list-style: none;
-    }
+    } */
 
     .nav-item {
         padding: 3px;
