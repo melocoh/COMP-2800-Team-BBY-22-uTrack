@@ -1,24 +1,8 @@
-/* #homeMap {
-    margin: 0;
-    width: 640px;
-    height: 480px;
-} */
-
-.modal-body ul {
-    list-style: none;
-}
-
-#homeMap {
-    /* position: absolute; */
-    /* top: 25%;
-    left: 45%; */
-    /* width: 50%;
-    height: 60%; */
-    width: 100vw;
-    height: 100vh;
-}
-
+/* --------------------------------- */
+/* Main and Children */
+/* --------------------------------- */
 main {
+    /* Old code, keep as back-up */
     /* position: absolute; */
     /* top: 25%;
     left: 5%;
@@ -41,9 +25,27 @@ section {
     background-color: orange;
 }
 
+/* --------------------------------- */
+/* HERE Map */
+/* --------------------------------- */
+#homeMap {
+    /* Original Map Size: */
+    /* width: 640px; */
+    /* height: 480px; */
+    width: 100vw;
+    height: 100vh;
+}
+
 canvas {
     width: 100%;
     height: 100%;
+}
+
+/* --------------------------------- */
+/* Map Modal */
+/* --------------------------------- */
+.modal-body ul {
+    list-style: none;
 }
 
 .modal-body li {
@@ -53,9 +55,14 @@ canvas {
     align-items: center;
 }
 
-.modal-body li > * {
+.modal-body li span {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.logo_container {
+    width: 50px;
+    height: 50px;
 }
 
 span:last-child {
@@ -66,10 +73,12 @@ span:last-child {
     text-align: center;
 }
 
-/* mobile view */
-@media (max-width: 419px) {
+/* --------------------------------- */
+/* Media Queries */
+/* --------------------------------- */
 
-    /* insert code here */
+/* Mobile View */
+@media (max-width: 419px) {
     #homeMap {
         /* position: absolute; */
         /* top: 50%;
@@ -79,18 +88,5 @@ span:last-child {
         /* width: 100vw;
         height: 100vh; */
         height: 70vh;
-    }
-
-    
-
-    main {
-        /* position: absolute; */
-        /* top: 15%;
-        left: 10%; */
-        /* width: 80%;
-        height: 30%;
-        border-radius: 20px;
-        padding: 20px;
-        color: white; */
     }
 }
