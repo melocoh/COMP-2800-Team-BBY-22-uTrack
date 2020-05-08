@@ -102,11 +102,11 @@ function setDataPost() {
                         post_store: storeId
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
-                        firebase.auth().onAuthStateChanged(function (user) {
-                            db.collection("users/").doc(user.id).update({
-                                user_posts: postId
-                            });
-                        })
+                        // firebase.auth().onAuthStateChanged(function (user) {
+                        //     db.collection("users/").doc(user.id).update({
+                        //         user_posts: postId
+                        //     })
+                        // })
                     }).catch(function (error) {
                         console.log("Error adding document: ", error);
                     });
