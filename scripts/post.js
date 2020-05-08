@@ -96,7 +96,7 @@ function setDataPost() {
                     db.collection("posts").add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
-                        timeStamp: curTime,
+                        timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
                         post_store: storeId
