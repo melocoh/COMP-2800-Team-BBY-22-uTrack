@@ -10,9 +10,9 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
         displayName.innerHTML = user.displayName;
-        displayLevel.innerHTML = snap.data().level;
-        displayPosting.innerHTML = snap.data().post;
-        displayPoint.innerHTML = snap.data().points;
+        displayLevel.innerHTML = "Level: " + snap.data().level;
+        displayPosting.innerHTML = "Post: " + snap.data().post;
+        displayPoint.innerHTML = "Points: " + snap.data().points;
         displayEmail.innerHTML = user.email;
         })
     } else {
