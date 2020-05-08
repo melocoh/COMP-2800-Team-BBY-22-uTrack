@@ -1,3 +1,27 @@
+#userPrifilePic {
+    width: 200px;
+    height: 300px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 150px auto;
+    background-color: white;
+    padding: 10px;
+    margin-top: 50px; 
+    margin-left: 30px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .item1 {
+    grid-row: 1 / span 3;
+  }
+
 /* desktop view */
 @media (min-width: 1025px) {
     
