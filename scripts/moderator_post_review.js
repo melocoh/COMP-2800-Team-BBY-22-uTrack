@@ -14,7 +14,16 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         let btn = document.createElement("button");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
-
+        // function removePost(){
+        //     contain.style.display = "none";
+        // }
+        // btn.onclick = removePost;
+        $(document).ready(function(){
+            $("#submitButton").click(function(){
+                contain.style.display = "none";
+              });
+        });
+        
         setStyle(contain);
         p1.style.fontWeight = "bold";
         btn.style.backgroundColor = "tomato";
@@ -75,7 +84,5 @@ function setStyle(contain){
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
-    $("#submitButton").click(function(){
-      alert("Report has been submitted");
-    });
   });
+
