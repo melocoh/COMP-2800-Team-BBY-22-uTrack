@@ -8,6 +8,7 @@
   margin-bottom: 16px;
   padding: 0 8px;
   margin: 16px 1.3%;
+  /* background-color: red; */
 }
 
 .row {
@@ -16,7 +17,7 @@
 .profileImage {
     margin-top: 35px;
     width:55%;
-    max-height: 205px
+    max-height: 205px;
 }
 
 .profileText {
@@ -31,6 +32,7 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background: rgb(250, 249, 249);
+    /* border-radius: 50%; */
   }
 
 @media screen and (max-width: 650px) {

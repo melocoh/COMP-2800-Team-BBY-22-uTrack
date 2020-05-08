@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel="shortcut icon" type="image/png" href="./images/favicon_map.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -85,7 +85,7 @@
                     <a class="nav-link" href="./profile.html">Profile</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./posting.html">Posting</a>
+                    <a class="nav-link" href="./post.html">Posting</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.html">Contact us</a>
@@ -159,6 +159,12 @@
         <main>
             <section>
                 <h1 id="username">Welcome! </h1>
+                <p>Click to get your coordinates.</p>
+                <!-- geolocatoion button -->
+            <button onclick="getLocation()" id="reportButton"
+                style="padding: 8px 10px 6px 10px; border-radius: 50%; color: white; background-color: red;"> <i
+                    class="material-icons">my_location</i></button>
+            <p id="demo"></p>
             </section>
             <div id="homeMap"></div>
         </main>
@@ -210,6 +216,58 @@
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
+
+    <script>
+
+/**
+ * Geo location of user
+ */
+ var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+
+  // saves data in these variables
+  latData = position.coords.latitude;
+  lonData = position.coords.longitude;
+
+  // test: prints out location tracking
+  x.innerHTML = "Latitude: " + latData + 
+  "<br>Longitude: " + lonData;
+
+}
+
+// error messages from geolocation
+function showError(error) {
+  switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessages = "User denied the request for Geolocation."
+          alert(errorMessages);
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Location information is unavailable."
+          alert(errorMessage);
+          break;
+        case error.TIMEOUT:
+          errorMessage = "The request to get user location timed out."
+          alert(errorMessage);
+          break;
+        case error.UNKNOWN_ERROR:
+          errorMessage = "An unknown error occurred."
+          alert(errorMessage);
+          break;
+      }
+}
+
+    </script>
+
 </body>
 
 </html>
