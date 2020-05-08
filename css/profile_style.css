@@ -1,8 +1,13 @@
-.grid-container {
-    border-radius: 30px;
+.container {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.grid-item {
+.grid-container {
+    margin:auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    width: 100%;
 }
 
 /* desktop view */
@@ -17,12 +22,11 @@
     
     .grid-container {
         display: grid;
-        grid-template-columns: auto 150px auto;
+        grid-template-columns: auto auto;
         padding: 10px;
         margin-top: 50px;
-        margin-left: 30px;
         border-radius: 30px;
-        margin: 5px;
+        
     }
     
     .grid-item {
@@ -30,7 +34,10 @@
         padding: 20px;
         font-size: 30px;
         text-align: center;
+        border: 1px solid black;
     }
+
+    
 }
 
 /* tablet view */

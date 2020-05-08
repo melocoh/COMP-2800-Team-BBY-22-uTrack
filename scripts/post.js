@@ -209,24 +209,18 @@ function save() {
         window.location.href = "./post.html";
     }, TIME * 4);
 
-    var user = firebase.auth().currentUser;
-
-    user.updateProfile({
-        post: 100
-    }).then(function () {
-        // Update successful.
-    }).catch(function (error) {
-        // An error happened.
-    });
-
-    /*
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log("User is signed in.");
             console.log("user id: " + user.uid);
-            db.collection("users").doc(user.uid).update({
-                post: 1
+            var currentPost;
+            var updatedPost;
+            db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+                currentPost = snap.data().post; 
+                updatedPost = currentPost + 1;
+            })      
+            db.collection("users").doc(user.uid).set({
+                post: updatedPost
             })
         } else {
             // No user is signed in.
@@ -235,7 +229,6 @@ function save() {
             console.log("Page should be re-directed by now.");
         }
     });
-    */
 
 
 }
