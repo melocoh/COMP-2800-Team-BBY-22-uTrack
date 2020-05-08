@@ -12,6 +12,8 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
         let btn = document.createElement("button");
+        btn.setAttribute("data-toggle", "modal");
+        btn.setAttribute("data-target", "#basicExampleModal");
 
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -70,5 +72,10 @@ function setStyle(contain){
     contain.style.borderRadius = "10px";
 }
 
-$(".container").css("margin-top", "100px");
-$("#newPost").css({"display":"flex","justify-content":"flex-end", "padding":"15px"});
+$(document).ready(function(){
+    $(".container").css("margin-top", "100px");
+    $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
+    $("#submitButton").click(function(){
+      alert("Report has been submitted");
+    });
+  });

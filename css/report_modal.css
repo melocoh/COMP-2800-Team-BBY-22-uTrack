@@ -1,0 +1,9 @@
+#options {
+    border-radius: 4px;
+    border: none;
+    color: black;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
