@@ -1,6 +1,6 @@
 // let storeItems;
 let items = "";
-db.collection("posts").get().then(function (querySnapshot){
+db.collection("posts").orderBy("timestamp","desc").get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
