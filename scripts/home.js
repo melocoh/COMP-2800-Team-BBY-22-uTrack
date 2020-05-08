@@ -10,16 +10,3 @@ firebase.auth().onAuthStateChanged(function (user) {
         greeting.innerHTML = "Welcome!";
     }
 })
-
-let nameOnly = document.getElementById("usernameOnly");
-
-// Display greeting if signed in.
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        nameOnly.innerHTML = user.displayName;
-    }
-    // display Welcome if user signed in with phone number ( => user name is null)
-    else {
-        nameOnly.innerHTML = "Please log-in";
-    }
-})

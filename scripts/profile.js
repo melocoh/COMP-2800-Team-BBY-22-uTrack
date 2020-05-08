@@ -1,3 +1,27 @@
+let displayName = document.getElementById("displayName");
+let displayLevel = document.getElementById("displayLevel");
+let displayPosting = document.getElementById("displayPosting");
+let displayPoint = document.getElementById("displayPoint");
+let displayEmail = document.getElementById("displayEmail");
+
+
+// Display greeting if signed in.
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
+        displayName.innerHTML = user.displayName;
+        displayLevel.innerHTML = snap.data().level;
+        displayPosting.innerHTML = snap.data().post;
+        displayPoint.innerHTML = snap.data().points;
+        displayEmail.innerHTML = user.email;
+        })
+    } else {
+
+    }
+})
+
+
+/*
 firebase.auth().onAuthStateChanged(function (user) {
     document.querySelector("#userName").innerHTML = user.displayName;
 
@@ -17,3 +41,4 @@ firebase.auth().onAuthStateChanged(function (user) {
         
     })
 })
+*/

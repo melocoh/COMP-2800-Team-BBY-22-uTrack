@@ -1,38 +1,104 @@
-#userPrifilePic {
-    width: 200px;
-    height: 300px;
+.grid-container {
+    background-color: skyblue;
+    border-radius: 30px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto 150px auto;
-    background-color: white;
-    padding: 10px;
-    margin-top: 50px; 
-    margin-left: 30px;
-  }
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .item1 {
-    grid-row: 1 / span 3;
-  }
+.grid-item {
+    border-radius: 30px;
+    margin: 5px;
+}
 
 /* desktop view */
 @media (min-width: 1025px) {
+    .item1 {
+        grid-row: 1 / span 3;
+    }
+    #userPrifilePic {
+        width: 200px;
+        height: 300px;
+    }
     
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto 150px auto;
+        padding: 10px;
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+    
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
 }
 
 /* tablet view */
 @media (min-width: 400px) and (max-width: 1024px) {
+    .item1 {
+        grid-row: 1 / span 3;
+    }
+    #userPrifilePic {
+        width: 200px;
+        height: 300px;
+    }
     
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto 150px auto;
+        background-color: white;
+        padding: 10px;
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+    
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
 }
 
 /* mobile view */
 @media (max-width: 399px) {
-    
+    #userPrifilePic {
+        width: 100px;
+        height: 160px;
+    }
+
+    .grid-container {
+        display: grid;
+        padding: 10px;
+        margin-top: 25px;
+        margin-bottom: 100px;
+        line-height: 1em; 
+        grid-template-areas:
+            "one"
+            "two"
+            "three"
+            "four"
+            "five"
+            "six"
+            "seven"
+            "eight"
+            "nine"
+            "ten"
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .item8 {
+        grid-area: two;
+        font-size: 25px;
+        border-bottom: 1px solid black;
+        margin-bottom: 50px;
+    }
+
 }
