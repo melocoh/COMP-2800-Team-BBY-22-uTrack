@@ -10,15 +10,17 @@
     width: 100%;
 }
 
+#userProfilePic {
+    width: 300px;
+    height: 300px;
+}
+
+.grid-item {}
+
 /* desktop view */
 @media (min-width: 1025px) {
     .item1 {
         grid-row: 1 / span 3;
-    }
-
-    #userPrifilePic {
-        width: 300px;
-        height: 300px;
     }
 
     .grid-container {
@@ -41,14 +43,9 @@
 }
 
 /* tablet view */
-@media (min-width: 400px) and (max-width: 1024px) {
+@media (min-width: 420px) and (max-width: 1024px) {
     .item1 {
         grid-row: 1 / span 3;
-    }
-
-    #userPrifilePic {
-        width: 200px;
-        height: 200px;
     }
 
     .grid-container {
@@ -69,8 +66,8 @@
 }
 
 /* mobile view */
-@media (max-width: 399px) {
-    #userPrifilePic {
+@media (max-width: 419px) {
+    #userProfilePic {
         width: 120px;
         height: 120px;
     }
