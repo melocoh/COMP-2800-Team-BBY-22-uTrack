@@ -12,8 +12,12 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
         let btn = document.createElement("button");
-        btn.setAttribute("data-toggle", "modal");
-        btn.setAttribute("data-target", "#basicExampleModal");
+        // btn.setAttribute("data-toggle", "modal");
+        // btn.setAttribute("data-target", "#basicExampleModal");
+        function removePost(){
+            contain.style.display = "none";
+        }
+        btn.onclick = removePost;
 
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -79,3 +83,4 @@ $(document).ready(function(){
       alert("Report has been submitted");
     });
   });
+
