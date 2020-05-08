@@ -93,10 +93,6 @@ header {
 
 /* mobile view */
 @media (min-width: 0px) and (max-width: 419px) {
-    #menuNav {
-        max-height: 10vh;
-    }
-
     .container {
         margin-top: 10vh;
         max-height: 90vh;
