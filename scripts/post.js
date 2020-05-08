@@ -205,6 +205,9 @@ function save() {
     getItemInfo();
     getTimeStamp();
     setDataPost();
+    setTimeout(function(){
+        window.location.href = "./post.html";
+    },TIME*4);
 }
 
 function getTimeStamp() {
