@@ -207,21 +207,27 @@ function save() {
     setDataPost();
     setTimeout(function () {
         window.location.href = "./post.html";
-    }, TIME * 4);
+    }, TIME * 40);
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             console.log("user id: " + user.uid);
+            
+            /* first try
             var currentPost;
             var updatedPost;
             db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
                 currentPost = snap.data().post; 
                 updatedPost = currentPost + 1;
-            })      
-            db.collection("users").doc(user.uid).set({
-                post: updatedPost
+                console.log("snap.data().post: " + snap.data().post);
+                console.log("updatedPost: " + updatedPost);
+                db.collection("users").doc(user.uid).update({
+                    post: updatedPost
+                })
             })
+            */
+           
         } else {
             // No user is signed in.
             console.log("User is not signed in.");
