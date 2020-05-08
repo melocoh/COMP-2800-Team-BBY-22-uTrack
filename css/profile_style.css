@@ -1,11 +1,8 @@
 .grid-container {
-    background-color: skyblue;
     border-radius: 30px;
 }
 
 .grid-item {
-    border-radius: 30px;
-    margin: 5px;
 }
 
 /* desktop view */
@@ -24,6 +21,8 @@
         padding: 10px;
         margin-top: 50px;
         margin-left: 30px;
+        border-radius: 30px;
+        margin: 5px;
     }
     
     .grid-item {
@@ -64,15 +63,14 @@
 /* mobile view */
 @media (max-width: 399px) {
     #userPrifilePic {
-        width: 100px;
-        height: 160px;
+        width: 80px;
+        height: 120px;
     }
 
     .grid-container {
         display: grid;
         padding: 10px;
-        margin-top: 25px;
-        margin-bottom: 100px;
+        margin: 25px 0px 50px 0px;
         line-height: 1em; 
         grid-template-areas:
             "one"
@@ -93,12 +91,16 @@
         font-size: 20px;
         text-align: center;
     }
-
+    .item2, .item4, .item6, .item9{
+        margin-bottom: -18px;
+    }
+    .item3, .item5, .item7 {
+        border-bottom: 1px solid black;
+    }
     .item8 {
         grid-area: two;
         font-size: 25px;
         border-bottom: 1px solid black;
-        margin-bottom: 50px;
     }
 
 }
