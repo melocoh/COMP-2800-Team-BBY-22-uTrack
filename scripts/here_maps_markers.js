@@ -2,37 +2,13 @@ var card = document.createElement("div");
 var text_div = document.createElement("div");
 var text = document.createElement("p");
 
-function getStoreName() {
-    // var storeName = db.collection("stores").doc("mypwpPVth1Obt0wgPIJP").get("store_name");
-}
+// store collection
+var storeList = db.collection("stores");
+
+// store document (global var)
+var store = storeList.doc("6ufTjE5tYRWppAXi2l8q");
 
 function addMarkers(map) {
-    // outer element
-
-    // "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal3\">" +
-        // "Launch demo modal </button>" +
-    // var postModal = $(
-    //     "<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModal3Label\" aria-hidden=\"true\">" +
-    //     "<div class=\"modal-dialog\" role=\"document\">" +
-    //       "<div class=\"modal-content\">" +
-    //         "<div class=\"modal-header\">" +
-    //           '<h5 class="modal-title" id="exampleModal3Label">Modal title</h5>' +
-    //           '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-    //             '<span aria-hidden="true">&times;</span>' +
-    //           '</button>' +
-    //         '</div>' +
-    //         '<div class="modal-body">' +
-    //           '...' +
-    //         '</div>' +
-    //         '<div class="modal-footer">' +
-    //           '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
-    //           '<button type="button" class="btn btn-primary">Save changes</button>' +
-    //         '</div>' +
-    //       '</div>' +
-    //     '</div>' +
-    //   '</div>'
-    // );
-
     card.setAttribute("class", "card");
     // fuuuuuuuuuu
     card.setAttribute("data-toggle", "modal");
@@ -53,31 +29,14 @@ function addMarkers(map) {
         "text-align": "center"
     });
 
-    var colUsers = db.collection("users");
-    var colItems = db.collection("items");
-    var colPosts = db.collection("posts");
-    var colStores = db.collection("stores");
-    // test doc id: mypwpPVth1Obt0wgPIJP
+    // var store = db.collection("stores").doc("6ufTjE5tYRWppAXi2l8q");
 
+    // test doc id: 6ufTjE5tYRWppAXi2l8q
     // get store name
-    var store = db.collection("stores").doc("mypwpPVth1Obt0wgPIJP");
     store.get().then(function (doc) {
         $(".card-text").text(doc.get("store_name"));
     });
     // Why are we here... just to suffer?
-
-    // storeName.get().then(function(snap) {
-    //     if (doc.exists) {
-    //         console.log("data:", doc.data());
-    //     } else {
-    //         console.log("no such doc");
-    //     }
-    // }).catch(function(error) {
-    //     console.log("error getting doc", error);
-    // })
-    // console.log(storeName);
-    // Text
-    // text.innerHTML = "Text is here.";
 
     // Appendingssssss
     card.appendChild(text_div);

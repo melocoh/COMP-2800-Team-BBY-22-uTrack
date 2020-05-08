@@ -84,8 +84,15 @@ nav ul li {
 }
 
 /* mobile view */
-@media (max-width: 419px) {
-    /* insert code here */
+@media (min-width: 0px) and (max-width: 419px) {
+    #menuNav {
+        max-height: 10vh;
+    }
+
+    .container {
+        margin-top: 10vh;
+        max-height: 90vh;
+    }
 
     .nav-item {
         padding: 3px;
