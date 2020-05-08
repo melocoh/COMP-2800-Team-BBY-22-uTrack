@@ -1,30 +1,37 @@
-.grid-container {
-    border-radius: 30px;
+.container {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.grid-item {
+.grid-container {
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    width: 100%;
 }
+
+.grid-item {}
 
 /* desktop view */
 @media (min-width: 1025px) {
     .item1 {
         grid-row: 1 / span 3;
     }
+
     #userPrifilePic {
         width: 200px;
         height: 300px;
     }
-    
+
     .grid-container {
         display: grid;
         grid-template-columns: auto 150px auto;
         padding: 10px;
-        margin-top: 50px;
-        margin-left: 30px;
-        border-radius: 30px;
-        margin: 5px;
+        /* margin-left: 30px; */
+        /* border-radius: 30px; */
+        /* margin: 5px; */
     }
-    
+
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
         padding: 20px;
@@ -38,11 +45,12 @@
     .item1 {
         grid-row: 1 / span 3;
     }
+
     #userPrifilePic {
         width: 200px;
         height: 300px;
     }
-    
+
     .grid-container {
         display: grid;
         grid-template-columns: auto 150px auto;
@@ -51,7 +59,7 @@
         margin-top: 50px;
         margin-left: 30px;
     }
-    
+
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
         padding: 20px;
@@ -71,7 +79,7 @@
         display: grid;
         padding: 10px;
         margin: 25px 0px 50px 0px;
-        line-height: 1em; 
+        line-height: 1em;
         grid-template-areas:
             "one"
             "two"
@@ -91,12 +99,20 @@
         font-size: 20px;
         text-align: center;
     }
-    .item2, .item4, .item6, .item9{
+
+    .item2,
+    .item4,
+    .item6,
+    .item9 {
         margin-bottom: -18px;
     }
-    .item3, .item5, .item7 {
+
+    .item3,
+    .item5,
+    .item7 {
         border-bottom: 1px solid black;
     }
+
     .item8 {
         grid-area: two;
         font-size: 25px;

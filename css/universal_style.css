@@ -4,6 +4,7 @@
 :root {
     /* Calibri font master race */
     font-family: Calibri;
+    /* font-family: Comfortaa; */
     /* 1 rem == 16px */
     font-size: 16px;
 
@@ -15,6 +16,7 @@
 /* HTML, BODY */
 /* -------------------------------- */
 html, body, .container {
+    font-family: Comfortaa;
     margin: 0;
     padding: 0;
 }
@@ -22,6 +24,7 @@ html, body, .container {
 .container {
     display: grid;
     margin-top: 70px;
+    height: 90vh;
 }
 
 header {
