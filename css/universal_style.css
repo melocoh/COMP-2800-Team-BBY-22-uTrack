@@ -34,6 +34,19 @@ header {
     display: block;
 }
 
+/* Navbar */
+/* .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.navbar-brand img {
+    width: 180px;
+    height: 60px;
+} */
 .nav-item {
     font-weight: bold;
     color: black;
@@ -41,7 +54,7 @@ header {
     line-height: 2em; 
 }
 
-.nav-active {
+.active {
     font-weight: bold;
     border-radius: 10px;
     background-color: tomato;
@@ -80,12 +93,6 @@ header {
 
 /* mobile view */
 @media (min-width: 0px) and (max-width: 419px) {
-    /*
-    #menuNav {
-        max-height: 10vh;
-    }
-    */
-
     .container {
         margin-top: 10vh;
         max-height: 90vh;
