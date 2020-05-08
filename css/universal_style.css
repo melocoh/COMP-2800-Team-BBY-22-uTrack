@@ -57,7 +57,7 @@ header {
 .active {
     font-weight: bold;
     border-radius: 10px;
-    background-color: tomato;
+    background-color: #d9f5ff;
     display: inline-block; 
     line-height: 2em; 
 }
@@ -110,7 +110,7 @@ header {
 
     .nav-active {
         border-radius: 5px;
-        background-color: tomato;
+        background-color: #d9f5ff;
         padding: 3px;
         color: white;
     }
