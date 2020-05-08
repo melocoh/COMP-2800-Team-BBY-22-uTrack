@@ -34,11 +34,6 @@ header {
     display: block;
 }
 
-nav ul li {
-    justify-content: center;
-    width: 100%;
-}
-
 .nav-item {
     font-weight: bold;
     color: black;
@@ -87,6 +82,11 @@ nav ul li {
 @media (max-width: 419px) {
     /* insert code here */
 
+    nav ul li {
+        justify-content: center;
+        width: 100%;
+    }
+    
     .nav-item {
         padding: 3px;
         color: grey;
