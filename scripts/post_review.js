@@ -1,6 +1,6 @@
-let storeItems;
-let item = "";
-db.collection("posts").orderBy("post_date").get().then(function (querySnapshot){
+// let storeItems;
+let items = "";
+db.collection("posts").get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
@@ -14,29 +14,44 @@ db.collection("posts").orderBy("post_date").get().then(function (querySnapshot){
         // p3.setAttribute("id","address");
         // p4.setAttribute("id","itemName");
         p1.innerHTML = doc.data().post_name;
-        p2.src = doc.data().post_image;
+        // p2.src = doc.data().post_image;
         var storeInfo = doc.data().post_store;
         getStoreInfo(storeInfo,p3);
-        getItemInfo(p4);
+        // getItemInfo(p4);
         text.appendChild(p1);
         text.appendChild(p2);
         text.appendChild(p3);
         text.appendChild(p4);
         contain.appendChild(text);
-        body.appendChild(contain);
+        document.querySelector("#theContainer").appendChild(contain);
     })
 })
 
-function getStoreInfo(storeInfo,p3){
+function getStoreInfo(storeInfo, p3, p4){
     storeInfo.get().then(function(doc){
         p3.innerHTML = doc.data().location;
-        storeItems = doc.data().store_items;
+        let storeItems = doc.data().store_items;
+        console.log(storeItems);
+        getItemInfo(storeItems, p4);
     })
 }
 
-function getItemInfo(p4){
-    storeItems.forEach(function(doc){
-        item = item + doc.data().item_name + ": " + doc.data().stock_number + "</br>";
-    })
-    p4.innerHTML = item;
+function getItemInfo(storeItems, p4){
+    // storeItems.forEach(function(doc){
+    //     item = item + doc.data().item_name + ": " + doc.data().stock_number + "</br>";
+    // })
+    // p4.innerHTML = item;
+
+    // storeItems.forEach(myFunction);
+    for (let i = 0; i < storeItems.length; i++){
+        storeItems[i].get().then(function(doc){
+            items = items + doc.get(item_name) + ": " + doc.get(stock_number) + "</br>";
+        })
+    }
+    p4.innerHTML = items;
+    // function myFunction(item){
+    //     item.get().then(function(doc){
+    //         items = items + doc.data().item_name + ": " + doc.data().stock_number + "</br>";
+    //     })
+    // }
 }
