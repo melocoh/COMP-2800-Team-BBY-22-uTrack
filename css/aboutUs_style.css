@@ -15,6 +15,10 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+#quote{
+    font-size: 15px;
+}
+
 /* First image (Logo. Full height) */
 .bgimg-1 {
 /* background-image: url(../images/corona.jpg); */
