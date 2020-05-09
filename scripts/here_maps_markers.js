@@ -94,7 +94,7 @@ function addMarkers(map) {
         let domIcon = new H.map.DomIcon(card, {
             onAttach: function (clonedElement, domIcon, domMarker) {
                 clonedElement.addEventListener("click", readModal());
-                clonedElement.addEventListener("click", showModal());
+                clonedElement.addEventListener("touchstart", showModal());
             }
             // onDetach: function (clonedElement, domIcon, domMarker) {
             //     clonedElement.removeEventListener("click", initReadLatest);
