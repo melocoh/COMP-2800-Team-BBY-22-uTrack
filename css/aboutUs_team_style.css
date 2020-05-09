@@ -38,6 +38,10 @@
   }
 
 @media screen and (max-width: 650px) {
+  .row {
+    display: block;
+  }
+
   .column {
     width: 100%;
     display: block;
