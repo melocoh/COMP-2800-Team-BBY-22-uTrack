@@ -23,10 +23,15 @@ var map = new H.Map(
          *  then copy lat and long
          */
 
-        // currently set center to BCIT, Burnaby, BC
+        // starting location of map
         center: {
-            lat: 49.249394,
-            lng: -123.000788
+            // set center to BCIT, Burnaby, BC
+            // lat: 49.249394,
+            // lng: -123.000788
+
+            // set center to Metropolis at Metrotown, Burnaby, BC
+            lat: 49.226980,
+            lng: -123.000498
         }
     });
 

@@ -10,9 +10,7 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-    #postContainer1{
-        padding: 10px;
-    }
+    
 }
 
 body {
@@ -24,10 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-.container > * {
-    padding: 10px;
+    background-color: grey;
 }
 
 #uploader {

@@ -51,7 +51,7 @@
         display: block;
         margin: auto;  
         margin-top: 2em;
-        width: 14em;
+        width: auto;
         height: 4em;
     }
     #logincontainer {
