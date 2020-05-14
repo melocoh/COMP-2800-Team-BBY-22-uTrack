@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel ="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -84,19 +85,14 @@
                 <p>Posts: <span id="postNum"></span></p>
             </section>
         </div> -->
-
-        <div class="grid-container">
-            <div class="grid-item item1"><img src="./images/penguin.png" id="userProfilePic"></div>
-            <div class="grid-item item2 label">Level</div>
-            <div class="grid-item item3" id="displayLevel"></div>  
-            <div class="grid-item item4 label">Posting</div>
-            <div class="grid-item item5" id="displayPosting"></div>
-            <div class="grid-item item6 label">Points</div>  
-            <div class="grid-item item7" id="displayPoint"></div>
-            <div class="grid-item item8" id="displayName"></div>
-            <div class="grid-item item9 label">E-mail</div>
-            <div class="grid-item item10" id="displayEmail"></div>  
-          </div>
+            <div class="grid-container">
+                <div class="grid-item item1"><img src="./images/penguin.png" id="userProfilePic"></div>
+                <div class="grid-item item2" id="displayLevel">Level</div>
+                <div class="grid-item item3" id="displayPosting">Posting</div>
+                <div class="grid-item item4" id="displayPoint">Points</div>
+                <div class="grid-item item5" id="displayName"></div>
+                <div class="grid-item item6" id="displayEmail"></div>
+            </div>
     </div>
 
     <!----------------------------------------------->
@@ -126,7 +122,7 @@
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/profile.js"></script>
-    
+
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->

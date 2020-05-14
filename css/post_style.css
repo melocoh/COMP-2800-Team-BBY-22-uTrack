@@ -26,6 +26,10 @@ body {
     flex-direction: column;
 }
 
+.container > * {
+    padding: 10px;
+}
+
 #uploader {
     -webkit-appearance: none;
     appearance: none;

@@ -21,8 +21,8 @@ section {
     border-radius: 20px;
     margin: 20px;
     padding: 20px;
-    color: white;
-    background-color: orange;
+    color: black;
+    /* background-color: orange; */
 }
 
 /* --------------------------------- */
@@ -60,7 +60,7 @@ canvas {
     padding-right: 5px;
 }
 
-.logo {
+.icons {
     max-width: 50px;
     max-height: 50px;
 }

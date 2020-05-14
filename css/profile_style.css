@@ -4,7 +4,7 @@
 }
 
 .grid-container {
-    margin: auto;
+    margin:auto;
     margin-top: 50px;
     border-radius: 30px;
     width: 100%;
@@ -25,7 +25,7 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: auto 150px auto;
+        grid-template-columns: auto auto;
         padding: 10px;
         /* margin-left: 30px; */
         /* border-radius: 30px; */
@@ -38,6 +38,8 @@
         font-size: 30px;
         text-align: center;
     }
+
+    
 }
 
 /* tablet view */
@@ -48,7 +50,7 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: auto 150px auto;
+        grid-template-columns: auto auto;
         background-color: white;
         padding: 10px;
         margin-top: 50px;
@@ -73,8 +75,10 @@
     .grid-container {
         display: grid;
         padding: 10px;
-        margin: 25px 0px 50px 0px;
+        margin: 25px 0px 25px 0px;
         line-height: 1em;
+        justify-items: center;
+        align-items: center;
         grid-template-areas:
             "one"
             "two"
@@ -82,36 +86,27 @@
             "four"
             "five"
             "six"
-            "seven"
-            "eight"
-            "nine"
-            "ten"
     }
 
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 20px;
+        padding: 10px;
         font-size: 20px;
         text-align: center;
     }
 
-    .item2,
-    .item4,
-    .item6,
-    .item9 {
-        margin-bottom: -18px;
+    .item1 {
+        margin-bottom: -20px;
     }
 
-    .item3,
-    .item5,
-    .item7 {
-        border-bottom: 1px solid black;
+    .item2, .item3, .item4 {
+        margin: -15px 0 -15px 0;
     }
 
-    .item8 {
+    .item5 {
         grid-area: two;
         font-size: 25px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid grey;
     }
 
 }

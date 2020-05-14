@@ -74,22 +74,29 @@ function addMarkers(map) {
         text_div.appendChild(text);
         card.appendChild(text_div);
         // card.append(postModal);
-
+        
+        console.log("initreadmodal");
         initReadModal(store);
+        console.log("passed initreadmodal");
 
         // read the latest post from the current store
         // function initReadLatest(store) {
         //     readLatest(store);
         // };
 
+        function showModal() {
+            $("#myModal").modal("show");
+        }
+
         function readModal() {
-            readLatest();
+            // readLatest();
         };
 
         // DOM Icon (needed for second parameter argument of H.map.DomMarker())
         let domIcon = new H.map.DomIcon(card, {
             onAttach: function (clonedElement, domIcon, domMarker) {
                 clonedElement.addEventListener("click", readModal());
+                // clonedElement.addEventListener("touchstart", showModal());
             }
             // onDetach: function (clonedElement, domIcon, domMarker) {
             //     clonedElement.removeEventListener("click", initReadLatest);

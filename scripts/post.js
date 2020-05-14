@@ -208,10 +208,45 @@ function save() {
     getTimeStamp();
     getAllPost();
     setDataPost();
+<<<<<<< HEAD
     updateUser();
     // setTimeout(function(){
     //     window.location.href = "./post.html";
     // },TIME*4);
+=======
+    setTimeout(function () {
+        window.location.href = "./post.html";
+    }, TIME * 40);
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            console.log("user id: " + user.uid);
+            
+            /* first try
+            var currentPost;
+            var updatedPost;
+            db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+                currentPost = snap.data().post; 
+                updatedPost = currentPost + 1;
+                console.log("snap.data().post: " + snap.data().post);
+                console.log("updatedPost: " + updatedPost);
+                db.collection("users").doc(user.uid).update({
+                    post: updatedPost
+                })
+            })
+            */
+           
+        } else {
+            // No user is signed in.
+            console.log("User is not signed in.");
+            location.href = './login.html';
+            console.log("Page should be re-directed by now.");
+        }
+    });
+
+
+>>>>>>> dev
 }
 
 function getTimeStamp() {
@@ -224,17 +259,17 @@ function getTimeStamp() {
 
     // extracts the month
     var month = curDate.getMonth();
-    
+
     // extracts the year
     var year = curDate.getFullYear();
-    
+
     // ensures that digits are always 2
     function pad(n) {
-	return n<10 ? '0'+n : n
+        return n < 10 ? '0' + n : n
     }
 
     // formats date to "month/day/year" 
-    var monthDateYear  = (month+1) + "/" + date + "/" + year;
+    var monthDateYear = (month + 1) + "/" + date + "/" + year;
 
     // grabs current timestamp
     curTime = curDate.getTime();
@@ -244,12 +279,12 @@ function getTimeStamp() {
 
     // formats date and time together
     dateAndTime = curDate.toLocaleString(undefined, {
-	day: 'numeric',
-	month: 'numeric',
-	year: 'numeric',
-	hour: '2-digit',
-	minute: '2-digit',
-})
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
 }
 
 document.getElementById("postButton").onclick = save;
