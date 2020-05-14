@@ -1,6 +1,6 @@
 // let storeItems;
 let items = "";
-db.collection("posts").orderBy("timestamp","desc").get().then(function (querySnapshot){
+db.collection("posts").orderBy("timestamp","desc").limit(5).get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
@@ -76,6 +76,8 @@ $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
     $("#submitButton").click(function(){
-      alert("Report has been submitted");
+        if(document.querySelector('#customCheck1:checked')){
+            alert("Report has been submitted");
+        }
     });
   });
