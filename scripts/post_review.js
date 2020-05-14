@@ -95,8 +95,9 @@ $(document).ready(function () {
 
     let clicked;
 
-    $("#"+report_index).click(function() {
+    $("#0").click(function() {
         clicked = report_index;
+        console.log(clicked);
     })
 
     console.log(postlists[1]);

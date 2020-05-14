@@ -40,7 +40,8 @@
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <!-- <div class="container"> -->
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px" id="uTrack_logo"></a>
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+                id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,14 +83,27 @@
                 <p>Posts: <span id="postNum"></span></p>
             </section>
         </div> -->
-            <div class="grid-container">
-                <div class="grid-item item1"><img src="./images/penguin.png" id="userProfilePic"></div>
-                <div class="grid-item item2" id="displayLevel">Level</div>
-                <div class="grid-item item3" id="displayPosting">Posting</div>
-                <div class="grid-item item4" id="displayPoint">Points</div>
-                <div class="grid-item item5" id="displayName"></div>
-                <div class="grid-item item6" id="displayEmail"></div>
+        <div class="grid-container">
+            <div class="grid-item item1"><img src="./images/penguin.png" id="userProfilePic"></div>
+            <div class="grid-item item2" id="displayLevel">Level</div>
+            <div class="grid-item item3" id="displayPosting">Posting</div>
+            <div class="grid-item item4" id="displayPoint">Points</div>
+            <div class="grid-item item5" id="displayName"></div>
+            <div class="grid-item item6" id="displayEmail"></div>
+        </div>
+    </div>
+
+    <!-- Small modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" id="surpriseModal" style="display:none;">Small
+        modal</button>
+
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                ...
             </div>
+        </div>
     </div>
 
     <!----------------------------------------------->
