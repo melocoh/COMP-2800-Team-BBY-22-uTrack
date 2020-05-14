@@ -25,25 +25,40 @@ function getAllStores() {
     });
 
 }
-
 // store document (global var)
 // var store = storeList.doc("6ufTjE5tYRWppAXi2l8q");
 
 
 function addMarkers(map) {
     console.log("inside addMarkers(map)");
+
+    let curId = 1;
     for (let i = 0; i < locStores.length; i++) {
+
+
+        // FOR TESTING PURPOSES
         console.log("inside for loop");
+
+        // Current store
         store = locStores[i];
+
+        // FOR TESTING PURPOSES
         console.log(store);
 
+        // Is the map marker
         let card = document.createElement("div");
+        // Holds the text
         let text_div = document.createElement("div");
+        // Holds the text
         let text = document.createElement("p");
 
         card.setAttribute("class", "card");
         card.setAttribute("data-toggle", "modal");
-        card.setAttribute("data-target", "#myModal");
+        card.setAttribute("value", "card" + curId);
+        // RE-CONFIGURE LATER
+        card.setAttribute("data-target", "#myModal1");
+        card.setAttribute("id", "card" + curId);
+        console.log(card.id);
         text_div.setAttribute("class", "card-body");
         text.setAttribute("class", "card-text");
 
@@ -55,8 +70,8 @@ function addMarkers(map) {
         // card.style.height = "50px";
         // card.style.textAlign = "center";
         $(".card").css({
-            "width": "50px",
-            "height": "50px",
+            // "width": "50px",
+            // "height": "50px",
             "text-align": "center"
         });
 
@@ -68,16 +83,28 @@ function addMarkers(map) {
 
         console.log(store.get("store_name"));
         let store_name = store.get("store_name");
-        $(".card-text").text(store_name);
+        $(".card-text").text(store.get("store_name"));
 
         // Appendingssssss
         text_div.appendChild(text);
         card.appendChild(text_div);
         // card.append(postModal);
-        
+
+        // card.onclick(function () {
+        //     // 0 1 2 3 4
+        //     // c a r d 1
+        //     let cardIndex = card.id.substring(4);
+        //     console.log("cardIndex: " + cardIndex);
+        //     getStore(parseInt(cardIndex));
+        // });
+
         console.log("initreadmodal");
         initReadModal(store);
         console.log("passed initreadmodal");
+
+        curId++;
+
+        // HERE Maps API-related ONLY FROM HERE:
 
         // read the latest post from the current store
         // function initReadLatest(store) {
@@ -88,18 +115,58 @@ function addMarkers(map) {
             $("#myModal").modal("show");
         }
 
-        function readModal() {
-            // readLatest();
-        };
+        // function readModal() {
+        //     // readLatest();
+        //     // 0 1 2 3 4
+        //     // c a r d 1
+        //     console.log("inside card onclick...");
+
+        //     // let cardId = evt.id;
+        //     let cardId = clonedElement.id;
+        //     console.log("cardID: " + cardId);
+        //     // let cardIndex = evt.target.id.substring(4);
+        //     let cardIndex = clonedElement.id.substring(4);
+        //     console.log("cardIndex: " + cardIndex);
+
+        //     getStore(parseInt(cardIndex));
+
+        //     console.log("outside card onclick...");
+        // };
+
+        // 0 1 2 3 4
+        // c a r d 1
+        // console.log("inside card onclick...");
+
+        // let cardIndex = $(this).id.substring(4);
+
+        // console.log("cardIndex: " + cardIndex);
+
+        // getStore(parseInt(cardIndex));
+
+        // console.log("outside card onclick...");
 
         // DOM Icon (needed for second parameter argument of H.map.DomMarker())
         let domIcon = new H.map.DomIcon(card, {
             onAttach: function (clonedElement, domIcon, domMarker) {
-                clonedElement.addEventListener("click", readModal());
+                clonedElement.addEventListener("click", function () {
+                    $("body").addClass("modal-open");
+                    $(".modal").modal("show");
+                    console.log("inside card onclick...");
+                    // let cardId = evt.id;
+                    let cardId = clonedElement.id;
+                    console.log("cardID: " + cardId);
+                    // let cardIndex = evt.target.id.substring(4);
+                    let cardIndex = clonedElement.id.substring(4);
+                    console.log("cardIndex: " + cardIndex);
+
+                    getStore(parseInt(cardIndex));
+
+                    console.log("outside card onclick...");
+                });
                 // clonedElement.addEventListener("touchstart", showModal());
             }
             // onDetach: function (clonedElement, domIcon, domMarker) {
-            //     clonedElement.removeEventListener("click", initReadLatest);
+            //     clonedElement.removeEventListener("tap", readModal(clonedElement));
             // }
         });
 
@@ -117,6 +184,25 @@ function addMarkers(map) {
         }, {
             icon: domIcon
         });
+
+        // domMarker.addEventListener("click", () => {
+        //     // readLatest();
+        //     // 0 1 2 3 4
+        //     // c a r d 1
+        //     console.log("inside card onclick...");
+
+        //     // let cardIndex = $(this).id.substring(4);
+        //     // let cardId = evt.id;
+        //     let cardId = domMarker.id;
+        //     console.log("cardID: " + cardId);
+        //     // let cardIndex = evt.target.id.substring(4);
+        //     let cardIndex = domMarker.id.substring(4);
+        //     console.log("cardIndex: " + cardIndex);
+
+        //     getStore(parseInt(cardIndex));
+
+        //     console.log("outside card onclick...");
+        // });
 
         console.log("adding marker...");
         // add DOM Marker to map
@@ -140,7 +226,25 @@ function addMarkers(map) {
 $(document).ready(function () {
     getAllStores();
     // addMarkers(map);
-})
+    // $(".card").on("click", () => {
+
+    // })
+});
+
+// $(".card").on("click", () => {
+//     // 0 1 2 3 4
+//     // c a r d 1
+//     console.log("inside card onclick...");
+
+//     let cardIndex = $(this).id.substring(4);
+
+//     console.log("cardIndex: " + cardIndex);
+
+//     getStore(parseInt(cardIndex));
+
+//     console.log("outside card onclick...");
+// });
+
 
 // addMarkers(map);
 // $(document).ready(function () {

@@ -2,7 +2,7 @@
 var storageRef = firebase.storage().ref().child("store_logos");
 
 // Array of valid stores
-let storeList = [];
+var storeList = [];
 
 // Holds current store object
 let curStore;
@@ -18,7 +18,7 @@ const maxItems = 3;
  * @param {} store 
  */
 function initReadModal(store) {
-    // storeList.push(store);
+    storeList.push(store);
     curStore = store;
     // console.log("curStore: " + curStore);
     // sort by latest post relevant to store
@@ -32,6 +32,20 @@ function initReadModal(store) {
 
     // show the item stocks
     readStockStatus();
+}
+
+function getStore(cardIndex) {
+    console.log("getting store...");
+    curStore = storeList[cardIndex - 1];
+    console.log("cardIndex: " + cardIndex);
+    console.log("curStore: " + curStore);
+
+    readStoreLogo();
+
+    readItemName();
+
+    readStockStatus();
+    console.log("finished getting store...");
 }
 
 /**
@@ -63,12 +77,19 @@ function readStoreLogo() {
     let storeName = curStore.get("store_name");
     switch(storeName) {
         case "Walmart":
-            storeLogo = storageRef.child("");
+            storeLogo = storageRef.child("logo_walmart.jpg");
             break;
         case "Superstore":
-            storeLogo = storageRef.child("");
+            storeLogo = storageRef.child("logo_superstore.jpg");
             break;
     }
+
+    storeLogo.getDownloadURL().then(function (url) {
+        $(".storeLogos").attr("src", url);
+        console.log(url);
+    }).catch(function (error) {
+        console.log(error);
+    })
 }
 
 /**
@@ -93,11 +114,11 @@ function readItemName() {
         if (i < items.length) {
             items[i].get().then(function (doc) {
                 curItem = doc.get("item_name");
-                $(".item_name" + (i + 1)).text(curItem);
+                $(".item" + (i + 1)).text(curItem);
                 console.log(doc.get("item_name"));
             });
         } else {
-            $(".item_name" + (i + 1)).text("Out of Stock");
+            $(".item" + (i + 1)).text("Out of Stock");
         }
 
         // console.log(curItem);
@@ -119,11 +140,11 @@ function readStockStatus() {
         if (i < items.length) {
             items[i].get().then(function (doc) {
                 curItem = doc.get("stock_number");
-                $(".stock_status" + (i + 1)).text(curItem);
+                $(".stock" + (i + 1)).text(curItem);
                 console.log(doc.get("stock_number"));
             });
         } else {
-            $(".stock_status" + (i + 1)).text("N/A");
+            $(".stock" + (i + 1)).text("N/A");
         }
 
     }
