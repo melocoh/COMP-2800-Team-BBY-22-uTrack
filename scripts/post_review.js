@@ -1,5 +1,6 @@
 // let storeItems;
 let items = "";
+
 db.collection("posts").orderBy("timestamp","desc").get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
@@ -14,6 +15,42 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         let btn = document.createElement("button");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
+        btn.onclick = function(){
+            localStorage.setItem(0, (doc.id));
+            var post = localStorage.getItem(0);
+            console.log(post);
+            $(".mess").click(function(){
+                var reason = $(this).val();
+                console.log(reason);
+            });
+            
+            // $("#submitButton").click(function(){
+            //     if (document.querySelector('#termsCondition:checked')) {
+            //         alert("Report has been submitted");
+            //         // db.collection("reports").add({
+            //         //     report_post: post,
+            //         //     report_reason: reason,
+            //         //     report_user: "user.uid"
+            //         // }).then(function (docRef) {
+            //         //     let reportId = db.collection("reports/").doc(docRef.id);
+            //         //     console.log(reportId);
+            //         // }).catch(function (error) {
+            //         //     console.log("Error adding document: ", error);
+            //         // })
+            //         console.log(post);
+            //         console.log(reason);
+            //     }
+            // });
+        }
+        $(document).ready(function(){
+            $("#submitButton").click(function(){
+                if (document.querySelector('#termsCondition:checked')) {
+                    alert('success');
+                    console.log(post);
+                    console.log(reason);
+                }
+              });
+        });
 
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -75,7 +112,31 @@ function setStyle(contain){
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
-    $("#submitButton").click(function(){
-      alert("Report has been submitted");
-    });
+//     $("#options").click(function(){
+//         var reason = $(this).val();
+//     });
+//     $("#submitButton").click(function(){
+//         if (document.querySelector('#termsCondition:checked')) {
+//             alert("Report has been submitted");
+//             // db.collection("reports").add({
+//             //     report_post: post,
+//             //     report_reason: reason,
+//             //     report_user: "user.uid"
+//             // }).then(function (docRef) {
+//             //     let reportId = db.collection("reports/").doc(docRef.id);
+//             //     console.log(reportId);
+//             // }).catch(function (error) {
+//             //     console.log("Error adding document: ", error);
+//             // })
+//             console.log(post);
+//             console.log(reason);
+//         }
+//     });
+    // $("#submitButton").click(function(){
+    //     if (document.querySelector('#termcondition:checked')) {
+    //         alert('success');
+    //         console.log(post);
+    //         console.log(reason);
+    //     }
+    // });
   });
