@@ -111,9 +111,9 @@ function addMarkers(map) {
         //     readLatest(store);
         // };
 
-        function showModal() {
-            $("#myModal").modal("show");
-        }
+        // function showModal() {
+        //     $("#myModal").modal("show");
+        // }
 
         // function readModal() {
         //     // readLatest();
@@ -149,20 +149,20 @@ function addMarkers(map) {
         let domIcon = new H.map.DomIcon(card, {
             onAttach: function (clonedElement, domIcon, domMarker) {
                 clonedElement.addEventListener("click", function () {
-                    $("body").addClass("modal-open");
-                    $(".modal").modal("show");
-                    console.log("inside card onclick...");
-                    // let cardId = evt.id;
-                    let cardId = clonedElement.id;
-                    console.log("cardID: " + cardId);
-                    // let cardIndex = evt.target.id.substring(4);
-                    let cardIndex = clonedElement.id.substring(4);
-                    console.log("cardIndex: " + cardIndex);
+                        $("body").addClass("modal-open");
+                        $(".modal").modal("show");
+                        console.log("inside card onclick...");
+                        // let cardId = evt.id;
+                        let cardId = clonedElement.id;
+                        console.log("cardID: " + cardId);
+                        // let cardIndex = evt.target.id.substring(4);
+                        let cardIndex = clonedElement.id.substring(4);
+                        console.log("cardIndex: " + cardIndex);
 
-                    getStore(parseInt(cardIndex));
+                        getStore(parseInt(cardIndex));
 
-                    console.log("outside card onclick...");
-                });
+                        console.log("outside card onclick...");
+                    });
                 // clonedElement.addEventListener("touchstart", showModal());
             }
             // onDetach: function (clonedElement, domIcon, domMarker) {
