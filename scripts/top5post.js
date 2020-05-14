@@ -1,6 +1,6 @@
 // let storeItems;
 let items = "";
-db.collection("posts").orderBy("timestamp","desc").get().then(function (querySnapshot){
+db.collection("posts").orderBy("timestamp","desc").limit(5).get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
@@ -24,7 +24,7 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
 
         p4.setAttribute("id","itemName");
         p1.innerHTML = doc.data().post_name;
-        p2.src = doc.get("post_image");
+        // p2.src = doc.get("post_image");
         p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
@@ -75,7 +75,4 @@ function setStyle(contain){
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
-    $("#submitButton").click(function(){
-      alert("Report has been submitted");
-    });
   });

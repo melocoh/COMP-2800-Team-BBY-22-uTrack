@@ -15,6 +15,10 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+#quote{
+    font-size: 15px;
+}
+
 /* First image (Logo. Full height) */
 .bgimg-1 {
 /* background-image: url(../images/corona.jpg); */
@@ -165,17 +169,17 @@ background-color: rgba(255, 255, 255, 0.26);
 
 #mainQuote {
 padding: 6px;
-font-size: 35px;
+/* font-size: 35px; */
 width: 70%;
 border: 3px solid white;
 margin: 5% 15%;
 }
-#quoteWho {
+/* #quoteWho {
 font-size: 20px;
 line-height: 25px;
 width: 45%;
 margin-left: 55%;
-}
+} */
 
 @media screen and (min-width: 1024px) and (max-height: 1410px) {
 .bgimg-1 {
