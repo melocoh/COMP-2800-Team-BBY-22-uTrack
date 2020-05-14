@@ -12,17 +12,31 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
         let btn = document.createElement("button");
-        btn.setAttribute("data-toggle", "modal");
-        btn.setAttribute("data-target", "#basicExampleModal");
-        // function removePost(){
-        //     contain.style.display = "none";
-        // }
-        // btn.onclick = removePost;
-        $(document).ready(function(){
-            $("#submitButton").click(function(){
-                contain.style.display = "none";
-              });
-        });
+        var storeInfo = doc.get("post_store");
+        var listItem = doc.data().post_items;
+        // btn.setAttribute("data-toggle", "modal");
+        // btn.setAttribute("data-target", "#basicExampleModal");
+        function removePost() {
+            contain.style.display = "none";
+
+            //delete item
+            deleteItem(listItem);
+
+            //delete store
+            storeInfo.delete().then(function () {
+                console.log("Document successfully deleted!");
+            }).catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+
+            //delete post
+            db.collection("posts").doc(doc.id).delete().then(function () {
+                console.log("Document successfully deleted!");
+            }).catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+        }
+        btn.onclick = removePost;
         
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -33,7 +47,7 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
 
         p4.setAttribute("id","itemName");
         p1.innerHTML = doc.data().post_name;
-        // p2.src = doc.get("post_image");
+        p2.src = doc.get("post_image");
         p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Delete";
         var storeInfo = doc.get("post_store");
@@ -79,6 +93,16 @@ function setStyle(contain){
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
+}
+
+function deleteItem(listItem) {
+    for (let i = 0; i < listItem.length; i++) {
+        listItem[i].delete().then(function () {
+            console.log("Document successfully deleted!");
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
+    }
 }
 
 $(document).ready(function(){

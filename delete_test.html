@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>uTrack</title>
+    <meta name="comp2800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!----------------------------------------------->
+    <!-----------------  Favicon  ------------------->
+    <!----------------------------------------------->
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/post_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/report_modal.css">
+</head>
+
+<body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+
+    <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./profile.html">Profile</a>
+                </li>
+                <li class="nav-item active nav-active">
+                    <a class="nav-link" href="./post.html">Posting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact.html">Contact us</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <input type="text" id="search_text" class="search_bar" placeholder="Search items">
+                    <input type="button" id="search_btn" class="search_bar" value="Search">
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" id="theContainer">
+        <div id="newPost">
+            <button class="btn-primary" onclick="window.location.href='./posting.html'">New post</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel"><b>Report</b></h3>
+                    <br>
+                </div>
+                <div class="modal-body">
+
+                    <p><b>Why are you reporting this post?</b></p>
+
+                    <button type="button" id="options" class="btn btn-lg btn-block">Inappropriate</button>
+                    <button type="button" id="options" class="btn btn-lg btn-block">False information</button>
+                    <br>
+                    <!-- Group of default radios - option 1 -->
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="defaultGroupExample1"
+                            name="groupOfDefaultRadios">
+                        <label class="custom-control-label" for="defaultGroupExample1">I agree to the terms of
+                            agreements yada yada</label>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            id="submitButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!----------------------------------------------->
+        <!-- JS: Boostrap, Firebase, API related    -->
+        <!----------------------------------------------->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+        <!--------------------------------------------------------------------->
+        <!-- JS files: Your own JavaScript functions included here    -->
+        <!--------------------------------------------------------------------->
+        <script src="./scripts/firebase_api_uTrack.js"> </script>
+        <script src="./scripts/here_maps_api.js"></script>
+        <!-- <script src="./scripts/post_review.js"></script> -->
+
+        <script>
+            let items = "";
+            db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    let contain = document.createElement("div");
+                    contain.setAttribute("class", "card");
+                    let text = document.createElement("div");
+                    let p1 = document.createElement("p");
+                    let p2 = document.createElement("img");
+                    let p3 = document.createElement("p");
+                    let p4 = document.createElement("p");
+                    let p5 = document.createElement("p");
+                    let p6 = document.createElement("div");
+                    let btn = document.createElement("button");
+                    var storeInfo = doc.get("post_store");
+                    var listItem = doc.data().post_items;
+
+                    function removePost() {
+                        contain.style.display = "none";
+
+                        //delete item
+                        deleteItem(listItem);
+
+                        //delete store
+                        storeInfo.delete().then(function () {
+                            console.log("Document successfully deleted!");
+                        }).catch(function (error) {
+                            console.error("Error removing document: ", error);
+                        });
+
+                        //delete post
+                        db.collection("posts").doc(doc.id).delete().then(function () {
+                            console.log("Document successfully deleted!");
+                        }).catch(function (error) {
+                            console.error("Error removing document: ", error);
+                        });
+                    }
+                    btn.onclick = removePost;
+
+                    setStyle(contain);
+                    p1.style.fontWeight = "bold";
+                    btn.style.backgroundColor = "tomato";
+                    btn.style.color = "white";
+                    btn.style.borderRadius = "7px";
+                    p6.style.textAlign = "center";
+
+                    p4.setAttribute("id", "itemName");
+                    p1.innerHTML = doc.data().post_name;
+                    p2.src = doc.get("post_image");
+                    p5.innerHTML = "Posted: " + doc.get("post_date");
+                    btn.innerHTML = "Delete";
+                    getStoreInfo(storeInfo, p3, p4);
+
+                    p6.appendChild(btn);
+                    text.appendChild(p1);
+                    text.appendChild(p2);
+                    text.appendChild(p3);
+                    text.appendChild(p4);
+                    text.appendChild(p5);
+                    text.appendChild(p6);
+                    contain.appendChild(text);
+                    document.querySelector("#theContainer").appendChild(contain);
+                })
+            })
+
+            function getStoreInfo(storeInfo, p3, p4) {
+                storeInfo.get().then(function (doc) {
+                    p3.innerHTML = doc.get("location");
+                    let storeItems = doc.data().store_items;
+                    console.log(storeItems);
+                    getItemInfo(storeItems, p4);
+                })
+            }
+
+            function getItemInfo(storeItems, p4) {
+                for (let i = 0; i < storeItems.length; i++) {
+                    var name;
+                    var stock;
+                    storeItems[i].get().then(function (doc) {
+                        name = doc.get("item_name");
+                        stock = doc.get("stock_number");
+                        var list = document.createElement("li");
+                        list.innerHTML = items + name + ": " + stock;
+                        p4.appendChild(list);
+                    })
+                }
+            }
+
+            function setStyle(contain) {
+                contain.style.backgroundColor = "#D6EFFF";
+                contain.style.margin = "15px";
+                contain.style.padding = "10px";
+                contain.style.borderRadius = "10px";
+            }
+
+            $(document).ready(function () {
+                $(".container").css("margin-top", "100px");
+                $("#newPost").css({
+                    "display": "flex",
+                    "justify-content": "flex-end",
+                    "padding": "15px"
+                });
+                // $("#submitButton").click(function(){
+                //   alert("Report has been submitted");
+                // });
+            });
+
+            function deleteItem(listItem) {
+                for (let i = 0; i < listItem.length; i++) {
+                    listItem[i].delete().then(function () {
+                        console.log("Document successfully deleted!");
+                    }).catch(function (error) {
+                        console.error("Error removing document: ", error);
+                    });
+                }
+            }
+        </script>
+        <!--------------------------------------------------------------------->
+        <!-- Make calls to your own JavaScript functions, here below-->
+        <!---------------------------------------------------------------------->
+</body>
+
+</html>
