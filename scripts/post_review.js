@@ -76,6 +76,8 @@ $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
     $("#submitButton").click(function(){
+        if (document.querySelector('#termsConditions:checked')) {
       alert("Report has been submitted");
+    }
     });
   });

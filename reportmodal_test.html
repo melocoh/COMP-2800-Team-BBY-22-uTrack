@@ -52,7 +52,7 @@
           <!-- </button> -->
         </div>
         <div class="modal-body">
-
+          <form style="background-color: aqua;">
           <p><b>Why are you reporting this post?</b></p>
 
           <button type="button" id="options" class="btn btn-lg btn-block">Inappropriate</button>
@@ -60,8 +60,8 @@
           <br>
           <!-- Group of default radios - option 1 -->
           <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-            <label class="custom-control-label" for="defaultGroupExample1">I agree to the terms of agreements yada yada</label>
+            <input type="checkbox" class="custom-control-input" id="termsConditions" required>
+            <label class="custom-control-label" for="termsConditions">I agree to the terms of agreements yada yada</label>
           </div>
 
          <!-- Group of default radios - option 2 -->
@@ -79,16 +79,20 @@
         </div> -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="submitButton">Submit</button>
+          <input type="submit" class="btn btn-primary" id="submitButton">
         </div>
-      </div>
+      </div> </form>
     </div>
   </div>
 
 <script>
+
   $(document).ready(function(){
   $("#submitButton").click(function(){
+
+    if (document.querySelector('#termsConditions:checked')){
     alert("Report has been submitted");
+  }
   });
 });
 </script>
