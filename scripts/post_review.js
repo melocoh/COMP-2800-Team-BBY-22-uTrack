@@ -2,6 +2,7 @@
 let items = "";
 let postlists = [];
 let report_index = 0;
+let butval;
 
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
@@ -17,43 +18,17 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let btn = document.createElement("button");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
-        // btn.onclick = function(){
-        //     localStorage.setItem(0, (doc.id));
-        //     var post = localStorage.getItem(0);
-        //     console.log(post);
-        //     $(".mess").click(function(){
-        //         var reason = $(this).val();
-        //         console.log(reason);
-        //     });
-            
-        //     // $("#submitButton").click(function(){
-        //     //     if (document.querySelector('#termsCondition:checked')) {
-        //     //         alert("Report has been submitted");
-        //     //         // db.collection("reports").add({
-        //     //         //     report_post: post,
-        //     //         //     report_reason: reason,
-        //     //         //     report_user: "user.uid"
-        //     //         // }).then(function (docRef) {
-        //     //         //     let reportId = db.collection("reports/").doc(docRef.id);
-        //     //         //     console.log(reportId);
-        //     //         // }).catch(function (error) {
-        //     //         //     console.log("Error adding document: ", error);
-        //     //         // })
-        //     //         console.log(post);
-        //     //         console.log(reason);
-        //     //     }
-        //     // });
-        // }
-        // $(document).ready(function(){
-        //     $("#submitButton").click(function(){
-        //         if (document.querySelector('#termsCondition:checked')) {
-        //             alert('success');
-        //             console.log(post);
-        //             console.log(reason);
-        //         }
-        //       });
-        // });
         btn.setAttribute("id", report_index);
+        btn.setAttribute("value", report_index);
+
+        btn.onclick = function(){
+            butval = parseInt(btn.value);
+            $(".mess").click(function(){
+                        var reason = $(this).val();
+                        localStorage.setItem(0, reason);
+                        console.log(reason);
+                    });
+        }
 
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -80,9 +55,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
-        // postIds = db.collection("posts/").doc(docRef.id);
-        // postId.push(postIds)
-        // console.log(postId);
         postlists.push(doc.id);
         console.log(report_index + ": " + doc.id);
         report_index++;
@@ -129,28 +101,23 @@ $(document).ready(function () {
         "padding": "15px"
     });
 
-    let clicked;
-
-    $("#0").click(function() {
-        clicked = report_index;
-        console.log(clicked);
-    })
-
-    console.log(postlists[1]);
-
     $("#submitButton").click(function () {
+        
         if (document.querySelector('#termsCondition:checked')) {
             alert("Report has been submitted");
             db.collection("reports").add({
-                report_post: "Can you fix this part T.T",//postlists.document.getElementById(clicked),
-                report_reason: "Sorry I don't know how to get the value of options",
-                report_user: "user.uid"
+                report_post: db.collection("posts/").doc(postlists[butval]),
+                report_reason: localStorage.getItem(0),
+                // report_user: "user.uid"
             }).then(function (docRef) {
                 let reportId = db.collection("reports/").doc(docRef.id);
                 console.log(reportId);
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
+        console.log(butval);
+        console.log(localStorage.getItem(0));
+        console.log(postlists[butval]);
         }
     });
 });
