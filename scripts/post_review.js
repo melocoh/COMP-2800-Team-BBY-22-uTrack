@@ -104,7 +104,6 @@ $(document).ready(function () {
     $("#submitButton").click(function () {
         
         if (document.querySelector('#termsCondition:checked')) {
-            alert("Report has been submitted");
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
                 report_reason: localStorage.getItem(0),
@@ -115,9 +114,13 @@ $(document).ready(function () {
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
+<<<<<<< HEAD
+            alert("Report has been submitted");
+=======
         console.log(butval);
         console.log(localStorage.getItem(0));
         console.log(postlists[butval]);
+>>>>>>> dev
         }
 
     });
