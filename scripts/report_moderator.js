@@ -72,28 +72,32 @@ function getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, b){
             console.log(postId);
             console.log(b);
         //delete item
-        deleteItem(listItem);
+        let promise = new Promise(function (req, res) {
+            deleteItem(listItem);
+        });
+       
 
         //delete store
-        storeInfo.delete().then(function () {
+        promise
+        .then(storeInfo.delete().then(function () {
             console.log("Document successfully deleted!");
         }).catch(function (error) {
             console.error("Error removing document: ", error);
-        });
+        }))
 
         //delete post
-        postId.delete().then(function () {
+        .then(postId.delete().then(function () {
             console.log("Document successfully deleted!");
         }).catch(function (error) {
             console.error("Error removing document: ", error);
-        });
-
-        //delete the report
-        db.collection("reports").doc(b).delete().then(function () {
+        }))
+        //delete report
+        .then(db.collection("reports").doc(b).delete().then(function () {
             console.log("Document successfully deleted!");
         }).catch(function (error) {
             console.error("Error removing document: ", error);
-        });
+        }))
+        .then(window.location.reload());
         }
         btn.onclick = removePost;
     })
