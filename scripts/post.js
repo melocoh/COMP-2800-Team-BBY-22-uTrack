@@ -10,7 +10,7 @@ let storeId;
 let curTime;
 let dateAndTime;
 let postId;
-let userPost;
+let userPost = [];
 const TIME = 500;
 
 //invoke functions
@@ -170,49 +170,68 @@ function getItemInfo() {
 //get elements
 var fileButton = document.getElementById('fileButton');
 
-fileButton.addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    //create a storage ref
-    var storageRef = firebase.storage().ref().child('Image/' + file.name);
-    // localStorage.setItem(0, storageRef);
-    //upload file
-    var task = storageRef.put(file);
-    //update progress bar
-    task.on('state_changed',
-        function error(err) {
-            // A full list of error codes is available at
-            // https://firebase.google.com/docs/storage/web/handle-errors
-            switch (error.code) {
-                case 'storage/unauthorized':
-                    // User doesn't have permission to access the object
-                    break;
-                case 'storage/canceled':
-                    // User canceled the upload
-                    break;
-                case 'storage/unknown':
-                    // Unknown error occurred, inspect error.serverResponse
-                    break;
-            }
-        },
-        function complete() {
-            task.snapshot.ref.getDownloadURL().then(function (url) {
-                // console.log('File available at', downloadURL);
-                localStorage.setItem(0, url);
-                console.log(localStorage.getItem(0));
-                imgUrl = localStorage.getItem(0);
-            });
-        }
-    );
-});
+// fileButton.addEventListener('change', function (e) {
+//     var file = e.target.files[0];
+//     //create a storage ref
+//     var storageRef = firebase.storage().ref().child('Image/' + file.name);
+//     // localStorage.setItem(0, storageRef);
+//     //upload file
+//     var task = storageRef.put(file);
+//     //update progress bar
+//     task.on('state_changed',
+//         function error(err) {
+//             // A full list of error codes is available at
+//             // https://firebase.google.com/docs/storage/web/handle-errors
+//             switch (error.code) {
+//                 case 'storage/unauthorized':
+//                     // User doesn't have permission to access the object
+//                     break;
+//                 case 'storage/canceled':
+//                     // User canceled the upload
+//                     break;
+//                 case 'storage/unknown':
+//                     // Unknown error occurred, inspect error.serverResponse
+//                     break;
+//             }
+//         },
+//         function complete() {
+//             task.snapshot.ref.getDownloadURL().then(function (url) {
+//                 // console.log('File available at', downloadURL);
+//                 localStorage.setItem(0, url);
+//                 console.log(localStorage.getItem(0));
+//                 imgUrl = localStorage.getItem(0);
+//             });
+//         }
+//     );
+// });
 
 console.log(imgUrl);
 
 function save() {
-    getItemInfo();
-    getTimeStamp();
-    getAllPost();
-    setDataPost();
-    updateUser();
+    console.log("inside save()");
+    let promise = new Promise(function (req, res) {
+        getItemInfo();
+    });
+    console.log("begin promise chain");
+    promise
+        .then(getTimeStamp())
+        .then(getAllPost())
+        .then(setDataPost())
+        .then(updateUser());
+    console.log("end promise chain");
+
+    // console.log("inside save()");
+    // console.log("getItemInfo()");
+    // getItemInfo();
+    // console.log("getTimeStamp()");
+    // getTimeStamp();
+    // console.log("getAllPost()");
+    // getAllPost();
+    // console.log("setDataPost()");
+    // setDataPost();
+    // console.log("updateUser");
+    // updateUser();
+    console.log("end of save()");
     // setTimeout(function(){
     //     window.location.href = "./post.html";
     // },TIME*4);
@@ -256,24 +275,92 @@ function getTimeStamp() {
     })
 }
 
-document.getElementById("postButton").onclick = save;
-
-function getAllPost(){
-    firebase.auth().onAuthStateChanged(function (user){
-        db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
-            if (snap.data().user_posts == undefined || snap.data().user_posts == null){
-                userPost = [];
+function getAllPost() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("/users/").doc(user.uid).get().then(function (user) {
+            let uPostExists = user.get("user_posts");
+            console.log("user_posts exists: " + uPostExists);
+            if (uPostExists !== undefined) {
+                userPost = user.data().user_posts;
+                console.log("set userPost to user.data().user_posts");
             } else {
-                userPost = snap.data().user_posts;
+                userPost = [];
+                console.log("made blank userPost array");
             }
+        })
+        // db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+        //     // if (snap.data().user_posts === undefined || snap.data().user_posts === null){
+        //     //     userPost = [];
+        //     // } else {
+        //     //     userPost = snap.data().user_posts;
+        //     // }
+        //     // console.log("user_posts exists: " + snap.contains("user_posts"));
+        // if (snap.contains("user_posts")) {
+        //     userPost = snap.data().user_posts;
+        // } else {
+        //     userPost = [];
+        // }
+        // });
+    });
+}
+
+function updateUser() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("/users/").doc(user.uid).update({
+            user_posts: userPost
         });
     });
 }
 
-function updateUser(){
-    firebase.auth().onAuthStateChanged(function (user){
-        db.collection("/users/").doc(user.uid).update({
-            user_posts: userPost
-        })
-    })
-}
+$(document).ready(function () {
+    fileButton.addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        //create a storage ref
+        var storageRef = firebase.storage().ref().child('Image/' + file.name);
+        console.log("post storageRef: " + storageRef);
+    
+        storageRef.getDownloadURL().then(function (url) {
+            console.log("storageRef downloadURL: " + url);
+            imgUrl = url;
+        });
+        // localStorage.setItem(0, storageRef);
+        //upload file
+        var task = storageRef.put(file);
+        //update progress bar
+        task.on('state_changed',
+            function error(err) {
+                // A full list of error codes is available at
+                // https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        // User doesn't have permission to access the object
+                        break;
+                    case 'storage/canceled':
+                        // User canceled the upload
+                        break;
+                    case 'storage/unknown':
+                        // Unknown error occurred, inspect error.serverResponse
+                        break;
+                }
+            },
+            function complete() {
+                storageRef.getDownloadURL().then(function (url) {
+                    console.log("downloadURL: " + url);
+                    imgUrl = url;
+                });
+                // task.snapshot.ref.getDownloadURL().then(function (url) {
+                //     // console.log('File available at', downloadURL);
+                //     localStorage.setItem(0, url);
+                //     console.log(localStorage.getItem(0));
+                //     console.log("download url: " + url);
+                //     imgUrl = url;
+                //     // imgUrl = localStorage.getItem(0);
+                // });
+            }
+        );
+    });
+
+    document.getElementById("postButton").onclick = function () {
+        save();
+    };
+});
