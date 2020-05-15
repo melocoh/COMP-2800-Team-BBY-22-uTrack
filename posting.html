@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -206,6 +208,24 @@
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
     </div>
     
+    <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+            </div>
+    
+            <div class="modal-body">
+              <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                  style="margin:auto; display:block;"></p>
+              <p>You have raised the level up to <span id="levelReached"></span></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

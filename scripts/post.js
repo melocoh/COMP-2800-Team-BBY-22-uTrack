@@ -3,6 +3,7 @@ let checked2 = false;
 let checked3 = false;
 let items = [];
 let stock = [];
+// let imgUrl = localStorage.getItem(0);
 let imgUrl;
 // let itemsId;
 let itemIDs = [];
@@ -12,6 +13,7 @@ let dateAndTime;
 let postId;
 let userPost = [];
 const TIME = 500;
+const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 //invoke functions
 removeQuantity();
@@ -29,7 +31,6 @@ function checkbox() {
     } else {
         checked1 = false;
         document.querySelector('#textBox1').style.visibility = "hidden";
-
     }
 
     if (document.querySelector('#customCheck2:checked')) {
@@ -94,6 +95,7 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
+                    // console.log(localStorage.getItem(0));
                     db.collection("posts").add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
@@ -103,7 +105,7 @@ function setDataPost() {
                         post_store: storeId
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
-                        userPost.push(postId);
+                        // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
                         //         user_posts: userPost
@@ -126,7 +128,7 @@ function setDataPost() {
     // });
 
     // FOR TESTING PURPOSES:
-    alert("For testing purposes: POSTED!");
+    // alert("For testing purposes: POSTED!");
 }
 
 //get item info 
@@ -205,7 +207,7 @@ var fileButton = document.getElementById('fileButton');
 //     );
 // });
 
-console.log(imgUrl);
+
 
 function save() {
     console.log("inside save()");
@@ -217,7 +219,8 @@ function save() {
         .then(getTimeStamp())
         .then(getAllPost())
         .then(setDataPost())
-        .then(updateUser());
+        .then(updateUser())
+        .then(move());
     console.log("end promise chain");
 
     // console.log("inside save()");
@@ -232,9 +235,10 @@ function save() {
     // console.log("updateUser");
     // updateUser();
     console.log("end of save()");
-    // setTimeout(function(){
-    //     window.location.href = "./post.html";
-    // },TIME*4);
+    // move();
+    setTimeout(function () {
+        window.location.href = "./post.html";
+    }, TIME * 4);
 }
 
 function getTimeStamp() {
@@ -318,7 +322,7 @@ $(document).ready(function () {
         //create a storage ref
         var storageRef = firebase.storage().ref().child('Image/' + file.name);
         console.log("post storageRef: " + storageRef);
-    
+
         storageRef.getDownloadURL().then(function (url) {
             console.log("storageRef downloadURL: " + url);
             imgUrl = url;
@@ -364,3 +368,39 @@ $(document).ready(function () {
         save();
     };
 });
+
+function move() {
+
+    var user = firebase.auth().currentUser;
+    let doc = db.collection('/users/').doc(user.uid);
+
+    doc.update({
+        points: incrementEXP
+    }); // increments points
+    updateExp();
+
+    console.log("pressed");
+}
+
+function updateExp() {
+    var user = firebase.auth().currentUser;
+
+
+    let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+        let exp = snap.data().points;
+
+        if (exp >= 100) {
+            let level = snap.data().level;
+
+            db.collection('/users/').doc(user.uid).update({
+                points: 0
+            });
+            db.collection('/users/').doc(user.uid).update({
+                level: level + 1
+            }); // increments level
+            $("#lv").html("Level: " + level);
+            alert("you have raised the level of up to " + level);
+        }
+
+    });
+}

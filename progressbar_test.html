@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    </head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<style>
+    #expBar {
+        width: 30%;
+        background-color: #ddd;
+        border-radius: 15px;
+    }
+
+    #userBar {
+        width: 6%;
+        height: 30px;
+        background-color: #3792cb;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        border-radius: 15px;
+    }
+/* 
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 15px;
+    }
+
+    #myBar {
+        width: 2%;
+        height: 30px;
+        background-color: #3792cb;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        border-radius: 15px;
+    } */
+</style>
+
+<body>
+    <div> Click Progress
+        <p id=lv>default level</p>
+        <div id="expBar">
+            <div id="userBar">0%</div>
+        </div>
+
+        <br>
+        <button onclick="move()">UploadPost</button>
+    </div>
+
+    <br>
+    <div> Animated Progress
+        <br>
+        <br>
+        <div id="myProgress">
+            <div id="myBar">0%</div>
+        </div>
+        <br>
+        <button onclick="reload()">PlayAnimation</button>
+
+    </div>
+ 
+ <!-- Firebase -->
+ <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+ <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+
+<script src="./scripts/firebase_api_uTrack.js"> </script>
+<script src="./scripts/auth_check.js"></script>
+<script src="./scripts/progressbar_test.js"></script>
+
+>
+</body>
+
+</html>
