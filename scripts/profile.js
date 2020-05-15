@@ -3,7 +3,11 @@ let displayLevel = document.getElementById("displayLevel");
 let displayPosting = document.getElementById("displayPosting");
 let displayPoint = document.getElementById("displayPoint");
 let displayEmail = document.getElementById("displayEmail");
+let displayPicture = document.getElementById("userProfilePic");
+let surpriseModal = document.getElementById("surpriseModal");
 
+let clickCount =  0;
+const timeout = 500;
 
 // Display greeting if signed in.
 firebase.auth().onAuthStateChanged(function (user) {
@@ -20,6 +24,23 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 })
 
+displayPicture.onclick = surprise;
+
+function surprise() {
+    clickCount++;
+    console.log("you've clicked " + clickCount + " times");
+    if(clickCount === 3) {
+        alert("Congrats!");
+
+        setTimeout(() => {
+            displayPicture.setAttribute("src","./images/easter.gif");
+        }, timeout);
+    }
+
+    if(clickCount === 6) {
+        surpriseModal.setAttribute("display","block");
+    }
+}
 
 /*
 firebase.auth().onAuthStateChanged(function (user) {

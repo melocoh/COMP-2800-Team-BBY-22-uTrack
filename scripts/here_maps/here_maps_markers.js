@@ -82,8 +82,7 @@ function addMarkers(map) {
         // });
 
         console.log(store.get("store_name"));
-        let store_name = store.get("store_name");
-        $(".card-text").text(store.get("store_name"));
+        $(text).text(store.get("store_name"));
 
         // Appendingssssss
         text_div.appendChild(text);

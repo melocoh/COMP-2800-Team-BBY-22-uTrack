@@ -34,6 +34,10 @@ function initReadModal(store) {
     readStockStatus();
 }
 
+/**
+ * Updates the modal information based on the given store
+ * @param {} cardIndex 
+ */
 function getStore(cardIndex) {
     console.log("getting store...");
     curStore = storeList[cardIndex - 1];
@@ -45,6 +49,7 @@ function getStore(cardIndex) {
     readItemName();
 
     readStockStatus();
+    
     console.log("finished getting store...");
 }
 
@@ -81,6 +86,12 @@ function readStoreLogo() {
             break;
         case "Superstore":
             storeLogo = storageRef.child("logo_superstore.jpg");
+            break;
+        case "Save-On-Foods":
+            storeLogo = storageRef.child("logo_saveonfoods.jpg");
+            break;
+        case "Costco":
+            storeLogo = storageRef.child("logo_costco.jpg");
             break;
     }
 

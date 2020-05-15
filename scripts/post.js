@@ -3,7 +3,7 @@ let checked2 = false;
 let checked3 = false;
 let items = [];
 let stock = [];
-let imgUrl = localStorage.getItem(0);
+let imgUrl;
 // let itemsId;
 let itemIDs = [];
 let storeId;
@@ -198,10 +198,14 @@ fileButton.addEventListener('change', function (e) {
             task.snapshot.ref.getDownloadURL().then(function (url) {
                 // console.log('File available at', downloadURL);
                 localStorage.setItem(0, url);
+                console.log(localStorage.getItem(0));
+                imgUrl = localStorage.getItem(0);
             });
         }
     );
 });
+
+console.log(imgUrl);
 
 function save() {
     getItemInfo();
