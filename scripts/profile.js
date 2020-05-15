@@ -27,10 +27,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                         displayPointbar.innerHTML = snap.data().points + " %";
 
                         displayPointbar.style.color = "#3792cb";
-                        displayPointbar.style.fontSize = "3vh";
+                        displayPointbar.style.fontSize = "0vh";
                         setTimeout(function () {
                             displayPointbar.style.color = "white";
-                            displayPointbar.style.fontSize = "4vh";
+                            displayPointbar.style.fontSize = "3vh";
                         }, timeout);
                     }, timeout * 2);
 
