@@ -22,13 +22,15 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
   const incrementEXP = firebase.firestore.FieldValue.increment(10);
-  
+ 
   function move() {
      
       var user = firebase.auth().currentUser;
       let doc = db.collection('/users/').doc(user.uid);
      
       doc.update({ points: incrementEXP}); // increments points
+      updateExp();
+       
       console.log("pressed");
     }
     
