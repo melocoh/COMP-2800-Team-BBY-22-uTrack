@@ -20,7 +20,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-target", "#basicExampleModal");
         btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
-
         btn.onclick = function(){
             butval = parseInt(btn.value);
             $(".mess").click(function(){
@@ -114,13 +113,10 @@ $(document).ready(function () {
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
-<<<<<<< HEAD
             alert("Report has been submitted");
-=======
         console.log(butval);
         console.log(localStorage.getItem(0));
         console.log(postlists[butval]);
->>>>>>> dev
         }
 
     });
