@@ -12,21 +12,14 @@ const timeout = 500;
 // Display greeting if signed in.
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-<<<<<<< HEAD
+
         db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
         displayName.innerHTML = user.displayName;
         displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
         // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
         displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
         displayEmail.innerHTML = user.email;
-=======
-        db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
-            displayName.innerHTML = user.displayName;
-            displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
-            displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
-            displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
-            displayEmail.innerHTML = user.email;
->>>>>>> steven
+
         })
     } else {
 
