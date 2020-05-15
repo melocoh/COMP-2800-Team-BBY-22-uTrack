@@ -62,6 +62,8 @@ function getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, b){
         getItemInfo(listItem, p4);
         p1.innerHTML = doc.data().post_name;
         p2.src = doc.get("post_image");
+        p2.style.width = "250px";
+        p2.style.height ="250px";
         p5.innerHTML = "Posted: " + doc.get("post_date");
         console.log(storeInfo);
         console.log(listItem);
