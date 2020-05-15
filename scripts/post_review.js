@@ -4,6 +4,7 @@ let postlists = [];
 let report_index = 0;
 let butval;
 
+
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         let contain = document.createElement("div");
