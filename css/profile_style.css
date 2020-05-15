@@ -39,7 +39,22 @@
         text-align: center;
     }
 
-    
+    /* regarding progress bar */
+    #expBar {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 15px;
+    }
+
+    #userBar {
+        width: 2%;
+        height: 30px;
+        background-color: #3792cb;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        border-radius: 15px;
+    }
 }
 
 /* tablet view */
