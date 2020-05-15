@@ -23,9 +23,12 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-target", "#basicExampleModal");
         btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
+<<<<<<< HEAD
         p2.setAttribute("width",imgsizeWidth);
         p2.setAttribute("height",imgsizeHeight);
 
+=======
+>>>>>>> dev
         btn.onclick = function(){
             butval = parseInt(btn.value);
             $(".mess").click(function(){
@@ -45,6 +48,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         p4.setAttribute("id", "itemName");
         p1.innerHTML = doc.data().post_name;
         p2.src = doc.get("post_image");
+        p2.style.width = "250px";
+        p2.style.height ="250px";
         p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
@@ -108,7 +113,7 @@ $(document).ready(function () {
 
     $("#submitButton").click(function () {
         
-        if (document.querySelector('#termsCondition:checked')) {
+        if (document.querySelector('#termsConditions:checked')) {
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
                 report_reason: localStorage.getItem(0),
@@ -119,6 +124,7 @@ $(document).ready(function () {
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
+
         console.log(butval);
         console.log(localStorage.getItem(0));
         console.log(postlists[butval]);

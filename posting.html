@@ -212,13 +212,24 @@
     </div>
 
     
-    <div id="expBar" style="display:none;">
-        <div style="margin:auto;display:block;">
-            <p id=lv></p>
-            <div id="userBar"></div>
+    <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+            </div>
+    
+            <div class="modal-body">
+              <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                  style="margin:auto; display:block;"></p>
+              <p>You have raised the level up to <span id="levelReached"></span></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
-    </div>
-
+      </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -246,7 +257,6 @@
     <!--------------------------------------------------------------------->
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
-    <script src="./scripts/here_maps_api.js"></script>
     <script src="./scripts/post.js"></script>
 
     <!--------------------------------------------------------------------->

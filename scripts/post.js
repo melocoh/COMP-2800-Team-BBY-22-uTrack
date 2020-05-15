@@ -3,15 +3,17 @@ let checked2 = false;
 let checked3 = false;
 let items = [];
 let stock = [];
-let imgUrl = localStorage.getItem(0);
+// let imgUrl = localStorage.getItem(0);
+let imgUrl;
 // let itemsId;
 let itemIDs = [];
 let storeId;
 let curTime;
 let dateAndTime;
 let postId;
-let userPost;
+let userPost = [];
 const TIME = 500;
+const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 //invoke functions
 removeQuantity();
@@ -93,9 +95,9 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
-                    console.log(localStorage.getItem(0));
+                    // console.log(localStorage.getItem(0));
                     db.collection("posts").add({
-                        post_image: localStorage.getItem(0),
+                        post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
@@ -126,7 +128,7 @@ function setDataPost() {
     // });
 
     // FOR TESTING PURPOSES:
-    alert("For testing purposes: POSTED!");
+    // alert("For testing purposes: POSTED!");
 }
 
 //get item info 
@@ -170,54 +172,73 @@ function getItemInfo() {
 //get elements
 var fileButton = document.getElementById('fileButton');
 
-fileButton.addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    //create a storage ref
-    var storageRef = firebase.storage().ref().child('Image/' + file.name);
-    // localStorage.setItem(0, storageRef);
-    //upload file
-    var task = storageRef.put(file);
-    //update progress bar
-    task.on('state_changed',
-        function error(err) {
-            // A full list of error codes is available at
-            // https://firebase.google.com/docs/storage/web/handle-errors
-            switch (error.code) {
-                case 'storage/unauthorized':
-                    // User doesn't have permission to access the object
-                    break;
-                case 'storage/canceled':
-                    // User canceled the upload
-                    break;
-                case 'storage/unknown':
-                    // Unknown error occurred, inspect error.serverResponse
-                    break;
-            }
-        },
-        function complete() {
-            task.snapshot.ref.getDownloadURL().then(function (url) {
-                // console.log('File available at', downloadURL);
-                localStorage.setItem(0, url);
-                // console.log(localStorage.getItem(0));
-                // localStorage.getItem(0);
-            });
-        }
-    );
-});
+// fileButton.addEventListener('change', function (e) {
+//     var file = e.target.files[0];
+//     //create a storage ref
+//     var storageRef = firebase.storage().ref().child('Image/' + file.name);
+//     // localStorage.setItem(0, storageRef);
+//     //upload file
+//     var task = storageRef.put(file);
+//     //update progress bar
+//     task.on('state_changed',
+//         function error(err) {
+//             // A full list of error codes is available at
+//             // https://firebase.google.com/docs/storage/web/handle-errors
+//             switch (error.code) {
+//                 case 'storage/unauthorized':
+//                     // User doesn't have permission to access the object
+//                     break;
+//                 case 'storage/canceled':
+//                     // User canceled the upload
+//                     break;
+//                 case 'storage/unknown':
+//                     // Unknown error occurred, inspect error.serverResponse
+//                     break;
+//             }
+//         },
+//         function complete() {
+//             task.snapshot.ref.getDownloadURL().then(function (url) {
+//                 // console.log('File available at', downloadURL);
+//                 localStorage.setItem(0, url);
+//                 console.log(localStorage.getItem(0));
+//                 imgUrl = localStorage.getItem(0);
+//             });
+//         }
+//     );
+// });
 
 
 
 function save() {
-    getItemInfo();
-    getTimeStamp();
+    console.log("inside save()");
+    let promise = new Promise(function (req, res) {
+        getItemInfo();
+    });
+    console.log("begin promise chain");
+    promise
+        .then(getTimeStamp())
+        .then(getAllPost())
+        .then(setDataPost())
+        .then(updateUser())
+        .then(move());
+    console.log("end promise chain");
+
+    // console.log("inside save()");
+    // console.log("getItemInfo()");
+    // getItemInfo();
+    // console.log("getTimeStamp()");
+    // getTimeStamp();
+    // console.log("getAllPost()");
     // getAllPost();
-    setDataPost();
+    // console.log("setDataPost()");
+    // setDataPost();
+    // console.log("updateUser");
     // updateUser();
+    console.log("end of save()");
+    // move();
     setTimeout(function () {
         window.location.href = "./post.html";
-    }, 0);
-
-    displayLvExp();
+    }, TIME * 4);
 }
 
 function getTimeStamp() {
@@ -258,19 +279,32 @@ function getTimeStamp() {
     })
 }
 
-document.getElementById("postButton").onclick = save;
-
 function getAllPost() {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
-            if (snap.data().user_posts == undefined || snap.data().user_posts == null) {
-                userPost = [];
-                console.log(userPost);
+        db.collection("/users/").doc(user.uid).get().then(function (user) {
+            let uPostExists = user.get("user_posts");
+            console.log("user_posts exists: " + uPostExists);
+            if (uPostExists !== undefined) {
+                userPost = user.data().user_posts;
+                console.log("set userPost to user.data().user_posts");
             } else {
-                userPost = snap.data().user_posts;
-                console.log(userPost);
+                userPost = [];
+                console.log("made blank userPost array");
             }
-        });
+        })
+        // db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+        //     // if (snap.data().user_posts === undefined || snap.data().user_posts === null){
+        //     //     userPost = [];
+        //     // } else {
+        //     //     userPost = snap.data().user_posts;
+        //     // }
+        //     // console.log("user_posts exists: " + snap.contains("user_posts"));
+        // if (snap.contains("user_posts")) {
+        //     userPost = snap.data().user_posts;
+        // } else {
+        //     userPost = [];
+        // }
+        // });
     });
 }
 
@@ -278,22 +312,95 @@ function updateUser() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).update({
             user_posts: userPost
-        })
-    })
+        });
+    });
 }
 
+$(document).ready(function () {
+    fileButton.addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        //create a storage ref
+        var storageRef = firebase.storage().ref().child('Image/' + file.name);
+        console.log("post storageRef: " + storageRef);
 
-let levelBar = document.getElementById("lv");
-let expbar = document.getElementById("expBar");
-let pointBar = document.getElementById("userBar");
+        storageRef.getDownloadURL().then(function (url) {
+            console.log("storageRef downloadURL: " + url);
+            imgUrl = url;
+        });
+        // localStorage.setItem(0, storageRef);
+        //upload file
+        var task = storageRef.put(file);
+        //update progress bar
+        task.on('state_changed',
+            function error(err) {
+                // A full list of error codes is available at
+                // https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        // User doesn't have permission to access the object
+                        break;
+                    case 'storage/canceled':
+                        // User canceled the upload
+                        break;
+                    case 'storage/unknown':
+                        // Unknown error occurred, inspect error.serverResponse
+                        break;
+                }
+            },
+            function complete() {
+                storageRef.getDownloadURL().then(function (url) {
+                    console.log("downloadURL: " + url);
+                    imgUrl = url;
+                });
+                // task.snapshot.ref.getDownloadURL().then(function (url) {
+                //     // console.log('File available at', downloadURL);
+                //     localStorage.setItem(0, url);
+                //     console.log(localStorage.getItem(0));
+                //     console.log("download url: " + url);
+                //     imgUrl = url;
+                //     // imgUrl = localStorage.getItem(0);
+                // });
+            }
+        );
+    });
 
-function displayLvExp() {
+    document.getElementById("postButton").onclick = function () {
+        save();
+    };
+});
+
+function move() {
+
     var user = firebase.auth().currentUser;
+    let doc = db.collection('/users/').doc(user.uid);
+
+    doc.update({
+        points: incrementEXP
+    }); // increments points
+    updateExp();
+
+    console.log("pressed");
+}
+
+function updateExp() {
+    var user = firebase.auth().currentUser;
+
 
     let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
         let exp = snap.data().points;
 
-        pointBar.style.width = exp + "%";
-        pointBar.innerHTML = exp + "%";
-    })
+        if (exp >= 100) {
+            let level = snap.data().level;
+
+            db.collection('/users/').doc(user.uid).update({
+                points: 0
+            });
+            db.collection('/users/').doc(user.uid).update({
+                level: level + 1
+            }); // increments level
+            $("#lv").html("Level: " + level);
+            alert("you have raised the level of up to " + level);
+        }
+
+    });
 }

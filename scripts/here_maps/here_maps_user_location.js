@@ -28,7 +28,7 @@ $(document).ready(() => {
         // console.log("adding user marker");
         // addUserMarker(map);
 
-        // If a user marker alreayd exists, delete it
+        // If a user marker already exists, delete it
         if (userMarker !== undefined) {
             removeUserMarker(map);
         }
