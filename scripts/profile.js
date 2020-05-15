@@ -1,6 +1,6 @@
 let displayName = document.getElementById("displayName");
 let displayLevel = document.getElementById("displayLevel");
-let displayPosting = document.getElementById("displayPosting");
+// let displayPosting = document.getElementById("displayPosting");
 let displayPoint = document.getElementById("displayPoint");
 let displayEmail = document.getElementById("displayEmail");
 let displayPicture = document.getElementById("userProfilePic");
@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
         displayName.innerHTML = user.displayName;
         displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
-        displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
+        // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
         displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
         displayEmail.innerHTML = user.email;
         })

@@ -26,6 +26,9 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -85,7 +88,10 @@
         <div class="grid-container">
             <div class="grid-item item1"><img src="./images/penguin.png" id="userProfilePic"></div>
             <div class="grid-item item2" id="displayLevel">Level</div>
-            <div class="grid-item item3" id="displayPosting">Posting</div>
+            <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
+            <div class="grid-item item3" id="expBar">
+                <div id="userBar">0%</div>
+            </div>
             <div class="grid-item item4" id="displayPoint">Points</div>
             <div class="grid-item item5" id="displayName"></div>
             <div class="grid-item item6" id="displayEmail"></div>
@@ -93,7 +99,8 @@
     </div>
 
     <!-- Small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" id="surpriseModal" style="display:none;">Small
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm"
+        id="surpriseModal" style="display:none;">Small
         modal</button>
 
     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -133,6 +140,7 @@
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/profile.js"></script>
     <script src="./scripts/avatar/avatar_switch.js"></script>
+    <script src="./scripts/progressbar_test.js"></script>
 
 
     <!--------------------------------------------------------------------->

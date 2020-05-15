@@ -45,7 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         elem.style.width = exp + "%";
         elem.innerHTML = exp + "%";
   
-        if (exp > 100){
+        if (exp >= 100){
           let level = snap.data().level;
 
           db.collection('/users/').doc(user.uid).update({ points: 0});
