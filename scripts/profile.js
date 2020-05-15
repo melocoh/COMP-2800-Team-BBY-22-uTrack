@@ -5,6 +5,7 @@ let displayPoint = document.getElementById("displayPoint");
 let displayEmail = document.getElementById("displayEmail");
 let displayPicture = document.getElementById("userProfilePic");
 let surpriseModal = document.getElementById("surpriseModal");
+let displayPointbar = document.getElementById("userBar");
 
 let clickCount = 0;
 const timeout = 500;
@@ -17,6 +18,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         displayName.innerHTML = user.displayName;
         displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
         // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
+        displayPointbar.innerHTML = snap.data().points + " %";
+        displayPointbar.style.width = snap.data().points + "%";
         displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
         displayEmail.innerHTML = user.email;
 
@@ -82,6 +85,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 $(window).on('load', function () {
 
+    
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {

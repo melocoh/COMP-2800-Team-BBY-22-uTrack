@@ -113,7 +113,7 @@ $(document).ready(function () {
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
-            alert("Report has been submitted");
+
         console.log(butval);
         console.log(localStorage.getItem(0));
         console.log(postlists[butval]);

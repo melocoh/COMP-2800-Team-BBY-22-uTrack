@@ -1,68 +1,97 @@
-let displayLevel = document.getElementById("lv");
-let displayPoint = document.getElementById("userBar");
+let displayLevelbar = document.getElementById("lv");
+let displayPointbar = document.getElementById("userBar");
 
 // Display greeting if signed in.
 firebase.auth().onAuthStateChanged(function (user) {
 
-    const userRef = db.collection("/users/").doc(user.uid);
-    // const increment = firebase.firestore.FieldValue.increment(1);
+  const userRef = db.collection("/users/").doc(user.uid);
+  // const increment = firebase.firestore.FieldValue.increment(1);
 
-    if (user) {
-        userRef.onSnapshot(function (snap) {
+  if (user) {
+    userRef.onSnapshot(function (snap) {
 
-            displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
-            displayPoint.innerHTML = snap.data().points + "%";
+      displayLevelbar.innerHTML = "<b>Level</b> : " + snap.data().level;
+      displayPointbar.innerHTML = snap.data().points + "%";
 
-        })
-    } else {
+    })
+  } else {
 
-    }
+  }
 
 })
 
 
-  const incrementEXP = firebase.firestore.FieldValue.increment(10);
- 
-  function move() {
-     
-      var user = firebase.auth().currentUser;
-      let doc = db.collection('/users/').doc(user.uid);
-     
-      doc.update({ points: incrementEXP}); // increments points
-      updateExp();
-       
-      console.log("pressed");
-    }
-    
-    function updateExp() {
-      let elem = document.getElementById("userBar");
-      var user = firebase.auth().currentUser;
-      
-  
-      let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
-        let exp = snap.data().points;
-  
-        elem.style.width = exp + "%";
-        elem.innerHTML = exp + "%";
-  
-        if (exp >= 100){
-          let level = snap.data().level;
+const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
-          db.collection('/users/').doc(user.uid).update({ points: 0});
-          db.collection('/users/').doc(user.uid).update({ level: level + 1});  // increments level
-           $("#lv").html("Level: "+ level);
-        }
-  
+function move() {
+
+  var user = firebase.auth().currentUser;
+  let doc = db.collection('/users/').doc(user.uid);
+
+  doc.update({
+    points: incrementEXP
+  }); // increments points
+  updateExp();
+
+  console.log("pressed");
+}
+
+function updateExp() {
+  let elem = document.getElementById("userBar");
+  var user = firebase.auth().currentUser;
+
+
+  let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+    let exp = snap.data().points;
+
+    elem.style.width = exp + "%";
+    elem.innerHTML = exp + "%";
+
+    if (exp >= 100) {
+      let level = snap.data().level;
+
+      db.collection('/users/').doc(user.uid).update({
+        points: 0
       });
+      db.collection('/users/').doc(user.uid).update({
+        level: level + 1
+      }); // increments level
+      $("#lv").html("Level: " + level);
     }
+
+  });
+}
+
+
+// tried to display exp bar when page load.
+
+// $(window).on('load', function () {
+//   initialDisplay();
+// })
+
+
+// function initialDisplay(){
   
-    // function updateLevel() {
-    //   var user = firebase.auth().currentUser;
-    //   let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
-    //     let level = snap.data().level;
-    //     $("#lv").html("Level: "+ level);
-    //   });
-    // }
+//   let elem = document.getElementById("userBar");
+//   var user = firebase.auth().currentUser;
+
+
+//   db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+//     let exp = snap.data().points;
+
+//     elem.style.width = exp + "%";
+//     elem.innerHTML = exp + "%";
+//   })
+// }
+
+
+// function updateLevel() {
+//   var user = firebase.auth().currentUser;
+//   let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+//     let level = snap.data().level;
+//     $("#lv").html("Level: "+ level);
+//   });
+// }
 
 
 // // script for progressbar
@@ -85,7 +114,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 //             curlev++;
 //             curexp = 0;
 //             elem.style.width = 2 + "%";
-            
+
 //             elem.innerHTML = curexp + "%";
 //         }
 //     }
