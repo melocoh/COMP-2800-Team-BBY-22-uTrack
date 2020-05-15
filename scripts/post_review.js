@@ -3,8 +3,6 @@ let items = "";
 let postlists = [];
 let report_index = 0;
 let butval;
-let imgsizeWidth = (window.innerWidth / 3) + "px";
-let imgsizeHeight = (window.innerHeight / 2) + "px";
 
 
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
@@ -23,12 +21,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-target", "#basicExampleModal");
         btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
-<<<<<<< HEAD
-        p2.setAttribute("width",imgsizeWidth);
-        p2.setAttribute("height",imgsizeHeight);
-
-=======
->>>>>>> dev
         btn.onclick = function(){
             butval = parseInt(btn.value);
             $(".mess").click(function(){
