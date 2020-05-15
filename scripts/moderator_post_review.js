@@ -110,3 +110,11 @@ $(document).ready(function(){
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
   });
 
+  /**
+ * Read the total posts that have been reported from database and display it.
+ */
+db.collection("reports").get().then(function(snap){
+    document.getElementById("totalReport").innerHTML = snap.size;
+});
+
+$("#totalReport").css({"background-color":"white","color":"black", "padding":"0px 5px", "border":"2px solid white","borderRadius":"6px"});
