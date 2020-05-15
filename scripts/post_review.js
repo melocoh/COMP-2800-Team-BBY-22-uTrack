@@ -2,6 +2,7 @@
 let items = "";
 let postlists = [];
 let report_index = 0;
+let butval;
 
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
@@ -18,6 +19,16 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         btn.setAttribute("id", report_index);
+        btn.setAttribute("value", report_index);
+
+        btn.onclick = function(){
+            butval = parseInt(btn.value);
+            $(".mess").click(function(){
+                        var reason = $(this).val();
+                        localStorage.setItem(0, reason);
+                        console.log(reason);
+                    });
+        }
 
         setStyle(contain);
         p1.style.fontWeight = "bold";
@@ -28,7 +39,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         p4.setAttribute("id", "itemName");
         p1.innerHTML = doc.data().post_name;
-        // p2.src = doc.get("post_image");
+        p2.src = doc.get("post_image");
         p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
@@ -44,9 +55,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
-        // postIds = db.collection("posts/").doc(docRef.id);
-        // postId.push(postIds)
-        // console.log(postId);
         postlists.push(doc.id);
         console.log(report_index + ": " + doc.id);
         report_index++;
@@ -93,28 +101,26 @@ $(document).ready(function () {
         "padding": "15px"
     });
 
-    let clicked;
-
-    $("#0").click(function() {
-        clicked = report_index;
-        console.log(clicked);
-    })
-
-    console.log(postlists[1]);
-
     $("#submitButton").click(function () {
+        
         if (document.querySelector('#termsCondition:checked')) {
             db.collection("reports").add({
-                report_post: "Can you fix this part T.T",//postlists.document.getElementById(clicked),
-                report_reason: "Sorry I don't know how to get the value of options",
-                report_user: "user.uid"
+                report_post: db.collection("posts/").doc(postlists[butval]),
+                report_reason: localStorage.getItem(0),
+                // report_user: "user.uid"
             }).then(function (docRef) {
                 let reportId = db.collection("reports/").doc(docRef.id);
                 console.log(reportId);
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
+<<<<<<< HEAD
             alert("Report has been submitted");
+=======
+        console.log(butval);
+        console.log(localStorage.getItem(0));
+        console.log(postlists[butval]);
+>>>>>>> dev
         }
     });
 });

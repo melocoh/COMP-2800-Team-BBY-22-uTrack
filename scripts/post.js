@@ -10,6 +10,7 @@ let storeId;
 let curTime;
 let dateAndTime;
 let postId;
+let userPost;
 const TIME = 500;
 
 //invoke functions
@@ -28,7 +29,6 @@ function checkbox() {
     } else {
         checked1 = false;
         document.querySelector('#textBox1').style.visibility = "hidden";
-
     }
 
     if (document.querySelector('#customCheck2:checked')) {
@@ -93,8 +93,9 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
+                    console.log(localStorage.getItem(0));
                     db.collection("posts").add({
-                        post_image: imgUrl,
+                        post_image: localStorage.getItem(0),
                         post_date: dateAndTime,
                         timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
@@ -102,9 +103,10 @@ function setDataPost() {
                         post_store: storeId
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
+                        // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
-                        //         user_posts: postId
+                        //         user_posts: userPost
                         //     })
                         // })
                     }).catch(function (error) {
@@ -172,7 +174,7 @@ fileButton.addEventListener('change', function (e) {
     var file = e.target.files[0];
     //create a storage ref
     var storageRef = firebase.storage().ref().child('Image/' + file.name);
-    localStorage.setItem(0, storageRef);
+    // localStorage.setItem(0, storageRef);
     //upload file
     var task = storageRef.put(file);
     //update progress bar
@@ -193,50 +195,27 @@ fileButton.addEventListener('change', function (e) {
             }
         },
         function complete() {
-            task.snapshot.ref.getDownloadURL().then(function (getDownloadURL) {
-                console.log('File available at', downloadURL);
-                localStorage.setItem(0, downloadURL);
+            task.snapshot.ref.getDownloadURL().then(function (url) {
+                // console.log('File available at', downloadURL);
+                localStorage.setItem(0, url);
+                // console.log(localStorage.getItem(0));
+                // localStorage.getItem(0);
             });
         }
     );
 });
 
+
+
 function save() {
     getItemInfo();
     getTimeStamp();
+    // getAllPost();
     setDataPost();
-    setTimeout(function () {
-        window.location.href = "./post.html";
-    }, TIME * 40);
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            console.log("user id: " + user.uid);
-            
-            /* first try
-            var currentPost;
-            var updatedPost;
-            db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
-                currentPost = snap.data().post; 
-                updatedPost = currentPost + 1;
-                console.log("snap.data().post: " + snap.data().post);
-                console.log("updatedPost: " + updatedPost);
-                db.collection("users").doc(user.uid).update({
-                    post: updatedPost
-                })
-            })
-            */
-           
-        } else {
-            // No user is signed in.
-            console.log("User is not signed in.");
-            location.href = './login.html';
-            console.log("Page should be re-directed by now.");
-        }
-    });
-
-
+    // updateUser();
+    // setTimeout(function(){
+    //     window.location.href = "./post.html";
+    // },TIME*4);
 }
 
 function getTimeStamp() {
@@ -278,3 +257,25 @@ function getTimeStamp() {
 }
 
 document.getElementById("postButton").onclick = save;
+
+function getAllPost(){
+    firebase.auth().onAuthStateChanged(function (user){
+        db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
+            if (snap.data().user_posts == undefined || snap.data().user_posts == null){
+                userPost = [];
+                console.log(userPost);
+            } else {
+                userPost = snap.data().user_posts;
+                console.log(userPost);
+            }
+        });
+    });
+}
+
+function updateUser(){
+    firebase.auth().onAuthStateChanged(function (user){
+        db.collection("/users/").doc(user.uid).update({
+            user_posts: userPost
+        })
+    })
+}

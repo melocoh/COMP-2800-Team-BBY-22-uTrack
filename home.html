@@ -67,24 +67,20 @@
         </header> -->
 
         <!-- This div modal MUST be a higher level than the map -->
-        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+        <!-- <div class="modal fade" id="myModal1" focusable="false" role="dialog" aria-labelledby="exampleModal3Label"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <!-- Modal Header -->
                     <div class="modal-header">
-                        <h5 class="modal-title">Insert Store Logo Here</h5>
                         <img class="storeLogos" id="storeLogo1">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <!-- Modal Body -->
                     <div class="modal-body">
                         <ul>
                             <li>
                                 <div class="logo_container">
-                                    <!-- Dummy Image: https://dummyimage.com/50x50/000/fff -->
                                     <img class="icons" src="./images/icon_mask.png" />
                                 </div>
                                 <span class="item1 items">Item here</span>
@@ -104,33 +100,73 @@
                                 <span class="item3 items">Item here</span>
                                 <span class="stock3 stocks">Val</span>
                             </li>
-                            <!-- <li class="nav-item">
-                                <input type="text" id="search_text" class="search_bar" placeholder="Search items">
-                                <input type="button" id="search_btn" class="search_bar" value="Search">
-                            </li> -->
                         </ul>
                     </div>
-                    <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='./post.html'">View Posts</button>
-                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                     </div>
                 </div>
+            </div>
+        </div> -->
+
+        <div id="myModal1" class="modal fade" role="dialog">
+            <div class="modal-dialog" role="document">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img class="storeLogos" id="storeLogo1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/icon_mask.png" />
+                                </div>
+                                <span class="item1 items">Item here</span>
+                                <span class="stock1 stocks">Val</span>
+                            </li>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/70909-200.png" />
+                                </div>
+                                <span class="item2 items">Item here</span>
+                                <span class="stock2 stocks">Val</span>
+                            </li>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/icon_handsantizer.png" />
+                                </div>
+                                <span class="item3 items">Item here</span>
+                                <span class="stock3 stocks">Val</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            onclick="window.location.href='./post.html'">View Posts</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <main>
-            <section>
+            <!-- <section>
                 <h1 id="username">Welcome! </h1>
                 <p>Click to get your coordinates.</p>
-                <!-- geolocatoion button -->
             <button onclick="getLocation()" id="reportButton"
                 style="padding: 8px 10px 6px 10px; border-radius: 50%; color: white; background-color: red;"> <i
                     class="material-icons">my_location</i></button>
             <p id="demo"></p>
-            </section>
-            <div id="homeMap"></div>
+            </section> -->
+            <div id="homeMap">
+                <button id="reportButton">
+                    <i class="material-icons">my_location</i>
+                </button>
+            </div>
         </main>
 
         <!-- <footer>
@@ -175,62 +211,12 @@
     <script src="./scripts/here_maps/here_maps_init.js"></script>
     <script src="./scripts/here_maps/here_maps_modal.js"></script>
     <script src="./scripts/here_maps/here_maps_markers.js"></script>
-    <script src="./scripts/home.js"></script>
+    <script src="./scripts/here_maps/here_maps_user_location.js"></script>
+    <!-- <script src="./scripts/home.js"></script> -->
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
-
-    <!-- <script>
-
-/**
- * Geo location of user
- */
- var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-
-  // saves data in these variables
-  latData = position.coords.latitude;
-  lonData = position.coords.longitude;
-
-  // test: prints out location tracking
-  x.innerHTML = "Latitude: " + latData + 
-  "<br>Longitude: " + lonData;
-
-}
-
-// error messages from geolocation
-function showError(error) {
-  switch (error.code) {
-        case error.PERMISSION_DENIED:
-          errorMessages = "User denied the request for Geolocation."
-          alert(errorMessages);
-          break;
-        case error.POSITION_UNAVAILABLE:
-          errorMessage = "Location information is unavailable."
-          alert(errorMessage);
-          break;
-        case error.TIMEOUT:
-          errorMessage = "The request to get user location timed out."
-          alert(errorMessage);
-          break;
-        case error.UNKNOWN_ERROR:
-          errorMessage = "An unknown error occurred."
-          alert(errorMessage);
-          break;
-      }
-}
-
-    </script> -->
 
 </body>
 
