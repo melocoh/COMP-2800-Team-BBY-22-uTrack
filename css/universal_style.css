@@ -15,9 +15,10 @@
 /* -------------------------------- */
 /* HTML, BODY */
 /* -------------------------------- */
+/* container shouldn't be here */
 html,
-body,
-.container {
+body
+ {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;

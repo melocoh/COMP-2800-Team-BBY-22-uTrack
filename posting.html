@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel ="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -41,7 +41,8 @@
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <!-- <div class="container"> -->
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px" id="uTrack_logo"></a>
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+                id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,7 +67,7 @@
     </nav>
 
     <div class="container" id="postContainer1">
-        
+
         <!-- <nav id="menuNav">
             <div class="nav-wrapper">
                 <ul id="ul_nav">
@@ -102,7 +103,7 @@
                 </ul>
             </div>
         </nav> -->
-        <div id="blank"></div>
+        <!-- <div id="blank"></div> -->
         <form>
             <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
@@ -129,7 +130,7 @@
                     <option value="Ontario">Ontario</option>
                     <option value="Prince Edward Island">Prince Edward Island</option>
                     <option value="Quebec">Quebec</option>
-                    <option value="Saskatchewan">Saskatchewan</option>        
+                    <option value="Saskatchewan">Saskatchewan</option>
                     <option value="Northwest Territories">Northwest Territories</option>
                     <option value="Yukon">Yukon</option>
                     <option value="Nunavut">Nunavut</option>
@@ -181,7 +182,8 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Toilet paper</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup2"
+                                placeholder="Item units">
                         </div>
                     </div>
                     <br>
@@ -191,41 +193,45 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Hand sanitizers</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup3"
+                                placeholder="Item units">
                         </div>
                     </div>
             </form>
         </div>
     </div>
-        <br>
-        
         <div>
             <p><b>Image</b></p>
         </div>
         <form class="p-3">
-            <input type = "file" value = "upload" id = 'fileButton'>
-        </form>   
+            <input type="file" value="upload" id='fileButton'>
+        </form>
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+        <!-- </div> -->
     </div>
+    <!-- <br> -->
+
     
+
     <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                            style="margin:auto; display:block;"></p>
+                    <p>You have raised the level up to <span id="levelReached"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-    
-            <div class="modal-body">
-              <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                  style="margin:auto; display:block;"></p>
-              <p>You have raised the level up to <span id="levelReached"></span></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+<!-- </div> -->
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
