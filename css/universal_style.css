@@ -15,7 +15,9 @@
 /* -------------------------------- */
 /* HTML, BODY */
 /* -------------------------------- */
-html, body, .container {
+html,
+body,
+.container {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;
@@ -59,16 +61,16 @@ html, body, .container {
 .nav-item {
     font-weight: bold;
     color: black;
-    display: inline-block; 
-    line-height: 2em; 
+    display: inline-block;
+    line-height: 2em;
 }
 
 .active {
     font-weight: bold;
     border-radius: 10px;
     background-color: #d9f5ff;
-    display: inline-block; 
-    line-height: 2em; 
+    display: inline-block;
+    line-height: 2em;
 }
 
 
@@ -107,11 +109,19 @@ html, body, .container {
         max-height: 90vh;
     }
 
+    #menuNav {
+        /* WARNING:
+        Setting a fixed height value for the navbar
+        will apply a bug to the background-colour
+        of the nav links */
+        height: auto;
+    }
+
     nav ul li {
         justify-content: center;
         width: 100%;
     }
-    
+
     .nav-item {
         padding: 3px;
         color: white;
