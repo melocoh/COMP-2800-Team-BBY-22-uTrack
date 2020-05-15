@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     $("#submitButton").click(function () {
         
-        if (document.querySelector('#termsCondition:checked')) {
+        if (document.querySelector('#termsConditions:checked')) {
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
                 report_reason: localStorage.getItem(0),
