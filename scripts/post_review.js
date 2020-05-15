@@ -39,6 +39,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         p4.setAttribute("id", "itemName");
         p1.innerHTML = doc.data().post_name;
         p2.src = doc.get("post_image");
+        p2.style.width = "250px";
+        p2.style.height ="250px";
         p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");

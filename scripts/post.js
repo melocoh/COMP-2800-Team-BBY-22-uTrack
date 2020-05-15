@@ -12,6 +12,7 @@ let dateAndTime;
 let postId;
 let userPost;
 const TIME = 500;
+const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 //invoke functions
 removeQuantity();
@@ -93,9 +94,9 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
-                    console.log(localStorage.getItem(0));
+                    // console.log(localStorage.getItem(0));
                     db.collection("posts").add({
-                        post_image: localStorage.getItem(0),
+                        post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
@@ -126,7 +127,7 @@ function setDataPost() {
     // });
 
     // FOR TESTING PURPOSES:
-    alert("For testing purposes: POSTED!");
+    // alert("For testing purposes: POSTED!");
 }
 
 //get item info 
@@ -196,7 +197,7 @@ fileButton.addEventListener('change', function (e) {
         },
         function complete() {
             task.snapshot.ref.getDownloadURL().then(function (url) {
-                // console.log('File available at', downloadURL);
+                console.log('File available at', url);
                 localStorage.setItem(0, url);
                 // console.log(localStorage.getItem(0));
                 // localStorage.getItem(0);
@@ -213,9 +214,10 @@ function save() {
     // getAllPost();
     setDataPost();
     // updateUser();
-    // setTimeout(function(){
-    //     window.location.href = "./post.html";
-    // },TIME*4);
+    move();
+    setTimeout(function(){
+        window.location.href = "./post.html";
+    },TIME*4);
 }
 
 function getTimeStamp() {
@@ -279,3 +281,40 @@ function updateUser(){
         })
     })
 }
+
+function move() {
+
+    var user = firebase.auth().currentUser;
+    let doc = db.collection('/users/').doc(user.uid);
+  
+    doc.update({
+      points: incrementEXP
+    }); // increments points
+    updateExp();
+  
+    console.log("pressed");
+  }
+  
+  function updateExp() {
+    var user = firebase.auth().currentUser;
+  
+  
+    let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+      let exp = snap.data().points;
+  
+      if (exp >= 100) {
+        let level = snap.data().level;
+  
+        db.collection('/users/').doc(user.uid).update({
+          points: 0
+        });
+        db.collection('/users/').doc(user.uid).update({
+          level: level + 1
+        }); // increments level
+        $("#lv").html("Level: " + level);
+        alert("you have raised the level of up to " + level);
+      }
+  
+    });
+  }
+  
