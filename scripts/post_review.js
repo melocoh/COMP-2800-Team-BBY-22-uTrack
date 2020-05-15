@@ -104,7 +104,6 @@ $(document).ready(function () {
 
     $("#submitButton").click(function () {
         if (document.querySelector('#termsCondition:checked')) {
-            alert("Report has been submitted");
             db.collection("reports").add({
                 report_post: "Can you fix this part T.T",//postlists.document.getElementById(clicked),
                 report_reason: "Sorry I don't know how to get the value of options",
@@ -115,6 +114,7 @@ $(document).ready(function () {
             }).catch(function (error) {
                 console.log("Error adding document: ", error);
             })
+            alert("Report has been submitted");
         }
     });
 });
