@@ -13,18 +13,31 @@ const timeout = 500;
 // Display greeting if signed in.
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
-        displayName.innerHTML = user.displayName;
-        displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
-        // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
-        displayPointbar.innerHTML = snap.data().points + " %";
-        displayPointbar.style.width = snap.data().points + "%";
-        displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
-        displayEmail.innerHTML = user.email;
-        })
-    } else {
+        db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+                displayName.innerHTML = user.displayName;
+                displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
+                // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
+                displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
+                displayEmail.innerHTML = user.email;
+                setTimeout(() => {
+                    displayPointbar.style.width = snap.data().points + "%";
+                    displayPointbar.style.transition = "all 1s";
+                }, timeout);
+                setTimeout(() => {
+                        displayPointbar.innerHTML = snap.data().points + " %";
 
-    }
+                        displayPointbar.style.color = "#3792cb";
+                        displayPointbar.style.fontSize = "3vh";
+                        setTimeout(function () {
+                            displayPointbar.style.color = "white";
+                            displayPointbar.style.fontSize = "4vh";
+                        }, timeout);
+                    }, timeout * 2);
+
+        })
+} else {
+
+}
 })
 
 displayPicture.onclick = surprise;
@@ -42,11 +55,11 @@ function surprise() {
 
     if (clickCount === 6) {
 
-        displayPicture.setAttribute("src","./images/explosion.gif");
+        displayPicture.setAttribute("src", "./images/explosion.gif");
 
         setTimeout(() => {
             displayPicture.setAttribute("src", "./images/giftcard.jpg");
-        }, timeout*4);
+        }, timeout * 4);
     }
 
     if (clickCount === 7) {
@@ -83,7 +96,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 $(window).on('load', function () {
 
-    
+
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {

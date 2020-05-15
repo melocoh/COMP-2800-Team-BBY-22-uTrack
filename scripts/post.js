@@ -213,9 +213,11 @@ function save() {
     // getAllPost();
     setDataPost();
     // updateUser();
-    // setTimeout(function(){
-    //     window.location.href = "./post.html";
-    // },TIME*4);
+    setTimeout(function () {
+        window.location.href = "./post.html";
+    }, 0);
+
+    displayLvExp();
 }
 
 function getTimeStamp() {
@@ -258,10 +260,10 @@ function getTimeStamp() {
 
 document.getElementById("postButton").onclick = save;
 
-function getAllPost(){
-    firebase.auth().onAuthStateChanged(function (user){
-        db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
-            if (snap.data().user_posts == undefined || snap.data().user_posts == null){
+function getAllPost() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+            if (snap.data().user_posts == undefined || snap.data().user_posts == null) {
                 userPost = [];
                 console.log(userPost);
             } else {
@@ -272,10 +274,26 @@ function getAllPost(){
     });
 }
 
-function updateUser(){
-    firebase.auth().onAuthStateChanged(function (user){
+function updateUser() {
+    firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).update({
             user_posts: userPost
         })
+    })
+}
+
+
+let levelBar = document.getElementById("lv");
+let expbar = document.getElementById("expBar");
+let pointBar = document.getElementById("userBar");
+
+function displayLvExp() {
+    var user = firebase.auth().currentUser;
+
+    let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+        let exp = snap.data().points;
+
+        pointBar.style.width = exp + "%";
+        pointBar.innerHTML = exp + "%";
     })
 }

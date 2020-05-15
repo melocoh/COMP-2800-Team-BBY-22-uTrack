@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel ="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -41,7 +41,8 @@
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <!-- <div class="container"> -->
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px" id="uTrack_logo"></a>
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+                id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,7 +67,7 @@
     </nav>
 
     <div class="container" id="postContainer1">
-        
+
         <!-- <nav id="menuNav">
             <div class="nav-wrapper">
                 <ul id="ul_nav">
@@ -129,7 +130,7 @@
                     <option value="Ontario">Ontario</option>
                     <option value="Prince Edward Island">Prince Edward Island</option>
                     <option value="Quebec">Quebec</option>
-                    <option value="Saskatchewan">Saskatchewan</option>        
+                    <option value="Saskatchewan">Saskatchewan</option>
                     <option value="Northwest Territories">Northwest Territories</option>
                     <option value="Yukon">Yukon</option>
                     <option value="Nunavut">Nunavut</option>
@@ -181,7 +182,8 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Toilet paper</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup2"
+                                placeholder="Item units">
                         </div>
                     </div>
                     <br>
@@ -191,23 +193,32 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Hand sanitizers</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup3"
+                                placeholder="Item units">
                         </div>
                     </div>
             </form>
         </div>
     </div>
-        <br>
-        
-        <div>
-            <p><b>Image</b></p>
-        </div>
-        <form class="p-3">
-            <input type = "file" value = "upload" id = 'fileButton'>
-        </form>   
-        <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+    <br>
+
+    <div>
+        <p><b>Image</b></p>
     </div>
+    <form class="p-3">
+        <input type="file" value="upload" id='fileButton'>
+    </form>
+    <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+    </div>
+
     
+    <div id="expBar" style="display:none;">
+        <div style="margin:auto;display:block;">
+            <p id=lv></p>
+            <div id="userBar"></div>
+        </div>
+    </div>
+
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
