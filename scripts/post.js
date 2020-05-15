@@ -3,7 +3,7 @@ let checked2 = false;
 let checked3 = false;
 let items = [];
 let stock = [];
-let imgUrl;
+let imgUrl = localStorage.getItem(0);
 // let itemsId;
 let itemIDs = [];
 let storeId;
@@ -29,7 +29,6 @@ function checkbox() {
     } else {
         checked1 = false;
         document.querySelector('#textBox1').style.visibility = "hidden";
-
     }
 
     if (document.querySelector('#customCheck2:checked')) {
@@ -94,8 +93,9 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
+                    console.log(localStorage.getItem(0));
                     db.collection("posts").add({
-                        post_image: imgUrl,
+                        post_image: localStorage.getItem(0),
                         post_date: dateAndTime,
                         timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
@@ -103,7 +103,7 @@ function setDataPost() {
                         post_store: storeId
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
-                        userPost.push(postId);
+                        // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
                         //         user_posts: userPost
@@ -198,21 +198,21 @@ fileButton.addEventListener('change', function (e) {
             task.snapshot.ref.getDownloadURL().then(function (url) {
                 // console.log('File available at', downloadURL);
                 localStorage.setItem(0, url);
-                console.log(localStorage.getItem(0));
-                imgUrl = localStorage.getItem(0);
+                // console.log(localStorage.getItem(0));
+                // localStorage.getItem(0);
             });
         }
     );
 });
 
-console.log(imgUrl);
+
 
 function save() {
     getItemInfo();
     getTimeStamp();
-    getAllPost();
+    // getAllPost();
     setDataPost();
-    updateUser();
+    // updateUser();
     // setTimeout(function(){
     //     window.location.href = "./post.html";
     // },TIME*4);
@@ -263,8 +263,10 @@ function getAllPost(){
         db.collection("/users/").doc(user.uid).onSnapshot(function (snap){
             if (snap.data().user_posts == undefined || snap.data().user_posts == null){
                 userPost = [];
+                console.log(userPost);
             } else {
                 userPost = snap.data().user_posts;
+                console.log(userPost);
             }
         });
     });
