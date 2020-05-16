@@ -24,7 +24,11 @@ section {
     color: black;
     /* background-color: orange; */
 }
-
+.container{
+    font-family: Comfortaa;
+    margin: 0;
+    padding: 0;
+}
 /* --------------------------------- */
 /* HERE Map */
 /* --------------------------------- */

@@ -10,9 +10,9 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-    #postContainer1{
+    /* #postContainer1{
         padding: 10px;
-    }
+    } */
 }
 
 #options {
@@ -45,4 +45,13 @@ body {
     appearance: none;
     width: 50%;
     margin-bottom: 10px;
+}
+
+.navbar{
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding : .5rem 1rem;
 }

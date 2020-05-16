@@ -102,7 +102,7 @@
                 </ul>
             </div>
         </nav> -->
-        <div id="blank"></div>
+        <!-- <div id="blank"></div> -->
         <form>
             <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
@@ -199,36 +199,38 @@
             </form>
         </div>
     </div>
-    <br>
-
-    <div>
-        <p><b>Image</b></p>
+        <div>
+            <p><b>Image</b></p>
+        </div>
+        <form class="p-3">
+            <input type="file" value="upload" id='fileButton'>
+        </form>
+        <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+        <!-- </div> -->
     </div>
-    <form class="p-3">
-        <input type="file" value="upload" id='fileButton'>
-    </form>
-    <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-    </div>
+    <!-- <br> -->
 
     
+
     <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                            style="margin:auto; display:block;"></p>
+                    <p>You have raised the level up to <span id="levelReached"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-    
-            <div class="modal-body">
-              <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                  style="margin:auto; display:block;"></p>
-              <p>You have raised the level up to <span id="levelReached"></span></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+<!-- </div> -->
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

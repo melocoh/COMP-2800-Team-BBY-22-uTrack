@@ -220,7 +220,10 @@ function save() {
         .then(getAllPost())
         .then(setDataPost())
         .then(updateUser())
-        .then(move());
+        .then(move())
+        .then(setTimeout(function () {
+            window.location.href = "./post.html";
+        }, TIME * 4));
     console.log("end promise chain");
 
     // console.log("inside save()");
@@ -236,9 +239,9 @@ function save() {
     // updateUser();
     console.log("end of save()");
     // move();
-    setTimeout(function () {
-        window.location.href = "./post.html";
-    }, TIME * 4);
+    // setTimeout(function () {
+    //     window.location.href = "./post.html";
+    // }, TIME * 4);
 }
 
 function getTimeStamp() {
@@ -323,13 +326,15 @@ $(document).ready(function () {
         var storageRef = firebase.storage().ref().child('Image/' + file.name);
         console.log("post storageRef: " + storageRef);
 
+        var task = storageRef.put(file);
+
         storageRef.getDownloadURL().then(function (url) {
             console.log("storageRef downloadURL: " + url);
             imgUrl = url;
         });
         // localStorage.setItem(0, storageRef);
         //upload file
-        var task = storageRef.put(file);
+        
         //update progress bar
         task.on('state_changed',
             function error(err) {
