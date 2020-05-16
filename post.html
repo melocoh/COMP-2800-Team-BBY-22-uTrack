@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -39,7 +40,8 @@
     <!----------------------->
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+                id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,83 +56,116 @@
                 <li class="nav-item active nav-active">
                     <a class="nav-link" href="./post.html">Posting</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contact.html">Contact us</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
-                <!-- <li class="nav-item">
+            </ul>
+            <!-- <li class="nav-item">
                     <input type="text" id="search_text" class="search_bar" placeholder="Search items">
                     <input type="button" id="search_btn" class="search_bar" value="Search">
                 </li> -->
-            </ul>
         </div>
     </nav>
 
+    <!-- Sign out modal -->
+    <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Log Out <i class="fa fa-lock"></i></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
+                    <div class="actionsBtns">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
+                            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="theContainer">
         <div id="newPost">
-            <button class="btn-primary" onclick="window.location.href='./posting.html'" >New post</button>
+            <button class="btn-primary" onclick="window.location.href='./posting.html'">New post</button>
         </div>
     </div>
 
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel"><b>Report</b></h3>
-          <br>
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel"><b>Report</b></h3>
+                    <br>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p><b>Why are you reporting this post?</b></p>
+
+                        <button type="button" name="1" value="This has been flagged Inappropriate."
+                            class="btn btn-lg btn-block mess">Inappropriate</button>
+                        <button type="button" name="2" value="This has been flagged as false information."
+                            class="btn btn-lg btn-block mess">False information</button>
+                        <br>
+                        <!-- Group of default radios - option 1 -->
+                        <div class="custom-control custom-radio">
+                            <input type="checkbox" class="custom-control-input" id="termsConditions" required>
+                            <label class="custom-control-label" for="termsConditions">I agree to the terms of agreements
+                                yada yada</label>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                id="submitButton">Submit</button>
+                        </div>
+                </div>
+                </form>
+            </div>
         </div>
-        <div class="modal-body">
 
-          <p><b>Why are you reporting this post?</b></p>
+        <!----------------------------------------------->
+        <!-- JS: Boostrap, Firebase, API related    -->
+        <!----------------------------------------------->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
 
-          <button type="button" id="options" class="btn btn-lg btn-block">Inappropriate</button>
-          <button type="button" id="options" class="btn btn-lg btn-block">False information</button>
-          <br>
-          <!-- Group of default radios - option 1 -->
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-            <label class="custom-control-label" for="defaultGroupExample1">I agree to the terms of agreements yada yada</label>
-          </div>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="submitButton">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
+        <!--------------------------------------------------------------------->
+        <!-- JS files: Your own JavaScript functions included here    -->
+        <!--------------------------------------------------------------------->
+        <script src="./scripts/firebase_api_uTrack.js"> </script>
+        <script src="./scripts/post_review.js"></script>
+        <script src="./scripts/auth_check.js"></script>
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
-    <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    <script src="./scripts/firebase_api_uTrack.js"> </script>
-    <script src="./scripts/here_maps_api.js"></script>
-    <script src="./scripts/post_review.js"></script>
-
-    <!--------------------------------------------------------------------->
-    <!-- Make calls to your own JavaScript functions, here below-->
-    <!---------------------------------------------------------------------->
+        <!--------------------------------------------------------------------->
+        <!-- Make calls to your own JavaScript functions, here below-->
+        <!---------------------------------------------------------------------->
 </body>
 
 </html>

@@ -32,8 +32,12 @@ var map = new H.Map(
             // set center to Metropolis at Metrotown, Burnaby, BC
             lat: 49.226980,
             lng: -123.000498
-        }
+        },
+        pixelRatio: window.devicePixelRatio || 1
     });
+
+// Resizes map to fit entire container
+window.addEventListener("resize", () => map.getViewPort().resize());
 
 // Make the map interactive
 var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
@@ -43,6 +47,9 @@ function setCenterBCIT() {
     // lat: 49.249394,
     // lng: -123.000788
 
-    map.setCenter({lat: 49.249394,lng: -123.000788});
+    map.setCenter({
+        lat: 49.249394,
+        lng: -123.000788
+    });
     map.setZoom(15);
 }

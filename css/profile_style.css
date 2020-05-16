@@ -15,7 +15,27 @@
     height: 300px;
 }
 
-.grid-item {}
+
+/* regarding progress bar */
+#expBar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 15px;
+}
+
+#userBar {
+    width: 0%;
+    height: 30px;
+    background-color: #3792cb;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 15px;
+}
+
+.item4 {
+    width: 100%;
+}
 
 /* desktop view */
 @media (min-width: 1025px) {
@@ -39,6 +59,7 @@
         text-align: center;
     }
 
+    
     
 }
 
@@ -67,6 +88,9 @@
 
 /* mobile view */
 @media (max-width: 419px) {
+    #expBar {
+        width: 80%;
+    }
     #userProfilePic {
         width: 120px;
         height: 120px;
@@ -104,9 +128,16 @@
     }
 
     .item5 {
-        grid-area: two;
         font-size: 25px;
         border-bottom: 1px solid grey;
+    }
+
+    .item4 {
+        grid-area: two;
+    }
+
+    .item5 {
+        grid-area: three;
     }
 
 }

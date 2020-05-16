@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>uTrack</title>
+    <meta name="comp2800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!----------------------------------------------->
+    <!-----------------  Favicon  ------------------->
+    <!----------------------------------------------->
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" type="text/css" href="./css/moderator_home_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
+</head>
+
+<body style>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+
+    <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav nav nav-fill w-100">
+                <li class="nav-item active nav-active">
+                    <a class="nav-link" href="./moderator_home.html">Moderator Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./reported_post.html">Posting</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- <header>
+            <span>Insert logo here.</span>
+        </header> -->
+
+        <!-- This div modal MUST be a higher level than the map -->
+        <!-- <div class="modal fade" id="myModal1" focusable="false" role="dialog" aria-labelledby="exampleModal3Label"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img class="storeLogos" id="storeLogo1">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/icon_mask.png" />
+                                </div>
+                                <span class="item1 items">Item here</span>
+                                <span class="stock1 stocks">Val</span>
+                            </li>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/70909-200.png" />
+                                </div>
+                                <span class="item2 items">Item here</span>
+                                <span class="stock2 stocks">Val</span>
+                            </li>
+                            <li>
+                                <div class="logo_container">
+                                    <img class="icons" src="./images/icon_handsantizer.png" />
+                                </div>
+                                <span class="item3 items">Item here</span>
+                                <span class="stock3 stocks">Val</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='./post.html'">View Posts</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div id="myModal1" class="modal fade" role="dialog">
+            <div class="modal-dialog" role="document">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <img class="storeLogos" id="storeLogo1">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/icon_mask.png" />
+                            </div>
+                            <span class="item1 items">Item here</span>
+                            <span class="stock1 stocks">Val</span>
+                        </li>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/70909-200.png" />
+                            </div>
+                            <span class="item2 items">Item here</span>
+                            <span class="stock2 stocks">Val</span>
+                        </li>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/icon_handsantizer.png" />
+                            </div>
+                            <span class="item3 items">Item here</span>
+                            <span class="stock3 stocks">Val</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='./post.html'">View Posts</button>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+
+        <main>
+            <!-- <section>
+                <h1 id="username">Welcome! </h1>
+                <p>Click to get your coordinates.</p>
+            <button onclick="getLocation()" id="reportButton"
+                style="padding: 8px 10px 6px 10px; border-radius: 50%; color: white; background-color: red;"> <i
+                    class="material-icons">my_location</i></button>
+            <p id="demo"></p>
+            </section> -->
+            <div id="homeMap">
+                <button id="reportButton">
+                    <i class="material-icons">my_location</i>
+                </button>
+            </div>
+        </main>
+
+        <!-- <footer>
+            <span>This is the footer</span>
+        </footer> -->
+    </div>
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"
+        integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!-- HERE Maps -->
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/auth_check.js"></script>
+    <script src="./scripts/here_maps/here_maps_init.js"></script>
+    <script src="./scripts/here_maps/here_maps_modal.js"></script>
+    <script src="./scripts/here_maps/here_maps_markers.js"></script>
+    <script src="./scripts/here_maps/here_maps_user_location.js"></script>
+    <script src="./scripts/home.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
+
+    <!-- <script>
+
+/**
+ * Geo location of user
+ */
+ var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+
+  // saves data in these variables
+  latData = position.coords.latitude;
+  lonData = position.coords.longitude;
+
+  // test: prints out location tracking
+  x.innerHTML = "Latitude: " + latData + 
+  "<br>Longitude: " + lonData;
+
+}
+
+// error messages from geolocation
+function showError(error) {
+  switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessages = "User denied the request for Geolocation."
+          alert(errorMessages);
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Location information is unavailable."
+          alert(errorMessage);
+          break;
+        case error.TIMEOUT:
+          errorMessage = "The request to get user location timed out."
+          alert(errorMessage);
+          break;
+        case error.UNKNOWN_ERROR:
+          errorMessage = "An unknown error occurred."
+          alert(errorMessage);
+          break;
+      }
+}
+
+    </script> -->
+
+</body>
+
+</html>

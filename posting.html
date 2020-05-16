@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel ="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -39,7 +40,8 @@
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <!-- <div class="container"> -->
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+                id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,20 +56,47 @@
                 <li class="nav-item active nav-active">
                     <a class="nav-link" href="./post.html">Posting</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contact.html">Contact us</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
+            </ul>
                 <!-- <li class="nav-item">
                     <input type="text" id="search_text" class="search_bar" placeholder="Search items">
                     <input type="button" id="search_btn" class="search_bar" value="Search">
                 </li> -->
-            </ul>
         </div>
         <!-- </div> -->
     </nav>
 
+    <!-- Sign out modal -->
+    <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Log Out <i class="fa fa-lock"></i></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    
+                </div>
+                <div class="modal-body">
+                    <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
+                    <div class="actionsBtns">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal"
+                                value="Logout" onclick="firebase.auth().signOut();" />
+                            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="postContainer1">
-        
+
         <!-- <nav id="menuNav">
             <div class="nav-wrapper">
                 <ul id="ul_nav">
@@ -103,7 +132,7 @@
                 </ul>
             </div>
         </nav> -->
-        <div id="blank"></div>
+        <!-- <div id="blank"></div> -->
         <form>
             <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
@@ -130,7 +159,7 @@
                     <option value="Ontario">Ontario</option>
                     <option value="Prince Edward Island">Prince Edward Island</option>
                     <option value="Quebec">Quebec</option>
-                    <option value="Saskatchewan">Saskatchewan</option>        
+                    <option value="Saskatchewan">Saskatchewan</option>
                     <option value="Northwest Territories">Northwest Territories</option>
                     <option value="Yukon">Yukon</option>
                     <option value="Nunavut">Nunavut</option>
@@ -182,7 +211,8 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Toilet paper</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup2"
+                                placeholder="Item units">
                         </div>
                     </div>
                     <br>
@@ -192,23 +222,45 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Hand sanitizers</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3" placeholder="Item units">
+                            <input type="number" class="form-control" id="inlineFormInputGroup3"
+                                placeholder="Item units">
                         </div>
                     </div>
             </form>
         </div>
     </div>
-        <br>
-        
         <div>
             <p><b>Image</b></p>
         </div>
         <form class="p-3">
-            <input type = "file" value = "upload" id = 'fileButton'>
-        </form>   
+            <input type="file" value="upload" id='fileButton'>
+        </form>
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+        <!-- </div> -->
     </div>
+    <!-- <br> -->
+
     
+
+    <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                            style="margin:auto; display:block;"></p>
+                    <p>You have raised the level up to <span id="levelReached"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -236,7 +288,6 @@
     <!--------------------------------------------------------------------->
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
-    <script src="./scripts/here_maps_api.js"></script>
     <script src="./scripts/post.js"></script>
 
     <!--------------------------------------------------------------------->

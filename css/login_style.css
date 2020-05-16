@@ -20,7 +20,7 @@
     }
     #logincontainer {
         border-radius: 25px;
-        background-color: white;
+        /* background-color: white; */
         position: absolute;
         top: 60%;
         left: 50%;
@@ -40,6 +40,7 @@
     #img_handsanitizer {
         display: none;
     }
+
 }
 
 /* mobile view */
@@ -88,4 +89,3 @@
         height: 5em;
     }
 }
-

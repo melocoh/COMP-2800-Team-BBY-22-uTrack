@@ -10,10 +10,20 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-    #postContainer1{
+    /* #postContainer1{
         padding: 10px;
-    }
+    } */
 }
+
+#options {
+    border-radius: 4px;
+    border: none;
+    color: black;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
 
 body {
     display: flex;
@@ -35,4 +45,13 @@ body {
     appearance: none;
     width: 50%;
     margin-bottom: 10px;
+}
+
+.navbar{
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding : .5rem 1rem;
 }
