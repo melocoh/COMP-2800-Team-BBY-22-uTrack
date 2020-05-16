@@ -220,10 +220,10 @@ function save() {
         .then(getAllPost())
         .then(setDataPost())
         .then(updateUser())
-        .then(move())
-        .then(setTimeout(function () {
-            window.location.href = "./post.html";
-        }, TIME * 4));
+        .then(move());
+        // .then(setTimeout(function () {
+        //     window.location.href = "./post.html";
+        // }, TIME * 4));
     console.log("end promise chain");
 
     // console.log("inside save()");
@@ -239,9 +239,9 @@ function save() {
     // updateUser();
     console.log("end of save()");
     // move();
-    // setTimeout(function () {
-    //     window.location.href = "./post.html";
-    // }, TIME * 4);
+    setTimeout(function () {
+        window.location.href = "./post.html";
+    }, TIME * 4);
 }
 
 function getTimeStamp() {
