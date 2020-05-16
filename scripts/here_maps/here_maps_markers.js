@@ -149,7 +149,7 @@ function addMarkers(map) {
             onAttach: function (clonedElement, domIcon, domMarker) {
                 clonedElement.addEventListener("click", function () {
                         $("body").addClass("modal-open");
-                        $(".modal").modal("show");
+                        $("#myModal1").modal("show");
                         console.log("inside card onclick...");
                         // let cardId = evt.id;
                         let cardId = clonedElement.id;
