@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
 </head>
 
-<body>
+<body style>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
@@ -45,16 +45,13 @@
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="navbar-nav nav nav-fill w-100">
                 <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./home.html">Moderator Home</a>
+                    <a class="nav-link" href="./moderator_home.html">Moderator Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./profile.html">Profile</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./post.html">Posting</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contact.html">Contact us</a>
+                    <a class="nav-link" href="./reported_post.html">Posting</a>
                 </li>
             </ul>
         </div>
@@ -160,7 +157,11 @@
                     class="material-icons">my_location</i></button>
             <p id="demo"></p>
             </section> -->
-            <div id="homeMap"></div>
+            <div id="homeMap">
+                <button id="reportButton">
+                    <i class="material-icons">my_location</i>
+                </button>
+            </div>
         </main>
 
         <!-- <footer>
@@ -205,6 +206,7 @@
     <script src="./scripts/here_maps/here_maps_init.js"></script>
     <script src="./scripts/here_maps/here_maps_modal.js"></script>
     <script src="./scripts/here_maps/here_maps_markers.js"></script>
+    <script src="./scripts/here_maps/here_maps_user_location.js"></script>
     <script src="./scripts/home.js"></script>
 
     <!--------------------------------------------------------------------->
