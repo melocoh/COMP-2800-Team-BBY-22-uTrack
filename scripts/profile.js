@@ -66,10 +66,16 @@ function surprise() {
         $('#giftModal').modal('show');
     }
 
+    if (clickCount == 10){
+        
+    }
+
     if (clickCount >= 8) {
         displayPicture.setAttribute("src", "./images/penguin.png");
         alert("Stop click profile!");
     }
+
+
 }
 
 /*

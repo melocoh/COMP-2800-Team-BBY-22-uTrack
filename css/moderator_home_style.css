@@ -42,6 +42,27 @@ canvas {
 }
 
 /* --------------------------------- */
+/* Geolocation Button */
+/* --------------------------------- */
+#reportButton {
+    /* 8px top and bottom; 10px left and right */
+    padding: 8px 10px;
+    /* circle border */
+    border-radius: 50%;
+    color: white;
+    background-color: #1A73E8;
+    /* absolute from map */
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    /* send to front over map */
+    z-index: 99999;
+    /* align i element to vertical center */
+    display: flex;
+    align-items: center;
+}
+
+/* --------------------------------- */
 /* Map Modal */
 /* --------------------------------- */
 .modal-body ul {
@@ -72,6 +93,7 @@ span:last-child {
 .modal-footer {
     justify-content: center;
 }
+
 
 /* --------------------------------- */
 /* Media Queries */
