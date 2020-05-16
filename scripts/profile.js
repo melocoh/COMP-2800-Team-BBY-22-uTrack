@@ -66,7 +66,7 @@ function surprise() {
         $('#giftModal').modal('show');
     }
 
-     if (clickCount = 8) {
+     if (clickCount >= 8) {
         displayPicture.setAttribute("src", "./images/penguin.png");
         alert("Stop click profile!");
     }
@@ -101,7 +101,7 @@ $(window).on('load', function () {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
+            db.collection("/users/").doc(user.uid).get().then(function (snap) {
                 // display levelling system if user level is 1
                 if (snap.data().level === 1) {
                     $('#myModal').modal('show');

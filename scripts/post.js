@@ -95,7 +95,6 @@ function setDataPost() {
                     //     store_name: document.getElementById("nameStore").value
                     // });
                     console.log(storeId);
-                    // console.log(localStorage.getItem(0));
                     db.collection("posts").add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
@@ -137,33 +136,18 @@ function getItemInfo() {
         items.push(document.getElementById("customCheck1").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
         stock.push(itemQuantity);
-        // let itemName = document.getElementById("customCheck1").value;
-        // stock.push({
-        //     item: itemName,
-        //     units: itemQuantity
-        // })
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
         stock.push(itemQuantity);
-        // let itemName = document.getElementById("customCheck2").value;
-        // stock.push({
-        //     item: itemName,
-        //     units: itemQuantity
-        // })
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
         stock.push(itemQuantity);
-        // let itemName = document.getElementById("customCheck3").value;
-        // stock.push({
-        //     item: itemName,
-        //     units: itemQuantity
-        // })
     }
 }
 
@@ -207,8 +191,6 @@ var fileButton = document.getElementById('fileButton');
 //     );
 // });
 
-
-
 function save() {
     console.log("inside save()");
     let promise = new Promise(function (req, res) {
@@ -221,9 +203,6 @@ function save() {
         .then(setDataPost())
         .then(updateUser())
         .then(move());
-        // .then(setTimeout(function () {
-        //     window.location.href = "./post.html";
-        // }, TIME * 4));
     console.log("end promise chain");
 
     // console.log("inside save()");
@@ -238,7 +217,6 @@ function save() {
     // console.log("updateUser");
     // updateUser();
     console.log("end of save()");
-    // move();
     setTimeout(function () {
         window.location.href = "./post.html";
     }, TIME * 4);
@@ -319,6 +297,42 @@ function updateUser() {
     });
 }
 
+function move() {
+
+    var user = firebase.auth().currentUser;
+    let doc = db.collection('/users/').doc(user.uid);
+
+    doc.update({
+        points: incrementEXP
+    }); // increments points
+    updateExp();
+
+    console.log("pressed");
+}
+
+function updateExp() {
+    var user = firebase.auth().currentUser;
+
+
+    let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
+        let exp = snap.data().points;
+
+        if (exp >= 100) {
+            let level = snap.data().level;
+
+            db.collection('/users/').doc(user.uid).update({
+                points: 0
+            });
+            db.collection('/users/').doc(user.uid).update({
+                level: level + 1
+            }); // increments level
+            $("#lv").html("Level: " + level);
+            alert("you have raised the level of up to " + level);
+        }
+
+    });
+}
+
 $(document).ready(function () {
     fileButton.addEventListener('change', function (e) {
         var file = e.target.files[0];
@@ -357,14 +371,6 @@ $(document).ready(function () {
                     console.log("downloadURL: " + url);
                     imgUrl = url;
                 });
-                // task.snapshot.ref.getDownloadURL().then(function (url) {
-                //     // console.log('File available at', downloadURL);
-                //     localStorage.setItem(0, url);
-                //     console.log(localStorage.getItem(0));
-                //     console.log("download url: " + url);
-                //     imgUrl = url;
-                //     // imgUrl = localStorage.getItem(0);
-                // });
             }
         );
     });
@@ -373,39 +379,3 @@ $(document).ready(function () {
         save();
     };
 });
-
-function move() {
-
-    var user = firebase.auth().currentUser;
-    let doc = db.collection('/users/').doc(user.uid);
-
-    doc.update({
-        points: incrementEXP
-    }); // increments points
-    updateExp();
-
-    console.log("pressed");
-}
-
-function updateExp() {
-    var user = firebase.auth().currentUser;
-
-
-    let doc = db.collection('/users/').doc(user.uid).onSnapshot(function (snap) {
-        let exp = snap.data().points;
-
-        if (exp >= 100) {
-            let level = snap.data().level;
-
-            db.collection('/users/').doc(user.uid).update({
-                points: 0
-            });
-            db.collection('/users/').doc(user.uid).update({
-                level: level + 1
-            }); // increments level
-            $("#lv").html("Level: " + level);
-            alert("you have raised the level of up to " + level);
-        }
-
-    });
-}
