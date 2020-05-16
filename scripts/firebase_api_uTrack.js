@@ -1,12 +1,12 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyCimHCZmK6rC6_LbZ-wyi0taBEvLCW80O4",
-  authDomain: "team22-project2-v2.firebaseapp.com",
-  databaseURL: "https://team22-project2-v2.firebaseio.com",
-  projectId: "team22-project2-v2",
-  storageBucket: "team22-project2-v2.appspot.com",
-  messagingSenderId: "446883698615",
-  appId: "1:446883698615:web:080a9fa5d5f433352a3a32"
+  apiKey: "AIzaSyDKgzVykfhhOfveIBruhWJhGQzO_cbuSdI",
+  authDomain: "team22-project2.firebaseapp.com",
+  databaseURL: "https://team22-project2.firebaseio.com",
+  projectId: "team22-project2",
+  storageBucket: "team22-project2.appspot.com",
+  messagingSenderId: "593450780921",
+  appId: "1:593450780921:web:ea74b2e2ba0beacc257a28"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
