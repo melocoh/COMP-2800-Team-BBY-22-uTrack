@@ -66,13 +66,10 @@ function surprise() {
         $('#giftModal').modal('show');
     }
 
-    if (clickCount === 8) {
+     if (clickCount === 8) {
         displayPicture.setAttribute("src", "./images/penguin.png");
+        window.location.href = "ToiletSnake.html";
     }
-
-    if (clickCount === )
-
-
 }
 
 /*
