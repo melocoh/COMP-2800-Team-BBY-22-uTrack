@@ -4,6 +4,10 @@ body {
     background: white;
     overflow: hidden; }
   
+ .pyro{
+        display: none;
+  }
+
   .pyro > .before, .pyro > .after {
     position: absolute;
     width: 5px;
