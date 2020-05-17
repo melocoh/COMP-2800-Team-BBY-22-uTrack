@@ -1,4 +1,22 @@
-let lv;
+/** Holds the user's current level (also used for Avatar Customization UI, hence the global scale) */
+var lv;
+
+function avatarSwitch(level) {
+    switch(level) {
+        case 1:
+            $("#userProfilePic").attr("src",  "./images/Avatar/level_1.png");
+            break;
+        case 2:
+            $("#userProfilePic").attr("src",  "./images/Avatar/level_2.png");
+            break;
+        case 3:
+            $("#userProfilePic").attr("src",  "./images/Avatar/level_3.png");
+            break;
+        default:
+            $("#userProfilePic").attr("src",  "./images/Avatar/level_4.png");
+            break;
+    }
+}
 
 $(document).ready(function () {
     // let promise = new Promise(function (req, res) {
@@ -7,24 +25,9 @@ $(document).ready(function () {
             db.collection("/users/").doc(user.uid).get().then(function (snap){
                 lv = snap.data().level;
                 console.log(lv);
-                switch(parseInt(lv)){
-                    case 1:
-                        $("#userProfilePic").attr("src",  "./images/Avatar/level_1.png");
-                        break;
-                    case 2:
-                        $("#userProfilePic").attr("src",  "./images/Avatar/level_2.png");
-                        break;
-                    case 3:
-                        $("#userProfilePic").attr("src",  "./images/Avatar/level_3.png");
-                        break;
-                    default:
-                        $("#userProfilePic").attr("src",  "./images/Avatar/level_4.png");
-                        break;
-                }
+                avatarSwitch(parseInt(lv));
             })
         });
-        setCurAvatar();
-        setListeners();
     // });
     // console.log("beginning of promise chain");
     // promise.then(setCurAvatar()).then(setListeners());

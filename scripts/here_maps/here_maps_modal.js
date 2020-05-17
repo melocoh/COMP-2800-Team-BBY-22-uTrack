@@ -25,13 +25,13 @@ function initReadModal(store) {
     findAndSortPosts();
 
     // show the store logo
-    readStoreLogo();
+    // readStoreLogo();
 
-    // show the item names
-    readItemName();
+    // // show the item names
+    // readItemName();
 
-    // show the item stocks
-    readStockStatus();
+    // // show the item stocks
+    // readStockStatus();
 }
 
 /**
@@ -87,7 +87,7 @@ function readStoreLogo() {
         case "Superstore":
             storeLogo = storageRef.child("logo_superstore.jpg");
             break;
-        case "Save-On-Foods":
+        case "Save-on-Foods":
             storeLogo = storageRef.child("logo_saveonfoods.jpg");
             break;
         case "Costco":

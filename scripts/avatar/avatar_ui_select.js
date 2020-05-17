@@ -1,10 +1,15 @@
-// Left and Right Arrow Elements
+/** Left and Right Arrow Element Holders */
 const lArrow = $("#left_arrow");
 const rArrow = $("#right_arrow");
 
-// Avatar Holder
+/** Avatar Image Object Holder */
 var avatar = $("#userProfilePic");
-console.log("avatar: " + avatar);
+
+/** Current Avatar Image Source Holder */
+var curAvatar;
+
+/** New Avatar Image Souce Holder */
+var newAvatar;
 
 // JSON of Available Avatars
 // const allAvatars = {
@@ -14,90 +19,180 @@ console.log("avatar: " + avatar);
 //     "level4": "./images/Avatar/level_4.png"
 // }
 
+/** Array that holds all the released avatar design image sources for the user */
 const allAvatars = [
     "./images/Avatar/level_1.png",
     "./images/Avatar/level_2.png",
     "./images/Avatar/level_3.png",
     "./images/Avatar/level_4.png"
-]
+];
 
-// Current Avatar (Img Source)
-var curAvatar;
+/* --------------------------------- */
+/* SETTERS */
+/* --------------------------------- */
 
-// New Avatar (Img Source)
-var newAvatar;
+/**
+ * Checks for the user's level and determines if the current avatar showcased
+ * is unlocked or locked by the user.
+ * 
+ * If the user's level is strictly less than that of the avatar's level indicator,
+ * include greyscale for that avatar to indicate a locked state.
+ * 
+ * Otherwise, leave the avatar as it is
+ */
+function setGreyscale() {
+    // TESTING NOTES
+    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+    // . / i m a g e s / A v  a  t  a  r  /  l  e  v  e  l  _  1  .  p  n  g
 
-function findMatch() {
-    allAvatars.forEach(src => {
-        if (curAvatar === src) {
-            console.log("found match: " + src);
+    // level indicator of avatar design
+    let avatarLevelIndicator = parseInt(newAvatar.substring(22, 23));
 
-            // Set new avatar as the matching source
-            newAvatar = src;
+    // FOR TESTING PURPOSES
+    console.log("avatarLevelIndicator: " + avatarLevelIndicator);
 
-            // End for-loop
-            return;
-        } else {
-            console.log("no match: " + src);
-        }
-    })
+    // external level variable (from avatar_switch.js)
+    let level = parseInt(lv);
+    
+    // FOR TESTING PURPOSES
+    console.log("user's current level: " + level);
+
+    // if level is less than avatar level indicator, set grayscale filter to avatar
+    if (level < avatarLevelIndicator) {
+        $(avatar).css("filter", "grayscale(95%)");
+    } else {
+        // remove filter css property if avatar is unlocked by user
+        $(avatar).css("filter", "");
+    }
 }
 
+/**
+ * Updates the current avatar holder
+ */
 function setCurAvatar() {
     curAvatar = $(avatar).attr("src");
     console.log("curAvatar src: " + curAvatar);
 }
 
+/**
+ * Sets the mouseclick event listeners to the left and right arrows
+ */
 function setListeners() {
+    // FOR TESTING PURPOSES
     console.log("setting click listeners");
+
+    // Left-arrow click listener
     $(lArrow).click(() => {
+        // FOR TESTING PURPOSES
+        console.log("left arrow clicked");
+
+        // Update the current avatar holder
+        setCurAvatar();
+
         //  If it is not already at the left-most selection
-        // if (!(curAvatar === allAvatars.level1)) {
         if (!(curAvatar === allAvatars[0])) {
             // Find match
-            findMatch();
+            findMatch("left");
+
             // place result after matching index
             $(avatar).attr("src", newAvatar);
+
+            // set greyscale whenever necessary
+            setGreyscale();
+
+            // FOR TESTING PURPOSES
+            console.log("changed avatar img" + $(avatar).attr("src"));
+        } else {
+            // FOR TESTING PURPOSES
+            console.log("already the left-most design");
         }
-        console.log("left arrow clicked");
     });
 
+    // Right-arrow click listener
     $(rArrow).click(() => {
+        // FOR TESTING PURPOSES
+        console.log("right arrow clicked");
+
+        // Update the current avatar holder
+        setCurAvatar();
+
         // If it is not already at the right-most selection
         if (!(curAvatar === allAvatars[allAvatars.length - 1])) {
             // Find match
-            findMatch();
+            findMatch("right");
+            
             // place result after matching index
             $(avatar).attr("src", newAvatar);
+
+            // set greyscale whenever necessary
+            setGreyscale();
+
+            // FOR TESTING PURPOSES
+            console.log("changed avatar img" + $(avatar).attr("src"));
         }
-        console.log("right arrow clicked");
     });
 }
 
+/* --------------------------------- */
+/* HELPER METHODS */
+/* --------------------------------- */
+
+/**
+ * Attempts to match the current avatar's source to an element
+ * from the array of released avatar designs.
+ * 
+ * When a match is found, set the new avatar holder's source to
+ * that of the next or previous element based on the given
+ * direction.
+ * 
+ * @param {String} direction 
+ */
+function findMatch(direction) {
+    for (let i = 0; i < allAvatars.length; i++) {
+        console.log("currentIndex: " + i);
+        if (curAvatar === allAvatars[i]) {
+            // console.log("found match: " + src);
+            console.log("found match: " + allAvatars[i]);
+
+            // Set new avatar as the matching source
+            if (direction === "left") {
+                newAvatar = allAvatars[i - 1];
+            } else {
+                newAvatar = allAvatars[i + 1];
+            }
+
+            // FOR TESTING PURPOSES
+            console.log("ending for loop");
+            
+            // End for-loop
+            return;
+        } else {
+            // console.log("no match: " + src);
+            console.log("no match: " + allAvatars[i]);
+        }
+    }
+
+    // allAvatars.forEach(src => {
+    //     if (curAvatar === src) {
+    //         console.log("found match: " + src);
+
+    //         // Set new avatar as the matching source
+    //         newAvatar = allAvatars[];
+
+    //         // End for-loop
+    //         return;
+    //     } else {
+    //         console.log("no match: " + src);
+    //     }
+    // });
+}
+
+/* --------------------------------- */
+/* DOM DOCUMENT READY LISTENER */
+/* --------------------------------- */
 
 $(document).ready(() => {
     console.log("ui_select document is ready");
-    // curAvatar = avatar.src;
-    // console.log("curAvatar src: " + curAvatar);
 
-    // $(lArrow).click(() => {
-    //     //  If it is not already at the left-most selection
-    //     // if (!(curAvatar === allAvatars.level1)) {
-    //     if (!(curAvatar === allAvatars[0])) {
-    //         // Find match
-    //         findMatch();
-    //         // place result after matching index
-    //         $(avatar).attr("src", newAvatar);
-    //     }
-    // });
-
-    // $(rArrow).click(() => {
-    //     // If it is not already at the right-most selection
-    //     if (!(curAvatar === allAvatars[allAvatars.length - 1])) {
-    //         // Find match
-    //         findMatch();
-    //         // place result after matching index
-    //         $(avatar).attr("src", newAvatar);
-    //     }
-    // });
+    setListeners();
 });
