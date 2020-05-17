@@ -64,6 +64,7 @@ body
     color: black;
     display: inline-block;
     line-height: 2em;
+    padding: 0 30px 0 30px;
 }
 
 .active {
@@ -73,7 +74,6 @@ body
     display: inline-block;
     line-height: 2em;
 }
-
 
 #search_text {
     background-color: white;
@@ -101,6 +101,9 @@ body
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
     /* insert code here */
+    #uTrack_logo {
+        display: none;
+    }
 }
 
 /* mobile view */
