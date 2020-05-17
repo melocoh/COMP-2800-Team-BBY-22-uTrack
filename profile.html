@@ -30,6 +30,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -98,6 +99,43 @@
         </div>
     </div>
 
+    <!-- Level System modal -->
+    <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><span class="material-icons">
+                            emoji_people
+                        </span>Level up System</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <p id="paraLevelSystem"><br>
+                        Let's start from level 1.<br>
+                        You are a beginner user of this application.<br>
+                        You get 10 points by uploading a post.<br>
+                        You need 100 points to level up.<br>
+                        You will get a badge and a avatar when you level up.<br><br>
+                        <hr><br>
+                    </p>
+                    <p id="badgeInfo">
+                        Badge info<br><br>
+                        Level 1&nbsp; : <span class="badge badge-pill badge-primary">beginner</span><br>
+                        <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
+                        Level 2 : <span class="badge badge-pill badge-success">Intermediate</span><br>
+                        Level 3 : <span class="badge badge-pill badge-danger">Expert</span><br>
+                        Level 4 : <span class="badge badge-pill badge-warning">Advanced</span><br>
+                        <!-- <span class="badge badge-pill badge-info">Info</span>
+                    <span class="badge badge-pill badge-light">Light</span> -->
+                        Level 5 : <span class="badge badge-pill badge-dark">Legend</span><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- <div id="content">
         
@@ -133,7 +171,20 @@
                     <div id="userBar"></div>
                 </div>
             </div>
-            <div class="grid-item item5" id="displayName"></div>
+            <div class="grid-item item5"><span id="displayName"> </span>
+                <div id="levelBadge" data-toggle="modal" data-target="#levelModal">
+                    <span class="badge badge-pill badge-primary" id="beginner" style="display:none">beginner</span>
+                    <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
+                    <span class="badge badge-pill badge-success" id="intermediate"
+                        style="display:none">Intermediate</span>
+                    <span class="badge badge-pill badge-danger" id="expert" style="display:none">Expert</span>
+                    <span class="badge badge-pill badge-warning" id="advanced" style="display:none">Advanced</span>
+                    <!-- <span class="badge badge-pill badge-info">Info</span>
+                    <span class="badge badge-pill badge-light">Light</span> -->
+                    <span class="badge badge-pill badge-dark" id="legend"
+                        style="display:none; margin:auto;">Legend</span>
+                </div>
+            </div>
             <div class="grid-item item6" id="displayEmail"></div>
         </div>
     </div>

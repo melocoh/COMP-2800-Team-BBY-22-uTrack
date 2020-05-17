@@ -15,6 +15,23 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
                 displayName.innerHTML = user.displayName;
+                switch (snap.data().level) {
+                    case 1:
+                    document.getElementById("beginner").setAttribute("style","display:block");
+                    break;
+                    case 2:
+                    document.getElementById("intermediate").setAttribute("style","display:block");
+                    break;
+                    case 3:
+                    document.getElementById("advanced").setAttribute("style","display:block");
+                    break;
+                    case 4:
+                    document.getElementById("expert").setAttribute("style","display:block");
+                    break;
+                    case 5:
+                    document.getElementById("legend").setAttribute("style","display:block;");
+                    break;
+                }
                 displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
                 // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
                 displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;

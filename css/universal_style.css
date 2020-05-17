@@ -101,6 +101,9 @@ body
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
     /* insert code here */
+    #uTrack_logo {
+        display: none;
+    }
 }
 
 /* mobile view */
