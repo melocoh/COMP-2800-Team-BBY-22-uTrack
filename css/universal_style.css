@@ -121,8 +121,14 @@ body
         height: auto;
     }
 
+    #menuNav .navbar-right li:nth-child(1) {
+        border-top: 1px solid black;
+        padding: 15px 0 15px 0;
+    }
+
     nav ul li {
         justify-content: center;
+        text-align: center;
         width: 100%;
     }
 
@@ -132,7 +138,7 @@ body
     }
 
     .nav-active {
-        border-radius: 5px;
+        border-radius: 25px;
         background-color: #d9f5ff;
         padding: 3px;
         color: white;
