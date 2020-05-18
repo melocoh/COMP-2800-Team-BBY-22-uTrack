@@ -111,18 +111,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 })
 */
 
-$(window).on('load', function () {
-
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            db.collection("/users/").doc(user.uid).get().then(function (snap) {
-                // display levelling system if user level is 1
-                if (snap.data().level === 1) {
-                    $('#myModal').modal('show');
-                }
-            })
-        }
-
-    })
-});
+function displayLevelSystem() {
+    $('#myModal').modal('show');
+}
+                    

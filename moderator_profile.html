@@ -109,22 +109,14 @@
                 <div class="modal-header">
                     <h4><span class="material-icons">
                             emoji_people
-                        </span>Level up System</h4>
+                        </span>Badge</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
 
                 </div>
                 <div class="modal-body">
-                    <p id="paraLevelSystem"><br>
-                        Let's start from level 1.<br>
-                        You are a beginner user of this application.<br>
-                        You get 10 points by uploading a post.<br>
-                        You need 100 points to level up.<br>
-                        You will get a badge and a avatar when you level up.<br><br>
-                        <hr><br>
-                    </p>
                     <p id="badgeInfo">
-                        Badge info<br><br>
+                        <br><br>
                         Level 1&nbsp; : <span class="badge badge-pill badge-primary">beginner</span><br>
                         <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
                         Level 2 : <span class="badge badge-pill badge-success">Intermediate</span><br>
@@ -134,6 +126,9 @@
                     <span class="badge badge-pill badge-light">Light</span> -->
                         Level 5 : <span class="badge badge-pill badge-dark">Legend</span><br>
                     </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -170,6 +165,9 @@
 
             <div class="grid-item item3" id="displayPoint">Points</div>
             <div class="grid-item item4" style="width:100%">
+                <span class="material-icons" id="levelSystem" onclick="displayLevelSystem()">
+                    search
+                </span>
                 <div id="expBar" style="margin:auto;display:block">
                     <div id="userBar"></div>
                 </div>
@@ -203,7 +201,13 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>레벨업하는방법, 포인트설명</p>
+                    <p id="paraLevelSystem"><br>
+                        You get 10 points by uploading a post.<br>
+                        You need 100 points to level up.<br>
+                        You will get a new badge and a new avatar when you level up.<br><br>
+                        <br>
+                    </p>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
