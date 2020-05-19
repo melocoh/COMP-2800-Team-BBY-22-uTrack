@@ -8,7 +8,7 @@ var storeList = [];
 let curStore;
 
 // Holds Firebase Document ID of current store
-let storeId;
+let curStoreId;
 
 // Determines the number of iterations for reading items and stocks
 const maxItems = 3;
@@ -41,15 +41,19 @@ function initReadModal(store) {
 function getStore(cardIndex) {
     console.log("getting store...");
     curStore = storeList[cardIndex - 1];
+    curStoreId = curStore.id;
     console.log("cardIndex: " + cardIndex);
     console.log("curStore: " + curStore);
+
+    // sort by latest post relevant to store
+    // findAndSortPosts();
 
     readStoreLogo();
 
     readItemName();
 
     readStockStatus();
-    
+
     console.log("finished getting store...");
 }
 
@@ -58,8 +62,8 @@ function getStore(cardIndex) {
  */
 function readLatest() {
     console.log("reading latest");
-    storeId = curStore.id;
-    console.log("storeID: " + storeId);
+    curStoreId = curStore.id;
+    console.log("curStoreId: " + curStoreId);
 }
 
 /**
@@ -67,10 +71,10 @@ function readLatest() {
  */
 function findAndSortPosts() {
 
-    storeId = curStore.id;
-    console.log("storeID: " + storeId);
+    curStoreId = curStore.id;
+    console.log("curStoreId: " + curStoreId);
 
-    let relevantPosts = db.collection("posts").where("post_store", "==", storeId).orderBy("timeStamp", "desc");
+    let relevantPosts = db.collection("posts").where("post_store", "==", curStoreId).orderBy("timeStamp", "desc");
     console.log(relevantPosts);
 }
 
@@ -80,7 +84,7 @@ function findAndSortPosts() {
 function readStoreLogo() {
     let storeLogo;
     let storeName = curStore.get("store_name");
-    switch(storeName) {
+    switch (storeName) {
         case "Walmart":
             storeLogo = storageRef.child("logo_walmart.jpg");
             break;
@@ -161,3 +165,29 @@ function readStockStatus() {
     }
     // })
 }
+
+function initUploadButton() {
+    $("#uploadPostButton").click(() => {
+        // FOR TESTING PURPOSES
+        console.log("clicked upload post button");
+        
+        // calls function from post.js to pass store id
+        // insert function here (this function stores the id into a global variable)
+        // getStoreIdToPost(curStoreId);
+        localStorage.setItem("storeId", curStoreId);
+
+        // FOR TESING PURPOSES
+        console.log("before window location change to post.html");
+
+        // change window location to post page
+        window.location.href = "./posting.html";
+
+        // FOR TESTING PURPOSES
+        console.log("after window location change to post.html: haha unreachable code.");
+    });
+}
+
+$(document).ready(() => {
+    // initialize upload post button for map marker modal
+    initUploadButton();
+});
