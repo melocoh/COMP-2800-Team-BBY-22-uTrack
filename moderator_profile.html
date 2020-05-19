@@ -49,7 +49,7 @@
     </div>
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
@@ -57,18 +57,21 @@
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="navbar-nav nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home</a>
+                    <a class="nav-link" href="./moderator_home.html">Moderator Home</a>
                 </li>
-                <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./profile.html">Profile</a>
+                <li class="nav-item nav-active active">
+                    <a class="nav-link" href="./moderator_profile.html">Profile</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./post.html">Posting</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="./moderator_post.html">Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./reported_post.html">Reported Post</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
             </ul>
         </div>
@@ -79,13 +82,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Logout <i class="fa fa-lock"></i></h4>
+                    <h4>Log Out <i class="fa fa-lock"></i></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
 
                 </div>
                 <div class="modal-body">
-                    <p><i class="fa fa-question-circle"></i> Are you sure you want to logout? <br /></p>
+                    <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
                     <div class="actionsBtns">
                         <form action="/logout" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -157,20 +160,21 @@
                 <!-- Insert right arrow here -->
                 <i id="right_arrow" class="fas fa-chevron-right"></i>
             </div>
-            <div class="grid-item item2"><span id="levelSystem" onclick="displayLevelSystem()">
-                <img src="./images/questionmark.png" id="questionmark">
-            </span></div>
+            <div class="grid-item item2" id="displayLevel">Level</div>
             <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
 
-            <div class="grid-item item3" id="displayLevel">Level</div>
+            <div class="grid-item item3" id="displayPoint">Points</div>
             <div class="grid-item item4" style="width:100%">
+                <span class="material-icons" id="levelSystem" onclick="displayLevelSystem()">
+                    search
+                </span>
                 <div id="expBar" style="margin:auto;display:block">
                     <div id="userBar"></div>
                 </div>
             </div>
             <div class="grid-item item5"><span id="displayName"> </span>
                 <div id="levelBadge" data-toggle="modal" data-target="#levelModal">
-                    <span class="badge badge-pill badge-primary" id="beginner" style="display:none">Beginner</span>
+                    <span class="badge badge-pill badge-primary" id="beginner" style="display:none">beginner</span>
                     <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
                     <span class="badge badge-pill badge-success" id="intermediate"
                         style="display:none">Intermediate</span>

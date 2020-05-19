@@ -5,12 +5,22 @@
 
 /* tablet view */
 @media (min-width: 400px) and (max-width: 1024px) {
-    
+    .navbar-brand {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+    }
 }
 
 /* mobile view */
 @media (max-width: 399px) {
-    
+    .btn-primary {
+        display: block;
+        margin: auto;
+    }
 }
 
 body {
@@ -31,9 +41,15 @@ body {
     width: 50%;
     margin-bottom: 10px;
 }
+<<<<<<< HEAD
 /* --------------------------------- */
 /* For notification */
 /* --------------------------------- */
 #totalReport{
     color: #1E90FF;
+=======
+
+.notification {
+    margin-left: 20px;
+>>>>>>> 8bcb529dacab218cf829a0f9ad188a16187c4750
 }

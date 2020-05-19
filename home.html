@@ -38,7 +38,8 @@
     <!----------------------->
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180" height="60px" id="uTrack_logo"></a>
+        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180"
+                height="60px" id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,15 +71,15 @@
                     <h4>Log Out <i class="fa fa-lock"></i></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    
+
                 </div>
                 <div class="modal-body">
                     <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
                     <div class="actionsBtns">
                         <form action="/logout" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal"
-                                value="Logout" onclick="firebase.auth().signOut();" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
                             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
@@ -171,8 +172,9 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
-                            onclick="window.location.href='./post.html'">View Posts</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            onclick="window.location.href='./post.html'">View Store Posts</button>
+                        <button type="button" id="uploadPostButton" class="btn btn-primary" data-dismiss="modal">Upload Post</button>
                     </div>
                 </div>
 
@@ -234,6 +236,7 @@
     <!--------------------------------------------------------------------->
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
+    <!-- <script src="./scripts/post.js"></script> -->
     <script src="./scripts/here_maps/here_maps_init.js"></script>
     <script src="./scripts/here_maps/here_maps_modal.js"></script>
     <script src="./scripts/here_maps/here_maps_markers.js"></script>

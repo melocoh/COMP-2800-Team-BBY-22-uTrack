@@ -10,7 +10,7 @@
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
     <!----------------------------------------------->
-    <link rel ="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
+    <link rel="shortcut icon" type="image/png" href="./images/uTrack_logo_2.png">
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -29,26 +29,40 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/login_style.css">
-    <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
+    <link type="text/css" rel="stylesheet" href="./css/aboutUs_style.css" />
+    <link type="text/css" rel="stylesheet" href="./css/aboutUs_team_style.css" />
 </head>
 
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <img src="images/uTrack_logo.png" id="img_logo">
     <!-- <img src="images/back.png" id="img_back"> -->
     <!-- <img src="images/corona.png" id="img_corona">
     <img src="images/mask.png" id="img_mask">
     <img src="images/toilet.png" id="img_toiletpaper">
     <img src="images/hand_sanitizer.png" id="img_handsanitizer"> -->
 
-    <div id="logincontainer">
-
-        <!-- Firebase Login Widget -->
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
+    <!-- First Parallax Image with Logo Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+        <div id="topLogo">
+            <span id="title">uTrack </span>
+            <img src="images/uTrack_logo_2.png" id="img_logo">
+        </div>
+        <div id="slogan">
+            <p id="paraSlogan">Don't come home<br>empty-handed.</p>
+        </div>
+        <div id="login_container">
+            <!-- Firebase Login Widget -->
+            <div id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
+        </div>
+        <div id="footer_img">
+            <img src="./images/cart.png" width="200px" height="200px">
+        </div>
     </div>
+
+
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

@@ -40,7 +40,7 @@
     <!----------------------->
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
+        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,10 +50,13 @@
                     <a class="nav-link" href="./moderator_home.html">Moderator Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profile.html">Profile</a>
+                    <a class="nav-link" href="./moderator_profile.html">Profile</a>
                 </li>
                 <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./moderator_post.html">Posting</a>
+                    <a class="nav-link" href="./moderator_post.html">Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./reported_post.html">Reported Post</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./reported_post.html">Reported Posts <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
@@ -63,6 +66,11 @@
                 <li>
                     <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
+                <div class="notification">
+                    <button class="btn-primary" onclick="window.location.href='./reported_post.html'">Notifications
+                            <span id="totalReport"></span></button>
+                        <!-- <button class="btn-primary" onclick="window.location.href='./posting.html'" >New post</button> -->
+                </div>
             </ul>
         </div>
     </nav>
@@ -92,12 +100,15 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="container" id="theContainer">
         <div id="newPost">
             <button class="btn-primary" onclick="window.location.href='./reported_post.html'">Notifications <span id="totalReport"></span></button>
             <button class="btn-primary" onclick="window.location.href='./posting.html'" >New post</button>
         </div>
     </div>
+=======
+>>>>>>> steven
 
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
