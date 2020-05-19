@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>jQM 1.4 fun with sliders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- <script type="text/javascript" src="/js/lib/dummy.js"></script> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="/css/result-light.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+    <style id="compiled-css" type="text/css">
+
+        /* EXAMPLE 2a */
+        .sliderTickmarks {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 100%;
+            width: 25%;
+            
+            float: left;
+            border-right: 1px solid #888;
+        }
+
+        .sliderTickmarks span {
+            position: relative;
+            left: 100%;
+            top: 125%;
+            /* margin-left: 2px; */
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .ui-slider-track>div.sliderTickmarks:first-child {
+            border-right: 0;
+            width: 0;
+        }
+
+        .ui-slider-track>div.sliderTickmarks:first-child span {
+            margin-left: -5px;
+        }
+
+        .ui-slider-track>div.sliderTickmarks:last-of-type {
+            border-right: 0;
+        }
+
+        
+    </style>
+
+    <!-- <script id="insert"></script> -->
+
+
+</head>
+
+<body>
+    <div data-role="page" id="page1">
+        <div data-role="header" data-position="fixed">
+            <h1>Fun With Sliders</h1>
+        </div>
+        <!-- <div role="main" class="ui-content"> -->
+
+            <ul data-role="listview">
+                <li>
+                    <div id="example2a" class="example">
+                        <label for="theSlider2a">Slider with Tick marks:</label>
+                        <input type="range" name="theSlider2a" id="theSlider2" min="0" max="4" value="0" step="1" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    <!-- </div> -->
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+
+        $(document).on("pagecreate", "#page1", function () {
+
+            //EXAMPLE 2a - add tick marks to slider track    
+            var ticks = '<div class="sliderTickmarks "><span>none</span></div>';
+            ticks += '<div class="sliderTickmarks "><span>few</span></div>';
+            ticks += '<div class="sliderTickmarks "><span>some</span></div>';
+            ticks += '<div class="sliderTickmarks "><span>many</span></div>';
+            ticks += '<div class="sliderTickmarks "><span>plenty</span></div>';
+
+            $("#example2a .ui-slider-track").prepend(ticks);
+        });
+
+
+
+
+        //]]>
+    </script>
+
+
+</body>
+
+</html>
