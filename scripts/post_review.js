@@ -1,7 +1,13 @@
-// let storeItems;
+/** Declares and initializes an empty string items */
 let items = "";
+
+/** Declares and initializes an array that holds the post id */
 let postlists = [];
+
+/**  Declares and initializes report_index */
 let report_index = 0;
+
+/** Declares a variable that holds button value */
 let butval;
 
 /**
@@ -35,8 +41,10 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         setStyle(contain,p1,p6,btn);
         
         p4.setAttribute("id", "itemName");
-        p1.innerHTML = doc.data().post_name;
-        p5.innerHTML = "Posted: " + doc.get("post_date");
+        p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+        //need to change it back when slider is fix and have new post.
+        // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
+        p5.innerHTML = "Posted: " +  doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
         getStoreInfo(storeInfo, p3, p4);
@@ -44,8 +52,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         p6.appendChild(btn);
         text.appendChild(p1);
         text.appendChild(p2);
-        text.appendChild(p3);
         text.appendChild(p4);
+        text.appendChild(p3);
         text.appendChild(p5);
         text.appendChild(p6);
         contain.appendChild(text);
@@ -87,7 +95,22 @@ function getItemInfo(storeItems, p4) {
             name = doc.get("item_name");
             stock = doc.get("stock_number");
             var list = document.createElement("li");
-            list.innerHTML = items + name + ": " + stock;
+            var imageItem;
+            if (name == "Face masks"){
+                imageItem = "./images/icon_mask.png";
+            } else if (name == "Toilet papers"){
+                imageItem = "./images/icon_toiletpaper.png";
+            } else {
+                imageItem = "./images/icon_handsantizer.png";
+            }
+
+            // list.innerHTML = items + name + ": " + stock;
+
+            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span>` + stock + `<span>`;
+            list.style.listStyleType = "none";
+            list.style.display = "flex";
+            list.style.justifyContent = "space-around";
+
             p4.appendChild(list);
         })
     }
@@ -101,6 +124,7 @@ function getItemInfo(storeItems, p4) {
  * @param {*} btn
  */
 function setStyle(contain,p1,p6,btn) {
+    contain.style.textAlign = "center";
     contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
