@@ -5,7 +5,6 @@
 
 .grid-container {
     margin:auto;
-    margin-top: 50px;
     border-radius: 30px;
     width: 100%;
 }
@@ -14,6 +13,12 @@
     width: 300px;
     height: 300px;
 }
+
+#questionmark {
+    width: 20px;
+    height: 20px;
+}
+
 
 /* regarding progress bar */
 #expBar {
@@ -40,6 +45,18 @@
 @media (min-width: 1025px) {
     .item1 {
         grid-row: 1 / span 3;
+    }
+
+    .item2 {
+        margin: 0 0 100px 300px;
+    }
+
+    .item3 {
+        margin-top: -100px;
+    }
+
+    .item4 {
+        margin-top: -100px;
     }
 
     .grid-container {
@@ -129,24 +146,28 @@
     }
 
     .item1 {
-        margin-bottom: -20px;
+        margin: -50px 0 -20px 0;
     }
 
     .item2, .item3, .item4 {
         margin: -15px 0 -15px 0;
     }
 
-    .item5 {
+    .item4 {
         font-size: 25px;
         border-bottom: 1px solid grey;
     }
 
-    .item4 {
-        grid-area: two;
+    .item6 {
+        margin-top: -20px;
     }
 
-    .item5 {
-        grid-area: three;
+
+    .item2 {
+        grid-area: one;
+        margin: -30px 0 -30px 0;
+        width: 100%;
+        text-align: right;
     }
 
     #levelBadge {
