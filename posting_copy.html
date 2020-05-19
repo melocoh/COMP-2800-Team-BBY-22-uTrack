@@ -33,20 +33,10 @@
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
 
+    <link rel="stylesheet" href="css/slider_min.css">
 
-    .container {
-        width: 80%;
-        margin: 70px auto;
-    }
-    .slider-container {
-        width: 90%;
-        max-width: 500px;
-        margin: 0 auto 50px;
-    }
+    </style>
 
-</style>
-
-<link rel="stylesheet" href="css/slider_min.css">
 </head>
 
 <body>
@@ -95,15 +85,15 @@
                     <h4>Log Out <i class="fa fa-lock"></i></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    
+
                 </div>
                 <div class="modal-body">
                     <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
                     <div class="actionsBtns">
                         <form action="/logout" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal"
-                                value="Logout" onclick="firebase.auth().signOut();" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
                             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
@@ -178,53 +168,68 @@
                 <p><i>Only insert the quantity of available items</i></p>
             </div>
             <form class="p-2">
-                
-                
-            <div class="container">
-                <div class="slider-container">
-                    <input type="text" id="slider2" class="slider" />
-            </div>
-                <div>
-                    <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
-                    <div class="input-group" id="textBox1">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">Face masks</div>
-                        </div>
-                        <input type="number" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
+
+                <!--Slider components-->
+
+                <div class="sliderscontainer" >
+                    <div class="slider-container">
+                        <input type="text" id="slider" class="slider" />
                     </div>
-                    <br>
+                    
+                    <div class="slider-container">
+                        <input type="text" id="slider2" class="slider" />
+                    </div>
+            
+                    <div class="slider-container">
+                        <input type="text" id="slider3" class="slider" />
+                    </div>
+                </div>
+                
+                <!--previous quantity input components-->
+
                     <div>
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
-                        <div class="input-group" id="textBox2">
+                        <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
+                        <div class="input-group" id="textBox1">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">Toilet paper</div>
+                                <div class="input-group-text">Face masks</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2"
+                            <input type="number" class="form-control" id="inlineFormInputGroup1"
                                 placeholder="Item units">
                         </div>
-                    </div>
-                    <br>
-                    <div>
-                        <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
-                        <div class="input-group" id="textBox3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Hand sanitizers</div>
+
+                        <br>
+                        <div>
+                            <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
+                            <div class="input-group" id="textBox2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Toilet paper</div>
+                                </div>
+                                <input type="number" class="form-control" id="inlineFormInputGroup2"
+                                    placeholder="Item units">
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3"
-                                placeholder="Item units">
                         </div>
-                    </div>
+                        <br>
+                        <div>
+                            <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
+                            <div class="input-group" id="textBox3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Hand sanitizers</div>
+                                </div>
+                                <input type="number" class="form-control" id="inlineFormInputGroup3"
+                                    placeholder="Item units">
+                            </div>
+                        </div>
             </form>
         </div>
     </div>
-        <div>
-            <p><b>Image</b></p>
-        </div>
-        <form class="p-3">
-            <input type="file" value="upload" id='fileButton'>
-        </form>
-        <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-        <!-- </div> -->
+    <div>
+        <p><b>Image</b></p>
+    </div>
+    <form class="p-3">
+        <input type="file" value="upload" id='fileButton'>
+    </form>
+    <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+    <!-- </div> -->
     </div>
     <!-- <br> -->
 
@@ -246,56 +251,54 @@
             </div>
         </div>
     </div>
-<!-- </div> -->
+    <!-- </div> -->
 
-<script src="./scripts/slider_min.js"></script>
-        <script>
-            (function () {
-                'use strict';
+    <script src="./scripts/slider_min.js"></script>
+    <script>
+        (function () {
+            'use strict';
 
-                var init = function () {
+            var init = function () {
 
-                    var slider2 = new rSlider({
-                        target: '#slider2',
-                        values: ["none", "few", "some", "plenty"],
-                        // range: false,
-                        labels: true,
-                        set: ["none"],
-                        // tooltip: false,
-                        onChange: function (vals) {
-                            console.log(vals);
-                        }
-                    });
+                var slider = new rSlider({
+                    target: '#slider',
+                    values: ["none", "few", "some", "plenty"],
+                    // range: false,
+                    labels: true,
+                    set: ["none"],
+                    // tooltip: false,
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
 
-                    var slider3 = new rSlider({
-                        target: '#slider3',
-                        values: {
-                            min: 0,
-                            max: 100
-                        },
-                        step: 10,
-                        range: true,
-                        set: [10, 40],
-                        scale: true,
-                        labels: false,
-                        onChange: function (vals) {
-                            console.log(vals);
-                        }
-                    });
+                var slider2 = new rSlider({
+                    target: '#slider2',
+                    values: ["none", "few", "some", "plenty"],
+                    // range: false,
+                    labels: true,
+                    set: ["none"],
+                    // tooltip: false,
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
 
-                    var slider = new rSlider({
-                        target: '#slider',
-                        values: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015],
-                        range: true,
-                        set: [2010, 2013],
-                        onChange: function (vals) {
-                            console.log(vals);
-                        }
-                    });
-                };
-                window.onload = init;
-            })();
-        </script>
+                var slider3 = new rSlider({
+                    target: '#slider3',
+                    values: ["none", "few", "some", "plenty"],
+                    // range: false,
+                    labels: true,
+                    set: ["none"],
+                    // tooltip: false,
+                    onChange: function (vals) {
+                        console.log(vals);
+                    }
+                });
+            };
+            window.onload = init;
+        })();
+    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
