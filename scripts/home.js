@@ -1,4 +1,4 @@
-let greeting = document.getElementById("username");
+// let greeting = document.getElementById("username");
 var x = document.getElementById("demo");
 let latData;
 let lonData;

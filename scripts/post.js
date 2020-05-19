@@ -284,7 +284,7 @@ function updateExp() {
                 level: level + 1
             }); // increments level
             $("#lv").html("Level: " + level);
-            $("#levelReached").html("You have raised your level up to " + (level + 1));
+            $("#levelReached").html(level + 1);
             $(".pyro").css({"display":"inline"});
             $("#congratulation").modal("show");
         }

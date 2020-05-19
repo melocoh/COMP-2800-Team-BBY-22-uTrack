@@ -101,6 +101,7 @@ function getItemInfo(storeItems, p4) {
  * @param {*} btn
  */
 function setStyle(contain,p1,p6,btn) {
+    contain.style.textAlign = "center";
     contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";

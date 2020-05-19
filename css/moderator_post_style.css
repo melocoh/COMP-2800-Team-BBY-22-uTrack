@@ -31,3 +31,9 @@ body {
     width: 50%;
     margin-bottom: 10px;
 }
+/* --------------------------------- */
+/* For notification */
+/* --------------------------------- */
+#totalReport{
+    color: #1E90FF;
+}

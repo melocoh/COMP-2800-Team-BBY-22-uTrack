@@ -112,3 +112,10 @@ span:last-child {
         height: 70vh;
     }
 }
+
+/* --------------------------------- */
+/* For notification */
+/* --------------------------------- */
+#totalReport{
+    color: #1E90FF;
+}
