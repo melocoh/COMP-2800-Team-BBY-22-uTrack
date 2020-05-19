@@ -33,3 +33,10 @@
     display: flex;
     align-items: center;
 }
+
+/* --------------------------------- */
+/* For notification */
+/* --------------------------------- */
+#totalReport{
+    color: #1E90FF;
+}

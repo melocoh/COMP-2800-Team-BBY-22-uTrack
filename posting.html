@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
+    <link rel="stylesheet" href="css/slider_min.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
+                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </li>
             </ul>
         </div>
@@ -97,7 +98,7 @@
         </div>
     </div>
 
-    <div class="container" id="postContainer1">
+    <div class="container py-3" id="postContainer1">
         <form>
             <!-- Commented out for now. Get store name from passed store id later -->
             <!-- <div class="title">
@@ -161,17 +162,25 @@
                 <p><b>Estimated quantity:</b></p>
                 <p><i>Only insert the quantity of available items</i></p>
             </div>
-            <form class="p-2">
+            <div class="container p-2">
                 <div>
-                    <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
-                    <div class="input-group" id="textBox1">
+                    <!-- <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label> -->
+                    <!-- <div class="input-group" id="textBox1">
                         <div class="input-group-prepend">
                             <div class="input-group-text">Face masks</div>
                         </div>
                         <input type="number" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
-                    </div>
+                    </div> -->
+                    <!-- <div class="container"> -->
+                        <div class="slider-container" id="textBox1">
+                            <div>Face masks</div>
+                            <input type="text" id="slider" class="slider" />
+                        </div>
+    
+                    <!-- </div> -->
+                    
                     <br>
-                    <div>
+                    <!-- <div>
                         <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
                         <div class="input-group" id="textBox2">
                             <div class="input-group-prepend">
@@ -180,9 +189,17 @@
                             <input type="number" class="form-control" id="inlineFormInputGroup2"
                                 placeholder="Item units">
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- <div class="container"> -->
+                        <div class="slider-container" id="textBox2">
+                            <div>Toilet paper</div>
+                            <input type="text" id="slider2" class="slider" />
+                        </div>
+    
+                    <!-- </div> -->
+
                     <br>
-                    <div>
+                    <!-- <div>
                         <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
                         <div class="input-group" id="textBox3">
                             <div class="input-group-prepend">
@@ -191,10 +208,19 @@
                             <input type="number" class="form-control" id="inlineFormInputGroup3"
                                 placeholder="Item units">
                         </div>
-                    </div>
-            </form>
+                    </div> -->
+
+                    <!-- <div class="container"> -->
+                        <div class="slider-container" id="textBox3">
+                            <div>Hand sanitizers</div>
+                            <br>
+                            <input type="text" id="slider3" class="slider" />
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
         </div>
-    </div>
+    <!-- </div> -->
         <div>
             <p><b>Image</b></p>
         </div>
@@ -226,6 +252,55 @@
     </div>
 <!-- </div> -->
 
+<script>
+    (function () {
+        'use strict';
+
+        var init = function () {
+
+            var slider2 = new rSlider({
+                target: '#slider2',
+                values: ["none", "few", "some", "plenty"],
+                // range: false,
+                labels: true,
+                set: ["none"],
+                // tooltip: false,
+                onChange: function (vals) {
+                    console.log(vals);
+                }
+            });
+
+            var slider3 = new rSlider({
+                target: '#slider3',
+                values: ["none", "few", "some", "plenty"],
+                step: 10,
+                // range: true,
+                set: [10, 40],
+                // scale: true,
+                // labels: false,
+                labels: true,
+                set: ["none"],
+                onChange: function (vals) {
+                    console.log(vals);
+                }
+            });
+
+            var slider = new rSlider({
+                target: '#slider',
+                values: ["none", "few", "some", "plenty"],
+                // range: true,
+                // set: [2010, 2013],
+                labels: true,
+                set: ["none"],
+                onChange: function (vals) {
+                    console.log(vals);
+                }
+            });
+        };
+        window.onload = init;
+    })();
+</script>
+
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
@@ -253,7 +328,7 @@
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/post.js"></script>
-
+    <script src="./scripts/slider_min.js"></script>
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->

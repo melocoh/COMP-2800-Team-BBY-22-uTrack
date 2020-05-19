@@ -25,6 +25,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -53,13 +54,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./moderator_post.html">Post</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="./reported_post.html">Reported Post</a>
+                </li> -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./reported_post.html">Reported Posts <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
                 </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
+                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </li>
             </ul>
         </div>
@@ -241,6 +247,7 @@
     <script src="./scripts/here_maps/here_maps_markers.js"></script>
     <script src="./scripts/here_maps/here_maps_user_location.js"></script>
     <script src="./scripts/home.js"></script>
+    <script src="./scripts/notification.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->

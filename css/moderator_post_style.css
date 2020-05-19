@@ -41,7 +41,12 @@ body {
     width: 50%;
     margin-bottom: 10px;
 }
-
+/* --------------------------------- */
+/* For notification */
+/* --------------------------------- */
+#totalReport{
+    color: rgb(189, 25, 25);
+}
 .notification {
     margin-left: 20px;
 }
