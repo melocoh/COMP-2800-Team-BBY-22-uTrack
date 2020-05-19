@@ -1,5 +1,8 @@
-// let storeItems;
 let items = "";
+
+/**
+ * Retrieves data from database to display top 5 most recent posts.
+ */
 db.collection("posts").orderBy("timestamp","desc").limit(5).get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
@@ -42,6 +45,12 @@ db.collection("posts").orderBy("timestamp","desc").limit(5).get().then(function 
     })
 })
 
+/**
+ * Get store information from store reference in specific post document and display it.
+ * @param {*} storeInfo 
+ * @param {*} p3 
+ * @param {*} p4 
+ */
 function getStoreInfo(storeInfo, p3, p4){
     storeInfo.get().then(function(doc){
         p3.innerHTML = doc.get("location");
@@ -51,6 +60,11 @@ function getStoreInfo(storeInfo, p3, p4){
     })
 }
 
+/**
+ * Get items information from item reference in specific store document and display it.
+ * @param {*} storeItems 
+ * @param {*} p4 
+ */
 function getItemInfo(storeItems,p4){
     for (let i = 0; i < storeItems.length; i++){
         var name;
@@ -65,6 +79,10 @@ function getItemInfo(storeItems,p4){
     }
 }
 
+/**
+ * Set the style for the element contain to display post.
+ * @param {*} contain 
+ */
 function setStyle(contain){
     contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
@@ -72,6 +90,9 @@ function setStyle(contain){
     contain.style.borderRadius = "10px";
 }
 
+/**
+ * Set the style for some elements.
+ */
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
