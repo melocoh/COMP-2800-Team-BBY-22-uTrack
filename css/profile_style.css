@@ -81,10 +81,6 @@
         display: block;
         margin: auto;
     }
-    
-    .footer {
-        display: none;
-    }
 
     #logoutBtn {
         background-color: #d9f5ff;
@@ -118,11 +114,6 @@
         display: block;
         margin: auto;
     }
-
-    .footer {
-        display: none;
-    }
-
 }
 
 /* mobile view */

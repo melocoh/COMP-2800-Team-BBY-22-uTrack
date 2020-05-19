@@ -17,8 +17,7 @@
 /* -------------------------------- */
 /* container shouldn't be here */
 html,
-body
- {
+body {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;
@@ -98,10 +97,23 @@ body
     width: 30%;
 }
 
+
+/* desktop view */
+@media (min-width: 1025px) {
+    .footer {
+        display: none;
+    }
+}
+
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
+
     /* insert code here */
     #uTrack_logo {
+        display: none;
+    }
+
+    .footer {
         display: none;
     }
 }
