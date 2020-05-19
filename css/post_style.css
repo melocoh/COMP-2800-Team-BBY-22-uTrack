@@ -36,13 +36,20 @@ body {
     flex-direction: column;
 }
 
-.container > * {
+/* .container > * {
     padding: 10px;
-}
+} */
 
 #uploader {
     -webkit-appearance: none;
     appearance: none;
     width: 50%;
     margin-bottom: 10px;
+}
+
+/*for slider*/
+.slider-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 50px;
 }
