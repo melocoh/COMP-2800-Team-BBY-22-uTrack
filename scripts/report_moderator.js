@@ -8,7 +8,7 @@ db.collection("reports").get().then(function(snap){
 $("#totalReport").css({"background-color":"white","color":"black", "padding":"0px 5px", "border":"2px solid white","borderRadius":"6px"});
 
 /**
- * 
+ * Display the post that has been reported by reading data from database.
  */
 let items = "";
 db.collection("reports").get().then(function (querySnapshot){
@@ -30,12 +30,7 @@ db.collection("reports").get().then(function (querySnapshot){
         console.log(postId);
         getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, doc.id);
         
-        setStyle(contain);
-        p1.style.fontWeight = "bold";
-        btn.style.backgroundColor = "tomato";
-        btn.style.color = "white";
-        btn.style.borderRadius ="7px";
-        p6.style.textAlign ="center";
+        setStyle(contain,p1,p6,btn);
 
         p4.setAttribute("id","itemName");
         btn.innerHTML = "Delete";
@@ -54,6 +49,18 @@ db.collection("reports").get().then(function (querySnapshot){
     })
 })
 
+/**
+ * Gets the posts' information and use it to display or delete data on database.
+ * @param {*} postId 
+ * @param {*} p1 
+ * @param {*} p2 
+ * @param {*} p3 
+ * @param {*} p4 
+ * @param {*} p5 
+ * @param {*} btn 
+ * @param {*} contain 
+ * @param {*} b 
+ */
 function getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, b){
     postId.get().then(function(doc){
         var storeInfo = doc.get("post_store");
@@ -96,17 +103,31 @@ function getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, b){
         }).catch(function (error) {
             console.error("Error removing document: ", error);
         });
+
+        db.collection("reports").get().then(function(snap){
+            document.getElementById("totalReport").innerHTML = snap.size;
+        });
         }
         btn.onclick = removePost;
     })
 }
 
+/**
+ * Get store information from store reference in specific post document and display it.
+ * @param {*} storeInfo 
+ * @param {*} p3 
+ */
 function getStoreInfo(storeInfo, p3){
     storeInfo.get().then(function(doc){
         p3.innerHTML = doc.get("location");
     })
 }
 
+/**
+ * Get items information from items reference in specific post document and display it.
+ * @param {*} listItem 
+ * @param {*} p4 
+ */
 function getItemInfo(listItem,p4){
     for (let i = 0; i < listItem.length; i++){
         var name;
@@ -121,13 +142,30 @@ function getItemInfo(listItem,p4){
     }
 }
 
-function setStyle(contain){
+/**
+ * Sets the style for the post elements to display post.
+ * @param {*} contain 
+ * @param {*} p1 
+ * @param {*} p6 
+ * @param {*} btn 
+ */
+function setStyle(contain,p1,p6,btn){
     contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
+    p1.style.fontWeight = "bold";
+    p6.style.textAlign ="center";
+    btn.style.backgroundColor = "tomato";
+    btn.style.color = "white";
+    btn.style.borderRadius ="7px";
+    
 }
 
+/**
+ * Delete every item document that related to the specific post.
+ * @param {*} listItem 
+ */
 function deleteItem(listItem) {
     for (let i = 0; i < listItem.length; i++) {
         listItem[i].delete().then(function () {
@@ -138,6 +176,9 @@ function deleteItem(listItem) {
     }
 }
 
+/**
+ * Set the style for some elements.
+ */
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});

@@ -1,4 +1,4 @@
-// Your web app's Firebase configuration
+// Our web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDKgzVykfhhOfveIBruhWJhGQzO_cbuSdI",
   authDomain: "team22-project2.firebaseapp.com",
@@ -12,4 +12,4 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storage = firebase.storage();
-var storageRef = storage.ref();
+// var storageRef = storage.ref();

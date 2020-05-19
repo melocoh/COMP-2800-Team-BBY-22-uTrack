@@ -1,5 +1,9 @@
-// let storeItems;
 let items = "";
+
+/**
+ * Reads and displays data of posts collection on database based on the timestamp.
+ * I have read the code for deleting data on database from stackoverflow and firebase document.
+ */
 db.collection("posts").orderBy("timestamp","desc").get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc){
         let contain = document.createElement("div");
@@ -16,9 +20,13 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
         var listItem = doc.data().post_items;
         // btn.setAttribute("data-toggle", "modal");
         // btn.setAttribute("data-target", "#basicExampleModal");
+        //delete the data on database. 
         function removePost() {
             contain.style.display = "none";
 
+            //delete report
+            deleteReport(doc.get("reported"));
+            
             //delete item
             deleteItem(listItem);
 
@@ -35,15 +43,14 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
             });
+
+            db.collection("reports").get().then(function(snap){
+                document.getElementById("totalReport").innerHTML = snap.size;
+            });
         }
         btn.onclick = removePost;
         
-        setStyle(contain);
-        p1.style.fontWeight = "bold";
-        btn.style.backgroundColor = "tomato";
-        btn.style.color = "white";
-        btn.style.borderRadius ="7px";
-        p6.style.textAlign ="center";
+        setStyle(contain,p1,p6,btn);
 
         p4.setAttribute("id","itemName");
         p1.innerHTML = doc.data().post_name;
@@ -67,6 +74,12 @@ db.collection("posts").orderBy("timestamp","desc").get().then(function (querySna
     })
 })
 
+/**
+ * Get store information from store reference in specific post document and display it.
+ * @param {*} storeInfo 
+ * @param {*} p3 
+ * @param {*} p4 
+ */
 function getStoreInfo(storeInfo, p3, p4){
     storeInfo.get().then(function(doc){
         p3.innerHTML = doc.get("location");
@@ -76,6 +89,11 @@ function getStoreInfo(storeInfo, p3, p4){
     })
 }
 
+/**
+ * Get items information from item reference in specific store document and display it.
+ * @param {*} storeItems 
+ * @param {*} p4 
+ */
 function getItemInfo(storeItems,p4){
     for (let i = 0; i < storeItems.length; i++){
         var name;
@@ -90,13 +108,29 @@ function getItemInfo(storeItems,p4){
     }
 }
 
-function setStyle(contain){
+/**
+ * Set the style for the element contain to display post.
+ * @param {*} contain 
+ * @param {*} p1
+ * @param {*} p6
+ * @param {*} btn
+ */
+function setStyle(contain,p1,p6,btn){
     contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
+    p1.style.fontWeight = "bold";
+    p6.style.textAlign ="center";
+    btn.style.backgroundColor = "tomato";
+    btn.style.color = "white";
+    btn.style.borderRadius ="7px";
 }
 
+/**
+ * Delete every item document that related to the specific post.
+ * @param {*} listItem 
+ */
 function deleteItem(listItem) {
     for (let i = 0; i < listItem.length; i++) {
         listItem[i].delete().then(function () {
@@ -107,12 +141,29 @@ function deleteItem(listItem) {
     }
 }
 
+/**
+ * Delete the report document of the post if it has been reported by other users
+ * @param {*} report 
+ */
+function deleteReport(report){
+    if (report !== undefined){
+      report.delete().then(function(){
+          console.log("Document successfully deleted!");
+      }).catch(function(error){
+          console.error("Error removing document: ", error);
+      })
+    }
+}
+
+/**
+ * Set the style for some elements.
+ */
 $(document).ready(function(){
     $(".container").css("margin-top", "100px");
     $("#newPost").css({"display":"flex", "justify-content":"flex-end", "padding":"15px"});
   });
 
-  /**
+/**
  * Read the total posts that have been reported from database and display it.
  */
 db.collection("reports").get().then(function(snap){

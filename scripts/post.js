@@ -14,14 +14,27 @@ let postId;
 let userPost = [];
 const TIME = 500;
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
+var fileButton = document.getElementById('fileButton');
+let userId;
+let userName;
 
-//invoke functions
+//get user id and user name;
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      userId = db.collection("users/").doc(user.uid);
+      console.log(userId);
+      userName = user.displayName;
+  }});
+//Invoke functions
 removeQuantity();
 setInterval(function () {
     checkbox();
 }, TIME);
 
-//check if the check box is checked or not
+/**
+ * Check if the check box is checked or not to display the quantity input box.
+ */
 function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
@@ -58,12 +71,16 @@ function checkbox() {
     }
 }
 
+/**
+ * Hide the quantity input box.
+ */
 function removeQuantity() {
     document.querySelector('#quantity').style.display = "none";
 }
 
-//write data to database
-
+/**
+ * Add the data from user's input to severals collection on database.
+ */
 function setDataPost() {
     let locate = document.getElementById("address").value + ", " +
         document.getElementById("province").value +
@@ -79,8 +96,7 @@ function setDataPost() {
             let itemId = db.collection("items/").doc(docRef.id);
             console.log(itemId);
             itemIDs.push(itemId);
-            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
-            // add the store and post once the last item has been pushed to itemIDs arrya
+            // Add the store and post once the last item has been pushed to itemIDs array
             if (i == items.length - 1) {
                 db.collection("stores").add({
                     location: locate,
@@ -88,12 +104,6 @@ function setDataPost() {
                     store_name: document.getElementById("nameStore").value
                 }).then(function (docRef) {
                     storeId = db.collection("stores/").doc(docRef.id);
-                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-                    // storeId.set({
-                    //     location: locate,
-                    //     store_items: itemIDs,
-                    //     store_name: document.getElementById("nameStore").value
-                    // });
                     console.log(storeId);
                     db.collection("posts").add({
                         post_image: imgUrl,
@@ -101,10 +111,12 @@ function setDataPost() {
                         timestamp: curTime,
                         post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
-                        post_store: storeId
+                        post_store: storeId,
+                        user_id: userId,
+                        user_name: userName
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
-                        // userPost.push(postId);
+                        userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
                         //         user_posts: userPost
@@ -117,20 +129,11 @@ function setDataPost() {
             }
         });
     }
-
-    // updating item array of store (because it is blank for some reason)
-    // btw doesn't work
-    // db.collection("stores").doc(storeId).set({
-    //     location: locate,
-    //     store_items: itemIDs,
-    //     store_name: document.getElementById("nameStore").value
-    // });
-
-    // FOR TESTING PURPOSES:
-    // alert("For testing purposes: POSTED!");
 }
 
-//get item info 
+/**
+ * Get the item information if the item checkbox is checked.
+ */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
@@ -151,46 +154,9 @@ function getItemInfo() {
     }
 }
 
-
-//upload image to storage
-//get elements
-var fileButton = document.getElementById('fileButton');
-
-// fileButton.addEventListener('change', function (e) {
-//     var file = e.target.files[0];
-//     //create a storage ref
-//     var storageRef = firebase.storage().ref().child('Image/' + file.name);
-//     // localStorage.setItem(0, storageRef);
-//     //upload file
-//     var task = storageRef.put(file);
-//     //update progress bar
-//     task.on('state_changed',
-//         function error(err) {
-//             // A full list of error codes is available at
-//             // https://firebase.google.com/docs/storage/web/handle-errors
-//             switch (error.code) {
-//                 case 'storage/unauthorized':
-//                     // User doesn't have permission to access the object
-//                     break;
-//                 case 'storage/canceled':
-//                     // User canceled the upload
-//                     break;
-//                 case 'storage/unknown':
-//                     // Unknown error occurred, inspect error.serverResponse
-//                     break;
-//             }
-//         },
-//         function complete() {
-//             task.snapshot.ref.getDownloadURL().then(function (url) {
-//                 // console.log('File available at', downloadURL);
-//                 localStorage.setItem(0, url);
-//                 console.log(localStorage.getItem(0));
-//                 imgUrl = localStorage.getItem(0);
-//             });
-//         }
-//     );
-// });
-
+/**
+ * Save information that users entered and update it to database.
+ */
 function save() {
     console.log("inside save()");
     let promise = new Promise(function (req, res) {
@@ -204,24 +170,15 @@ function save() {
         .then(updateUser())
         .then(move());
     console.log("end promise chain");
-
-    // console.log("inside save()");
-    // console.log("getItemInfo()");
-    // getItemInfo();
-    // console.log("getTimeStamp()");
-    // getTimeStamp();
-    // console.log("getAllPost()");
-    // getAllPost();
-    // console.log("setDataPost()");
-    // setDataPost();
-    // console.log("updateUser");
-    // updateUser();
     console.log("end of save()");
     setTimeout(function () {
         window.location.href = "./post.html";
     }, TIME * 4);
 }
 
+/**
+ * Get the timestamp when the user posts.
+ */
 function getTimeStamp() {
 
     // creates new date, formatted "Wed May 06 2020 15:23:38 GMT-0700 (Pacific Daylight Time)""
@@ -260,6 +217,9 @@ function getTimeStamp() {
     })
 }
 
+/**
+ * Gets all the posts that the user has posted and stores it into an array.
+ */
 function getAllPost() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).get().then(function (user) {
@@ -273,22 +233,12 @@ function getAllPost() {
                 console.log("made blank userPost array");
             }
         })
-        // db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
-        //     // if (snap.data().user_posts === undefined || snap.data().user_posts === null){
-        //     //     userPost = [];
-        //     // } else {
-        //     //     userPost = snap.data().user_posts;
-        //     // }
-        //     // console.log("user_posts exists: " + snap.contains("user_posts"));
-        // if (snap.contains("user_posts")) {
-        //     userPost = snap.data().user_posts;
-        // } else {
-        //     userPost = [];
-        // }
-        // });
     });
 }
 
+/**
+ * Update user posts in users collection on database when users post. 
+ */
 function updateUser() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).update({
@@ -297,6 +247,9 @@ function updateUser() {
     });
 }
 
+/**
+ * Increase the point every time the user posts and update points into database.
+ */
 function move() {
 
     var user = firebase.auth().currentUser;
@@ -310,6 +263,10 @@ function move() {
     console.log("pressed");
 }
 
+/**
+ * Update the level when users reach new level and resets the point to 0,
+ * and show congratulation message to users.
+ */
 function updateExp() {
     var user = firebase.auth().currentUser;
 
@@ -327,12 +284,17 @@ function updateExp() {
                 level: level + 1
             }); // increments level
             $("#lv").html("Level: " + level);
-            alert("you have raised the level of up to " + level);
+            $("#levelReached").html("You have raised your level up to " + (level + 1));
+            $(".pyro").css({"display":"inline"});
+            $("#congratulation").modal("show");
         }
 
     });
 }
 
+/**
+ * Store the image that user has uploaded to firebase storage and gets the reference.
+ */
 $(document).ready(function () {
     fileButton.addEventListener('change', function (e) {
         var file = e.target.files[0];
@@ -375,6 +337,9 @@ $(document).ready(function () {
         );
     });
 
+    /**
+     * Invoke save() when button is clicked.
+     */
     document.getElementById("postButton").onclick = function () {
         save();
     };
