@@ -28,6 +28,9 @@ section {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;
+    /* display: grid;
+    margin-top: 70px;
+    height: 90vh; */
 }
 /* --------------------------------- */
 /* HERE Map */

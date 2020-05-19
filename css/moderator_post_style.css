@@ -45,7 +45,7 @@ body {
 /* For notification */
 /* --------------------------------- */
 #totalReport{
-    color: #1E90FF;
+    color: rgb(189, 25, 25);
 }
 .notification {
     margin-left: 20px;

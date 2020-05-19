@@ -57,10 +57,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 //Invoke functions
-// removeQuantity();
-// setInterval(function () {
-//     checkbox();
-// }, TIME);
+removeQuantity();
+setInterval(function () {
+    checkbox();
+}, TIME);
 
 /** Firestore Posts Collection Reference */
 let postsCollec = db.collection("posts");
@@ -74,35 +74,35 @@ let storesCollec = db.collection("stores");
 //check if the check box is checked or not
 
 /**
- * Insert javadoc here
+ * Check if the check box is checked or not to hide the quantity boc
  */
 function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
         document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox1').style.visibility = "visible";
+        document.querySelector('#textBox1').style.display = "inline";
     } else {
         checked1 = false;
-        document.querySelector('#textBox1').style.visibility = "hidden";
+        document.querySelector('#textBox1').style.display = "none";
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
         document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox2').style.visibility = "visible";
+        document.querySelector('#textBox2').style.display = "inline";
     } else {
         checked2 = false;
-        document.querySelector('#textBox2').style.visibility = "hidden";
+        document.querySelector('#textBox2').style.display = "none";
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
         document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox3').style.visibility = "visible";
+        document.querySelector('#textBox3').style.display = "inline";
     } else {
         checked3 = false;
-        document.querySelector('#textBox3').style.visibility = "hidden";
+        document.querySelector('#textBox3').style.display = "none";
     }
 
     if (!document.querySelector('#customCheck1:checked') &&
@@ -277,20 +277,26 @@ function setDataPost() {
  */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
-        items.push(document.getElementById("customCheck1").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
+        items.push(document.getElementById("customCheck").value);
+        // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
+        let itemQuantity = document.getElementById("slider").value;
+        console.log(itemQuantity);
         stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
+        // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
+        let itemQuantity = document.getElementById("slider2").value;
+        console.log(itemQuantity);
         stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
+        // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
+        let itemQuantity = document.getElementById("slider3").value;
+        console.log(itemQuantity);
         stock.push(itemQuantity);
     }
 }
@@ -425,15 +431,8 @@ function updateExp() {
                 level: level + 1
             }); // increments level
             $("#lv").html("Level: " + level);
-<<<<<<< HEAD
             $("#levelReached").html(level + 1);
             $(".pyro").css({"display":"inline"});
-=======
-            $("#levelReached").html("You have raised your level up to " + (level + 1));
-            $(".pyro").css({
-                "display": "inline"
-            });
->>>>>>> 8bcb529dacab218cf829a0f9ad188a16187c4750
             $("#congratulation").modal("show");
         }
 
@@ -467,19 +466,13 @@ function updateExp() {
 // // }
 
 /**
- * Insert javadoc here
+ * Store the image that user has uploaded to firebase storage and gets the reference.
  */
 $(document).ready(function () {
     console.log("current window location: " + window.location.href);
     if (window.location.href.includes("/posting.html")) {
         console.log("window location TRUE");
         storeId = localStorage.getItem("storeId");
-        //invoke functions
-        // removeQuantity();
-        // checkbox();
-        // setInterval(function () {
-        //     checkbox();
-        // }, TIME);
 
         fileButton.addEventListener('change', function (e) {
             var file = e.target.files[0];
@@ -493,8 +486,6 @@ $(document).ready(function () {
                 console.log("storageRef downloadURL: " + url);
                 imgUrl = url;
             });
-            // localStorage.setItem(0, storageRef);
-            //upload file
 
             //update progress bar
             task.on('state_changed',

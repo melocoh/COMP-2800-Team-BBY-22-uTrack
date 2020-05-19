@@ -54,9 +54,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./moderator_post.html">Post</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="./reported_post.html">Reported Post</a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="nav-link" href="./reported_post.html">Reported Posts <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
@@ -207,16 +207,6 @@
             <span>This is the footer</span>
         </footer> -->
     </div>
-    <script>
-        /**
-         * Read the total posts that have been reported from database and display it.
-         */
-        db.collection("reports").get().then(function(snap){
-            document.getElementById("totalReport").innerHTML = snap.size;
-        });
-        $("#totalReport").css({"background-color":"white","color":"black", "padding":"0px 5px", "border":"2px solid white","borderRadius":"6px"});
-
-    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -257,6 +247,7 @@
     <script src="./scripts/here_maps/here_maps_markers.js"></script>
     <script src="./scripts/here_maps/here_maps_user_location.js"></script>
     <script src="./scripts/home.js"></script>
+    <script src="./scripts/notification.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
