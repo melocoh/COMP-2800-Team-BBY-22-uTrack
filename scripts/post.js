@@ -1,27 +1,62 @@
+/** insert javadoc here */
 let checked1 = false;
+
+/** insert javadoc here */
 let checked2 = false;
+
+/** insert javadoc here */
 let checked3 = false;
+
+/** insert javadoc here */
 let items = [];
+
+/** insert javadoc here */
 let stock = [];
-// let imgUrl = localStorage.getItem(0);
+
+/** insert javadoc here */
 let imgUrl;
-// let itemsId;
+
+/** insert javadoc here */
 let itemIDs = [];
-let storeId;
+
+/** insert javadoc here */
+// let storeId;
+
+/** insert javadoc here */
 let curTime;
+
+/** insert javadoc here */
 let dateAndTime;
+
+/** insert javadoc here */
 let postId;
+
+/** insert javadoc here */
 let userPost = [];
+
+/** insert javadoc here */
+var storeId;
+
+/** insert javadoc here */
 const TIME = 500;
+
+/** insert javadoc here */
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
-//invoke functions
-removeQuantity();
-setInterval(function () {
-    checkbox();
-}, TIME);
+/** Firestore Posts Collection Reference */
+let postsCollec = db.collection("posts");
+
+/** Firestore Items Collection Reference */
+let itemsCollec = db.collection("items");
+
+/** Firestore Stores Collection Reference */
+let storesCollec = db.collection("stores");
 
 //check if the check box is checked or not
+
+/**
+ * Insert javadoc here
+ */
 function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
@@ -58,52 +93,120 @@ function checkbox() {
     }
 }
 
+/**
+ * Insert javadoc here
+ */
 function removeQuantity() {
     document.querySelector('#quantity').style.display = "none";
 }
 
 //write data to database
 
+/**
+ * Insert javadoc here
+ */
 function setDataPost() {
-    let locate = document.getElementById("address").value + ", " +
-        document.getElementById("province").value +
-        ", " + document.getElementById("zip").value;
+    // let locate = document.getElementById("address").value + ", " +
+    //     document.getElementById("province").value +
+    //     ", " + document.getElementById("zip").value;
 
     // iterate over each item in the items array and add them to the database
+    // for (let i = 0; i < items.length; i++) {
+    //     db.collection("items").add({
+    //         category: items[i],
+    //         item_name: items[i],
+    //         stock_number: stock[i]
+    //     }).then(function (docRef) {
+    //         let itemId = db.collection("items/").doc(docRef.id);
+    //         console.log(itemId);
+    //         itemIDs.push(itemId);
+    //         // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
+    //         // add the store and post once the last item has been pushed to itemIDs arrya
+    //         if (i == items.length - 1) {
+    //             db.collection("stores").add({
+    //                 location: locate,
+    //                 store_items: itemIDs,
+    //                 store_name: document.getElementById("nameStore").value
+    //             }).then(function (docRef) {
+    //                 storeId = db.collection("stores/").doc(docRef.id);
+    //                 // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+    //                 // storeId.set({
+    //                 //     location: locate,
+    //                 //     store_items: itemIDs,
+    //                 //     store_name: document.getElementById("nameStore").value
+    //                 // });
+    //                 console.log(storeId);
+    //                 db.collection("posts").add({
+    //                     post_image: imgUrl,
+    //                     post_date: dateAndTime,
+    //                     timestamp: curTime,
+    //                     post_name: document.getElementById("nameStore").value,
+    //                     post_items: itemIDs,
+    //                     post_store: storeId
+    //                 }).then(function (docRef) {
+    //                     postId = db.collection("posts/").doc(docRef.id);
+    //                     // userPost.push(postId);
+    //                     // firebase.auth().onAuthStateChanged(function (user) {
+    //                     //     db.collection("users/").doc(user.id).update({
+    //                     //         user_posts: userPost
+    //                     //     })
+    //                     // })
+    //                 }).catch(function (error) {
+    //                     console.log("Error adding document: ", error);
+    //                 });
+    //             });
+    //         }
+    //     });
+    // }
+
     for (let i = 0; i < items.length; i++) {
-        db.collection("items").add({
+        itemsCollec.add({
             category: items[i],
             item_name: items[i],
             stock_number: stock[i]
-        }).then(function (docRef) {
-            let itemId = db.collection("items/").doc(docRef.id);
-            console.log(itemId);
+        }).then(function (itemRef) {
+            let itemId = db.collection("items/").doc(itemRef.id);
+            console.log("itemID: " + itemId);
             itemIDs.push(itemId);
             // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
             // add the store and post once the last item has been pushed to itemIDs arrya
             if (i == items.length - 1) {
-                db.collection("stores").add({
-                    location: locate,
-                    store_items: itemIDs,
-                    store_name: document.getElementById("nameStore").value
-                }).then(function (docRef) {
-                    storeId = db.collection("stores/").doc(docRef.id);
-                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-                    // storeId.set({
-                    //     location: locate,
-                    //     store_items: itemIDs,
-                    //     store_name: document.getElementById("nameStore").value
-                    // });
-                    console.log(storeId);
-                    db.collection("posts").add({
+
+                // FOR TESTING PURPOSES
+                console.log("last item has been added");
+
+                // FOR TESTING PURPOSES
+                console.log("updating store");
+                console.log("storeID: " + storeId);
+
+                let storeName;
+
+                // update store
+                storesCollec.doc(storeId).update({
+                    store_items: itemIDs
+                });
+                // may need to use .then() promise for post addition
+
+                storesCollec.doc(storeId).get().then((storeDoc) => {
+                    let storeRef = db.collection("stores/").doc(storeDoc.id);
+
+                    console.log("store name: " + storeDoc.get("store_name"));
+                    storeName = storeDoc.get("store_name");
+
+                    // FOR TESTING PURPOSES
+                    console.log("adding post");
+                    console.log("storeDoc: " + storeDoc);
+
+                    // adding new post
+                    postsCollec.add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
-                        post_name: document.getElementById("nameStore").value,
+                        post_name: storeName,
                         post_items: itemIDs,
-                        post_store: storeId
-                    }).then(function (docRef) {
-                        postId = db.collection("posts/").doc(docRef.id);
+                        post_store: storeRef
+                    }).then(function (postRef) {
+                        postId = postsCollec.doc(postRef.id);
                         // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
@@ -114,23 +217,51 @@ function setDataPost() {
                         console.log("Error adding document: ", error);
                     });
                 });
+
+
+                // db.collection("stores").add({
+                //     location: locate,
+                //     store_items: itemIDs,
+                //     store_name: document.getElementById("nameStore").value
+                // }).then(function (docRef) {
+                //     storeId = db.collection("stores/").doc(docRef.id);
+                //     // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+                //     // storeId.set({
+                //     //     location: locate,
+                //     //     store_items: itemIDs,
+                //     //     store_name: document.getElementById("nameStore").value
+                //     // });
+                //     console.log(storeId);
+                // db.collection("posts").add({
+                //     post_image: imgUrl,
+                //     post_date: dateAndTime,
+                //     timestamp: curTime,
+                //     post_name: document.getElementById("nameStore").value,
+                //     post_items: itemIDs,
+                //     post_store: storeId
+                // }).then(function (docRef) {
+                //     postId = db.collection("posts/").doc(docRef.id);
+                //     // userPost.push(postId);
+                //     // firebase.auth().onAuthStateChanged(function (user) {
+                //     //     db.collection("users/").doc(user.id).update({
+                //     //         user_posts: userPost
+                //     //     })
+                //     // })
+                // }).catch(function (error) {
+                //     console.log("Error adding document: ", error);
+                // });
+                // });
             }
         });
     }
 
-    // updating item array of store (because it is blank for some reason)
-    // btw doesn't work
-    // db.collection("stores").doc(storeId).set({
-    //     location: locate,
-    //     store_items: itemIDs,
-    //     store_name: document.getElementById("nameStore").value
-    // });
-
     // FOR TESTING PURPOSES:
-    // alert("For testing purposes: POSTED!");
+    alert("For testing purposes: POSTED!");
 }
 
-//get item info 
+/**
+ * Insert javadoc here
+ */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
@@ -153,7 +284,6 @@ function getItemInfo() {
 
 
 //upload image to storage
-//get elements
 var fileButton = document.getElementById('fileButton');
 
 // fileButton.addEventListener('change', function (e) {
@@ -191,6 +321,9 @@ var fileButton = document.getElementById('fileButton');
 //     );
 // });
 
+/**
+ * Insert javadoc here
+ */
 function save() {
     console.log("inside save()");
     let promise = new Promise(function (req, res) {
@@ -222,6 +355,9 @@ function save() {
     }, TIME * 4);
 }
 
+/**
+ * Insert javadoc here
+ */
 function getTimeStamp() {
 
     // creates new date, formatted "Wed May 06 2020 15:23:38 GMT-0700 (Pacific Daylight Time)""
@@ -260,6 +396,9 @@ function getTimeStamp() {
     })
 }
 
+/**
+ * Insert javadoc here
+ */
 function getAllPost() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).get().then(function (user) {
@@ -289,6 +428,9 @@ function getAllPost() {
     });
 }
 
+/**
+ * Insert javadoc here
+ */
 function updateUser() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).update({
@@ -297,6 +439,9 @@ function updateUser() {
     });
 }
 
+/**
+ * Insert javadoc here
+ */
 function move() {
 
     var user = firebase.auth().currentUser;
@@ -310,6 +455,9 @@ function move() {
     console.log("pressed");
 }
 
+/**
+ * Insert javadoc here
+ */
 function updateExp() {
     var user = firebase.auth().currentUser;
 
@@ -333,49 +481,88 @@ function updateExp() {
     });
 }
 
+// /**
+//  * insert javadoc here
+//  * @param {Firestore Reference} storeId 
+//  */
+// function getStoreIdToPost(curStoreId) {
+//     // FOR TESTING PURPOSES
+//     console.log("inside getStoreIdToPost()");
+
+//     // store the storeID into the designated variable
+//     storeId = curStoreId;
+
+//     // FOR TESTING PURPOSES
+//     console.log("storeID in post: " + storeId);
+//     // console.log("current store: " + storesCollec.doc(storeId).get().then((doc) => {
+
+//     // }));
+//     // console.log("location: " + storesCollec.doc(storeId).get("location"));
+
+
+
+//     // FOR TESTING PURPOSES
+//     console.log("end of getStoreIdToPost()");
+// }
+
+/**
+ * Insert javadoc here
+ */
 $(document).ready(function () {
-    fileButton.addEventListener('change', function (e) {
-        var file = e.target.files[0];
-        //create a storage ref
-        var storageRef = firebase.storage().ref().child('Image/' + file.name);
-        console.log("post storageRef: " + storageRef);
+    console.log("current window location: " + window.location.href);
+    if (window.location.href.includes("/posting.html")) {
+        console.log("window location TRUE");
+        storeId = localStorage.getItem("storeId");
+        //invoke functions
+        // removeQuantity();
+        // checkbox();
+        // setInterval(function () {
+        //     checkbox();
+        // }, TIME);
 
-        var task = storageRef.put(file);
+        fileButton.addEventListener('change', function (e) {
+            var file = e.target.files[0];
+            //create a storage ref
+            var storageRef = firebase.storage().ref().child('Image/' + file.name);
+            console.log("post storageRef: " + storageRef);
 
-        storageRef.getDownloadURL().then(function (url) {
-            console.log("storageRef downloadURL: " + url);
-            imgUrl = url;
-        });
-        // localStorage.setItem(0, storageRef);
-        //upload file
-        
-        //update progress bar
-        task.on('state_changed',
-            function error(err) {
-                // A full list of error codes is available at
-                // https://firebase.google.com/docs/storage/web/handle-errors
-                switch (error.code) {
-                    case 'storage/unauthorized':
-                        // User doesn't have permission to access the object
-                        break;
-                    case 'storage/canceled':
-                        // User canceled the upload
-                        break;
-                    case 'storage/unknown':
-                        // Unknown error occurred, inspect error.serverResponse
-                        break;
+            var task = storageRef.put(file);
+
+            storageRef.getDownloadURL().then(function (url) {
+                console.log("storageRef downloadURL: " + url);
+                imgUrl = url;
+            });
+            // localStorage.setItem(0, storageRef);
+            //upload file
+
+            //update progress bar
+            task.on('state_changed',
+                function error(err) {
+                    // A full list of error codes is available at
+                    // https://firebase.google.com/docs/storage/web/handle-errors
+                    switch (error.code) {
+                        case 'storage/unauthorized':
+                            // User doesn't have permission to access the object
+                            break;
+                        case 'storage/canceled':
+                            // User canceled the upload
+                            break;
+                        case 'storage/unknown':
+                            // Unknown error occurred, inspect error.serverResponse
+                            break;
+                    }
+                },
+                function complete() {
+                    storageRef.getDownloadURL().then(function (url) {
+                        console.log("downloadURL: " + url);
+                        imgUrl = url;
+                    });
                 }
-            },
-            function complete() {
-                storageRef.getDownloadURL().then(function (url) {
-                    console.log("downloadURL: " + url);
-                    imgUrl = url;
-                });
-            }
-        );
-    });
+            );
+        });
 
-    document.getElementById("postButton").onclick = function () {
-        save();
-    };
+        document.getElementById("postButton").onclick = function () {
+            save();
+        };
+    }
 });
