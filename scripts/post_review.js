@@ -106,10 +106,12 @@ function getItemInfo(storeItems, p4) {
 
             // list.innerHTML = items + name + ": " + stock;
 
-            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span>` + stock + `<span>`;
+            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span id="stockQuantity">` + stock + `<span>`;
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
+            list.style.alignItems = "center";
+
 
             p4.appendChild(list);
         })
