@@ -1,7 +1,7 @@
 let displayName = document.getElementById("displayName");
 let displayLevel = document.getElementById("displayLevel");
 // let displayPosting = document.getElementById("displayPosting");
-let displayPoint = document.getElementById("displayPoint");
+// let displayPoint = document.getElementById("displayPoint");
 let displayEmail = document.getElementById("displayEmail");
 let displayPicture = document.getElementById("userProfilePic");
 let surpriseModal = document.getElementById("surpriseModal");
@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 }
                 displayLevel.innerHTML = "<b>Level</b> : " + snap.data().level;
                 // displayPosting.innerHTML = "<b>Post</b> : " + snap.data().post;
-                displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
+                // displayPoint.innerHTML = "<b>Points</b> : " + snap.data().points;
                 displayEmail.innerHTML = user.email;
                 setTimeout(() => {
                     displayPointbar.style.width = snap.data().points + "%";
@@ -111,18 +111,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 })
 */
 
-$(window).on('load', function () {
-
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            db.collection("/users/").doc(user.uid).get().then(function (snap) {
-                // display levelling system if user level is 1
-                if (snap.data().level === 1) {
-                    $('#myModal').modal('show');
-                }
-            })
-        }
-
-    })
-});
+function displayLevelSystem() {
+    $('#myModal').modal('show');
+}
+                    
