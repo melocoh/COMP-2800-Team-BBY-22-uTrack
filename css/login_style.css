@@ -17,11 +17,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
-#topLogo {
-    display: block;
-    text-align: center;
-}
-#footer_img {
+#topLogo, #slogan, #footer_img  {
     display: block;
     text-align: center;
 }
@@ -82,17 +78,16 @@
         bottom: 2em;
     } */
     #topLogo {
-        padding-top: 50px;
-        padding-bottom: 20px;
+        padding-top: 30px;
     }
 
-    #login_container {
-        padding-bottom: 30px;
-    }
-    
     #img_logo {
         width: 50px;
         height: 50px;
         margin-top: 20px;
+    }
+
+    #slogan {
+        margin: -20px 0 40px 0;
     }
 }
