@@ -30,6 +30,7 @@
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/home_style.css">
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
 </head>
 
 <body>
@@ -38,7 +39,8 @@
     <!----------------------->
 
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180" height="60px" id="uTrack_logo"></a>
+        <a class="navbar-brand" href="./moderator_home.html"><img src="./images/uTrack_logo.png" width="180"
+                height="60px" id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,15 +72,15 @@
                     <h4>Log Out <i class="fa fa-lock"></i></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    
+
                 </div>
                 <div class="modal-body">
                     <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
                     <div class="actionsBtns">
                         <form action="/logout" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal"
-                                value="Logout" onclick="firebase.auth().signOut();" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
                             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
@@ -199,6 +201,33 @@
             <span>This is the footer</span>
         </footer> -->
     </div>
+
+    <!-- Bottom Nav Bar -->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-active"
+            onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span style="text-align: center;">Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

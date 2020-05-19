@@ -60,8 +60,8 @@ canvas {
     background-color: #1A73E8;
     /* absolute from map */
     position: absolute;
-    bottom: 4rem;
-    right: 3rem;
+    top: 7rem;
+    right: 1rem;
     /* send to front over map */
     z-index: 99999;
     /* align i element to vertical center */
@@ -93,9 +93,6 @@ canvas {
     max-height: 50px;
 }
 
-span:last-child {
-    margin-left: auto;
-}
 
 .modal-footer {
     justify-content: center;
@@ -116,5 +113,9 @@ span:last-child {
         /* width: 100vw;
         height: 100vh; */
         height: 80vh;
+    }
+
+    span {
+        text-align: center;
     }
 }

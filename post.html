@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -32,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/report_modal.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
 </head>
 
 <body>
@@ -90,11 +92,14 @@
         </div>
     </div>
 
-    <div class="container" id="theContainer">
-        <div id="newPost">
-            <button class="btn-primary" onclick="window.location.href='./posting.html'">New post</button>
-        </div>
+    <div id="newPost">
+        <button class="btn-primary newPostBtn" onclick="window.location.href='./posting.html'" >New post</button>
     </div>
+    
+    <div class="container" id="theContainer">
+        
+    </div>
+
 
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -130,38 +135,66 @@
                 </form>
             </div>
         </div>
+    </div>
+    
+    <!-- Bottom Nav Bar -->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
-        <!----------------------------------------------->
-        <!-- JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
-        <!--------------------------------------------------------------------->
-        <!-- JS files: Your own JavaScript functions included here    -->
-        <!--------------------------------------------------------------------->
-        <script src="./scripts/firebase_api_uTrack.js"> </script>
-        <script src="./scripts/post_review.js"></script>
-        <script src="./scripts/auth_check.js"></script>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/post_review.js"></script>
+    <script src="./scripts/auth_check.js"></script>
 
-        <!--------------------------------------------------------------------->
-        <!-- Make calls to your own JavaScript functions, here below-->
-        <!---------------------------------------------------------------------->
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
 </body>
 
 </html>

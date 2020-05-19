@@ -37,6 +37,8 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/profile_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+
 </head>
 
 <body>
@@ -158,8 +160,8 @@
                 <i id="right_arrow" class="fas fa-chevron-right"></i>
             </div>
             <div class="grid-item item2"><span id="levelSystem" onclick="displayLevelSystem()">
-                <img src="./images/questionmark.png" id="questionmark">
-            </span></div>
+                    <img src="./images/questionmark.png" id="questionmark">
+                </span></div>
             <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
 
             <div class="grid-item item3" id="displayLevel">Level</div>
@@ -203,7 +205,7 @@
                         You will get a new badge and a new avatar when you level up.<br><br>
                         <br>
                     </p>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -234,6 +236,33 @@
 
         </div>
     </div>
+
+    <!-- Bottom Nav Bar -->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+            onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

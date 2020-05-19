@@ -108,6 +108,10 @@ body
 
 /* mobile view */
 @media (min-width: 0px) and (max-width: 419px) {
+    .navbar-toggler {
+        display: none;
+    }
+
     .container {
         margin-top: 10vh;
         max-height: 90vh;
