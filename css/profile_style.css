@@ -63,6 +63,7 @@
         display: grid;
         grid-template-columns: auto auto;
         padding: 10px;
+        margin-top: 30px;
         /* margin-left: 30px; */
         /* border-radius: 30px; */
         /* margin: 5px; */
@@ -81,6 +82,13 @@
         margin: auto;
     }
     
+    .footer {
+        display: none;
+    }
+
+    #logoutBtn {
+        background-color: #d9f5ff;
+    }
 }
 
 /* tablet view */
@@ -110,6 +118,11 @@
         display: block;
         margin: auto;
     }
+
+    .footer {
+        display: none;
+    }
+
 }
 
 /* mobile view */
@@ -179,5 +192,6 @@
     #badgeInfo {
         margin-left:50px;
     }
+
 
 }

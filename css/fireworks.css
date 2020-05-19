@@ -5,7 +5,7 @@ body {
     overflow: hidden; }
   
  .pyro{
-        display: none;
+  display: none;
   }
 
   .pyro > .before, .pyro > .after {
