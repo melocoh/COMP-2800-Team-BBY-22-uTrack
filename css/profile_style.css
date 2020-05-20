@@ -9,9 +9,59 @@
     width: 100%;
 }
 
-#userProfilePic {
-    width: 300px;
+.item1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profpic_container {
+    position: relative;
+    display: inline-block;
     height: 300px;
+    width: 300px;
+}
+
+#profpic_container > * {
+    position: absolute;
+}
+
+#profpic_container i {
+    /* set to center of div */
+    top: 50%;
+    left: 50%;
+    /* change origin point to center of icon */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    opacity: 0.70;
+}
+
+#userProfilePic {
+    /* width: 300px;
+    height: 300px; */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.lvlreq_div {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+    width: 50%;
+    font-size: 0.5rem;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.lvlreq_div > * {
+    margin: 0;
 }
 
 #questionmark {
@@ -121,10 +171,10 @@
     #expBar {
         width: 80%;
     }
-    #userProfilePic {
+    /* #userProfilePic {
         width: 120px;
         height: 120px;
-    }
+    } */
 
     .grid-container {
         display: grid;
