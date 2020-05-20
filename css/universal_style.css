@@ -129,13 +129,13 @@ body {
         max-height: 90vh;
     }
 
-    #menuNav {
+    /* #menuNav { */
         /* WARNING:
         Setting a fixed height value for the navbar
         will apply a bug to the background-colour
         of the nav links */
-        height: auto;
-    }
+        /* height: auto;
+    } */
 
     #menuNav .navbar-right li:nth-child(1) {
         border-top: 1px solid black;
