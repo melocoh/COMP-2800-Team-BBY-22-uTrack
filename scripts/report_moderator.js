@@ -159,6 +159,7 @@ function getItemInfo(listItem, p4) {
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
+            list.style.alignItems = "center";
             p4.appendChild(list);
         })
     }
