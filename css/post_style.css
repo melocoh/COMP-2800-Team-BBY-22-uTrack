@@ -19,13 +19,13 @@
     #newPost {
         margin: 40px 0 -100px 0;
     }
-    
+
 }
 
 /* -------------------------- */
 /* For the title in post page */
 /* -------------------------- */
-#titleContainer{
+#titleContainer {
     font-size: 25px;
     border-bottom: 1px solid gray;
 }
@@ -90,13 +90,13 @@ body {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-  }
-  
-  .slider:hover {
+}
+
+.slider:hover {
     opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
+}
+
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -104,16 +104,21 @@ body {
     border-radius: 50%;
     background: lightblue;
     cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
+}
+
+.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background: lightblue;
     cursor: pointer;
-  }
+}
 
-  #questionmark{
+#questionmark {
     padding-left: 8px;
-  }
+}
+
+/* to right align "!" mark - Steven Kim */
+#reportBtn {
+    float: right;
+}
