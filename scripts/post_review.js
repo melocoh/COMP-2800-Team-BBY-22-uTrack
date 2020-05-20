@@ -46,33 +46,37 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         p4.setAttribute("id", "itemName");
 
-        var storageRef = firebase.storage().ref().child("store_logos");
-        let storeLogo;
-        switch (doc.data().post_name) {
-            case "Walmart":
-                storeLogo = storageRef.child("walmart.png");
-                break;
-            case "Superstore":
-                storeLogo = storageRef.child("superstore.png");
-                break;
-            case "Save-on-Foods":
-                storeLogo = storageRef.child("saveonfoods.png");
-                break;
-            case "Costco":
-                storeLogo = storageRef.child("costco.png");
-                break;
-            default:
-                storeLogo = storageRef.child("superstore.png");
-                break;
-        }
+        /** Commented out for now to save on reads */
 
-        storeLogo.getDownloadURL().then(function (url) {
-            //p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
-            p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
-            console.log(url);
-        }).catch(function (error) {
-            console.log(error);
-        })
+        // var storageRef = firebase.storage().ref().child("store_logos");
+        // let storeLogo;
+        // switch (doc.data().post_name) {
+        //     case "Walmart":
+        //         storeLogo = storageRef.child("walmart.png");
+        //         break;
+        //     case "Superstore":
+        //         storeLogo = storageRef.child("superstore.png");
+        //         break;
+        //     case "Save-on-Foods":
+        //         storeLogo = storageRef.child("saveonfoods.png");
+        //         break;
+        //     case "Costco":
+        //         storeLogo = storageRef.child("costco.png");
+        //         break;
+        //     default:
+        //         storeLogo = storageRef.child("superstore.png");
+        //         break;
+        // }
+
+        /** Commented out for now to save on reads */
+
+        // storeLogo.getDownloadURL().then(function (url) {
+        //     //p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+        //     p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
+        //     console.log(url);
+        // }).catch(function (error) {
+        //     console.log(error);
+        // })
 
         //need to change it back when slider is fix and have new post.
         // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
