@@ -18,22 +18,20 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
         let text = document.createElement("div");
-        let p1 = document.createElement("div");
+        let p1 = document.createElement("p");
         let p2 = document.createElement("img");
         let p3 = document.createElement("p");
         let p4 = document.createElement("p");
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
-        let btn = document.createElement("img");
-        let btnDiv = document.createElement("div");
+        let btn = document.createElement("button");
+        let span2 = document.createElement("span");
+        let span1 = document.createElement("span");
+        let span3 = document.createElement("span");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         // btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
-        btn.setAttribute("src","./images/exclamation.png");
-        btn.setAttribute("width","40px");
-        btn.setAttribute("height","40px");
-        btn.setAttribute("id","reportBtn");
         btn.onclick = function () {
             butval = parseInt(btn.value);
             $(".mess").click(function () {
@@ -46,51 +44,25 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         setStyle(contain, p1, p6, btn);
 
         p4.setAttribute("id", "itemName");
-
-        var storageRef = firebase.storage().ref().child("store_logos");
-        let storeLogo;
-        switch (doc.data().post_name) {
-            case "Walmart":
-                storeLogo = storageRef.child("walmart.png");
-                break;
-            case "Superstore":
-                storeLogo = storageRef.child("superstore.png");
-                break;
-            case "Save-on-Foods":
-                storeLogo = storageRef.child("saveonfoods.png");
-                break;
-            case "Costco":
-                storeLogo = storageRef.child("costco.png");
-                break;
-            default:
-                storeLogo = storageRef.child("superstore.png");
-                break;
-        }
-
-        storeLogo.getDownloadURL().then(function (url) {
-            p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
-            //p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
-            console.log(url);
-        }).catch(function (error) {
-            console.log(error);
-        })
-
+        p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
         //need to change it back when slider is fix and have new post.
         // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
-        p5.innerHTML = "Posted: " + doc.get("post_date");
+        // p5.innerHTML = "Posted: " +  doc.get("post_date");
+        span1.innerHTML = "Posted by ";
+        span3.innerHTML = " @ " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
+        var userInfo = doc.get("user_id");
         getStoreInfo(storeInfo, p3, p4);
+        getUserInfo(userInfo, p5, span1, span2, span3);
 
-        // p6.appendChild(btn);
+        p6.appendChild(btn);
         text.appendChild(p1);
         text.appendChild(p2);
         text.appendChild(p4);
         text.appendChild(p3);
         text.appendChild(p5);
-        // text.appendChild(p6);
-        btnDiv.appendChild(btn);
-        contain.appendChild(btnDiv);
+        text.appendChild(p6);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
@@ -141,13 +113,10 @@ function getItemInfo(storeItems, p4) {
 
             // list.innerHTML = items + name + ": " + stock;
 
-            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">`
-                    + `<span id="stockQuantity">` + stock + `</span>`;
+            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span>` + stock + `<span>`;
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
-            list.style.alignItems = "center";
-
 
             p4.appendChild(list);
         })
@@ -163,16 +132,15 @@ function getItemInfo(storeItems, p4) {
  */
 function setStyle(contain, p1, p6, btn) {
     contain.style.textAlign = "center";
-    // contain.style.backgroundColor = "#D6EFFF";
+    contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
-    p1.style.margin = "-25px";
-    //p1.style.fontWeight = "bold";
-    // p6.style.textAlign = "center";
-    // btn.style.backgroundColor = "tomato";
-    // btn.style.color = "white";
-    // btn.style.borderRadius = "7px";
+    p1.style.fontWeight = "bold";
+    p6.style.textAlign = "center";
+    btn.style.backgroundColor = "tomato";
+    btn.style.color = "white";
+    btn.style.borderRadius = "7px";
 }
 
 /**
@@ -182,7 +150,7 @@ function setStyle(contain, p1, p6, btn) {
 $(document).ready(function () {
     $(".container").css("margin-top", "100px");
     $("#newPost").css({
-        "display": "fixed",
+        "display": "flex",
         "justify-content": "flex-end",
         "padding": "15px"
     });
@@ -211,3 +179,45 @@ $(document).ready(function () {
 
     });
 });
+
+/**
+ * Get information of the user who posted the post and display it in modal.
+ * @param {*} userInfo 
+ * @param {*} p5 
+ * @param {*} span1 
+ * @param {*} span2 
+ * @param {*} span3 
+ */
+function getUserInfo(userInfo, p5, span1, span2, span3) {
+    userInfo.get().then(function (doc) {
+        var userName = doc.get("name");
+        span2.innerHTML = userName;
+        span2.setAttribute("value", doc.uid);
+        span2.setAttribute("data-toggle", "modal");
+        span2.setAttribute("data-target", "#profileModal");
+        p5.appendChild(span1);
+        p5.appendChild(span2);
+        p5.appendChild(span3);
+        span2.onclick = function () {
+            switch (doc.get("level")) {
+                case 1:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
+                    break;
+                case 2:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
+                    break;
+                case 3:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
+                    break;
+                default:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
+                    break;
+            }
+
+            $("#userName").html = `<b>` + userName + `</b>`;
+            $("#userLevel").html = doc.get("level");
+            $("#userEmail").html = doc.get("email");
+        }
+
+    })
+}

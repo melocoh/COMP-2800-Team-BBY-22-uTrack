@@ -1,53 +1,69 @@
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 1 */
 let checked1 = false;
 
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 2 */
 let checked2 = false;
 
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 3 */
 let checked3 = false;
 
-/** insert javadoc here */
+/** Holds an array of the items */
 let items = [];
 
-/** insert javadoc here */
+/** Holds an array of the items' stock */
 let stock = [];
 
-/** insert javadoc here */
+/** Holds the image url that users have uploaded */
 let imgUrl;
 
-/** insert javadoc here */
+/** Hold an array of items' references  */
 let itemIDs = [];
 
-/** insert javadoc here */
-// let storeId;
-
-/** insert javadoc here */
+/** Holds the current timestamp */
 let curTime;
 
-/** insert javadoc here */
+/** Holds the timestamp in date and time format*/
 let dateAndTime;
 
-/** insert javadoc here */
+/** Holds the post id references */
 let postId;
 
-/** insert javadoc here */
+/** Holds the array of  the user's posts */
 let userPost = [];
 
-/** insert javadoc here */
+/** Holds the store id reference */
 var storeId;
 
-/** insert javadoc here */
+/** Holds the instant time */
 const TIME = 500;
 
-/** insert javadoc here */
+/** Holds the increment exp */
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 var fileButton = document.getElementById('fileButton');
 let userId;
 let userName;
 
-//get user id and user name;
+/** Slider input */
+let slider = document.getElementById("sliderRange");
+
+/** Slider Value Text */
+let output = document.getElementById("valueText");
+
+/** Slider input */
+var slider2 = document.getElementById("sliderRange2");
+
+/** Slider Value Text */
+var output2 = document.getElementById("valueText2");
+
+/** Slider input  */
+var slider3 = document.getElementById("sliderRange3");
+
+/** Slider Value Text */
+var output3 = document.getElementById("valueText3");
+/**
+ * Get user id and user name;
+ */
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -57,7 +73,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 //Invoke functions
-removeQuantity();
+// removeQuantity();
 setInterval(function () {
     checkbox();
 }, TIME);
@@ -80,36 +96,36 @@ function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox1').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer1').style.display = "inline";
     } else {
         checked1 = false;
-        document.querySelector('#textBox1').style.display = "none";
+        document.querySelector('#sliderContainer1').style.display = "none";
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox2').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer2').style.display = "inline";
     } else {
         checked2 = false;
-        document.querySelector('#textBox2').style.display = "none";
+        document.querySelector('#sliderContainer2').style.display = "none";
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox3').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer3').style.display = "inline";
     } else {
         checked3 = false;
-        document.querySelector('#textBox3').style.display = "none";
+        document.querySelector('#sliderContainer3').style.display = "none";
     }
 
-    if (!document.querySelector('#customCheck1:checked') &&
-        !document.querySelector('#customCheck2:checked') &&
-        !document.querySelector('#customCheck3:checked')) {
-        removeQuantity();
-    }
+    // if (!document.querySelector('#customCheck1:checked') &&
+    //     !document.querySelector('#customCheck2:checked') &&
+    //     !document.querySelector('#customCheck3:checked')) {
+    //     removeQuantity();
+    // }
 }
 
 /**
@@ -123,106 +139,46 @@ function removeQuantity() {
  * Add the data from user's input to severals collection on database.
  */
 function setDataPost() {
-    // let locate = document.getElementById("address").value + ", " +
-    //     document.getElementById("province").value +
-    //     ", " + document.getElementById("zip").value;
+    let locate = document.getElementById("address").value + ", " +
+        document.getElementById("province").value +
+        ", " + document.getElementById("zip").value;
 
-    // iterate over each item in the items array and add them to the database
-    // for (let i = 0; i < items.length; i++) {
-    //     db.collection("items").add({
-    //         category: items[i],
-    //         item_name: items[i],
-    //         stock_number: stock[i]
-    //     }).then(function (docRef) {
-    //         let itemId = db.collection("items/").doc(docRef.id);
-    //         console.log(itemId);
-    //         itemIDs.push(itemId);
-    //         // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
-    //         // add the store and post once the last item has been pushed to itemIDs arrya
-    //         if (i == items.length - 1) {
-    //             db.collection("stores").add({
-    //                 location: locate,
-    //                 store_items: itemIDs,
-    //                 store_name: document.getElementById("nameStore").value
-    //             }).then(function (docRef) {
-    //                 storeId = db.collection("stores/").doc(docRef.id);
-    //                 // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-    //                 // storeId.set({
-    //                 //     location: locate,
-    //                 //     store_items: itemIDs,
-    //                 //     store_name: document.getElementById("nameStore").value
-    //                 // });
-    //                 console.log(storeId);
-    //                 db.collection("posts").add({
-    //                     post_image: imgUrl,
-    //                     post_date: dateAndTime,
-    //                     timestamp: curTime,
-    //                     post_name: document.getElementById("nameStore").value,
-    //                     post_items: itemIDs,
-    //                     post_store: storeId
-    //                 }).then(function (docRef) {
-    //                     postId = db.collection("posts/").doc(docRef.id);
-    //                     // userPost.push(postId);
-    //                     // firebase.auth().onAuthStateChanged(function (user) {
-    //                     //     db.collection("users/").doc(user.id).update({
-    //                     //         user_posts: userPost
-    //                     //     })
-    //                     // })
-    //                 }).catch(function (error) {
-    //                     console.log("Error adding document: ", error);
-    //                 });
-    //             });
-    //         }
-    //     });
-    // }
-
+    //iterate over each item in the items array and add them to the database
     for (let i = 0; i < items.length; i++) {
-        itemsCollec.add({
+        db.collection("items").add({
             category: items[i],
             item_name: items[i],
             stock_number: stock[i]
-        }).then(function (itemRef) {
-            let itemId = db.collection("items/").doc(itemRef.id);
-            console.log("itemID: " + itemId);
+        }).then(function (docRef) {
+            let itemId = db.collection("items/").doc(docRef.id);
+            console.log(itemId);
             itemIDs.push(itemId);
-            // Add the store and post once the last item has been pushed to itemIDs array
+            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
+            // add the store and post once the last item has been pushed to itemIDs arrya
             if (i == items.length - 1) {
-
-                // FOR TESTING PURPOSES
-                console.log("last item has been added");
-
-                // FOR TESTING PURPOSES
-                console.log("updating store");
-                console.log("storeID: " + storeId);
-
-                let storeName;
-
-                // update store
-                storesCollec.doc(storeId).update({
-                    store_items: itemIDs
-                });
-                // may need to use .then() promise for post addition
-
-                storesCollec.doc(storeId).get().then((storeDoc) => {
-                    let storeRef = db.collection("stores/").doc(storeDoc.id);
-
-                    console.log("store name: " + storeDoc.get("store_name"));
-                    storeName = storeDoc.get("store_name");
-
-                    // FOR TESTING PURPOSES
-                    console.log("adding post");
-                    console.log("storeDoc: " + storeDoc);
-
-                    // adding new post
-                    postsCollec.add({
+                db.collection("stores").add({
+                    location: locate,
+                    store_items: itemIDs,
+                    store_name: document.getElementById("nameStore").value
+                }).then(function (docRef) {
+                    storeId = db.collection("stores/").doc(docRef.id);
+                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+                    // storeId.set({
+                    //     location: locate,
+                    //     store_items: itemIDs,
+                    //     store_name: document.getElementById("nameStore").value
+                    // });
+                    console.log(storeId);
+                    db.collection("posts").add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
-                        post_name: storeName,
+                        post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
-                        post_store: storeRef
-                    }).then(function (postRef) {
-                        postId = postsCollec.doc(postRef.id);
+                        post_store: storeId,
+                        user_id: userId
+                    }).then(function (docRef) {
+                        postId = db.collection("posts/").doc(docRef.id);
                         // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
@@ -233,6 +189,68 @@ function setDataPost() {
                         console.log("Error adding document: ", error);
                     });
                 });
+            }
+        });
+    }
+
+    // for (let i = 0; i < items.length; i++) {
+    //     itemsCollec.add({
+    //         category: items[i],
+    //         item_name: items[i],
+    //         stock_number: stock[i]
+    //     }).then(function (itemRef) {
+    //         let itemId = db.collection("items/").doc(itemRef.id);
+    //         console.log("itemID: " + itemId);
+    //         itemIDs.push(itemId);
+    //         // Add the store and post once the last item has been pushed to itemIDs array
+    //         if (i == items.length - 1) {
+
+    //             // FOR TESTING PURPOSES
+    //             console.log("last item has been added");
+
+    //             // FOR TESTING PURPOSES
+    //             console.log("updating store");
+    //             console.log("storeID: " + storeId);
+
+    //             let storeName;
+
+    //             // update store
+    //             storesCollec.doc(storeId).update({
+    //                 store_items: itemIDs
+    //             });
+    //             // may need to use .then() promise for post addition
+
+    //             storesCollec.doc(storeId).get().then((storeDoc) => {
+    //                 let storeRef = db.collection("stores/").doc(storeDoc.id);
+
+    //                 console.log("store name: " + storeDoc.get("store_name"));
+    //                 storeName = storeDoc.get("store_name");
+
+    //                 // FOR TESTING PURPOSES
+    //                 console.log("adding post");
+    //                 console.log("storeDoc: " + storeDoc);
+
+    //                 // adding new post
+    //                 postsCollec.add({
+    //                     post_image: imgUrl,
+    //                     post_date: dateAndTime,
+    //                     timestamp: curTime,
+    //                     post_name: storeName,
+    //                     post_items: itemIDs,
+    //                     post_store: storeRef,
+    //                     user_id: userId
+    //                 }).then(function (postRef) {
+    //                     postId = postsCollec.doc(postRef.id);
+                        // userPost.push(postId);
+                        // firebase.auth().onAuthStateChanged(function (user) {
+                        //     db.collection("users/").doc(user.id).update({
+                        //         user_posts: userPost
+                        //     })
+                //         // })
+                //     }).catch(function (error) {
+                //         console.log("Error adding document: ", error);
+                //     });
+                // });
 
 
                 // db.collection("stores").add({
@@ -267,9 +285,9 @@ function setDataPost() {
                 //     console.log("Error adding document: ", error);
                 // });
                 // });
-            }
-        });
-    }
+//             }
+//         });
+//     }
 }
 
 /**
@@ -277,9 +295,11 @@ function setDataPost() {
  */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
-        items.push(document.getElementById("customCheck").value);
+        items.push(document.getElementById("customCheck1").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
-        let itemQuantity = document.getElementById("slider").value;
+        let numValue = document.getElementById("sliderRange").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -287,7 +307,9 @@ function getItemInfo() {
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
-        let itemQuantity = document.getElementById("slider2").value;
+        let numValue = document.getElementById("sliderRange2").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -295,7 +317,9 @@ function getItemInfo() {
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
-        let itemQuantity = document.getElementById("slider3").value;
+        let numValue = document.getElementById("sliderRange3").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -465,6 +489,61 @@ function updateExp() {
 // //     console.log("end of getStoreIdToPost()");
 // // }
 
+/**
+ * Shows the slider value.
+ * @param {*} a 
+ * @param {*} output 
+ */
+function showSliderValue(a,output){
+    if (a == 0){
+        output.innerHTML = "none";
+    } else if (a == 1){
+        output.innerHTML = "few";
+    } else if (a ==2){
+        output.innerHTML = "some"
+    } else if (a ==3){
+        output.innerHTML = "many"
+    } else if (a == 4){
+        output.innerHTML = "plenty";
+    }
+}
+
+/**
+ * Convert the slider value to the word.
+ * @param {*} a 
+ * @param {*} b 
+ */
+function convertSliderValue(a,b){
+    if (a == 0){
+        b = "none";
+    } else if (a == 1){
+        b = "few";
+    } else if (a == 2){
+        b = "some"
+    } else if (a == 3){
+        b = "many"
+    } else if (a == 4){
+        b = "plenty";
+    }
+}
+
+/**
+ * Calls the function slider.
+ */
+slider.oninput = function(){
+    showSliderValue(this.value, output)
+};
+slider2.oninput = function(){
+    showSliderValue(this.value, output2)
+};
+slider3.oninput = function(){
+    showSliderValue(this.value, output3)
+};
+
+/** Sets the default value */
+output.innerHTML = "none";
+output2.innerHTML = "none";
+output3.innerHTML = "none";
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
  */

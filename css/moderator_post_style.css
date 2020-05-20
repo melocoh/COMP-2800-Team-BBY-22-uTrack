@@ -5,9 +5,9 @@
 
 /* tablet view */
 @media (min-width: 400px) and (max-width: 1024px) {
-    .navbar-brand {
+    /* .navbar-brand {
         display: none;
-    }
+    } */
 
     .nav-item {
         padding: 0 0 0 0;
@@ -17,12 +17,14 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-    .btn-primary {
+    /* .btn-primary {
         display: block;
         margin: auto;
-    }
+    } */
 }
-
+/* .container{
+    margin-bottom: 100px;
+} */
 body {
     display: flex;
     min-height: 100vh;
