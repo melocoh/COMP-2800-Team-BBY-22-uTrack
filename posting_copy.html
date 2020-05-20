@@ -152,7 +152,7 @@
 
                 <div class="slidecontainer">
                     <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange">
-                    <p>Value: <span id="valueText"></span></p>
+                    <p><span id="valueText"></span></p>
                 </div>
 
               </div>
@@ -165,7 +165,7 @@
 
                 <div class="slidecontainer">
                     <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange2">
-                    <p>Value: <span id="valueText2"></span></p>
+                    <p><span id="valueText2"></span></p>
                 </div>
 
               </div>
@@ -179,7 +179,7 @@
 
                 <div class="slidecontainer">
                     <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange3">
-                    <p>Value: <span id="valueText3"></span></p>
+                    <p><span id="valueText3"></span></p>
                 </div>
               </div>
 
@@ -310,14 +310,19 @@
     output.innerHTML = "none";
 
     slider.oninput = function() {
-
-        /** Not working, can someone complete this **/ 
-
-        // if (slider.value == 1){
-        //     output.innerHTML = "few";
-        // }
-
-      output.innerHTML = this.value;
+    //   output.innerHTML = this.value;
+        if (this.value == 0){
+            output.innerHTML = "none";
+        } else if (this.value == 1){
+            output.innerHTML = "few";
+        } else if (this.value ==2){
+            output.innerHTML = "some"
+        } else if (this.value ==3){
+            output.innerHTML = "many"
+        } else if (this.value == 4){
+            output.innerHTML = "plenty";
+        }
+      
     }
     
     // second slider (mask)

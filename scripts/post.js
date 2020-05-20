@@ -44,6 +44,12 @@ var fileButton = document.getElementById('fileButton');
 let userId;
 let userName;
 
+/** Slider input */
+let slider = document.getElementById("sliderRange");
+
+/** Slider Value Text */
+let output = document.getElementById("valueText");
+
 /**
  * Get user id and user name;
  */
