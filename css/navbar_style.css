@@ -23,6 +23,22 @@ html {
       border-top: 1px solid transparent;
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   }
+
+  .selectors button{
+    border: 0;
+    border-radius: 0;
+    background-color: #f8f9fa !important;
+    width:33.33%;
+    margin-left: 0;
+}
+
+.modselectors button{
+    border: 0;
+    border-radius: 0;
+    background-color: #f8f9fa !important;
+    width: 25%;
+    margin-left: 0;
+}
   
   .group-container{
       padding:0;
@@ -32,14 +48,6 @@ html {
   .selectors, .block{
       height:100%;
       width:100%;
-  }
-  
-  .selectors button{
-      border: 0;
-      border-radius: 0;
-      background-color: #f8f9fa !important;
-      width:25%;
-      margin-left: 0;
   }
   
   .selectors button:active{

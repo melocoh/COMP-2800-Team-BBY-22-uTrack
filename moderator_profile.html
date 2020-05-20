@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="./css/profile_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
     <link rel="stylesheet" type="text/css" href="./css/notification.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
 </head>
 
 <body>
@@ -239,6 +240,42 @@
 
         </div>
     </div>
+
+    <!-- Bottom Nav Bar -->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+           <button id="home" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_home.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">location_on</i>
+                 <span>Map</span>
+              </div>
+           </button>
+           <button id="account" type="button" class="btn btn-secondary button-active"
+           onclick="window.location.href='./moderator_profile.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">account_circle</i>
+                 <span>Account</span>
+              </div>
+           </button>
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">view_list</i>
+                 <span>Posts</span>
+              </div>
+           </button>
+
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./reported_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">feedback</i>
+                 <span>Reports</span>
+              </div>
+           </button>
+
+        </div>
+     </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

@@ -28,7 +28,7 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" type="text/css" href="./css/home_style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/home_style.css"> -->
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
     <link rel="stylesheet" type="text/css" href="./css/moderator_home_style.css">
@@ -204,29 +204,38 @@
     <!-- Bottom Nav Bar -->
     <footer class="footer">
         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
-            <button id="home" type="button" class="btn btn-secondary button-active"
-            onclick="window.location.href='./home.html';">
-                <div class="selector-holder">
-                    <i class="material-icons">location_on</i>
-                    <span style="text-align: center;">Map</span>
-                </div>
-            </button>
-            <button id="account" type="button" class="btn btn-secondary button-inactive"
-                onclick="window.location.href='./profile.html';">
-                <div class="selector-holder">
-                    <i class="material-icons">account_circle</i>
-                    <span>Account</span>
-                </div>
-            </button>
-            <button id="feed" type="button" class="btn btn-secondary button-inactive"
-                onclick="window.location.href='./post.html';">
-                <div class="selector-holder">
-                    <i class="material-icons">view_list</i>
-                    <span>Posts</span>
-                </div>
-            </button>
+           <button id="home" type="button" class="btn btn-secondary button-active"
+           onclick="window.location.href='./moderator_home.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">location_on</i>
+                 <span>Map</span>
+              </div>
+           </button>
+           <button id="account" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_profile.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">account_circle</i>
+                 <span>Account</span>
+              </div>
+           </button>
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">view_list</i>
+                 <span>Posts</span>
+              </div>
+           </button>
+
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./reported_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">feedback</i>
+                 <span>Reports</span>
+              </div>
+           </button>
+
         </div>
-    </footer>
+     </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

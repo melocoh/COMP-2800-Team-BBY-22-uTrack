@@ -25,6 +25,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -32,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/moderator_post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/report_modal.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
 </head>
 
 <body>
@@ -104,6 +106,41 @@
         </div>
     </div>
 
+       <!-- Bottom Nav Bar -->
+       <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+           <button id="home" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_home.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">location_on</i>
+                 <span>Map</span>
+              </div>
+           </button>
+           <button id="account" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_profile.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">account_circle</i>
+                 <span>Account</span>
+              </div>
+           </button>
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
+           onclick="window.location.href='./moderator_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">view_list</i>
+                 <span>Posts</span>
+              </div>
+           </button>
+
+           <button id="feed" type="button" class="btn btn-secondary button-active"
+           onclick="window.location.href='./reported_post.html';">
+              <div class="selector-holder">
+                 <i class="material-icons">feedback</i>
+                 <span>Reports</span>
+              </div>
+           </button>
+
+        </div>
+     </footer>
 
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
