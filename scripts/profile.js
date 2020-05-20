@@ -47,7 +47,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                         displayPointbar.style.fontSize = "0vh";
                         setTimeout(function () {
                             displayPointbar.style.color = "white";
-                            displayPointbar.style.fontSize = "3vh";
+                            displayPointbar.style.fontSize = "2vh";
                         }, timeout);
                     }, timeout * 2);
 
