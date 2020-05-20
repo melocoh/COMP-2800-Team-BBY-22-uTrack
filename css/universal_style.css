@@ -124,11 +124,13 @@ body {
         display: none;
     }
 
-    .container {
+    /* please don't use container in universal, it causes a lot of issues TT ^ TT */
+    /* .container {
         margin-top: 10vh;
         max-height: 90vh;
-    }
+    } */
 
+    /* this cause the navbar issue */
     /* #menuNav { */
         /* WARNING:
         Setting a fixed height value for the navbar

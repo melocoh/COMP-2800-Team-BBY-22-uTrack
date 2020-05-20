@@ -119,6 +119,7 @@ function getItemInfo(storeItems, p4) {
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
+            list.style.alignItems = "center";
             p4.appendChild(list);
         })
     }
@@ -176,10 +177,10 @@ function deleteReport(report) {
  * Set the style for some elements.
  */
 $(document).ready(function () {
-    $(".container").css("margin-top", "100px");
+    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
         "display": "flex",
-        "justify-content": "flex-start",
+        "justify-content": "flex-end",
         "padding": "15px"
     });
 });
