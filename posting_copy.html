@@ -25,18 +25,15 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
-
-    <link rel="stylesheet" href="css/slider_min.css">
-
-    </style>
-
 </head>
 
 <body>
@@ -61,11 +58,6 @@
                 </li>
                 <li class="nav-item active nav-active">
                     <a class="nav-link" href="./post.html">Posting</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
             </ul>
         </div>
@@ -102,22 +94,22 @@
         </div>
     </div>
 
-    <div class="container" id="postContainer1">
+    <div class="container py-3" id="postContainer1">
         <form>
             <!-- Commented out for now. Get store name from passed store id later -->
-            <!-- <div class="title">
+            <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
                 <input type="text" class="form-control" id="nameStore" required>
                 <div class="invalid-feedback">Please enter a store name</div>
-            </div> -->
+            </div>
 
-            <!-- <div class="py-2">
+            <div class="py-2">
                 <label for="address"><b>Address</b></label>
                 <input type="text" class="form-control" id="address" required>
                 <div class="invalid-feedback">Please enter the address of the store</div>
-            </div> -->
+            </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="province"><b>Province/Territories</b></label>
                 <select class="custom-select" id="province" required>
                     <option selected disabled value="">Choose...</option>
@@ -136,154 +128,221 @@
                     <option value="Nunavut">Nunavut</option>
                 </select>
                 <div class="invalid-feedback">Please select a province/territories</div>
-            </div> -->
-            <!-- <div class="py-2">
+           
+            <div class="py-2">
                 <label for="zip"><b>Zip</b></label>
                 <input type="text" class="form-control" id="zip" required>
                 <div class="invalid-feedback">Please enter a zip code of the store</div>
-            </div> -->
+            </div>
+        </div>
         </form>
         <div>
             <p><b>Products:</b></p>
-        </div>
-        <form class="p-2">
 
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Face masks">
-                <label class="custom-control-label" for="customCheck1">Face masks</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck2" value="Toilet papers">
-                <label class="custom-control-label" for="customCheck2">Toilet paper</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3" value="Hand Sanitizers">
-                <label class="custom-control-label" for="customCheck3">Hand sanitizers</label>
-            </div>
-        </form>
+        <!-- container for quantity -->
+        <div class="quantitycontainer"> 
 
+            <div class="row">
+              <div class="col-sm">
+                <!-- Toilet Paper -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_toiletpaper.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange">
+                    <p><span id="valueText"></span></p>
+                </div>
+
+              </div>
+              <div class="col-sm">
+                <!-- Masks -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_mask.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange2">
+                    <p><span id="valueText2"></span></p>
+                </div>
+
+              </div>
+
+              <div class="col-sm">
+                <!-- Hand Sanitizers -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_handsantizer.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange3">
+                    <p><span id="valueText3"></span></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          </div>
+
+    <!-- </div>
         <div id="quantity">
             <div>
                 <p><b>Estimated quantity:</b></p>
                 <p><i>Only insert the quantity of available items</i></p>
             </div>
-            <form class="p-2">
-
-                
-
-                <!--previous quantity input components-->
-
+            <div class="p-2">
                 <div>
                     <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
-                    <div class="input-group" id="textBox1">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">Face masks</div>
-                        </div>
-                        <input type="number" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
+                    <div class="form-group">
+                        <select class="custom-select btn-light" id="quantity" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="None">None</option>
+                            <option value="Few">Few</option>
+                            <option value="Some">Some</option>
+                            <option value="Many">Many</option>
+                            <option value="Plenty">Plenty</option>
+                        </select>
+                        <div class="invalid-feedback">Please insert the quantity</div>
                     </div>
 
                     <br>
                     <div>
                         <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
                         <div class="input-group" id="textBox2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Toilet paper</div>
+                            <select class="custom-select btn-light" id="quantity" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="None">None</option>
+                                <option value="Few">Few</option>
+                                <option value="Some">Some</option>
+                                <option value="Many">Many</option>
+                                <option value="Plenty">Plenty</option>
+                            </select>
+                            <div class="invalid-feedback">Please insert the quantity</div>
+                        </div>
+                        <br>
+                        <div>
+                            <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
+                            <div class="input-group" id="textBox3">
+                                <select class="custom-select btn-light" id="quantity" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="None">None</option>
+                                    <option value="Few">Few</option>
+                                    <option value="Some">Some</option>
+                                    <option value="Many">Many</option>
+                                    <option value="Plenty">Plenty</option>
+                                </select>
+                                <div class="invalid-feedback">Please insert the quantity</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2"
-                                placeholder="Item units">
                         </div>
                     </div>
-                    <br>
-                    <div>
-                        <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
-                        <div class="input-group" id="textBox3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Hand sanitizers</div>
-                            </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3"
-                                placeholder="Item units">
-                        </div>
+                </div> -->
+               
+                <div>
+                    <p><b>Image</b></p>
+                
+                <form class="p-3">
+                    <input type="file" value="upload" id='fileButton'>
+                </form>
+            </div><br>
+                <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+            </div>
+        </div> 
+        <br>
+
+        <div class="modal" tabindex="-1" role="dialog" id="congratulation">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="acceptTerm">Level up!</h5>
                     </div>
-            </form>
-        </div>
-    </div>
-    <div>
-        <p><b>Image</b></p>
-    </div>
-    <form class="p-3">
-        <input type="file" value="upload" id='fileButton'>
-    </form>
-    <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-    <!-- </div> -->
-    </div>
-    <!-- <br> -->
 
-    <div class="modal" tabindex="-1" role="dialog" id="congratulation">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
-                </div>
-
-                <div class="modal-body">
-                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                            style="margin:auto; display:block;"></p>
-                    <p>You have raised the level up to <span id="levelReached"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-body">
+                        <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                                style="margin:auto; display:block;"></p>
+                        <p>You have raised the level up to <span id="levelReached"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 
-    <script src="./scripts/slider_min.js"></script>
-    <script>
-        (function () {
-            'use strict';
 
-            var init = function () {
+        
+    <!-- Bottom Nav Bar -->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
-                var slider = new rSlider({
-                    target: '#slider',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
+<!-- sorry for doing this again! I'll change it later -->
+<script>
+    // first slider (toiler paper)
+    var slider = document.getElementById("sliderRange");
+    var output = document.getElementById("valueText");
+    output.innerHTML = "none";
 
-                var slider2 = new rSlider({
-                    target: '#slider2',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
-
-                var slider3 = new rSlider({
-                    target: '#slider3',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
-            };
-            window.onload = init;
-        })();
-    </script>
+    slider.oninput = function() {
+    //   output.innerHTML = this.value;
+        if (this.value == 0){
+            output.innerHTML = "none";
+        } else if (this.value == 1){
+            output.innerHTML = "few";
+        } else if (this.value ==2){
+            output.innerHTML = "some"
+        } else if (this.value ==3){
+            output.innerHTML = "many"
+        } else if (this.value == 4){
+            output.innerHTML = "plenty";
+        }
+      
+    }
+    
+    // second slider (mask)
+    var slider2 = document.getElementById("sliderRange2");
+    var output2 = document.getElementById("valueText2");
+    output2.innerHTML = slider2.value;
+    
+    slider2.oninput = function() {
+      output2.innerHTML = this.value;
+    }
+    
+    // third slider (hand sanitizer)
+    var slider3 = document.getElementById("sliderRange3");
+    var output3 = document.getElementById("valueText3");
+    output3.innerHTML = slider3.value;
+    
+    slider3.oninput = function() {
+      output3.innerHTML = this.value;
+    }
+</script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -312,7 +371,7 @@
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/post.js"></script>
-
+    <script src="./scripts/slider_min.js"></script>
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
