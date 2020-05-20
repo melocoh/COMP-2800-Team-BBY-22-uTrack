@@ -74,9 +74,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 //Invoke functions
 // removeQuantity();
-// setInterval(function () {
-//     checkbox();
-// }, TIME);
+setInterval(function () {
+    checkbox();
+}, TIME);
 
 /** Firestore Posts Collection Reference */
 let postsCollec = db.collection("posts");
@@ -96,36 +96,36 @@ function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox1').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer1').style.display = "inline";
     } else {
         checked1 = false;
-        document.querySelector('#textBox1').style.display = "none";
+        document.querySelector('#sliderContainer1').style.display = "none";
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox2').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer2').style.display = "inline";
     } else {
         checked2 = false;
-        document.querySelector('#textBox2').style.display = "none";
+        document.querySelector('#sliderContainer2').style.display = "none";
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox3').style.display = "inline";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer3').style.display = "inline";
     } else {
         checked3 = false;
-        document.querySelector('#textBox3').style.display = "none";
+        document.querySelector('#sliderContainer3').style.display = "none";
     }
 
-    if (!document.querySelector('#customCheck1:checked') &&
-        !document.querySelector('#customCheck2:checked') &&
-        !document.querySelector('#customCheck3:checked')) {
-        removeQuantity();
-    }
+    // if (!document.querySelector('#customCheck1:checked') &&
+    //     !document.querySelector('#customCheck2:checked') &&
+    //     !document.querySelector('#customCheck3:checked')) {
+    //     removeQuantity();
+    // }
 }
 
 /**
@@ -295,9 +295,11 @@ function setDataPost() {
  */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
-        items.push(document.getElementById("customCheck").value);
+        items.push(document.getElementById("customCheck1").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
-        let itemQuantity = document.getElementById("slider").value;
+        let numValue = document.getElementById("sliderRange").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -305,7 +307,9 @@ function getItemInfo() {
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
-        let itemQuantity = document.getElementById("slider2").value;
+        let numValue = document.getElementById("sliderRange2").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -313,7 +317,9 @@ function getItemInfo() {
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
-        let itemQuantity = document.getElementById("slider3").value;
+        let numValue = document.getElementById("sliderRange3").value;
+        let itemQuantity;
+        convertSliderValue(numValue,itemQuantity);
         console.log(itemQuantity);
         stock.push(itemQuantity);
     }
@@ -503,6 +509,25 @@ function showSliderValue(a,output){
 }
 
 /**
+ * Convert the slider value to the word.
+ * @param {*} a 
+ * @param {*} b 
+ */
+function convertSliderValue(a,b){
+    if (a == 0){
+        b = "none";
+    } else if (a == 1){
+        b = "few";
+    } else if (a == 2){
+        b = "some"
+    } else if (a == 3){
+        b = "many"
+    } else if (a == 4){
+        b = "plenty";
+    }
+}
+
+/**
  * Calls the function slider.
  */
 slider.oninput = function(){
@@ -515,6 +540,10 @@ slider3.oninput = function(){
     showSliderValue(this.value, output3)
 };
 
+/** Sets the default value */
+output.innerHTML = "none";
+output2.innerHTML = "none";
+output3.innerHTML = "none";
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
  */
