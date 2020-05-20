@@ -56,10 +56,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 //Invoke functions
-removeQuantity();
-setInterval(function () {
-    checkbox();
-}, TIME);
+// removeQuantity();
+// setInterval(function () {
+//     checkbox();
+// }, TIME);
 
 /** Firestore Posts Collection Reference */
 let postsCollec = db.collection("posts");
