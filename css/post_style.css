@@ -1,3 +1,9 @@
+.container {
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+}
+
 /* desktop view */
 @media (min-width: 1025px) {}
 
@@ -64,13 +70,7 @@ body {
     max-height: 100%;
 }
 
-/* for slider
-.slider-container {
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto 50px;
-} */
-
+/* sliders  */
 .slider {
     -webkit-appearance: none;
     width: 70%;
@@ -103,4 +103,8 @@ body {
     border-radius: 50%;
     background: lightblue;
     cursor: pointer;
+  }
+
+  #questionmark{
+    padding-left: 8px;
   }
