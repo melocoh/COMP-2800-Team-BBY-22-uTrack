@@ -25,14 +25,15 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
         let btn = document.createElement("img");
+        let btnDiv = document.createElement("div");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         // btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
         btn.setAttribute("src","./images/exclamation.png");
-        btn.setAttribute("width","30px");
-        btn.setAttribute("height","30px");
-        btn.setAttribute("position","absolute");
+        btn.setAttribute("width","40px");
+        btn.setAttribute("height","40px");
+        btn.setAttribute("id","reportBtn");
         btn.onclick = function () {
             butval = parseInt(btn.value);
             $(".mess").click(function () {
@@ -46,37 +47,33 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         p4.setAttribute("id", "itemName");
 
-        /** Commented out for now to save on reads */
+        var storageRef = firebase.storage().ref().child("store_logos");
+        let storeLogo;
+        switch (doc.data().post_name) {
+            case "Walmart":
+                storeLogo = storageRef.child("walmart.png");
+                break;
+            case "Superstore":
+                storeLogo = storageRef.child("superstore.png");
+                break;
+            case "Save-on-Foods":
+                storeLogo = storageRef.child("saveonfoods.png");
+                break;
+            case "Costco":
+                storeLogo = storageRef.child("costco.png");
+                break;
+            default:
+                storeLogo = storageRef.child("superstore.png");
+                break;
+        }
 
-        // var storageRef = firebase.storage().ref().child("store_logos");
-        // let storeLogo;
-        // switch (doc.data().post_name) {
-        //     case "Walmart":
-        //         storeLogo = storageRef.child("walmart.png");
-        //         break;
-        //     case "Superstore":
-        //         storeLogo = storageRef.child("superstore.png");
-        //         break;
-        //     case "Save-on-Foods":
-        //         storeLogo = storageRef.child("saveonfoods.png");
-        //         break;
-        //     case "Costco":
-        //         storeLogo = storageRef.child("costco.png");
-        //         break;
-        //     default:
-        //         storeLogo = storageRef.child("superstore.png");
-        //         break;
-        // }
-
-        /** Commented out for now to save on reads */
-
-        // storeLogo.getDownloadURL().then(function (url) {
-        //     //p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
-        //     p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
-        //     console.log(url);
-        // }).catch(function (error) {
-        //     console.log(error);
-        // })
+        storeLogo.getDownloadURL().then(function (url) {
+            p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+            //p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
+            console.log(url);
+        }).catch(function (error) {
+            console.log(error);
+        })
 
         //need to change it back when slider is fix and have new post.
         // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
@@ -92,7 +89,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         text.appendChild(p3);
         text.appendChild(p5);
         // text.appendChild(p6);
-        contain.appendChild(btn);
+        btnDiv.appendChild(btn);
+        contain.appendChild(btnDiv);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
@@ -169,7 +167,7 @@ function setStyle(contain, p1, p6, btn) {
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
-    p1.style.margin = "-20px";
+    p1.style.margin = "-25px";
     //p1.style.fontWeight = "bold";
     // p6.style.textAlign = "center";
     // btn.style.backgroundColor = "tomato";
@@ -184,7 +182,7 @@ function setStyle(contain, p1, p6, btn) {
 $(document).ready(function () {
     $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
-        "display": "flex",
+        "display": "fixed",
         "justify-content": "flex-end",
         "padding": "15px"
     });
