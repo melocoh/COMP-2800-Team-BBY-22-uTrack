@@ -1,4 +1,16 @@
 /* --------------------------------- */
+/* HTML, Body and Container */
+/* --------------------------------- */
+.container{
+    font-family: Comfortaa;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+}
+
+/* --------------------------------- */
 /* Main and Children */
 /* --------------------------------- */
 main {
@@ -32,34 +44,16 @@ section {
     /* Original Map Size: */
     /* width: 640px; */
     /* height: 480px; */
+
     width: 100vw;
-    height: 100vh;
+    /* matches with container height */
+    height: 90vh;
 }
 
 canvas {
+    /* must set to 100% for dimensions */
     width: 100%;
     height: 100%;
-}
-
-/* --------------------------------- */
-/* Geolocation Button */
-/* --------------------------------- */
-#reportButton {
-    /* 8px top and bottom; 10px left and right */
-    padding: 8px 10px;
-    /* circle border */
-    border-radius: 50%;
-    color: white;
-    background-color: #1A73E8;
-    /* absolute from map */
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    /* send to front over map */
-    z-index: 99999;
-    /* align i element to vertical center */
-    display: flex;
-    align-items: center;
 }
 
 /* --------------------------------- */
@@ -86,9 +80,6 @@ canvas {
     max-height: 50px;
 }
 
-span:last-child {
-    margin-left: auto;
-}
 
 .modal-footer {
     justify-content: center;
@@ -99,8 +90,37 @@ span:last-child {
 /* Media Queries */
 /* --------------------------------- */
 
+
+/* Tablet and Desktop View */
+@media (min-width: 420px) {
+    /* --------------------------------- */
+    /* Geolocation Button */
+    /* --------------------------------- */
+    #reportButton {
+        /* 8px top and bottom; 10px left and right */
+        padding: 15px;
+        /* circle border */
+        border-radius: 50%;
+        color: white;
+        background-color: #1A73E8;
+        /* absolute from map */
+        position: absolute;
+        top: 7rem;
+        right: 1rem;
+        /* send to front over map */
+        z-index: 99999;
+        /* align i element to vertical center */
+        display: flex;
+        align-items: center;
+    }
+}
+
 /* Mobile View */
 @media (max-width: 419px) {
+    .container {
+        margin-top: auto;
+    }
+
     #homeMap {
         /* position: absolute; */
         /* top: 50%;
@@ -109,7 +129,34 @@ span:last-child {
         height: 30%; */
         /* width: 100vw;
         height: 100vh; */
-        height: 70vh;
+        height: 100%;
+    }
+
+    #reportButton {
+        bottom: 2rem;
+        right: 2rem;
+    }
+
+    #reportButton {
+        /* 8px top and bottom; 10px left and right */
+        padding: 15px;
+        /* circle border */
+        border-radius: 50%;
+        color: white;
+        background-color: #1A73E8;
+        /* absolute from map */
+        position: absolute;
+        bottom: 7rem;
+        right: 1rem;
+        /* send to front over map */
+        z-index: 99999;
+        /* align i element to vertical center */
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        text-align: center;
     }
 }
 
