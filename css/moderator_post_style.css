@@ -17,12 +17,14 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-    .btn-primary {
+    /* .btn-primary {
         display: block;
         margin: auto;
-    }
+    } */
 }
-
+/* .container{
+    margin-bottom: 100px;
+} */
 body {
     display: flex;
     min-height: 100vh;
