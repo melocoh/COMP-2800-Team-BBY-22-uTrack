@@ -18,44 +18,77 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
         let text = document.createElement("div");
-        let p1 = document.createElement("p");
+        let p1 = document.createElement("div");
         let p2 = document.createElement("img");
         let p3 = document.createElement("p");
         let p4 = document.createElement("p");
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
-        let btn = document.createElement("button");
+        let btn = document.createElement("img");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         // btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
-        btn.onclick = function(){
+        btn.setAttribute("src","./images/exclamation.png");
+        btn.setAttribute("width","30px");
+        btn.setAttribute("height","30px");
+        btn.setAttribute("position","absolute");
+        btn.onclick = function () {
             butval = parseInt(btn.value);
-            $(".mess").click(function(){
-                        var reason = $(this).val();
-                        localStorage.setItem(0, reason);
-                        console.log(reason);
-                    });
+            $(".mess").click(function () {
+                var reason = $(this).val();
+                localStorage.setItem(0, reason);
+                console.log(reason);
+            });
         }
 
-        setStyle(contain,p1,p6,btn);
-        
+        setStyle(contain, p1, p6, btn);
+
         p4.setAttribute("id", "itemName");
-        p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+
+        var storageRef = firebase.storage().ref().child("store_logos");
+        let storeLogo;
+        switch (doc.data().post_name) {
+            case "Walmart":
+                storeLogo = storageRef.child("walmart.png");
+                break;
+            case "Superstore":
+                storeLogo = storageRef.child("superstore.png");
+                break;
+            case "Save-on-Foods":
+                storeLogo = storageRef.child("saveonfoods.png");
+                break;
+            case "Costco":
+                storeLogo = storageRef.child("costco.png");
+                break;
+            default:
+                storeLogo = storageRef.child("superstore.png");
+                break;
+        }
+
+        storeLogo.getDownloadURL().then(function (url) {
+            //p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+            p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
+            console.log(url);
+        }).catch(function (error) {
+            console.log(error);
+        })
+
         //need to change it back when slider is fix and have new post.
         // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
-        p5.innerHTML = "Posted: " +  doc.get("post_date");
+        p5.innerHTML = "Posted: " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
         getStoreInfo(storeInfo, p3, p4);
 
-        p6.appendChild(btn);
+        // p6.appendChild(btn);
         text.appendChild(p1);
         text.appendChild(p2);
         text.appendChild(p4);
         text.appendChild(p3);
         text.appendChild(p5);
-        text.appendChild(p6);
+        // text.appendChild(p6);
+        contain.appendChild(btn);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
@@ -96,9 +129,9 @@ function getItemInfo(storeItems, p4) {
             stock = doc.get("stock_number");
             var list = document.createElement("li");
             var imageItem;
-            if (name == "Face masks"){
+            if (name == "Face masks") {
                 imageItem = "./images/icon_mask.png";
-            } else if (name == "Toilet papers"){
+            } else if (name == "Toilet papers") {
                 imageItem = "./images/icon_toiletpaper.png";
             } else {
                 imageItem = "./images/icon_handsantizer.png";
@@ -106,7 +139,8 @@ function getItemInfo(storeItems, p4) {
 
             // list.innerHTML = items + name + ": " + stock;
 
-            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span id="stockQuantity">` + stock + `<span>`;
+            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">`
+                    + `<span id="stockQuantity">` + stock + `</span>`;
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
@@ -125,18 +159,18 @@ function getItemInfo(storeItems, p4) {
  * @param {*} p6
  * @param {*} btn
  */
-function setStyle(contain,p1,p6,btn) {
+function setStyle(contain, p1, p6, btn) {
     contain.style.textAlign = "center";
     // contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
-    p1.style.fontWeight = "bold";
-    p6.style.textAlign = "center";
-    btn.style.backgroundColor = "tomato";
-    btn.style.color = "white";
-    btn.style.borderRadius = "7px";
-    contain.style.backgroundColor = "white";
+    p1.style.margin = "-20px";
+    //p1.style.fontWeight = "bold";
+    // p6.style.textAlign = "center";
+    // btn.style.backgroundColor = "tomato";
+    // btn.style.color = "white";
+    // btn.style.borderRadius = "7px";
 }
 
 /**
@@ -152,7 +186,7 @@ $(document).ready(function () {
     });
 
     $("#submitButton").click(function () {
-        
+
         if (document.querySelector('#termsConditions:checked')) {
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
@@ -168,9 +202,9 @@ $(document).ready(function () {
                 console.log("Error adding document: ", error);
             })
 
-        console.log(butval);
-        console.log(localStorage.getItem(0));
-        console.log(postlists[butval]);
+            console.log(butval);
+            console.log(localStorage.getItem(0));
+            console.log(postlists[butval]);
         }
 
     });
