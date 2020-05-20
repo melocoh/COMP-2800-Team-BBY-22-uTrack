@@ -49,6 +49,11 @@ body {
 #totalReport{
     color: rgb(189, 25, 25);
 }
-.notification {
-    margin-left: 20px;
+
+/* ------------------------------------- */
+/* For the title in post and report page */
+/* ------------------------------------- */
+#titleContainer{
+    font-size: 25px;
+    border-bottom: 1px solid gray;
 }

@@ -182,7 +182,7 @@ function setStyle(contain, p1, p6, btn) {
  * and add data to report collection when the report button is clicked.
  */
 $(document).ready(function () {
-    $(".container").css("margin-top", "100px");
+    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
         "display": "flex",
         "justify-content": "flex-end",

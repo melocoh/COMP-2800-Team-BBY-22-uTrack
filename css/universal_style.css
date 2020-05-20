@@ -130,6 +130,7 @@ body {
         max-height: 90vh;
     } */
 
+    /* this cause the navbar issue */
     /* #menuNav { */
         /* WARNING:
         Setting a fixed height value for the navbar
