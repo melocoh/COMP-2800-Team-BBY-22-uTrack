@@ -54,13 +54,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./moderator_profile.html">Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active nav-active">
                     <a class="nav-link" href="./moderator_post.html">Post</a>
                 </li>
                 <!-- <li class="nav-item active nav-active">
                     <a class="nav-link" href="./reported_post.html">Reported Post</a>
                 </li> -->
-                <li class="nav-item active nav-active">
+                <li class="nav-item">
                     <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
                 </li>
             </ul>
@@ -78,8 +78,13 @@
     </nav>
 
     <div class="container" id="theContainer">
-        <button class="btn-primary" onclick="window.location.href='./posting.html'" >New post</button>
+        <div id="newPost">
+            <button class="btn-primary" onclick="window.location.href='./posting.html'" >New post</button>
+        </div>
     </div>
+
+    <div class="py-5"></div>
+    <br>
 
     <!-- Sign out modal -->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
