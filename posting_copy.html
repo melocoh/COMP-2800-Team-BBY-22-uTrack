@@ -136,28 +136,57 @@
         </form>
         <div>
             <p><b>Products:</b></p>
-        
 
-            <!--- Original checkbox -->
-        <form class="p-2" style="background-color: azure;">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Face masks">
-                <label class="custom-control-label" for="customCheck1">Face masks</label>
+        <!-- container for quantity -->
+        <div class="quantitycontainer"> 
+
+            <div class="row">
+              <div class="col-sm">
+                <!-- Toilet Paper -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_toiletpaper.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderValue">
+                    <p>Value: <span id="valueText"></span></p>
+                </div>
+
+              </div>
+              <div class="col-sm">
+                <!-- Masks -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_mask.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderValue2">
+                    <p>Value: <span id="valueText2"></span></p>
+                </div>
+
+              </div>
+
+              <div class="col-sm">
+                <!-- Hand Sanitizers -->
+                <br>
+                <div class="itemicon_container">
+                    <img class = "itemicon" src="./images/icon_handsantizer.png">
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderValue3">
+                    <p>Value: <span id="valueText3"></span></p>
+                </div>
+              </div>
+
             </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck2" value="Toilet papers">
-                <label class="custom-control-label" for="customCheck2">Toilet paper</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3" value="Hand Sanitizers">
-                <label class="custom-control-label" for="customCheck3">Hand sanitizers</label>
-            </div>
+          </div>
 
-        </form>
+          </div>
 
-        
-
-    </div>
+    <!-- </div>
         <div id="quantity">
             <div>
                 <p><b>Estimated quantity:</b></p>
@@ -208,7 +237,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                
                 <div>
                     <p><b>Image</b></p>
@@ -216,7 +245,7 @@
                 <form class="p-3">
                     <input type="file" value="upload" id='fileButton'>
                 </form>
-            </div>
+            </div><br>
                 <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
             </div>
         </div> 
@@ -242,6 +271,33 @@
         </div>
     </div>
 
+<!-- sorry for doing this again! I'll change it later -->
+
+    <script>
+        var slider = document.getElementById("sliderValue");
+        var output = document.getElementById("valueText");
+        output.innerHTML = slider.value;
+        
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+
+        var slider2 = document.getElementById("sliderValue2");
+        var output2 = document.getElementById("valueText2");
+        output2.innerHTML = slider2.value;
+        
+        slider2.oninput = function() {
+          output2.innerHTML = this.value;
+        }
+
+        var slider3 = document.getElementById("sliderValue3");
+        var output3 = document.getElementById("valueText3");
+        output3.innerHTML = slider3.value;
+        
+        slider3.oninput = function() {
+          output3.innerHTML = this.value;
+        }
+    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

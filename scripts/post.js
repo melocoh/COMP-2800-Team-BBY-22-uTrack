@@ -465,6 +465,8 @@ function updateExp() {
 // //     console.log("end of getStoreIdToPost()");
 // // }
 
+
+
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
  */
