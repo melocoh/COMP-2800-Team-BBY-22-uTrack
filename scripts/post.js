@@ -1,53 +1,52 @@
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 1 */
 let checked1 = false;
 
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 2 */
 let checked2 = false;
 
-/** insert javadoc here */
+/** Holds the default boolean value of checkbox 3 */
 let checked3 = false;
 
-/** insert javadoc here */
+/** Holds an array of the items */
 let items = [];
 
-/** insert javadoc here */
+/** Holds an array of the items' stock */
 let stock = [];
 
-/** insert javadoc here */
+/** Holds the image url that users have uploaded */
 let imgUrl;
 
-/** insert javadoc here */
+/** Hold an array of items' references  */
 let itemIDs = [];
 
-/** insert javadoc here */
-// let storeId;
-
-/** insert javadoc here */
+/** Holds the current timestamp */
 let curTime;
 
-/** insert javadoc here */
+/** Holds the timestamp in date and time format*/
 let dateAndTime;
 
-/** insert javadoc here */
+/** Holds the post id references */
 let postId;
 
-/** insert javadoc here */
+/** Holds the array of  the user's posts */
 let userPost = [];
 
-/** insert javadoc here */
+/** Holds the store id reference */
 var storeId;
 
-/** insert javadoc here */
+/** Holds the instant time */
 const TIME = 500;
 
-/** insert javadoc here */
+/** Holds the increment exp */
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 var fileButton = document.getElementById('fileButton');
 let userId;
 let userName;
 
-//get user id and user name;
+/**
+ * Get user id and user name;
+ */
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -57,10 +56,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 //Invoke functions
-removeQuantity();
-setInterval(function () {
-    checkbox();
-}, TIME);
+// removeQuantity();
+// setInterval(function () {
+//     checkbox();
+// }, TIME);
 
 /** Firestore Posts Collection Reference */
 let postsCollec = db.collection("posts");
@@ -220,7 +219,8 @@ function setDataPost() {
                         timestamp: curTime,
                         post_name: storeName,
                         post_items: itemIDs,
-                        post_store: storeRef
+                        post_store: storeRef,
+                        user_id: userId
                     }).then(function (postRef) {
                         postId = postsCollec.doc(postRef.id);
                         // userPost.push(postId);
