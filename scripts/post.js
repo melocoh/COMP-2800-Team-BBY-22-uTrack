@@ -50,6 +50,17 @@ let slider = document.getElementById("sliderRange");
 /** Slider Value Text */
 let output = document.getElementById("valueText");
 
+/** Slider input */
+var slider2 = document.getElementById("sliderRange2");
+
+/** Slider Value Text */
+var output2 = document.getElementById("valueText2");
+
+/** Slider input  */
+var slider3 = document.getElementById("sliderRange3");
+
+/** Slider Value Text */
+var output3 = document.getElementById("valueText3");
 /**
  * Get user id and user name;
  */
@@ -128,107 +139,46 @@ function removeQuantity() {
  * Add the data from user's input to severals collection on database.
  */
 function setDataPost() {
-    // let locate = document.getElementById("address").value + ", " +
-    //     document.getElementById("province").value +
-    //     ", " + document.getElementById("zip").value;
+    let locate = document.getElementById("address").value + ", " +
+        document.getElementById("province").value +
+        ", " + document.getElementById("zip").value;
 
-    // iterate over each item in the items array and add them to the database
-    // for (let i = 0; i < items.length; i++) {
-    //     db.collection("items").add({
-    //         category: items[i],
-    //         item_name: items[i],
-    //         stock_number: stock[i]
-    //     }).then(function (docRef) {
-    //         let itemId = db.collection("items/").doc(docRef.id);
-    //         console.log(itemId);
-    //         itemIDs.push(itemId);
-    //         // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
-    //         // add the store and post once the last item has been pushed to itemIDs arrya
-    //         if (i == items.length - 1) {
-    //             db.collection("stores").add({
-    //                 location: locate,
-    //                 store_items: itemIDs,
-    //                 store_name: document.getElementById("nameStore").value
-    //             }).then(function (docRef) {
-    //                 storeId = db.collection("stores/").doc(docRef.id);
-    //                 // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-    //                 // storeId.set({
-    //                 //     location: locate,
-    //                 //     store_items: itemIDs,
-    //                 //     store_name: document.getElementById("nameStore").value
-    //                 // });
-    //                 console.log(storeId);
-    //                 db.collection("posts").add({
-    //                     post_image: imgUrl,
-    //                     post_date: dateAndTime,
-    //                     timestamp: curTime,
-    //                     post_name: document.getElementById("nameStore").value,
-    //                     post_items: itemIDs,
-    //                     post_store: storeId
-    //                 }).then(function (docRef) {
-    //                     postId = db.collection("posts/").doc(docRef.id);
-    //                     // userPost.push(postId);
-    //                     // firebase.auth().onAuthStateChanged(function (user) {
-    //                     //     db.collection("users/").doc(user.id).update({
-    //                     //         user_posts: userPost
-    //                     //     })
-    //                     // })
-    //                 }).catch(function (error) {
-    //                     console.log("Error adding document: ", error);
-    //                 });
-    //             });
-    //         }
-    //     });
-    // }
-
+    //iterate over each item in the items array and add them to the database
     for (let i = 0; i < items.length; i++) {
-        itemsCollec.add({
+        db.collection("items").add({
             category: items[i],
             item_name: items[i],
             stock_number: stock[i]
-        }).then(function (itemRef) {
-            let itemId = db.collection("items/").doc(itemRef.id);
-            console.log("itemID: " + itemId);
+        }).then(function (docRef) {
+            let itemId = db.collection("items/").doc(docRef.id);
+            console.log(itemId);
             itemIDs.push(itemId);
-            // Add the store and post once the last item has been pushed to itemIDs array
+            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
+            // add the store and post once the last item has been pushed to itemIDs arrya
             if (i == items.length - 1) {
-
-                // FOR TESTING PURPOSES
-                console.log("last item has been added");
-
-                // FOR TESTING PURPOSES
-                console.log("updating store");
-                console.log("storeID: " + storeId);
-
-                let storeName;
-
-                // update store
-                storesCollec.doc(storeId).update({
-                    store_items: itemIDs
-                });
-                // may need to use .then() promise for post addition
-
-                storesCollec.doc(storeId).get().then((storeDoc) => {
-                    let storeRef = db.collection("stores/").doc(storeDoc.id);
-
-                    console.log("store name: " + storeDoc.get("store_name"));
-                    storeName = storeDoc.get("store_name");
-
-                    // FOR TESTING PURPOSES
-                    console.log("adding post");
-                    console.log("storeDoc: " + storeDoc);
-
-                    // adding new post
-                    postsCollec.add({
+                db.collection("stores").add({
+                    location: locate,
+                    store_items: itemIDs,
+                    store_name: document.getElementById("nameStore").value
+                }).then(function (docRef) {
+                    storeId = db.collection("stores/").doc(docRef.id);
+                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
+                    // storeId.set({
+                    //     location: locate,
+                    //     store_items: itemIDs,
+                    //     store_name: document.getElementById("nameStore").value
+                    // });
+                    console.log(storeId);
+                    db.collection("posts").add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
-                        post_name: storeName,
+                        post_name: document.getElementById("nameStore").value,
                         post_items: itemIDs,
-                        post_store: storeRef,
+                        post_store: storeId,
                         user_id: userId
-                    }).then(function (postRef) {
-                        postId = postsCollec.doc(postRef.id);
+                    }).then(function (docRef) {
+                        postId = db.collection("posts/").doc(docRef.id);
                         // userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
                         //     db.collection("users/").doc(user.id).update({
@@ -239,6 +189,68 @@ function setDataPost() {
                         console.log("Error adding document: ", error);
                     });
                 });
+            }
+        });
+    }
+
+    // for (let i = 0; i < items.length; i++) {
+    //     itemsCollec.add({
+    //         category: items[i],
+    //         item_name: items[i],
+    //         stock_number: stock[i]
+    //     }).then(function (itemRef) {
+    //         let itemId = db.collection("items/").doc(itemRef.id);
+    //         console.log("itemID: " + itemId);
+    //         itemIDs.push(itemId);
+    //         // Add the store and post once the last item has been pushed to itemIDs array
+    //         if (i == items.length - 1) {
+
+    //             // FOR TESTING PURPOSES
+    //             console.log("last item has been added");
+
+    //             // FOR TESTING PURPOSES
+    //             console.log("updating store");
+    //             console.log("storeID: " + storeId);
+
+    //             let storeName;
+
+    //             // update store
+    //             storesCollec.doc(storeId).update({
+    //                 store_items: itemIDs
+    //             });
+    //             // may need to use .then() promise for post addition
+
+    //             storesCollec.doc(storeId).get().then((storeDoc) => {
+    //                 let storeRef = db.collection("stores/").doc(storeDoc.id);
+
+    //                 console.log("store name: " + storeDoc.get("store_name"));
+    //                 storeName = storeDoc.get("store_name");
+
+    //                 // FOR TESTING PURPOSES
+    //                 console.log("adding post");
+    //                 console.log("storeDoc: " + storeDoc);
+
+    //                 // adding new post
+    //                 postsCollec.add({
+    //                     post_image: imgUrl,
+    //                     post_date: dateAndTime,
+    //                     timestamp: curTime,
+    //                     post_name: storeName,
+    //                     post_items: itemIDs,
+    //                     post_store: storeRef,
+    //                     user_id: userId
+    //                 }).then(function (postRef) {
+    //                     postId = postsCollec.doc(postRef.id);
+                        // userPost.push(postId);
+                        // firebase.auth().onAuthStateChanged(function (user) {
+                        //     db.collection("users/").doc(user.id).update({
+                        //         user_posts: userPost
+                        //     })
+                //         // })
+                //     }).catch(function (error) {
+                //         console.log("Error adding document: ", error);
+                //     });
+                // });
 
 
                 // db.collection("stores").add({
@@ -273,9 +285,9 @@ function setDataPost() {
                 //     console.log("Error adding document: ", error);
                 // });
                 // });
-            }
-        });
-    }
+//             }
+//         });
+//     }
 }
 
 /**
@@ -471,7 +483,37 @@ function updateExp() {
 // //     console.log("end of getStoreIdToPost()");
 // // }
 
+/**
+ * Shows the slider value.
+ * @param {*} a 
+ * @param {*} output 
+ */
+function showSliderValue(a,output){
+    if (a == 0){
+        output.innerHTML = "none";
+    } else if (a == 1){
+        output.innerHTML = "few";
+    } else if (a ==2){
+        output.innerHTML = "some"
+    } else if (a ==3){
+        output.innerHTML = "many"
+    } else if (a == 4){
+        output.innerHTML = "plenty";
+    }
+}
 
+/**
+ * Calls the function slider.
+ */
+slider.oninput = function(){
+    showSliderValue(this.value, output)
+};
+slider2.oninput = function(){
+    showSliderValue(this.value, output2)
+};
+slider3.oninput = function(){
+    showSliderValue(this.value, output3)
+};
 
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.

@@ -44,11 +44,11 @@ db.collection("reports").get().then(function (querySnapshot) {
 
         p6.appendChild(btn);
         text.appendChild(p1);
-        text.appendChild(p2);
         text.appendChild(p4);
         text.appendChild(p3);
         text.appendChild(p5);
         text.appendChild(p7);
+        text.appendChild(p2);
         text.appendChild(p6);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);

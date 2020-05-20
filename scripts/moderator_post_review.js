@@ -67,10 +67,10 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         p6.appendChild(btn);
         text.appendChild(p1);
-        text.appendChild(p2);
         text.appendChild(p4);
         text.appendChild(p3);
         text.appendChild(p5);
+        text.appendChild(p2);
         text.appendChild(p6);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
@@ -179,7 +179,7 @@ $(document).ready(function () {
     $(".container").css("margin-top", "100px");
     $("#newPost").css({
         "display": "flex",
-        "justify-content": "flex-end",
+        "justify-content": "flex-start",
         "padding": "15px"
     });
 });
