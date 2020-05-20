@@ -11,6 +11,12 @@ var curAvatar;
 /** New Avatar Image Souce Holder */
 var newAvatar;
 
+/** Profile picture div container */
+let profPicDiv = $("#profpic_container");
+
+// level indicator of avatar design
+let avatarLevelIndicator;
+
 // JSON of Available Avatars
 // const allAvatars = {
 //     "level1": "./images/Avatar/level_1.png",
@@ -45,24 +51,63 @@ function setGreyscale() {
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
     // . / i m a g e s / A v  a  t  a  r  /  l  e  v  e  l  _  1  .  p  n  g
 
-    // level indicator of avatar design
-    let avatarLevelIndicator = parseInt(newAvatar.substring(22, 23));
+    avatarLevelIndicator = parseInt(newAvatar.substring(22, 23));
 
     // FOR TESTING PURPOSES
     console.log("avatarLevelIndicator: " + avatarLevelIndicator);
 
     // external level variable (from avatar_switch.js)
     let level = parseInt(lv);
-    
+
     // FOR TESTING PURPOSES
     console.log("user's current level: " + level);
 
     // if level is less than avatar level indicator, set grayscale filter to avatar
     if (level < avatarLevelIndicator) {
+        // check for lock icon
+        let checkLockIcon = $(".lock_icon");
+        console.log(checkLockIcon.length);
         $(avatar).css("filter", "grayscale(95%)");
+        if (checkLockIcon.length <= 0) {
+            console.log("adding lock");
+            setLock("add");
+        }
+        setLevelReqIndicator("add");
     } else {
         // remove filter css property if avatar is unlocked by user
         $(avatar).css("filter", "");
+        console.log("removing lock");
+        setLock("remove");
+        setLevelReqIndicator("remove")
+    }
+}
+
+/**
+ * Sets the lock icon to the profile picture container
+ */
+function setLock(addOrRemove) {
+    // lock icon html code
+    let lockIcon = `<i class="fas fa-lock fa-2x lock_icon"></i>`;
+
+    if (addOrRemove === "add") {
+        console.log("adding lock");
+        // append lock icon code to profile pic container
+        $(profPicDiv).append(lockIcon);
+
+        // setLevelReqIndicator();
+    } else {
+        console.log("removing lock");
+        $(".fa-lock").remove();
+        // $(".lvlreq_div").remove();
+    }
+}
+
+function setLevelReqIndicator(addOrRemove) {
+    if (addOrRemove === "add") {
+        let divIndicator = `<div class="lvlreq_div"><p>Level ` + avatarLevelIndicator + ` required to unlock this avatar</p></div>`;
+        $(profPicDiv).append(divIndicator);
+    } else {
+        $(".lvlreq_div").remove();
     }
 }
 
@@ -120,7 +165,7 @@ function setListeners() {
         if (!(curAvatar === allAvatars[allAvatars.length - 1])) {
             // Find match
             findMatch("right");
-            
+
             // place result after matching index
             $(avatar).attr("src", newAvatar);
 
@@ -163,7 +208,7 @@ function findMatch(direction) {
 
             // FOR TESTING PURPOSES
             console.log("ending for loop");
-            
+
             // End for-loop
             return;
         } else {
