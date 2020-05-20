@@ -128,67 +128,79 @@
                     <option value="Nunavut">Nunavut</option>
                 </select>
                 <div class="invalid-feedback">Please select a province/territories</div>
-           
-            <div class="py-2">
-                <label for="zip"><b>Zip</b></label>
-                <input type="text" class="form-control" id="zip" required>
-                <div class="invalid-feedback">Please enter a zip code of the store</div>
+
+                <div class="py-2">
+                    <label for="zip"><b>Zip</b></label>
+                    <input type="text" class="form-control" id="zip" required>
+                    <div class="invalid-feedback">Please enter a zip code of the store</div>
+                </div>
             </div>
-        </div>
         </form>
         <div>
             <p><b>Products:</b></p>
 
-        <!-- container for quantity -->
-        <div class="quantitycontainer"> 
+            <!-- container for quantity -->
+            <div class="quantitycontainer">
 
-            <div class="row">
-              <div class="col-sm">
-                <!-- Toilet Paper -->
-                <br>
-                <div class="itemicon_container">
-                    <img class = "itemicon" src="./images/icon_toiletpaper.png">
+                <div class="row">
+                    <div class="col-sm">
+                        <!-- Toilet Paper -->
+                        <br>
+                        <div class="itemicon_container">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2"
+                                    value="Toilet papers">
+                                <label class="custom-control-label" for="customCheck2"><img class="itemicon" src="./images/icon_toiletpaper.png"></label>
+                            </div>
+                        </div>
+
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange">
+                            <p><span id="valueText"></span></p>
+                        </div>
+
+                    </div>
+                    <div class="col-sm">
+                        <!-- Masks -->
+                        <br>
+                        <div class="itemicon_container">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                    value="Face masks">
+                                <label class="custom-control-label" for="customCheck1"><img class="itemicon" src="./images/icon_mask.png"></label>
+                            </div>
+                        </div>
+
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange2">
+                            <p><span id="valueText2"></span></p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm">
+                        <!-- Hand Sanitizers -->
+                        <br>
+                        <div class="itemicon_container">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3"
+                                    value="Hand Sanitizers">
+                                <label class="custom-control-label" for="customCheck3"><img class="itemicon" src="./images/icon_handsantizer.png"></label>
+                            </div>
+                        </div>
+
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange3">
+                            <p><span id="valueText3"></span></p>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="slidecontainer">
-                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange">
-                    <p><span id="valueText"></span></p>
-                </div>
-
-              </div>
-              <div class="col-sm">
-                <!-- Masks -->
-                <br>
-                <div class="itemicon_container">
-                    <img class = "itemicon" src="./images/icon_mask.png">
-                </div>
-
-                <div class="slidecontainer">
-                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange2">
-                    <p><span id="valueText2"></span></p>
-                </div>
-
-              </div>
-
-              <div class="col-sm">
-                <!-- Hand Sanitizers -->
-                <br>
-                <div class="itemicon_container">
-                    <img class = "itemicon" src="./images/icon_handsantizer.png">
-                </div>
-
-                <div class="slidecontainer">
-                    <input type="range" min="0" max="5" value="0" class="slider" id="sliderRange3">
-                    <p><span id="valueText3"></span></p>
-                </div>
-              </div>
-
             </div>
-          </div>
 
-          </div>
+        </div>
 
-    <!-- </div>
+        <!-- </div>
         <div id="quantity">
             <div>
                 <p><b>Estimated quantity:</b></p>
@@ -240,41 +252,41 @@
                         </div>
                     </div>
                 </div> -->
-               
-                <div>
-                    <p><b>Image</b></p>
-                
-                <form class="p-3">
-                    <input type="file" value="upload" id='fileButton'>
-                </form>
-            </div><br>
-                <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-            </div>
-        </div> 
-        <br>
 
-        <div class="modal" tabindex="-1" role="dialog" id="congratulation">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="acceptTerm">Level up!</h5>
-                    </div>
+        <div>
+            <p><b>Image</b></p>
 
-                    <div class="modal-body">
-                        <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                                style="margin:auto; display:block;"></p>
-                        <p>You have raised the level up to <span id="levelReached"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+            <form class="p-3">
+                <input type="file" value="upload" id='fileButton'>
+            </form>
+        </div><br>
+        <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+    </div>
+    </div>
+    <br>
+
+    <div class="modal" tabindex="-1" role="dialog" id="congratulation">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                            style="margin:auto; display:block;"></p>
+                    <p>You have raised the level up to <span id="levelReached"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
 
-        
+
     <!-- Bottom Nav Bar -->
     <footer class="footer">
         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
@@ -302,47 +314,47 @@
         </div>
     </footer>
 
-<!-- sorry for doing this again! I'll change it later -->
-<script>
-    // first slider (toiler paper)
-    var slider = document.getElementById("sliderRange");
-    var output = document.getElementById("valueText");
-    output.innerHTML = "none";
+    <!-- sorry for doing this again! I'll change it later -->
+    <script>
+        // first slider (toiler paper)
+        var slider = document.getElementById("sliderRange");
+        var output = document.getElementById("valueText");
+        output.innerHTML = "none";
 
-    slider.oninput = function() {
-    //   output.innerHTML = this.value;
-        if (this.value == 0){
-            output.innerHTML = "none";
-        } else if (this.value == 1){
-            output.innerHTML = "few";
-        } else if (this.value ==2){
-            output.innerHTML = "some"
-        } else if (this.value ==3){
-            output.innerHTML = "many"
-        } else if (this.value == 4){
-            output.innerHTML = "plenty";
+        slider.oninput = function () {
+            //   output.innerHTML = this.value;
+            if (this.value == 0) {
+                output.innerHTML = "none";
+            } else if (this.value == 1) {
+                output.innerHTML = "few";
+            } else if (this.value == 2) {
+                output.innerHTML = "some"
+            } else if (this.value == 3) {
+                output.innerHTML = "many"
+            } else if (this.value == 4) {
+                output.innerHTML = "plenty";
+            }
+
         }
-      
-    }
-    
-    // second slider (mask)
-    var slider2 = document.getElementById("sliderRange2");
-    var output2 = document.getElementById("valueText2");
-    output2.innerHTML = slider2.value;
-    
-    slider2.oninput = function() {
-      output2.innerHTML = this.value;
-    }
-    
-    // third slider (hand sanitizer)
-    var slider3 = document.getElementById("sliderRange3");
-    var output3 = document.getElementById("valueText3");
-    output3.innerHTML = slider3.value;
-    
-    slider3.oninput = function() {
-      output3.innerHTML = this.value;
-    }
-</script>
+
+        // second slider (mask)
+        var slider2 = document.getElementById("sliderRange2");
+        var output2 = document.getElementById("valueText2");
+        output2.innerHTML = slider2.value;
+
+        slider2.oninput = function () {
+            output2.innerHTML = this.value;
+        }
+
+        // third slider (hand sanitizer)
+        var slider3 = document.getElementById("sliderRange3");
+        var output3 = document.getElementById("valueText3");
+        output3.innerHTML = slider3.value;
+
+        slider3.oninput = function () {
+            output3.innerHTML = this.value;
+        }
+    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
