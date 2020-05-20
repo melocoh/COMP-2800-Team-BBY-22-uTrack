@@ -124,10 +124,11 @@ body {
         display: none;
     }
 
-    .container {
+    /* please don't use container in universal, it causes a lot of issues TT ^ TT */
+    /* .container {
         margin-top: 10vh;
         max-height: 90vh;
-    }
+    } */
 
     /* #menuNav { */
         /* WARNING:

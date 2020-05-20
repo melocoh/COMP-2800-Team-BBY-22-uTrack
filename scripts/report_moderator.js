@@ -204,7 +204,7 @@ function deleteItem(listItem) {
  * Set the style for some elements.
  */
 $(document).ready(function () {
-    $(".container").css("margin-top", "100px");
+    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
         "display": "flex",
         "justify-content": "flex-end",
