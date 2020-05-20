@@ -1,4 +1,16 @@
 /* --------------------------------- */
+/* HTML, Body and Container */
+/* --------------------------------- */
+.container{
+    font-family: Comfortaa;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+}
+
+/* --------------------------------- */
 /* Main and Children */
 /* --------------------------------- */
 main {
@@ -24,14 +36,7 @@ section {
     color: black;
     /* background-color: orange; */
 }
-.container{
-    font-family: Comfortaa;
-    margin: 0;
-    padding: 0;
-    /* display: grid;
-    margin-top: 70px;
-    height: 90vh; */
-}
+
 /* --------------------------------- */
 /* HERE Map */
 /* --------------------------------- */
@@ -110,6 +115,10 @@ span:last-child {
 
 /* Mobile View */
 @media (max-width: 419px) {
+    .container {
+        margin-top: auto;
+    }
+
     #homeMap {
         /* position: absolute; */
         /* top: 50%;
@@ -118,6 +127,11 @@ span:last-child {
         height: 30%; */
         /* width: 100vw;
         height: 100vh; */
-        height: 80vh;
+        height: 100%;
+    }
+
+    #reportButton {
+        bottom: 2rem;
+        right: 2rem;
     }
 }
