@@ -1,4 +1,16 @@
 /* --------------------------------- */
+/* HTML, Body and Container */
+/* --------------------------------- */
+.container{
+    font-family: Comfortaa;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+}
+
+/* --------------------------------- */
 /* Main and Children */
 /* --------------------------------- */
 main {
@@ -23,15 +35,6 @@ section {
     padding: 20px;
     color: black;
     /* background-color: orange; */
-}
-
-.container {
-    font-family: Comfortaa;
-    margin: 0;
-    padding: 0;
-    /* display: grid;
-    margin-top: 70px;
-    height: 90vh; */
 }
 
 /* --------------------------------- */
@@ -113,6 +116,10 @@ canvas {
 
 /* Mobile View */
 @media (max-width: 419px) {
+    .container {
+        margin-top: auto;
+    }
+
     #homeMap {
         /* position: absolute; */
         /* top: 50%;
@@ -121,7 +128,12 @@ canvas {
         height: 30%; */
         /* width: 100vw;
         height: 100vh; */
-        height: 80vh;
+        height: 100%;
+    }
+
+    #reportButton {
+        bottom: 2rem;
+        right: 2rem;
     }
 
     #reportButton {
