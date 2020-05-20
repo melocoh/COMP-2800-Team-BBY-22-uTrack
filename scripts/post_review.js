@@ -25,14 +25,15 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
         let btn = document.createElement("img");
+        let btnDiv = document.createElement("div");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         // btn.setAttribute("id", report_index);
         btn.setAttribute("value", report_index);
         btn.setAttribute("src","./images/exclamation.png");
-        btn.setAttribute("width","30px");
-        btn.setAttribute("height","30px");
-        btn.setAttribute("position","absolute");
+        btn.setAttribute("width","40px");
+        btn.setAttribute("height","40px");
+        btn.setAttribute("id","reportBtn");
         btn.onclick = function () {
             butval = parseInt(btn.value);
             $(".mess").click(function () {
@@ -67,8 +68,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         }
 
         storeLogo.getDownloadURL().then(function (url) {
-            //p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
-            p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
+            p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
+            //p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
             console.log(url);
         }).catch(function (error) {
             console.log(error);
@@ -88,7 +89,8 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         text.appendChild(p3);
         text.appendChild(p5);
         // text.appendChild(p6);
-        contain.appendChild(btn);
+        btnDiv.appendChild(btn);
+        contain.appendChild(btnDiv);
         contain.appendChild(text);
         document.querySelector("#theContainer").appendChild(contain);
 
@@ -165,7 +167,7 @@ function setStyle(contain, p1, p6, btn) {
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
-    p1.style.margin = "-20px";
+    p1.style.margin = "-25px";
     //p1.style.fontWeight = "bold";
     // p6.style.textAlign = "center";
     // btn.style.backgroundColor = "tomato";

@@ -56,3 +56,8 @@ body {
     max-width: 500px;
     margin: 0 auto 50px;
 }
+
+/* to right align "!" mark - Steven Kim */
+#reportBtn {
+    float: right;
+}
