@@ -31,12 +31,7 @@
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
-    <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
-
-    <link rel="stylesheet" href="css/slider_min.css">
-
-    </style>
-
+    <!-- <link rel="stylesheet" type="text/css" href="./css/fireworks.css"> -->
 </head>
 
 <body>
@@ -61,11 +56,6 @@
                 </li>
                 <li class="nav-item active nav-active">
                     <a class="nav-link" href="./post.html">Posting</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
                 </li>
             </ul>
         </div>
@@ -102,22 +92,22 @@
         </div>
     </div>
 
-    <div class="container" id="postContainer1">
+    <div class="container py-3" id="postContainer1">
         <form>
             <!-- Commented out for now. Get store name from passed store id later -->
-            <!-- <div class="title">
+            <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
                 <input type="text" class="form-control" id="nameStore" required>
                 <div class="invalid-feedback">Please enter a store name</div>
-            </div> -->
+            </div>
 
-            <!-- <div class="py-2">
+            <div class="py-2">
                 <label for="address"><b>Address</b></label>
                 <input type="text" class="form-control" id="address" required>
                 <div class="invalid-feedback">Please enter the address of the store</div>
-            </div> -->
+            </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="province"><b>Province/Territories</b></label>
                 <select class="custom-select" id="province" required>
                     <option selected disabled value="">Choose...</option>
@@ -136,18 +126,20 @@
                     <option value="Nunavut">Nunavut</option>
                 </select>
                 <div class="invalid-feedback">Please select a province/territories</div>
-            </div> -->
-            <!-- <div class="py-2">
+           
+            <div class="py-2">
                 <label for="zip"><b>Zip</b></label>
                 <input type="text" class="form-control" id="zip" required>
                 <div class="invalid-feedback">Please enter a zip code of the store</div>
-            </div> -->
+            </div>
+        </div>
         </form>
         <div>
             <p><b>Products:</b></p>
-        </div>
-        <form class="p-2">
+        
 
+            <!--- Original checkbox -->
+        <form class="p-2" style="background-color: azure;">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck1" value="Face masks">
                 <label class="custom-control-label" for="customCheck1">Face masks</label>
@@ -160,130 +152,96 @@
                 <input type="checkbox" class="custom-control-input" id="customCheck3" value="Hand Sanitizers">
                 <label class="custom-control-label" for="customCheck3">Hand sanitizers</label>
             </div>
+
         </form>
 
+        
+
+    </div>
         <div id="quantity">
             <div>
                 <p><b>Estimated quantity:</b></p>
                 <p><i>Only insert the quantity of available items</i></p>
             </div>
-            <form class="p-2">
-
-                
-
-                <!--previous quantity input components-->
-
+            <div class="p-2">
                 <div>
                     <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
-                    <div class="input-group" id="textBox1">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">Face masks</div>
-                        </div>
-                        <input type="number" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
+                    <div class="form-group">
+                        <select class="custom-select btn-light" id="quantity" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="None">None</option>
+                            <option value="Few">Few</option>
+                            <option value="Some">Some</option>
+                            <option value="Many">Many</option>
+                            <option value="Plenty">Plenty</option>
+                        </select>
+                        <div class="invalid-feedback">Please insert the quantity</div>
                     </div>
 
                     <br>
                     <div>
                         <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
                         <div class="input-group" id="textBox2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Toilet paper</div>
+                            <select class="custom-select btn-light" id="quantity" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="None">None</option>
+                                <option value="Few">Few</option>
+                                <option value="Some">Some</option>
+                                <option value="Many">Many</option>
+                                <option value="Plenty">Plenty</option>
+                            </select>
+                            <div class="invalid-feedback">Please insert the quantity</div>
+                        </div>
+                        <br>
+                        <div>
+                            <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
+                            <div class="input-group" id="textBox3">
+                                <select class="custom-select btn-light" id="quantity" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="None">None</option>
+                                    <option value="Few">Few</option>
+                                    <option value="Some">Some</option>
+                                    <option value="Many">Many</option>
+                                    <option value="Plenty">Plenty</option>
+                                </select>
+                                <div class="invalid-feedback">Please insert the quantity</div>
                             </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup2"
-                                placeholder="Item units">
                         </div>
                     </div>
-                    <br>
-                    <div>
-                        <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
-                        <div class="input-group" id="textBox3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Hand sanitizers</div>
-                            </div>
-                            <input type="number" class="form-control" id="inlineFormInputGroup3"
-                                placeholder="Item units">
-                        </div>
+                </div>
+               
+                <div>
+                    <p><b>Image</b></p>
+                
+                <form class="p-3">
+                    <input type="file" value="upload" id='fileButton'>
+                </form>
+            </div>
+                <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
+            </div>
+        </div> 
+        <br>
+
+        <div class="modal" tabindex="-1" role="dialog" id="congratulation">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="acceptTerm">Level up!</h5>
                     </div>
-            </form>
-        </div>
-    </div>
-    <div>
-        <p><b>Image</b></p>
-    </div>
-    <form class="p-3">
-        <input type="file" value="upload" id='fileButton'>
-    </form>
-    <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-    <!-- </div> -->
-    </div>
-    <!-- <br> -->
 
-    <div class="modal" tabindex="-1" role="dialog" id="congratulation">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="acceptTerm">Level up!</h5>
-                </div>
-
-                <div class="modal-body">
-                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                            style="margin:auto; display:block;"></p>
-                    <p>You have raised the level up to <span id="levelReached"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-body">
+                        <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
+                                style="margin:auto; display:block;"></p>
+                        <p>You have raised the level up to <span id="levelReached"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 
-    <script src="./scripts/slider_min.js"></script>
-    <script>
-        (function () {
-            'use strict';
-
-            var init = function () {
-
-                var slider = new rSlider({
-                    target: '#slider',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
-
-                var slider2 = new rSlider({
-                    target: '#slider2',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
-
-                var slider3 = new rSlider({
-                    target: '#slider3',
-                    values: ["none", "few", "some", "plenty"],
-                    // range: false,
-                    labels: true,
-                    set: ["none"],
-                    // tooltip: false,
-                    onChange: function (vals) {
-                        console.log(vals);
-                    }
-                });
-            };
-            window.onload = init;
-        })();
-    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -312,7 +270,7 @@
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/post.js"></script>
-
+    <script src="./scripts/slider_min.js"></script>
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
