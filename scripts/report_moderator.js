@@ -159,6 +159,7 @@ function getItemInfo(listItem, p4) {
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
+            list.style.alignItems = "center";
             p4.appendChild(list);
         })
     }
@@ -203,7 +204,7 @@ function deleteItem(listItem) {
  * Set the style for some elements.
  */
 $(document).ready(function () {
-    $(".container").css("margin-top", "100px");
+    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
         "display": "flex",
         "justify-content": "flex-end",

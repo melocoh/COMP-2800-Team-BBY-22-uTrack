@@ -119,6 +119,7 @@ canvas {
 @media (max-width: 419px) {
     .container {
         margin-top: auto;
+        max-height: 90vh;
     }
 
     #homeMap {
