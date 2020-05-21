@@ -134,7 +134,7 @@ function getItemInfo(storeItems, p4) {
  */
 function setStyle(contain, p1, p6, btn) {
     contain.style.textAlign = "center";
-    contain.style.backgroundColor = "#D6EFFF";
+    // contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
@@ -143,6 +143,7 @@ function setStyle(contain, p1, p6, btn) {
     btn.style.backgroundColor = "tomato";
     btn.style.color = "white";
     btn.style.borderRadius = "7px";
+    contain.style.backgroundColor = "white";
 }
 
 /**

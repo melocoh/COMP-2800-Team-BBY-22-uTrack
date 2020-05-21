@@ -84,98 +84,55 @@
         </div>
     </div>
 
-    <div class="container">
-        <!-- <header>
-            <span>Insert logo here.</span>
-        </header> -->
-
-        <!-- This div modal MUST be a higher level than the map -->
-        <!-- <div class="modal fade" id="myModal1" focusable="false" role="dialog" aria-labelledby="exampleModal3Label"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <img class="storeLogos" id="storeLogo1">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/icon_mask.png" />
-                                </div>
-                                <span class="item1 items">Item here</span>
-                                <span class="stock1 stocks">Val</span>
-                            </li>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/70909-200.png" />
-                                </div>
-                                <span class="item2 items">Item here</span>
-                                <span class="stock2 stocks">Val</span>
-                            </li>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/icon_handsantizer.png" />
-                                </div>
-                                <span class="item3 items">Item here</span>
-                                <span class="stock3 stocks">Val</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='./post.html'">View Posts</button>
+    <!-- Map Marker Modal -->
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img class="storeLogos" id="storeLogo1">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/icon_mask.png" />
+                            </div>
+                            <span class="item1 items">Item here</span>
+                            <span class="stock1 stocks">Val</span>
+                        </li>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/70909-200.png" />
+                            </div>
+                            <span class="item2 items">Item here</span>
+                            <span class="stock2 stocks">Val</span>
+                        </li>
+                        <li>
+                            <div class="logo_container">
+                                <img class="icons" src="./images/icon_handsantizer.png" />
+                            </div>
+                            <span class="item3 items">Item here</span>
+                            <span class="stock3 stocks">Val</span>
+                        </li>
+                    </ul>
+                    <div id="profileInfo">
+                        <img id="modalProfPic" src="https://dummyimage.com/100x100/000/fff">
+                        <span id="modalFirstName">User Name Here</span>
                     </div>
                 </div>
-            </div>
-        </div> -->
-
-        <div id="myModal1" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <img class="storeLogos" id="storeLogo1">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/icon_mask.png" />
-                                </div>
-                                <span class="item1 items">Item here</span>
-                                <span class="stock1 stocks">Val</span>
-                            </li>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/70909-200.png" />
-                                </div>
-                                <span class="item2 items">Item here</span>
-                                <span class="stock2 stocks">Val</span>
-                            </li>
-                            <li>
-                                <div class="logo_container">
-                                    <img class="icons" src="./images/icon_handsantizer.png" />
-                                </div>
-                                <span class="item3 items">Item here</span>
-                                <span class="stock3 stocks">Val</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick="window.location.href='./post.html'">View Store Posts</button>
-                        <button type="button" id="uploadPostButton" class="btn btn-primary" data-dismiss="modal">Upload Post</button>
-                    </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="window.location.href='./post.html'">View Store Posts</button>
+                    <button type="button" id="uploadPostButton" class="btn btn-primary" data-dismiss="modal">Upload Post</button>
                 </div>
-
             </div>
+    
         </div>
+    </div>
+
+    <div class="container">
 
         <main>
             <!-- <section>

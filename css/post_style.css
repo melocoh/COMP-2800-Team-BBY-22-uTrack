@@ -1,5 +1,5 @@
 .container {
-    display: grid;
+    /* display: grid; */
     margin-top: 70px;
     height: 90vh;
 }
@@ -17,7 +17,8 @@
         padding: 10px;
     } */
     #newPost {
-        margin: 40px 0 -100px 0;
+        /* redundant */
+        /* margin: 40px 0 -100px 0; */
     }
 
 }
@@ -40,7 +41,8 @@
     margin: 5px;
 }
 
-body {
+/*it cause the header and button new post stretching */
+/* body {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -49,11 +51,15 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 /* .container > * {
     padding: 10px;
 } */
+
+#reportBtn {
+    float: right;
+}
 
 #uploader {
     -webkit-appearance: none;
@@ -116,9 +122,11 @@ body {
 
 #questionmark {
     padding-left: 8px;
-}
+  }
 
-/* to right align "!" mark - Steven Kim */
-#reportBtn {
-    float: right;
-}
+/* Caption for images description */
+
+  #caption{
+      color: gray;
+      font-size: 12px;
+  }

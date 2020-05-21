@@ -191,7 +191,8 @@ $(document).ready(function () {
 function getUserInfo(userInfo, p5, span1, span2, span3) {
     userInfo.get().then(function (doc) {
         var userName = doc.get("name");
-        span2.innerHTML = userName;
+       
+        span2.innerHTML = `<b>` + userName + `</b>`;
         span2.setAttribute("value", doc.uid);
         span2.setAttribute("data-toggle", "modal");
         span2.setAttribute("data-target", "#profileModal");
@@ -202,22 +203,29 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
             switch (doc.get("level")) {
                 case 1:
                     $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
                     break;
                 case 2:
                     $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
                     break;
                 case 3:
                     $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
                     break;
                 default:
                     $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
                     break;
             }
-
-            $("#userName").html = `<b>` + userName + `</b>`;
-            $("#userLevel").html = doc.get("level");
-            $("#userEmail").html = doc.get("email");
+            console.log(userName);
+            console.log(doc.get("level"));
+            $("#userName").html(`<b>` + userName + `</b>`);
+            $("#userLevel").html("Level: " + doc.get("level"));
+            $("#userEmail").html(doc.get("email"));
         }
 
     })
 }
+
+$("#profileModal").css({"text-align":"center"})
