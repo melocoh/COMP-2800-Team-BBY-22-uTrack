@@ -218,6 +218,7 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
         var userName = doc.get("name");
        
         span2.innerHTML = `<b>` + userName + `</b>`;
+        span2.style.color = "#0F52BA";
         span2.setAttribute("value", doc.uid);
         span2.setAttribute("data-toggle", "modal");
         span2.setAttribute("data-target", "#profileModal");

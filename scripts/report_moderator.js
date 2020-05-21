@@ -37,7 +37,7 @@ db.collection("reports").get().then(function (querySnapshot) {
         // var listItem = doc.data().post_items;
         var postId = doc.get("report_post");
         console.log(postId);
-        getPostInfo(postId, p1, p2, p3, p4, p5, btn, span1, span3, contain, doc.id);
+        getPostInfo(postId, p1, p2, p3, p4, p5, btn, span1, span2, span3, contain, doc.id);
 
         setStyle(contain, p1, p6, btn);
 
@@ -72,7 +72,7 @@ db.collection("reports").get().then(function (querySnapshot) {
  * @param {*} contain 
  * @param {*} b 
  */
-function getPostInfo(postId, p1, p2, p3, p4, btn, span1, span3, contain, b) {
+function getPostInfo(postId, p1, p2, p3, p4, p5, btn, span1, span2, span3, contain, b) {
     postId.get().then(function (doc) {
         var storeInfo = doc.get("post_store");
         var listItem = doc.data().post_items;
@@ -231,6 +231,7 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
         var userName = doc.get("name");
        
         span2.innerHTML = `<b>` + userName + `</b>`;
+        span2.style.color = "#0F52BA";
         span2.setAttribute("value", doc.uid);
         span2.setAttribute("data-toggle", "modal");
         span2.setAttribute("data-target", "#profileModal");
