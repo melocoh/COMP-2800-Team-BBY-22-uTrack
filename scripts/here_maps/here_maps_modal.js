@@ -1,19 +1,19 @@
-// Firestore Store Logos Folder Reference
+/** Firestore Store Logos Folder Reference */
 var storageRef = firebase.storage().ref().child("store_logos");
 
-// Array of valid stores
+/** Array of valid stores */
 var storeList = [];
 
-// Holds current store object
+/** Holds current store object */
 let curStore;
 
-// Holds Firebase Document ID of current store
+/** Holds Firebase Document ID of current store */
 let curStoreId;
 
-// Holds the latest post uploaded for that store
+/** Holds the latest post uploaded for that store */
 let latestPost;
 
-// Determines the number of iterations for reading items and stocks
+/** Determines the number of iterations for reading items and stocks */
 const maxItems = 3;
 
 /**
@@ -60,7 +60,7 @@ function getStore(cardIndex) {
 
     readStockStatus();
 
-    readUserProfile();
+    // readUserProfile();
 
     console.log("finished getting store...");
 }
@@ -82,24 +82,22 @@ function findAndSortPosts() {
     curStoreId = db.collection("stores/").doc(curStore.id);
     console.log("curStoreId: " + curStoreId);
 
-    let relevantPosts = db.collection("posts").where("post_store", "==", curStoreId).orderBy("timeStamp", "desc");
-    // console.log("relevantPosts length: " + relevantPosts.length);
-    console.log("relevantPosts: " + relevantPosts);
-
-    if (relevantPosts.length > 0) {
-        latestPost = relevantPosts.limitToFirst();
-        console.log("latestPost: " + latestPost);
-    }
-
-    console.log(relevantPosts);
+    let relevantPost = db.collection("posts").where("post_store", "==", curStoreId).orderBy("timeStamp", "desc").limit(1);
+    console.log("relevantPost: " + relevantPost);
+    latestPost = relevantPost;
+    console.log("latestPost: " + latestPost);
 }
 
 /**
  * Reads the current store's logo and puts into the modal
  */
 function readStoreLogo() {
+    // holds store logo
     let storeLogo;
+    // holds current store's name
     let storeName = curStore.get("store_name");
+
+    // select a logo based on name
     switch (storeName) {
         case "Walmart":
             storeLogo = storageRef.child("walmart.png");
@@ -115,6 +113,7 @@ function readStoreLogo() {
             break;
     }
 
+    // get the download url then modify the associated HTML element
     storeLogo.getDownloadURL().then(function (url) {
         $(".storeLogos").attr("src", url);
         console.log(url);
@@ -182,7 +181,7 @@ function readStockStatus() {
 }
 
 /**
- * 
+ * Reads the user information of latest post (OLD)
  */
 function readUserProfile() {
     console.log("beginning of readUserProfile()");
@@ -196,34 +195,36 @@ function readUserProfile() {
     let userName;
     // firebase user level reference
     let userLevel;
-    
+
 
     if (latestPost !== undefined) {
         console.log("extracting user from latest post");
         // extract the user of latest post
-        latestPost.get().then((docRef) => {
+        latestPost.get().then(function (docRef) {
             userRef = docRef.get("user_id");
             console.log("userRef: " + userRef);
+
+            console.log("extracting user information");
+            // extract user information
+            userRef.get().then(function (docRef) {
+                userLevel = docRef.get("level");
+                console.log("userLevel: " + userLevel);
+
+                userName = docRef.displayName;
+                console.log("userName: " + userName);
+
+                console.log("setting user name in modal");
+                $(modalUName).text(userName);
+            });
         });
-
-        console.log("extracting user information");
-        // extract user information
-        userRef.get().then((docRef) => {
-            userLevel = docRef.get("level");
-            console.log("userLevel: " + userLevel);
-
-            userName = docRef.displayName;
-            console.log("userName: " + userName);
-        });
-
-        console.log("setting user name in modal");
-        $(modalUName).text(userName);
-
     }
-    
+
     console.log("end of readUserProfile()");
 }
 
+/**
+ * 
+ */
 function initUploadButton() {
     $("#uploadPostButton").click(() => {
         // FOR TESTING PURPOSES
