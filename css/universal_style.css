@@ -97,6 +97,10 @@ body {
     width: 30%;
 }
 
+.footer {
+    z-index: 1;
+}
+
 
 /* desktop view */
 @media (min-width: 1025px) {
@@ -131,12 +135,12 @@ body {
     } */
 
     /* this cause the navbar issue */
-    /* #menuNav { */
-        /* WARNING:
+    /* #menuNav {
+        WARNING:
         Setting a fixed height value for the navbar
         will apply a bug to the background-colour
-        of the nav links */
-        /* height: auto;
+        of the nav links
+        height: auto;
     } */
 
     #menuNav .navbar-right li:nth-child(1) {
