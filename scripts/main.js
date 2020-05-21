@@ -9,11 +9,6 @@ function showName() {
 // invoke display showName function
 showName();
 
-// display logout modal
-function displayLogoutModal() {
-    $('#logoutModal').modal('show');
-}
-
  // Change style of navbar on scroll
  window.onscroll = function () { myFunction() };
  function myFunction() {
