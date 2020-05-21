@@ -59,3 +59,7 @@
     font-size: 25px;
     border-bottom: 1px solid gray;
 }
+
+.btn-primary{
+    border-radius: .4em;
+}

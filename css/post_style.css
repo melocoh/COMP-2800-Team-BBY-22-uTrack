@@ -136,3 +136,7 @@
       color: gray;
       font-size: 12px;
   }
+
+  .btn-primary{
+      border-radius: .4em;
+  }

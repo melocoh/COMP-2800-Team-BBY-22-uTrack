@@ -61,15 +61,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./moderator_home.html">Moderator Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active nav-active">
                     <a class="nav-link" href="./moderator_profile.html">Profile</a>
                 </li>
-                <li class="nav-item active nav-active">
+                <li class="nav-item">
                     <a class="nav-link" href="./moderator_post.html">Post</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
+                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup class="totalReport">0</sup></i></a>
                 </li>
             </ul>
         </div>
@@ -252,14 +252,14 @@
                  <span>Map</span>
               </div>
            </button>
-           <button id="account" type="button" class="btn btn-secondary button-inactive"
+           <button id="account" type="button" class="btn btn-secondary button-active"
            onclick="window.location.href='./moderator_profile.html';">
               <div class="selector-holder">
                  <i class="material-icons">account_circle</i>
                  <span>Account</span>
               </div>
            </button>
-           <button id="feed" type="button" class="btn btn-secondary button-active"
+           <button id="feed" type="button" class="btn btn-secondary button-inactive"
            onclick="window.location.href='./moderator_post.html';">
               <div class="selector-holder">
                  <i class="material-icons">view_list</i>
@@ -271,7 +271,7 @@
            onclick="window.location.href='./reported_post.html';">
               <div class="selector-holder">
                 <i class="material-icons">feedback</i>
-                <span>Reports  <sup id="totalReport">0</sup></span>
+                <span>Reports  <sup class="totalReport">0</sup></span>
               </div>
            </button>
 
@@ -307,7 +307,7 @@
     <script src="./scripts/profile.js"></script>
     <script src="./scripts/avatar/avatar_switch.js"></script>
     <script src="./scripts/avatar/avatar_ui_select.js"></script>
-    <!-- <script src="./scripts/post.js"></script> -->
+    <script src="./scripts/notification.js"></script>
 
 
     <!--------------------------------------------------------------------->
