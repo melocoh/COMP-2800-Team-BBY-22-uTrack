@@ -298,30 +298,30 @@ function getItemInfo() {
         items.push(document.getElementById("customCheck1").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
         let numValue = document.getElementById("sliderRange").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity
+        console.log(numValue);
+        convertSliderValue(numValue);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
         let numValue = document.getElementById("sliderRange2").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
         let numValue = document.getElementById("sliderRange3").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 }
 
@@ -513,17 +513,17 @@ function showSliderValue(a,output){
  * @param {*} a 
  * @param {*} b 
  */
-function convertSliderValue(a,b){
+function convertSliderValue(a){
     if (a == 0){
-        b = "none";
+        stock.push("none");
     } else if (a == 1){
-        b = "few";
+        stock.push("few ~ 10");
     } else if (a == 2){
-        b = "some"
+        stock.push("some ~ 20");
     } else if (a == 3){
-        b = "many"
+        stock.push("some ~ 50");
     } else if (a == 4){
-        b = "plenty";
+        stock.push("plenty ~ 70");
     }
 }
 
