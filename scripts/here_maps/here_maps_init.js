@@ -17,7 +17,7 @@ var map = new H.Map(
          *  15: Street-wide
          *  20: Forgot
          */
-        zoom: 15,
+        zoom: 12,
         /* can get latitude and longitude from Google Maps
          *  by right-clicking in the map and selecting 'What's Here?'
          *  then copy lat and long
