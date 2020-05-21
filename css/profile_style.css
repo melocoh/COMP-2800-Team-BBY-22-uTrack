@@ -171,6 +171,11 @@
 
 /* mobile view */
 @media (max-width: 419px) {
+    .container {
+        margin-top: 10vh;
+        max-height: 90vh;
+    }
+
     #expBar {
         width: 80%;
     }
@@ -237,5 +242,9 @@
         margin-left:50px;
     }
 
-
+    .container {
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+    }
 }
