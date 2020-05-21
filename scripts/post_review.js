@@ -44,11 +44,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             $(".mess").click(function () {
                 var reason = $(this).val();
                 localStorage.setItem(0, reason);
-<<<<<<< HEAD
                 console.log("reason: " + reason);
-=======
-                console.log("reason : " + reason);
->>>>>>> steven
             });
         }
 
