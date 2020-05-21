@@ -1,7 +1,7 @@
 .container {
     /* display: grid; */
     margin-top: 70px;
-    height: 90vh;
+    /* height: 90vh; */
 }
 
 /* desktop view */
@@ -21,6 +21,9 @@
         /* margin: 40px 0 -100px 0; */
     }
     
+    .container {
+       margin-bottom: 50px;
+    }
 }
 
 /* -------------------------- */
