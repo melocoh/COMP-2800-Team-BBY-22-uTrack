@@ -172,7 +172,7 @@ canvas {
     .container {
         /* wack */
         /* margin-top: auto; */
-        max-height: 90vh;
+        margin-top: auto;
     }
 
     #homeMap {
