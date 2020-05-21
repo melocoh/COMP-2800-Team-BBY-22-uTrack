@@ -30,11 +30,14 @@ db.collection("reports").get().then(function (querySnapshot) {
         let p6 = document.createElement("div");
         let p7 = document.createElement("p");
         let btn = document.createElement("button");
+        let span2 = document.createElement("span");
+        let span1 = document.createElement("span");
+        let span3 = document.createElement("span");
         // var storeInfo = doc.get("post_store");
         // var listItem = doc.data().post_items;
         var postId = doc.get("report_post");
         console.log(postId);
-        getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, doc.id);
+        getPostInfo(postId, p1, p2, p3, p4, p5, btn, span1, span3, contain, doc.id);
 
         setStyle(contain, p1, p6, btn);
 
@@ -63,26 +66,28 @@ db.collection("reports").get().then(function (querySnapshot) {
  * @param {*} p3 
  * @param {*} p4 
  * @param {*} p5 
- * @param {*} btn 
+ * @param {*} btn
+ * @param {*} span1
+ * @param {*} span3
  * @param {*} contain 
  * @param {*} b 
  */
-function getPostInfo(postId, p1, p2, p3, p4, p5, btn, contain, b) {
+function getPostInfo(postId, p1, p2, p3, p4, btn, span1, span3, contain, b) {
     postId.get().then(function (doc) {
         var storeInfo = doc.get("post_store");
         var listItem = doc.data().post_items;
+        var userInfo = doc.get("user_id");
         getStoreInfo(storeInfo, p3);
         getItemInfo(listItem, p4);
         p1.innerHTML = doc.data().post_name;
         p2.src = doc.get("post_image");
         p2.style.width = "250px";
         p2.style.height = "250px";
-        //need to change it back when slider is fix and have new post.
-        // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
-        p5.innerHTML = "Posted: " + doc.get("post_date");
+        span1.innerHTML = "Posted by ";
+        span3.innerHTML = " @ " + doc.get("post_date");
         console.log(storeInfo);
         console.log(listItem);
-
+        getUserInfo(userInfo, p5, span1, span2, span3);
         function removePost() {
             contain.style.display = "none";
             console.log(storeInfo);
@@ -211,3 +216,51 @@ $(document).ready(function () {
         "padding": "15px"
     });
 });
+
+/**
+ * Get information of the user who posted the post and display it in modal.
+ * @param {*} userInfo 
+ * @param {*} p5 
+ * @param {*} span1 
+ * @param {*} span2 
+ * @param {*} span3 
+ */
+function getUserInfo(userInfo, p5, span1, span2, span3) {
+    userInfo.get().then(function (doc) {
+        var userName = doc.get("name");
+       
+        span2.innerHTML = `<b>` + userName + `</b>`;
+        span2.setAttribute("value", doc.uid);
+        span2.setAttribute("data-toggle", "modal");
+        span2.setAttribute("data-target", "#profileModal");
+        p5.appendChild(span1);
+        p5.appendChild(span2);
+        p5.appendChild(span3);
+        span2.onclick = function () {
+            switch (doc.get("level")) {
+                case 1:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                case 2:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                case 3:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                default:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+            }
+            console.log(userName);
+            console.log(doc.get("level"));
+            $("#userName").html(userName);
+            $("#userLevel").html("<b>"+ "Lv." + doc.get("level") + "</b>");
+            $("#userLevel").css({"color":""});
+        }
+
+    })
+}

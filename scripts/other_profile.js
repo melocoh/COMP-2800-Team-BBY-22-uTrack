@@ -220,9 +220,9 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
             }
             console.log(userName);
             console.log(doc.get("level"));
-            $("#userName").html(`<b>` + userName + `</b>`);
-            $("#userLevel").html("Level: " + doc.get("level"));
-            $("#userEmail").html(doc.get("email"));
+            $("#userName").html(userName);
+            $("#userLevel").html("<b>"+ "Lv." + doc.get("level") + "</b>");
+            $("#userLevel").css({"color":""});
         }
 
     })
