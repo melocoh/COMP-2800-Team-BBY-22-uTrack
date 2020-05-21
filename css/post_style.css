@@ -1,5 +1,5 @@
 .container {
-    display: grid;
+    /* display: grid; */
     margin-top: 70px;
     height: 90vh;
 }
@@ -122,4 +122,11 @@
 
   #questionmark{
     padding-left: 8px;
+  }
+
+/* Caption for images description */
+
+  #caption{
+      color: gray;
+      font-size: 12px;
   }
