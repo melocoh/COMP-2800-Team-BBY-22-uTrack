@@ -1,9 +1,9 @@
-/**
- * Read the total posts that have been reported from database and display it.
- */
-db.collection("reports").get().then(function (snap) {
-    document.getElementById("totalReport").innerHTML = snap.size;
-});
+// /**
+//  * Read the total posts that have been reported from database and display it.
+//  */
+// db.collection("reports").get().then(function (snap) {
+//     document.("totalReport").innerHTML = snap.size;
+// });
 
 // $("#totalReport").css({
 //     "background-color": "white",
@@ -119,7 +119,7 @@ function getPostInfo(postId, p1, p2, p3, p4, p5, btn, span1, span2, span3, conta
             });
 
             db.collection("reports").get().then(function (snap) {
-                document.getElementById("totalReport").innerHTML = snap.size;
+                document.querySelector(".totalReport").innerHTML = snap.size;
             });
         }
         btn.onclick = removePost;

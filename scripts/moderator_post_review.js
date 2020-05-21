@@ -49,7 +49,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             });
 
             db.collection("reports").get().then(function (snap) {
-                document.getElementById("totalReport").innerHTML = snap.size;
+                document.querySelector(".totalReport").innerHTML = snap.size;
             });
         }
         btn.onclick = removePost;
@@ -193,9 +193,9 @@ $(document).ready(function () {
 /**
  * Read the total posts that have been reported from database and display it.
  */
-db.collection("reports").get().then(function (snap) {
-    document.getElementById("totalReport").innerHTML = snap.size;
-});
+// db.collection("reports").get().then(function (snap) {
+//     document.getElementById("totalReport").innerHTML = snap.size;
+// });
 
 // $("#totalReport").css({
 //     "background-color": "white",

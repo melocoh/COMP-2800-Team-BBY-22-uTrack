@@ -204,7 +204,7 @@ $(document).ready(function () {
                 // report_user: "user.uid"
             }).then(function (docRef) {
                 let reportId = db.collection("reports/").doc(docRef.id);
-                console.log("reportId : " + reportId);
+                // console.log("reportId : " + reportId);
                 db.collection("posts/").doc(postlists[butval]).update({
                     reported: reportId
                 })
