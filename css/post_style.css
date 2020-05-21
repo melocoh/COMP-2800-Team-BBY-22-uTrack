@@ -1,5 +1,5 @@
 .container {
-    display: grid;
+    /* display: grid; */
     margin-top: 70px;
     height: 90vh;
 }
@@ -41,7 +41,8 @@
     margin: 5px;
 }
 
-body {
+/*it cause the header and button new post stretching */
+/* body {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -50,7 +51,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 /* .container > * {
     padding: 10px;
@@ -121,4 +122,11 @@ body {
 
   #questionmark{
     padding-left: 8px;
+  }
+
+/* Caption for images description */
+
+  #caption{
+      color: gray;
+      font-size: 12px;
   }

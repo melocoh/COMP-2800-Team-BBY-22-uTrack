@@ -25,7 +25,9 @@
 /* .container{
     margin-bottom: 100px;
 } */
-body {
+
+/*this causes stretching issues*/
+/* body {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -34,8 +36,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* background-color: grey; */
-}
+    background-color: grey;
+} */
 
 #uploader {
     -webkit-appearance: none;
