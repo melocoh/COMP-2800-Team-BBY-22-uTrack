@@ -15,6 +15,15 @@ let userPost = [];
 const TIME = 500;
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
+/** Firestore Posts Collection Reference */
+let postsCollec = db.collection("posts");
+
+/** Firestore Items Collection Reference */
+let itemsCollec = db.collection("items");
+
+/** Firestore Stores Collection Reference */
+let storesCollec = db.collection("stores");
+
 //invoke functions
 removeQuantity();
 setInterval(function () {
@@ -223,9 +232,9 @@ function save() {
     // console.log("updateUser");
     // updateUser();
     console.log("end of save()");
-    setTimeout(function () {
-        window.location.href = "./post.html";
-    }, TIME * 4);
+    // setTimeout(function () {
+    //     window.location.href = "./post.html";
+    // }, TIME * 4);
 }
 
 function getTimeStamp() {
@@ -340,6 +349,18 @@ function updateExp() {
 }
 
 $(document).ready(function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            userId = db.collection("users/").doc(user.uid);
+            console.log(userId);
+            userName = user.displayName;
+        }
+    });
+    
+    console.log("window location TRUE");
+    storeId = localStorage.getItem("storeId");
+
     fileButton.addEventListener('change', function (e) {
         var file = e.target.files[0];
         //create a storage ref
