@@ -1,7 +1,7 @@
 /* --------------------------------- */
 /* HTML, Body and Container */
 /* --------------------------------- */
-.container{
+.container {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;
@@ -9,7 +9,6 @@
     margin-top: 70px;
     height: 90vh;
 }
-
 
 /* --------------------------------- */
 /* Main and Children */
@@ -60,20 +59,68 @@ canvas {
 /* --------------------------------- */
 /* Map Modal */
 /* --------------------------------- */
+.modal-content {
+    border-radius: 50px;
+}
+
+.modal-content > * {
+    /* remove borders */
+    border: 0;
+}
+
+.modal-header {
+    /* center store logos */
+    justify-content: center;
+    /* remove extra space */
+    padding-bottom: 0;
+}
+
+.modal-body {
+    /* align ul and profile info div */
+    display: flex;
+    /* remove extra space */
+    padding-bottom: 0;
+}
+
 .modal-body ul {
+    /* marginalize to the right as much as possible */
+    margin-right: auto;
     list-style: none;
 }
 
 .modal-body li {
-    width: 70%;
+    /* old width value */
+    /* width: 70%; */
     padding: 10px;
     display: flex;
     align-items: center;
 }
 
-.modal-body li span {
-    padding-left: 5px;
-    padding-right: 5px;
+.items {
+    /* horizontal padding only */
+    padding: 0 1rem;
+}
+
+#profileInfo {
+    width: auto;
+    padding: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#modalProfPic {
+    border-radius: 50%;
+}
+
+#modalFirstName {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+}
+
+.storeLogos {
+    /* insert property to scale images lower */
 }
 
 .icons {
@@ -81,9 +128,14 @@ canvas {
     max-height: 50px;
 }
 
-
 .modal-footer {
     justify-content: center;
+    flex-direction: column;
+}
+
+.modal-footer button {
+    box-sizing: border-box;
+    width: 180px;
 }
 
 /* --------------------------------- */
@@ -118,7 +170,8 @@ canvas {
 /* Mobile View */
 @media (max-width: 419px) {
     .container {
-        margin-top: auto;
+        /* wack */
+        /* margin-top: auto; */
         max-height: 90vh;
     }
 
@@ -131,6 +184,14 @@ canvas {
         /* width: 100vw;
         height: 100vh; */
         height: 100%;
+    }
+
+    .items {
+        display: none;
+    }
+
+    .stocks {
+        padding: 0 1rem;
     }
 
     #reportButton {

@@ -86,16 +86,16 @@ function readStoreLogo() {
     let storeName = curStore.get("store_name");
     switch (storeName) {
         case "Walmart":
-            storeLogo = storageRef.child("logo_walmart.jpg");
+            storeLogo = storageRef.child("walmart.png");
             break;
         case "Superstore":
-            storeLogo = storageRef.child("logo_superstore.jpg");
+            storeLogo = storageRef.child("superstore.png");
             break;
         case "Save-on-Foods":
-            storeLogo = storageRef.child("logo_saveonfoods.jpg");
+            storeLogo = storageRef.child("saveonfoods.png");
             break;
         case "Costco":
-            storeLogo = storageRef.child("logo_costco.jpg");
+            storeLogo = storageRef.child("costco.png");
             break;
     }
 
@@ -180,7 +180,7 @@ function initUploadButton() {
         console.log("before window location change to post.html");
 
         // change window location to post page
-        window.location.href = "./posting.html";
+        window.location.href = "./posting2.html";
 
         // FOR TESTING PURPOSES
         console.log("after window location change to post.html: haha unreachable code.");
