@@ -1,7 +1,10 @@
 .container {
     /* display: grid; */
+    /* margin-top: 70px; */
+    height: 100%;
+    padding: 1rem;
     margin-top: 70px;
-    margin-bottom: 45px;
+    margin-bottom: 60px;
 }
 
 /* desktop view */
@@ -20,13 +23,16 @@
         /* redundant */
         /* margin: 40px 0 -100px 0; */
     }
-
+    
+    .container {
+       margin-bottom: 50px;
+    }
 }
 
 /* -------------------------- */
 /* For the title in post page */
 /* -------------------------- */
-#titleContainer {
+#titleContainer{
     font-size: 25px;
     border-bottom: 1px solid gray;
 }
@@ -59,7 +65,6 @@
 
 #reportBtn {
     float: right;
-    z-index: 99999;
 }
 
 #uploader {
@@ -97,13 +102,13 @@
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-}
-
-.slider:hover {
+  }
+  
+  .slider:hover {
     opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
+  }
+  
+  .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -111,23 +116,27 @@
     border-radius: 50%;
     background: lightblue;
     cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
+  }
+  
+  .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background: lightblue;
     cursor: pointer;
-}
+  }
 
-#questionmark {
+  #questionmark{
     padding-left: 8px;
-}
+  }
 
 /* Caption for images description */
 
-#caption {
-    color: gray;
-    font-size: 12px;
-}
+  #caption{
+      color: gray;
+      font-size: 12px;
+  }
+
+  .btn-primary{
+      border-radius: .4em;
+  }

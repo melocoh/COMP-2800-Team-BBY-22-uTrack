@@ -59,6 +59,16 @@ canvas {
 /* --------------------------------- */
 /* Map Modal */
 /* --------------------------------- */
+.modal {
+    z-index: 99999;
+}
+
+.modal-dialog {
+    /* display: flex; */
+    /* justify-content: center; */
+    text-align: center;
+}
+
 .modal-content {
     border-radius: 50px;
 }
@@ -86,6 +96,7 @@ canvas {
     /* marginalize to the right as much as possible */
     margin-right: auto;
     list-style: none;
+    padding-left: 1rem;
 }
 
 .modal-body li {
@@ -138,6 +149,20 @@ canvas {
     width: 180px;
 }
 
+#closeMarker {
+    float: none;
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+    margin: 1rem;
+    font-size: 4rem;
+    color: white;
+    background-color: red;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    opacity: 1;
+}
+
 /* --------------------------------- */
 /* Media Queries */
 /* --------------------------------- */
@@ -160,7 +185,7 @@ canvas {
         top: 7rem;
         right: 1rem;
         /* send to front over map */
-        z-index: 99999;
+        z-index: 9999;
         /* align i element to vertical center */
         display: flex;
         align-items: center;
@@ -172,7 +197,7 @@ canvas {
     .container {
         /* wack */
         /* margin-top: auto; */
-        max-height: 90vh;
+        margin-top: auto;
     }
 
     #homeMap {

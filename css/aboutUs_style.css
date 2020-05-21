@@ -19,6 +19,10 @@ background-size: cover;
     font-size: 15px;
 }
 
+/* welcome message */
+#welcome {
+    text-align: center;
+}
 /* First image (Logo. Full height) */
 .bgimg-1 {
 /* background-image: url(../images/corona.jpg); */
@@ -295,7 +299,10 @@ margin: auto;
 width: 90%;
 }
 
-}
+.bgimg-1 {
+    background-image: url(../images/bg_test2.png);
+    min-height: 100%;
+    }
 
 .clearfix:after {
 content: "";

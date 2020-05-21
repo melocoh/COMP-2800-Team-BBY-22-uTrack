@@ -1,0 +1,6 @@
+/** For profile modal box */
+#profileModal{
+    position: fixed;
+    top: 30%;
+    text-align:center;
+}

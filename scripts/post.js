@@ -154,7 +154,7 @@ function setDataPost() {
             console.log(itemId);
             itemIDs.push(itemId);
             // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
-            // add the store and post once the last item has been pushed to itemIDs arrya
+            // add the store and post once the last item has been pushed to itemIDs array
             if (i == items.length - 1) {
                 db.collection("stores").add({
                     location: locate,
@@ -298,30 +298,30 @@ function getItemInfo() {
         items.push(document.getElementById("customCheck1").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
         let numValue = document.getElementById("sliderRange").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity
+        console.log(numValue);
+        convertSliderValue(numValue);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
         let numValue = document.getElementById("sliderRange2").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
         // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
         let numValue = document.getElementById("sliderRange3").value;
-        let itemQuantity;
-        convertSliderValue(numValue,itemQuantity);
-        console.log(itemQuantity);
-        stock.push(itemQuantity);
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 }
 
@@ -513,17 +513,17 @@ function showSliderValue(a,output){
  * @param {*} a 
  * @param {*} b 
  */
-function convertSliderValue(a,b){
+function convertSliderValue(a){
     if (a == 0){
-        b = "none";
+        stock.push("none");
     } else if (a == 1){
-        b = "few";
+        stock.push("few");
     } else if (a == 2){
-        b = "some"
+        stock.push("some");
     } else if (a == 3){
-        b = "many"
+        stock.push("many");
     } else if (a == 4){
-        b = "plenty";
+        stock.push("plenty");
     }
 }
 
@@ -544,6 +544,7 @@ slider3.oninput = function(){
 output.innerHTML = "none";
 output2.innerHTML = "none";
 output3.innerHTML = "none";
+
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
  */
@@ -551,7 +552,7 @@ $(document).ready(function () {
     console.log("current window location: " + window.location.href);
     if (window.location.href.includes("/posting.html")) {
         console.log("window location TRUE");
-        storeId = localStorage.getItem("storeId");
+        // storeId = localStorage.getItem("storeId");
 
         fileButton.addEventListener('change', function (e) {
             var file = e.target.files[0];

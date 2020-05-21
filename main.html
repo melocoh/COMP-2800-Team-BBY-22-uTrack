@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -45,6 +47,7 @@
             <a href="#team" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEAM</a>
             <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ABOUT</a>
             <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+            
         </div>
 
         <!-- Navbar on small screens -->
@@ -55,13 +58,18 @@
             <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
         </div>
     </div>
+<br><br>
+    <a href="./index.html" class="w3-bar-item w3-button w3-hide-small" data-toggle="modal" data-target="#logoutModal"
+             id="logoutBtn" onclick="displayLogoutModal()">
+                <h4>Logout</h4>
+            </a>
 
     <!-- First Parallax Image with Logo Text -->
     <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
         <div class="w3-display-middle">
-            <span id="title">uTrack </span>
+            <span id="title">uTrack</span><p id="welcome">hello!</p>
             
-            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Start now</button></a>
+            <a href="home.html" style="text-decoration: none"><button id="start" type="button">Start Application</button></a>
         </div>
         <div id="learn"> <a href="#about"> Learn More </a></div>
     </div>
@@ -175,6 +183,32 @@
              
         </div>
     </div>
+
+    <!-- Sign out modal -->
+    <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Logout <i class="fa fa-lock"></i></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <p><i class="fa fa-question-circle"></i> Are you sure you want to logout? <br /></p>
+                    <div class="actionsBtns">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
+                            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
@@ -199,7 +233,8 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/main.js"></script>
 
     <script>
         // Change style of navbar on scroll

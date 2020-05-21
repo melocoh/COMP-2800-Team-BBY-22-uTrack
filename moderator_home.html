@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!------------------------>
     <!-- Your own CSS files -->
@@ -48,17 +49,17 @@
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="navbar-nav nav mr-auto">
                 <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./home.html">Home</a>
+                    <a class="nav-link" href="./moderator_home.html">Moderator Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profile.html">Profile</a>
+                    <a class="nav-link" href="./moderator_profile.html">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./post.html">Post</a>
+                    <a class="nav-link" href="./moderator_post.html">Posts</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup id="totalReport">0</sup></i></a>
+                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup class="totalReport">0</sup></i></a>
                 </li>
             </ul>
         </div>
@@ -230,7 +231,7 @@
            onclick="window.location.href='./reported_post.html';">
               <div class="selector-holder">
                  <i class="material-icons">feedback</i>
-                 <span>Reports</span>
+                 <span>Reports  <sup class="totalReport">0</sup></span>
               </div>
            </button>
 
