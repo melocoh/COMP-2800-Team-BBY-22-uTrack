@@ -544,6 +544,7 @@ slider3.oninput = function(){
 output.innerHTML = "none";
 output2.innerHTML = "none";
 output3.innerHTML = "none";
+
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
  */
@@ -551,7 +552,7 @@ $(document).ready(function () {
     console.log("current window location: " + window.location.href);
     if (window.location.href.includes("/posting.html")) {
         console.log("window location TRUE");
-        storeId = localStorage.getItem("storeId");
+        // storeId = localStorage.getItem("storeId");
 
         fileButton.addEventListener('change', function (e) {
             var file = e.target.files[0];
