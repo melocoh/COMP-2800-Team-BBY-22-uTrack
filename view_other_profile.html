@@ -126,62 +126,91 @@
                             <button type="button" class="btn btn-primary" data-dismiss="modal"
                                 id="submitButton">Submit</button>
                         </div>
+                    </form>
                 </div>
-                </form>
+
             </div>
-            <!-- User profiles view -->
-            <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-        
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span></button>
-        
-                        </div>
-                        <div class="modal-body">
-                            <img id="userAvatar">
-                            <div id="userName"></div>
-                            <div id="userLevel"></div>
-                            <div id="userEmail"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
-        <!----------------------------------------------->
-        <!-- JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
+        
+        <!-- <div class="modal" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+    
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+    
+                    </div>
+                    <div class="modal-body">
+                        <img id="userAvatar">
+                        <div id="userName"></div>
+                        <div id="userLevel"></div>
+                        <div id="userEmail"></div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
 
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- User profiles view -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <img id="userAvatar">
+                        <div id="userName">A</div>
+                        <div id="userLevel">B</div>
+                        <div id="userEmail">C</div>
 
-        <!--------------------------------------------------------------------->
-        <!-- JS files: Your own JavaScript functions included here    -->
-        <!--------------------------------------------------------------------->
-        <script src="./scripts/firebase_api_uTrack.js"> </script>
-        <!-- <script src="./scripts/post_review.js"></script> -->
-        <script src="./scripts/auth_check.js"></script>
-        <script src="./scripts/other_profile.js"></script>
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div> -->
+                    </form>
+                </div>
 
-        <!--------------------------------------------------------------------->
-        <!-- Make calls to your own JavaScript functions, here below-->
-        <!---------------------------------------------------------------------->
+            </div>
+
+        </div>
+    </div>
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <!-- <script src="./scripts/post_review.js"></script> -->
+    <script src="./scripts/auth_check.js"></script>
+    <script src="./scripts/other_profile.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
 </body>
 
 </html>
