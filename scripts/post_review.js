@@ -42,7 +42,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             $(".mess").click(function () {
                 var reason = $(this).val();
                 localStorage.setItem(0, reason);
-                console.log(reason);
+                console.log("reason: " + reason);
             });
         }
 
@@ -192,7 +192,7 @@ $(document).ready(function () {
     });
 
     $("#submitButton").click(function () {
-
+        console.log("submitButton is clicked");
         if (document.querySelector('#termsConditions:checked')) {
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
@@ -200,7 +200,7 @@ $(document).ready(function () {
                 // report_user: "user.uid"
             }).then(function (docRef) {
                 let reportId = db.collection("reports/").doc(docRef.id);
-                console.log(reportId);
+                console.log("reportId : " + reportId);
                 db.collection("posts/").doc(postlists[butval]).update({
                     reported: reportId
                 })
