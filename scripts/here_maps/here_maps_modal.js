@@ -10,6 +10,9 @@ let curStore;
 // Holds Firebase Document ID of current store
 let curStoreId;
 
+// Holds the latest post uploaded for that store
+let latestPost;
+
 // Determines the number of iterations for reading items and stocks
 const maxItems = 3;
 
@@ -39,6 +42,9 @@ function initReadModal(store) {
  * @param {} cardIndex 
  */
 function getStore(cardIndex) {
+    // add to onAttach and onDetach for markers.js
+    // $("#reportButton").css("display", "none");
+
     console.log("getting store...");
     curStore = storeList[cardIndex - 1];
     curStoreId = curStore.id;
@@ -50,9 +56,11 @@ function getStore(cardIndex) {
 
     readStoreLogo();
 
-    readItemName();
+    // readItemName();
 
     readStockStatus();
+
+    readUserProfile();
 
     console.log("finished getting store...");
 }
@@ -71,10 +79,18 @@ function readLatest() {
  */
 function findAndSortPosts() {
 
-    curStoreId = curStore.id;
+    curStoreId = db.collection("stores/").doc(curStore.id);
     console.log("curStoreId: " + curStoreId);
 
     let relevantPosts = db.collection("posts").where("post_store", "==", curStoreId).orderBy("timeStamp", "desc");
+    // console.log("relevantPosts length: " + relevantPosts.length);
+    console.log("relevantPosts: " + relevantPosts);
+
+    if (relevantPosts.length > 0) {
+        latestPost = relevantPosts.limitToFirst();
+        console.log("latestPost: " + latestPost);
+    }
+
     console.log(relevantPosts);
 }
 
@@ -120,13 +136,12 @@ function readItemName() {
     let items = curStore.data().store_items;
     console.log("reading items;" + items);
 
-
     for (let i = 0; i < maxItems; i++) {
         let curItem;
         console.log(i + 1);
         // console.log(items[i].get("item_name"));
         // items[i].get("item_name")
-        if (i < items.length) {
+        if (items.length > 0 && i < items.length) {
             items[i].get().then(function (doc) {
                 curItem = doc.get("item_name");
                 $(".item" + (i + 1)).text(curItem);
@@ -166,11 +181,54 @@ function readStockStatus() {
     // })
 }
 
+/**
+ * 
+ */
+function readUserProfile() {
+    console.log("beginning of readUserProfile()");
+    // modal HTML elements
+    let modalUPic = $("#modalProfPic");
+    let modalUName = $("#modalFirstName");
+
+    // firebase user id reference
+    let userRef;
+    // firebase user name reference
+    let userName;
+    // firebase user level reference
+    let userLevel;
+    
+
+    if (latestPost !== undefined) {
+        console.log("extracting user from latest post");
+        // extract the user of latest post
+        latestPost.get().then((docRef) => {
+            userRef = docRef.get("user_id");
+            console.log("userRef: " + userRef);
+        });
+
+        console.log("extracting user information");
+        // extract user information
+        userRef.get().then((docRef) => {
+            userLevel = docRef.get("level");
+            console.log("userLevel: " + userLevel);
+
+            userName = docRef.displayName;
+            console.log("userName: " + userName);
+        });
+
+        console.log("setting user name in modal");
+        $(modalUName).text(userName);
+
+    }
+    
+    console.log("end of readUserProfile()");
+}
+
 function initUploadButton() {
     $("#uploadPostButton").click(() => {
         // FOR TESTING PURPOSES
         console.log("clicked upload post button");
-        
+
         // calls function from post.js to pass store id
         // insert function here (this function stores the id into a global variable)
         // getStoreIdToPost(curStoreId);
