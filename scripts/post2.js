@@ -65,50 +65,64 @@ function removeQuantity() {
 //write data to database
 
 function setDataPost() {
-    let locate = document.getElementById("address").value + ", " +
-        document.getElementById("province").value +
-        ", " + document.getElementById("zip").value;
+    // redundant code
+    // let locate = document.getElementById("address").value + ", " +
+    //     document.getElementById("province").value +
+    //     ", " + document.getElementById("zip").value;
 
     // iterate over each item in the items array and add them to the database
     for (let i = 0; i < items.length; i++) {
-        db.collection("items").add({
+        itemsCollec.add({
             category: items[i],
             item_name: items[i],
             stock_number: stock[i]
-        }).then(function (docRef) {
-            let itemId = db.collection("items/").doc(docRef.id);
-            console.log(itemId);
+        }).then(function (itemRef) {
+            let itemId = db.collection("items/").doc(itemRef.id);
+            console.log("itemID: " + itemId);
             itemIDs.push(itemId);
-            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
-            // add the store and post once the last item has been pushed to itemIDs arrya
+            // Add the store and post once the last item has been pushed to itemIDs array
             if (i == items.length - 1) {
-                db.collection("stores").add({
-                    location: locate,
-                    store_items: itemIDs,
-                    store_name: document.getElementById("nameStore").value
-                }).then(function (docRef) {
-                    storeId = db.collection("stores/").doc(docRef.id);
-                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-                    // storeId.set({
-                    //     location: locate,
-                    //     store_items: itemIDs,
-                    //     store_name: document.getElementById("nameStore").value
-                    // });
-                    console.log(storeId);
-                    db.collection("posts").add({
+
+                // FOR TESTING PURPOSES
+                console.log("last item has been added");
+
+                // FOR TESTING PURPOSES
+                console.log("updating store");
+                console.log("storeID: " + storeId);
+
+                let storeName;
+
+                // update store
+                storesCollec.doc(storeId).update({
+                    store_items: itemIDs
+                });
+                // may need to use .then() promise for post addition
+
+                storesCollec.doc(storeId).get().then((storeDoc) => {
+                    let storeRef = db.collection("stores/").doc(storeDoc.id);
+
+                    console.log("store name: " + storeDoc.get("store_name"));
+                    storeName = storeDoc.get("store_name");
+
+                    // FOR TESTING PURPOSES
+                    console.log("adding post");
+                    console.log("storeDoc: " + storeDoc);
+
+                    // adding new post
+                    postsCollec.add({
                         post_image: imgUrl,
                         post_date: dateAndTime,
                         timestamp: curTime,
-                        post_name: document.getElementById("nameStore").value,
+                        post_name: storeName,
                         post_items: itemIDs,
-                        post_store: storeId
-                    }).then(function (docRef) {
-                        postId = db.collection("posts/").doc(docRef.id);
-                        // userPost.push(postId);
+                        post_store: storeRef,
+                        user_id: userId
+                    }).then(function (postRef) {
+                        postId = postsCollec.doc(postRef.id);
+                        userPost.push(postId);
                         // firebase.auth().onAuthStateChanged(function (user) {
-                        //     db.collection("users/").doc(user.id).update({
-                        //         user_posts: userPost
-                        //     })
+                        // db.collection("users/").doc(user.id).update({
+                        //     user_posts: userPost
                         // })
                     }).catch(function (error) {
                         console.log("Error adding document: ", error);
@@ -117,14 +131,6 @@ function setDataPost() {
             }
         });
     }
-
-    // updating item array of store (because it is blank for some reason)
-    // btw doesn't work
-    // db.collection("stores").doc(storeId).set({
-    //     location: locate,
-    //     store_items: itemIDs,
-    //     store_name: document.getElementById("nameStore").value
-    // });
 
     // FOR TESTING PURPOSES:
     // alert("For testing purposes: POSTED!");
@@ -348,7 +354,7 @@ $(document).ready(function () {
         });
         // localStorage.setItem(0, storageRef);
         //upload file
-        
+
         //update progress bar
         task.on('state_changed',
             function error(err) {

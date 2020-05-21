@@ -31,6 +31,7 @@
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style2.css">
+    <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
 </head>
 
 <body>
@@ -57,14 +58,14 @@
                     <a class="nav-link" href="./post.html">Posting</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
-                </li>
-            </ul>
         </div>
         <!-- </div> -->
     </nav>
+
+    <div class="pyro">
+        <div class="before"></div>
+        <div class="after"></div>
+    </div>
 
     <!-- Sign out modal -->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -91,9 +92,7 @@
         </div>
     </div>
 
-    <div class="container" id="postContainer1">
-        <!-- Redundant form (map marker modal already passes these values in) -->
-        <!-- <div id="blank"></div> -->
+    <div class="container py-3" id="postContainer1">
         <!-- <form>
             <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
@@ -156,7 +155,7 @@
                 <p><b>Estimated quantity:</b></p>
                 <p><i>Only insert the quantity of available items</i></p>
             </div>
-            <form class="p-2">
+            <div class="container p-2">
                 <div>
                     <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
                     <div class="input-group" id="textBox1">
@@ -165,6 +164,7 @@
                         </div>
                         <input type="number" class="form-control" id="inlineFormInputGroup1" placeholder="Item units">
                     </div>
+
                     <br>
                     <div>
                         <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
@@ -187,7 +187,7 @@
                                 placeholder="Item units">
                         </div>
                     </div>
-            </form>
+            </div>
         </div>
     </div>
         <div>
@@ -197,13 +197,11 @@
             <input type="file" value="upload" id='fileButton'>
         </form>
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
-        <!-- </div> -->
+        </div>
     </div>
-    <!-- <br> -->
+    <br>
 
-    
-
-    <div class="modal" tabindex="-1" role="dialog" id="termAgreement">
+    <div class="modal" tabindex="-1" role="dialog" id="congratulation">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -221,7 +219,56 @@
             </div>
         </div>
     </div>
-<!-- </div> -->
+</div>
+
+<script>
+    // (function () {
+    //     'use strict';
+
+    //     var init = function () {
+
+    //         var slider2 = new rSlider({
+    //             target: '#slider2',
+    //             values: ["none", "few", "some", "plenty"],
+    //             // range: false,
+    //             labels: true,
+    //             set: ["none"],
+    //             // tooltip: false,
+    //             onChange: function (vals) {
+    //                 console.log(vals);
+    //             }
+    //         });
+
+    //         var slider3 = new rSlider({
+    //             target: '#slider3',
+    //             values: ["none", "few", "some", "plenty"],
+    //             step: 10,
+    //             // range: true,
+    //             set: [10, 40],
+    //             // scale: true,
+    //             // labels: false,
+    //             labels: true,
+    //             set: ["none"],
+    //             onChange: function (vals) {
+    //                 console.log(vals);
+    //             }
+    //         });
+
+    //         var slider = new rSlider({
+    //             target: '#slider',
+    //             values: ["none", "few", "some", "plenty"],
+    //             // range: true,
+    //             // set: [2010, 2013],
+    //             labels: true,
+    //             set: ["none"],
+    //             onChange: function (vals) {
+    //                 console.log(vals);
+    //             }
+    //         });
+    //     };
+    //     window.onload = init;
+    // })();
+</script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -250,7 +297,7 @@
     <script src="./scripts/firebase_api_uTrack.js"> </script>
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/post2.js"></script>
-
+    <script src="./scripts/slider_min.js"></script>
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
