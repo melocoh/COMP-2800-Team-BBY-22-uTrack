@@ -167,7 +167,7 @@ function setStyle(contain, p1, p6, btn) {
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
-    p1.style.margin = "-25px";
+    p1.style.margin = "-20px 40px -20px 40px";
     //p1.style.fontWeight = "bold";
     // p6.style.textAlign = "center";
     // btn.style.backgroundColor = "tomato";
