@@ -24,6 +24,9 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let p4 = document.createElement("p");
         let p5 = document.createElement("p");
         let p6 = document.createElement("div");
+        let span2 = document.createElement("span");
+        let span1 = document.createElement("span");
+        let span3 = document.createElement("span");
         let btn = document.createElement("img");
         let btnDiv = document.createElement("div");
         btn.setAttribute("data-toggle", "modal");
@@ -45,7 +48,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         setStyle(contain, p1, p6, btn);
 
-        p4.setAttribute("id", "itemName");
+        // p4.setAttribute("id", "itemName");
 
         var storageRef = firebase.storage().ref().child("store_logos");
         let storeLogo;
@@ -75,12 +78,13 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             console.log(error);
         })
 
-        //need to change it back when slider is fix and have new post.
-        // p5.innerHTML = "Posted by " + doc.get(user_post) + "@" + doc.get("post_date");
-        p5.innerHTML = "Posted: " + doc.get("post_date");
+        span1.innerHTML = "Posted by ";
+        span3.innerHTML = " @ " + doc.get("post_date");
         btn.innerHTML = "Report";
         var storeInfo = doc.get("post_store");
+        var userInfo = doc.get("user_id");
         getStoreInfo(storeInfo, p3, p4);
+        getUserInfo(userInfo, p5, span1, span2, span3);
 
         // p6.appendChild(btn);
         text.appendChild(p1);
@@ -211,3 +215,51 @@ $(document).ready(function () {
 
     });
 });
+
+/**
+ * Get information of the user who posted the post and display it in modal.
+ * @param {*} userInfo 
+ * @param {*} p5 
+ * @param {*} span1 
+ * @param {*} span2 
+ * @param {*} span3 
+ */
+function getUserInfo(userInfo, p5, span1, span2, span3) {
+    userInfo.get().then(function (doc) {
+        var userName = doc.get("name");
+       
+        span2.innerHTML = `<b>` + userName + `</b>`;
+        span2.setAttribute("value", doc.uid);
+        span2.setAttribute("data-toggle", "modal");
+        span2.setAttribute("data-target", "#profileModal");
+        p5.appendChild(span1);
+        p5.appendChild(span2);
+        p5.appendChild(span3);
+        span2.onclick = function () {
+            switch (doc.get("level")) {
+                case 1:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                case 2:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                case 3:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+                default:
+                    $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
+                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    break;
+            }
+            console.log(userName);
+            console.log(doc.get("level"));
+            $("#userName").html(userName);
+            $("#userLevel").html("<b>"+ "Lv." + doc.get("level") + "</b>");
+            $("#userLevel").css({"color":""});
+        }
+
+    })
+}
