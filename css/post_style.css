@@ -1,7 +1,10 @@
 .container {
     /* display: grid; */
+    /* margin-top: 70px; */
+    height: 100%;
+    padding: 1rem;
     margin-top: 70px;
-    /* height: 90vh; */
+    margin-bottom: 60px;
 }
 
 /* desktop view */
