@@ -1,18 +1,43 @@
+/** Holds the default boolean value of checkbox 1 */
 let checked1 = false;
+
+/** Holds the default boolean value of checkbox 2 */
 let checked2 = false;
+
+/** Holds the default boolean value of checkbox 3 */
 let checked3 = false;
+
+/** Holds an array of the items */
 let items = [];
+
+/** Holds an array of the items' stock */
 let stock = [];
-// let imgUrl = localStorage.getItem(0);
+
+/** Holds the image url that users have uploaded */
 let imgUrl;
-// let itemsId;
+
+/** Hold an array of items' references  */
 let itemIDs = [];
-let storeId;
+
+/** Holds the current timestamp */
 let curTime;
+
+/** Holds the timestamp in date and time format*/
 let dateAndTime;
+
+/** Holds the post id references */
 let postId;
+
+/** Holds the array of  the user's posts */
 let userPost = [];
+
+/** Holds the store id reference */
+var storeId;
+
+/** Holds the instant time */
 const TIME = 500;
+
+/** Holds the increment exp */
 const incrementEXP = firebase.firestore.FieldValue.increment(10);
 
 /** Firestore Posts Collection Reference */
@@ -24,55 +49,109 @@ let itemsCollec = db.collection("items");
 /** Firestore Stores Collection Reference */
 let storesCollec = db.collection("stores");
 
+var fileButton = document.getElementById('fileButton');
+let userId;
+let userName;
+
+/** Slider input */
+let slider = document.getElementById("sliderRange");
+
+/** Slider Value Text */
+let output = document.getElementById("valueText");
+
+/** Slider input */
+var slider2 = document.getElementById("sliderRange2");
+
+/** Slider Value Text */
+var output2 = document.getElementById("valueText2");
+
+/** Slider input  */
+var slider3 = document.getElementById("sliderRange3");
+
+/** Slider Value Text */
+var output3 = document.getElementById("valueText3");
+
 //invoke functions
-removeQuantity();
+// removeQuantity();
 setInterval(function () {
     checkbox();
 }, TIME);
 
-//check if the check box is checked or not
+/**
+ * Check if the check box is checked or not to hide the quantity boc
+ */
 function checkbox() {
-
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox1').style.visibility = "visible";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer1').style.display = "inline";
     } else {
         checked1 = false;
-        document.querySelector('#textBox1').style.visibility = "hidden";
+        document.querySelector('#sliderContainer1').style.display = "none";
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox2').style.visibility = "visible";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer2').style.display = "inline";
     } else {
         checked2 = false;
-        document.querySelector('#textBox2').style.visibility = "hidden";
+        document.querySelector('#sliderContainer2').style.display = "none";
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
-        document.querySelector('#quantity').style.display = "inline";
-        document.querySelector('#textBox3').style.visibility = "visible";
+        // document.querySelector('#quantity').style.display = "inline";
+        document.querySelector('#sliderContainer3').style.display = "inline";
     } else {
         checked3 = false;
-        document.querySelector('#textBox3').style.visibility = "hidden";
+        document.querySelector('#sliderContainer3').style.display = "none";
     }
 
-    if (!document.querySelector('#customCheck1:checked') &&
-        !document.querySelector('#customCheck2:checked') &&
-        !document.querySelector('#customCheck3:checked')) {
-        removeQuantity();
-    }
+    // if (document.querySelector('#customCheck1:checked')) {
+    //     checked1 = true;
+    //     document.querySelector('#quantity').style.display = "inline";
+    //     document.querySelector('#textBox1').style.visibility = "visible";
+    // } else {
+    //     checked1 = false;
+    //     document.querySelector('#textBox1').style.visibility = "hidden";
+    // }
+
+    // if (document.querySelector('#customCheck2:checked')) {
+    //     checked2 = true;
+    //     document.querySelector('#quantity').style.display = "inline";
+    //     document.querySelector('#textBox2').style.visibility = "visible";
+    // } else {
+    //     checked2 = false;
+    //     document.querySelector('#textBox2').style.visibility = "hidden";
+    // }
+
+    // if (document.querySelector('#customCheck3:checked')) {
+    //     checked3 = true;
+    //     document.querySelector('#quantity').style.display = "inline";
+    //     document.querySelector('#textBox3').style.visibility = "visible";
+    // } else {
+    //     checked3 = false;
+    //     document.querySelector('#textBox3').style.visibility = "hidden";
+    // }
+
+    // if (!document.querySelector('#customCheck1:checked') &&
+    //     !document.querySelector('#customCheck2:checked') &&
+    //     !document.querySelector('#customCheck3:checked')) {
+    //     removeQuantity();
+    // }
 }
 
-function removeQuantity() {
-    document.querySelector('#quantity').style.display = "none";
-}
+/**
+ * Hide the quantity input box.
+ */
+// function removeQuantity() {
+//     document.querySelector('#quantity').style.display = "none";
+// }
 
-//write data to database
-
+/**
+ * Add the data from user's input to severals collection on database.
+ */
 function setDataPost() {
     // redundant code
     // let locate = document.getElementById("address").value + ", " +
@@ -145,67 +224,44 @@ function setDataPost() {
     // alert("For testing purposes: POSTED!");
 }
 
-//get item info 
+/**
+ * Get the item information if the item checkbox is checked.
+ */
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
-        stock.push(itemQuantity);
+        // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
+        let numValue = document.getElementById("sliderRange").value;
+        // let itemQuantity
+        console.log(numValue);
+        convertSliderValue(numValue);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
-        stock.push(itemQuantity);
+        // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
+        let numValue = document.getElementById("sliderRange2").value;
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
-        let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
-        stock.push(itemQuantity);
+        // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
+        let numValue = document.getElementById("sliderRange3").value;
+        // let itemQuantity;
+        convertSliderValue(numValue);
+        // console.log(itemQuantity);
+        // stock.push(itemQuantity);
     }
 }
 
-
-//upload image to storage
-//get elements
-var fileButton = document.getElementById('fileButton');
-
-// fileButton.addEventListener('change', function (e) {
-//     var file = e.target.files[0];
-//     //create a storage ref
-//     var storageRef = firebase.storage().ref().child('Image/' + file.name);
-//     // localStorage.setItem(0, storageRef);
-//     //upload file
-//     var task = storageRef.put(file);
-//     //update progress bar
-//     task.on('state_changed',
-//         function error(err) {
-//             // A full list of error codes is available at
-//             // https://firebase.google.com/docs/storage/web/handle-errors
-//             switch (error.code) {
-//                 case 'storage/unauthorized':
-//                     // User doesn't have permission to access the object
-//                     break;
-//                 case 'storage/canceled':
-//                     // User canceled the upload
-//                     break;
-//                 case 'storage/unknown':
-//                     // Unknown error occurred, inspect error.serverResponse
-//                     break;
-//             }
-//         },
-//         function complete() {
-//             task.snapshot.ref.getDownloadURL().then(function (url) {
-//                 // console.log('File available at', downloadURL);
-//                 localStorage.setItem(0, url);
-//                 console.log(localStorage.getItem(0));
-//                 imgUrl = localStorage.getItem(0);
-//             });
-//         }
-//     );
-// });
-
+/**
+ * Save information that users entered and update it to database.
+ */
 function save() {
     console.log("inside save()");
     let promise = new Promise(function (req, res) {
@@ -219,24 +275,15 @@ function save() {
         .then(updateUser())
         .then(move());
     console.log("end promise chain");
-
-    // console.log("inside save()");
-    // console.log("getItemInfo()");
-    // getItemInfo();
-    // console.log("getTimeStamp()");
-    // getTimeStamp();
-    // console.log("getAllPost()");
-    // getAllPost();
-    // console.log("setDataPost()");
-    // setDataPost();
-    // console.log("updateUser");
-    // updateUser();
     console.log("end of save()");
     // setTimeout(function () {
     //     window.location.href = "./post.html";
     // }, TIME * 4);
 }
 
+/**
+ * Get the timestamp when the user posts.
+ */
 function getTimeStamp() {
 
     // creates new date, formatted "Wed May 06 2020 15:23:38 GMT-0700 (Pacific Daylight Time)""
@@ -275,6 +322,9 @@ function getTimeStamp() {
     })
 }
 
+/**
+ * Gets all the posts that the user has posted and stores it into an array.
+ */
 function getAllPost() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).get().then(function (user) {
@@ -288,22 +338,12 @@ function getAllPost() {
                 console.log("made blank userPost array");
             }
         })
-        // db.collection("/users/").doc(user.uid).onSnapshot(function (snap) {
-        //     // if (snap.data().user_posts === undefined || snap.data().user_posts === null){
-        //     //     userPost = [];
-        //     // } else {
-        //     //     userPost = snap.data().user_posts;
-        //     // }
-        //     // console.log("user_posts exists: " + snap.contains("user_posts"));
-        // if (snap.contains("user_posts")) {
-        //     userPost = snap.data().user_posts;
-        // } else {
-        //     userPost = [];
-        // }
-        // });
     });
 }
 
+/**
+ * Update user posts in users collection on database when users post. 
+ */
 function updateUser() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("/users/").doc(user.uid).update({
@@ -312,6 +352,9 @@ function updateUser() {
     });
 }
 
+/**
+ * Increase the point every time the user posts and update points into database.
+ */
 function move() {
 
     var user = firebase.auth().currentUser;
@@ -325,6 +368,10 @@ function move() {
     console.log("pressed");
 }
 
+/**
+ * Update the level when users reach new level and resets the point to 0,
+ * and show congratulation message to users.
+ */
 function updateExp() {
     var user = firebase.auth().currentUser;
 
@@ -342,12 +389,73 @@ function updateExp() {
                 level: level + 1
             }); // increments level
             $("#lv").html("Level: " + level);
-            alert("you have raised the level of up to " + level);
+            $("#levelReached").html(level + 1);
+            $(".pyro").css({"display":"inline"});
+            $("#congratulation").modal("show");
         }
 
     });
 }
 
+/**
+ * Shows the slider value.
+ * @param {*} a 
+ * @param {*} output 
+ */
+function showSliderValue(a,output){
+    if (a == 0){
+        output.innerHTML = "none";
+    } else if (a == 1){
+        output.innerHTML = "few ~ 10";
+    } else if (a ==2){
+        output.innerHTML = "some ~ 20"
+    } else if (a ==3){
+        output.innerHTML = "many ~ 50"
+    } else if (a == 4){
+        output.innerHTML = "plenty ~ 70";
+    }
+}
+
+/**
+ * Convert the slider value to the word.
+ * @param {*} a 
+ * @param {*} b 
+ */
+function convertSliderValue(a){
+    if (a == 0){
+        stock.push("none");
+    } else if (a == 1){
+        stock.push("few ~ 10");
+    } else if (a == 2){
+        stock.push("some ~ 20");
+    } else if (a == 3){
+        stock.push("some ~ 50");
+    } else if (a == 4){
+        stock.push("plenty ~ 70");
+    }
+}
+
+/**
+ * Calls the function slider.
+ */
+slider.oninput = function(){
+    showSliderValue(this.value, output)
+};
+slider2.oninput = function(){
+    showSliderValue(this.value, output2)
+};
+slider3.oninput = function(){
+    showSliderValue(this.value, output3)
+};
+
+/** Sets the default value */
+output.innerHTML = "none";
+output2.innerHTML = "none";
+output3.innerHTML = "none";
+
+/**
+ * Store the image that user has uploaded to firebase storage and gets the reference.
+ */
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -366,8 +474,10 @@ $(document).ready(function () {
         //create a storage ref
         var storageRef = firebase.storage().ref().child('Image/' + file.name);
         console.log("post storageRef: " + storageRef);
-
-        var task = storageRef.put(file);
+        storageRef.put(file).then(() => {
+            console.log("file uploaded!");
+        });
+        // var task = storageRef.put(file);
 
         storageRef.getDownloadURL().then(function (url) {
             console.log("storageRef downloadURL: " + url);
@@ -377,29 +487,29 @@ $(document).ready(function () {
         //upload file
 
         //update progress bar
-        task.on('state_changed',
-            function error(err) {
-                // A full list of error codes is available at
-                // https://firebase.google.com/docs/storage/web/handle-errors
-                switch (error.code) {
-                    case 'storage/unauthorized':
-                        // User doesn't have permission to access the object
-                        break;
-                    case 'storage/canceled':
-                        // User canceled the upload
-                        break;
-                    case 'storage/unknown':
-                        // Unknown error occurred, inspect error.serverResponse
-                        break;
-                }
-            },
-            function complete() {
-                storageRef.getDownloadURL().then(function (url) {
-                    console.log("downloadURL: " + url);
-                    imgUrl = url;
-                });
-            }
-        );
+        // task.on('state_changed',
+        //     function error(err) {
+        //         // A full list of error codes is available at
+        //         // https://firebase.google.com/docs/storage/web/handle-errors
+        //         switch (error.code) {
+        //             case 'storage/unauthorized':
+        //                 // User doesn't have permission to access the object
+        //                 break;
+        //             case 'storage/canceled':
+        //                 // User canceled the upload
+        //                 break;
+        //             case 'storage/unknown':
+        //                 // Unknown error occurred, inspect error.serverResponse
+        //                 break;
+        //         }
+        //     },
+        //     function complete() {
+        //         storageRef.getDownloadURL().then(function (url) {
+        //             console.log("downloadURL: " + url);
+        //             imgUrl = url;
+        //         });
+        //     }
+        // );
     });
 
     document.getElementById("postButton").onclick = function () {
