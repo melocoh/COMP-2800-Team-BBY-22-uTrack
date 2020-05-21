@@ -295,7 +295,10 @@ margin: auto;
 width: 90%;
 }
 
-}
+.bgimg-1 {
+    background-image: url(../images/bg_test2.png);
+    min-height: 100%;
+    }
 
 .clearfix:after {
 content: "";
