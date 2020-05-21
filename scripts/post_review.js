@@ -32,17 +32,23 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         // btn.setAttribute("id", report_index);
-        btn.setAttribute("value", report_index);
+        btn.setAttribute("alt", report_index);
         btn.setAttribute("src","./images/exclamation.png");
         btn.setAttribute("width","40px");
         btn.setAttribute("height","40px");
         btn.setAttribute("id","reportBtn");
+        console.log("report_index : " + report_index);
+        console.log("btn.value : " + btn.alt);
         btn.onclick = function () {
-            butval = parseInt(btn.value);
+            butval = parseInt(btn.alt);
             $(".mess").click(function () {
                 var reason = $(this).val();
                 localStorage.setItem(0, reason);
+<<<<<<< HEAD
                 console.log("reason: " + reason);
+=======
+                console.log("reason : " + reason);
+>>>>>>> steven
             });
         }
 
@@ -194,6 +200,8 @@ $(document).ready(function () {
     $("#submitButton").click(function () {
         console.log("submitButton is clicked");
         if (document.querySelector('#termsConditions:checked')) {
+
+        console.log("postlists[butval] : " + postlists[butval]);
             db.collection("reports").add({
                 report_post: db.collection("posts/").doc(postlists[butval]),
                 report_reason: localStorage.getItem(0),
@@ -209,7 +217,7 @@ $(document).ready(function () {
             })
 
             console.log(butval);
-            console.log(localStorage.getItem(0));
+            console.log("localStorage.getItem(0): " + localStorage.getItem(0));
             console.log(postlists[butval]);
         }
 
