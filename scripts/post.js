@@ -517,13 +517,13 @@ function convertSliderValue(a){
     if (a == 0){
         stock.push("none");
     } else if (a == 1){
-        stock.push("few ~ 10");
+        stock.push("few");
     } else if (a == 2){
-        stock.push("some ~ 20");
+        stock.push("some");
     } else if (a == 3){
-        stock.push("some ~ 50");
+        stock.push("many");
     } else if (a == 4){
-        stock.push("plenty ~ 70");
+        stock.push("plenty");
     }
 }
 
