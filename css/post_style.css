@@ -59,6 +59,7 @@
 
 #reportBtn {
     float: right;
+    z-index: 99999;
 }
 
 #uploader {
