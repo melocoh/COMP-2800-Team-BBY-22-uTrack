@@ -1,7 +1,7 @@
 .container {
     /* display: grid; */
     margin-top: 70px;
-    height: 90vh;
+    margin-bottom: 45px;
 }
 
 /* desktop view */
@@ -123,11 +123,11 @@
 
 #questionmark {
     padding-left: 8px;
-  }
+}
 
 /* Caption for images description */
 
-  #caption{
-      color: gray;
-      font-size: 12px;
-  }
+#caption {
+    color: gray;
+    font-size: 12px;
+}
