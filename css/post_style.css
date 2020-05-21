@@ -34,7 +34,8 @@
     margin: 5px;
 }
 
-body {
+/*it cause the header and button new post stretching */
+/* body {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -43,7 +44,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 /* .container > * {
     padding: 10px;
