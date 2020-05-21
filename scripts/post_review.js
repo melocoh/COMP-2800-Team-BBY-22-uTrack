@@ -182,7 +182,7 @@ function setStyle(contain, p1, p6, btn) {
 $(document).ready(function () {
     $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
     $("#newPost").css({
-        "display": "fixed",
+        "display": "flex",
         "justify-content": "flex-end",
         "padding": "15px"
     });
