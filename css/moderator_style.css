@@ -14,10 +14,9 @@
 }
 
 /* --------------------------------- */
-/* Geolocation Button */
+/* ------ Geolocation Button ------- */
 /* --------------------------------- */
 #reportButton {
-    /* 8px top and bottom; 10px left and right */
     padding: 8px 10px;
     /* circle border */
     border-radius: 50%;
@@ -35,7 +34,7 @@
 }
 
 /* --------------------------------- */
-/* For notification */
+/* -------- For notification ------- */
 /* --------------------------------- */
 #totalReport{
     color: #1E90FF;

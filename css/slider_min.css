@@ -83,12 +83,10 @@
 .sliderscontainer {
     margin: 70px auto;
     width: 95%;
-    /* background-color: #00969b; */
     }
 
 .slider-container {
     width: 95%;
-    /* background-color: rebeccapurple; */
     max-width: 1250px;
     margin: 0 auto 50px;
     }

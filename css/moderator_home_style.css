@@ -1,5 +1,5 @@
 /* --------------------------------- */
-/* HTML, Body and Container */
+/* ---- HTML, Body and Container --- */
 /* --------------------------------- */
 .container{
     font-family: Comfortaa;
@@ -11,15 +11,15 @@
 }
 
 /* --------------------------------- */
-/* Main and Children */
+/* ------- Main and Children ------- */
 /* --------------------------------- */
 main {
     /* Old code, keep as back-up */
     /* position: absolute; */
     /* top: 25%;
     left: 5%;
-    width: 35%; */
-    /* height: 60%;
+    width: 35%;
+    height: 60%;
     border-radius: 20px;
     padding: 20px;
     color: white; */
@@ -34,17 +34,15 @@ section {
     margin: 20px;
     padding: 20px;
     color: black;
-    /* background-color: orange; */
 }
 
 /* --------------------------------- */
-/* HERE Map */
+/* ----------- HERE Map ------------ */
 /* --------------------------------- */
 #homeMap {
     /* Original Map Size: */
     /* width: 640px; */
     /* height: 480px; */
-
     width: 100vw;
     /* matches with container height */
     height: 90vh;
@@ -57,7 +55,7 @@ canvas {
 }
 
 /* --------------------------------- */
-/* Map Modal */
+/* ------------ Map Modal ---------- */
 /* --------------------------------- */
 .modal-body ul {
     list-style: none;
@@ -87,14 +85,14 @@ canvas {
 
 
 /* --------------------------------- */
-/* Media Queries */
+/* --------- Media Queries --------- */
 /* --------------------------------- */
 
 
 /* Tablet and Desktop View */
 @media (min-width: 420px) {
     /* --------------------------------- */
-    /* Geolocation Button */
+    /* ------- Geolocation Button ------ */
     /* --------------------------------- */
     #reportButton {
         /* 8px top and bottom; 10px left and right */
@@ -122,13 +120,6 @@ canvas {
     }
 
     #homeMap {
-        /* position: absolute; */
-        /* top: 50%;
-        left: 10%; */
-        /* width: 80%;
-        height: 30%; */
-        /* width: 100vw;
-        height: 100vh; */
         height: 100%;
     }
 
@@ -161,7 +152,7 @@ canvas {
 }
 
 /* --------------------------------- */
-/* For notification */
+/* ------- For notification -------- */
 /* --------------------------------- */
 #totalReport{
     color: rgb(189, 25, 25);

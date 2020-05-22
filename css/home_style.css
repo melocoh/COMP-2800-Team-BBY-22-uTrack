@@ -1,5 +1,5 @@
 /* --------------------------------- */
-/* HTML, Body and Container */
+/* -----HTML, Body and Container---- */
 /* --------------------------------- */
 .container {
     font-family: Comfortaa;
@@ -11,15 +11,15 @@
 }
 
 /* --------------------------------- */
-/* Main and Children */
+/* ---------Main and Children------- */
 /* --------------------------------- */
 main {
     /* Old code, keep as back-up */
-    /* position: absolute; */
-    /* top: 25%;
+    /* position: absolute;
+    top: 25%;
     left: 5%;
-    width: 35%; */
-    /* height: 60%;
+    width: 35%;
+    height: 60%;
     border-radius: 20px;
     padding: 20px;
     color: white; */
@@ -34,11 +34,10 @@ section {
     margin: 20px;
     padding: 20px;
     color: black;
-    /* background-color: orange; */
 }
 
 /* --------------------------------- */
-/* HERE Map */
+/* ----------  HERE Map  ----------- */
 /* --------------------------------- */
 #homeMap {
     /* Original Map Size: */
@@ -58,16 +57,13 @@ canvas {
 }
 
 /* --------------------------------- */
-/* Map Modal */
+/* ------------- Map Modal --------- */
 /* --------------------------------- */
 .modal {
     z-index: 99999;
 }
 
 .modal-dialog {
-    /* display: flex; */
-    /* justify-content: center; */
-
     /* center alignment for close button */
     text-align: center;
 }
@@ -97,14 +93,11 @@ canvas {
 }
 
 .modal-body ul {
-    /* margin: 0 auto; */
-    /* width: auto; */
     /* OLD CODE */
     /* marginalize to the right as much as possible */
     /* margin-right: auto; */
     list-style: none;
     padding: 0;
-    /* padding-left: 1rem; */
 }
 
 .modal-body li {
@@ -141,10 +134,6 @@ canvas {
     font-size: 0.75rem;
 }
 
-.storeLogos {
-    /* insert property to scale images lower */
-}
-
 .icons {
     max-width: 50px;
     max-height: 50px;
@@ -175,7 +164,7 @@ canvas {
 }
 
 /* --------------------------------- */
-/* Media Queries */
+/* ---------- Media Queries -------- */
 /* --------------------------------- */
 
 
@@ -204,20 +193,11 @@ canvas {
 /* Mobile View */
 @media (max-width: 419px) {
     .container {
-        /* wack */
-        /* margin-top: auto; */
         margin-top: auto;
         height: 100vh;
     }
 
     #homeMap {
-        /* position: absolute; */
-        /* top: 50%;
-        left: 10%; */
-        /* width: 80%;
-        height: 30%; */
-        /* width: 100vw;
-        height: 100vh; */
         height: 100%;
     }
 
@@ -235,7 +215,6 @@ canvas {
     }
 
     #reportButton {
-        /* 8px top and bottom; 10px left and right */
         padding: 15px;
         /* circle border */
         border-radius: 50%;
@@ -256,15 +235,3 @@ canvas {
         text-align: center;
     }
 }
-
-
-/* --------------------------------- */
-/* For navbar */
-/* --------------------------------- */
-/* .selectors button{
-    border: 0;
-    border-radius: 0;
-    background-color: #f8f9fa !important;
-    width:33.33%;
-    margin-left: 0;
-} */

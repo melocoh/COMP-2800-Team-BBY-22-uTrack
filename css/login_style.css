@@ -28,55 +28,11 @@
 
 /* desktop and tablet view */
 @media (min-width: 400px) {
-    /* #img_back {
-        border-radius: 25px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-        height: 90%;
-        z-index: -1;
-    }
-    #img_logo {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 250px;
-        height: 100px;
-    }
-    #logincontainer {
-        border-radius: 25px;
-        background-color: white;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 350px;
-        height: 170px;   
-    } */
-
+    
 }
 
 /* mobile view */
 @media (max-width: 399px) {
-    /* #img_back {
-        display: none;
-    }
-    #img_logo {
-        display: block;
-        margin: auto;  
-        margin-top: 2em;
-        width: auto;
-        height: 4em;
-    }
-    #logincontainer {
-        display: block;
-        margin: auto;  
-        position: absolute;
-        bottom: 2em;
-    } */
     #topLogo {
         padding-top: 30px;
     }

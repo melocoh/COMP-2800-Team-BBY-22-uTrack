@@ -1,5 +1,4 @@
 .container {
-    /* hide overflowing map to the right */
     overflow-x: hidden;
 }
 
@@ -15,10 +14,8 @@ section {
     margin: 20px;
     padding: 20px;
     color: black;
-    /* background-color: orange; */
 }
 
 /* mobile view */
 @media (max-width: 419px) {
-    /* insert code here */
 }
