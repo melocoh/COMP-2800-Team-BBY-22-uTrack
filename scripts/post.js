@@ -38,7 +38,7 @@ var storeId;
 const TIME = 500;
 
 /** Holds the increment exp */
-const incrementEXP = firebase.firestore.FieldValue.increment(10);
+const incrementEXP = firebase.firestore.FieldValue.increment(50);
 
 var fileButton = document.getElementById('fileButton');
 let userId;
