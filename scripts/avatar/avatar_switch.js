@@ -47,7 +47,7 @@ function avatarSwitch(level) {
             avatar = avatarStorageRef.child("level_11.png");
             break;
         case 12:
-            avatar = avatarStorageRef.child("level_12.png");
+            avatar = avatarStorageRef.child("level_LEGENDARY.png");
             break;
     }
 
