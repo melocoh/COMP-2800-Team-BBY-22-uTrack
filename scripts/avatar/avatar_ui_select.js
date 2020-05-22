@@ -20,7 +20,7 @@ let avatarLevelIndicator;
 /** Array that holds all the released avatar design image sources for the user */
 const allAvatars = [];
 
-const numOfAvatarDesigns = 8;
+const numOfAvatarDesigns = 12;
 
 // OLD ALLAVATARS ARRAY
 // const allAvatars = [
@@ -40,6 +40,9 @@ function setAvatars() {
     for (let i = 0; i < numOfAvatarDesigns; i++) {
         // holds the iterating string for image reference
         let childString = "level_" + (i + 1) + ".png";
+        if (i === numOfAvatarDesigns - 1) {
+            childString = "level_LEGENDARY.png";
+        }
         console.log("childString: " + childString);
         
         // holds the avatar image reference
@@ -85,6 +88,8 @@ function setGreyscale() {
     if (avatarLevelIndicator.substring(1) === ".") {
         // cut substring even further if it is single digit
         avatarLevelIndicator = avatarLevelIndicator.substring(0, 1);
+    } else if (avatarLevelIndicator.includes("LE")) {
+        avatarLevelIndicator = 12;
     }
 
     // parse into integer
