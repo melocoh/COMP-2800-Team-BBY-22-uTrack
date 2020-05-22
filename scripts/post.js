@@ -97,7 +97,7 @@ let itemsCollec = db.collection("items");
 let storesCollec = db.collection("stores");
 
 /**
- * Check if the check box is checked or not to hide the quantity boc
+ * Check if the check box is checked or not to hide the quantity slider
  */
 function checkbox() {
 
@@ -325,7 +325,6 @@ function updateExp() {
 
         if (exp >= 100) {
             clearTimeout(refresh);
-            $(".pyro").css({"display":"inline"});
             let level = snap.data().level;
 
             db.collection('/users/').doc(user.uid).update({
@@ -401,12 +400,12 @@ output3.innerHTML = "none";
 
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
+ * We have watched tutorial and read the document from firebase to use this code.
  */
 $(document).ready(function () {
     console.log("current window location: " + window.location.href);
     if (window.location.href.includes("/posting.html")) {
         console.log("window location TRUE");
-        // storeId = localStorage.getItem("storeId");
 
         fileButton.addEventListener('change', function (e) {
             var file = e.target.files[0];

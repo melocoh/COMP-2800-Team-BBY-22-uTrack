@@ -76,10 +76,6 @@
     <!----------------------------------------------->
     <div class="container" id="theContainer">
         <p id="titleContainer">Recent Posts</p>
-        <!-- comment since it not work well -->
-        <!-- <div id="newPost">
-            <button class="btn-primary" onclick="window.location.href='./moderator_posting.html'">New post</button>
-        </div> -->
     </div>
 
     <!----------------------------------------------->
@@ -104,6 +100,28 @@
                             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------->
+    <!--            User profiles view             -->
+    <!----------------------------------------------->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <img id="userAvatar">
+                        <div id="userName"></div>
+                        <div id="userLevel"></div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -147,58 +165,6 @@
         </div>
     </footer>
 
-    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel"><b>Report</b></h3>
-                    <br>
-                </div>
-                <div class="modal-body">
-
-                    <p><b>Are you sure you want to delete the post?</b></p>
-
-                    <!-- <button type="button" id="options" class="btn btn-lg btn-block">Inappropriate</button>
-          <button type="button" id="options" class="btn btn-lg btn-block">False information</button>
-          <br> -->
-                    <!-- Group of default radios - option 1 -->
-                    <!-- <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-            <label class="custom-control-label" for="defaultGroupExample1">I agree to the terms of agreements yada yada</label>
-          </div> -->
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
-                            id="submitButton">Confirm</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!----------------------------------------------->
-    <!--            User profiles view             -->
-    <!----------------------------------------------->
-    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <img id="userAvatar">
-                        <div id="userName"></div>
-                        <div id="userLevel"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->

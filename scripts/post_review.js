@@ -15,6 +15,7 @@ let butval;
  */
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
+        //create element for posts
         let contain = document.createElement("div");
         contain.setAttribute("class", "card");
         let text = document.createElement("div");
@@ -23,7 +24,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let p3 = document.createElement("p");
         let p4 = document.createElement("p");
         let p5 = document.createElement("p");
-        let p6 = document.createElement("div");
         let span2 = document.createElement("span");
         let span1 = document.createElement("span");
         let span3 = document.createElement("span");
@@ -31,7 +31,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let btnDiv = document.createElement("div");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
-        // btn.setAttribute("id", report_index);
         btn.setAttribute("alt", report_index);
         btn.setAttribute("src","./images/exclamation.png");
         btn.setAttribute("width","40px");
@@ -48,9 +47,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             });
         }
 
-        setStyle(contain, p1, p6, btn);
-
-        // p4.setAttribute("id", "itemName");
+        setStyle(contain, p1);
 
         var storageRef = firebase.storage().ref().child("store_logos");
         let storeLogo;
@@ -88,13 +85,11 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         getStoreInfo(storeInfo, p3, p4);
         getUserInfo(userInfo, p5, span1, span2, span3);
 
-        // p6.appendChild(btn);
         text.appendChild(p1);
         text.appendChild(p2);
         text.appendChild(p4);
         text.appendChild(p3);
         text.appendChild(p5);
-        // text.appendChild(p6);
         btnDiv.appendChild(btn);
         contain.appendChild(btnDiv);
         contain.appendChild(text);
@@ -145,8 +140,6 @@ function getItemInfo(storeItems, p4) {
                 imageItem = "./images/icon_handsantizer.png";
             }
 
-            // list.innerHTML = items + name + ": " + stock;
-
             list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">`
                     + `<span id="stockQuantity">` + stock + `</span>`;
             list.style.listStyleType = "none";
@@ -167,18 +160,12 @@ function getItemInfo(storeItems, p4) {
  * @param {*} p6
  * @param {*} btn
  */
-function setStyle(contain, p1, p6, btn) {
+function setStyle(contain, p1) {
     contain.style.textAlign = "center";
-    // contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
     p1.style.margin = "-25px";
-    //p1.style.fontWeight = "bold";
-    // p6.style.textAlign = "center";
-    // btn.style.backgroundColor = "tomato";
-    // btn.style.color = "white";
-    // btn.style.borderRadius = "7px";
 }
 
 /**
@@ -195,7 +182,6 @@ $(document).ready(function () {
 
     $("#submitButton").click(function () {
         console.log("submitButton is clicked");
-        if (document.querySelector('#termsConditions:checked')) {
 
         console.log("postlists[butval] : " + postlists[butval]);
             db.collection("reports").add({
@@ -215,9 +201,7 @@ $(document).ready(function () {
             console.log(butval);
             console.log("localStorage.getItem(0): " + localStorage.getItem(0));
             console.log(postlists[butval]);
-        }
-
-    });
+        })
 });
 
 /**

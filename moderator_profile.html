@@ -68,12 +68,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup class="totalReport">0</sup></i></a>
+                    <a class="nav-link" href="./reported_post.html">Reports <i class="far fa-bell" id="bellIcon"> <sup
+                                class="totalReport">0</sup></i></a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+
     <!----------------------------------------------->
     <!--               Sign out modal              -->
     <!----------------------------------------------->
@@ -118,13 +119,10 @@
                 <div class="modal-body">
                     <p id="badgeInfo">
                         <br><br>
-                        Level 1&nbsp; : <span class="badge badge-pill badge-primary">beginner</span><br>
-                        <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
+                        Level 1&nbsp; : <span class="badge badge-pill badge-primary">Beginner</span><br>
                         Level 2 : <span class="badge badge-pill badge-success">Intermediate</span><br>
                         Level 3 : <span class="badge badge-pill badge-danger">Expert</span><br>
                         Level 4 : <span class="badge badge-pill badge-warning">Advanced</span><br>
-                        <!-- <span class="badge badge-pill badge-info">Info</span>
-                    <span class="badge badge-pill badge-light">Light</span> -->
                         Level 5 : <span class="badge badge-pill badge-dark">Legend</span><br>
                     </p>
                 </div>
@@ -135,24 +133,10 @@
         </div>
     </div>
 
+    <!----------------------------------------------->
+    <!--               User profile                -->
+    <!----------------------------------------------->
     <div class="container">
-        <!-- <div id="content">
-        
-        <div id="content">
-            <h1 id="useronlyname"></h1><img src="./images/user.jpg" width="80px" height="80px">
-        </div> -->
-
-        <!--
-        <div class="container">
-                <img src="./images/penguin.png" id="userPrifilePic">
-
-            <section>
-                <p id="userName" class="text-center"></p>
-                <p>Level: <span id="lv"></span></p>
-                <p>Point: <span id="point"></span></p>
-                <p>Posts: <span id="postNum"></span></p>
-            </section>
-        </div> -->
         <div class="grid-container">
             <div class="grid-item item1">
                 <!-- Insert left arrow here -->
@@ -166,7 +150,6 @@
             <div class="grid-item item2"><span id="levelSystem" onclick="displayLevelSystem()">
                     <img src="./images/questionmark.png" id="questionmark">
                 </span></div>
-            <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
 
             <div class="grid-item item3" id="displayLevel">Level</div>
             <div class="grid-item item4" style="width:100%">
@@ -177,13 +160,10 @@
             <div class="grid-item item5"><span id="displayName"> </span>
                 <div id="levelBadge" data-toggle="modal" data-target="#levelModal">
                     <span class="badge badge-pill badge-primary" id="beginner" style="display:none">Beginner</span>
-                    <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
                     <span class="badge badge-pill badge-success" id="intermediate"
                         style="display:none">Intermediate</span>
                     <span class="badge badge-pill badge-danger" id="expert" style="display:none">Expert</span>
                     <span class="badge badge-pill badge-warning" id="advanced" style="display:none">Advanced</span>
-                    <!-- <span class="badge badge-pill badge-info">Info</span>
-                    <span class="badge badge-pill badge-light">Light</span> -->
                     <span class="badge badge-pill badge-dark" id="legend"
                         style="display:none; margin:auto;">Legend</span>
                 </div>
@@ -230,7 +210,6 @@
     <!----------------------------------------------->
     <div id="giftModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Congratulations!</h4>
@@ -254,38 +233,38 @@
     <!----------------------------------------------->
     <footer class="footer">
         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
-           <button id="home" type="button" class="btn btn-secondary button-inactive"
-           onclick="window.location.href='./moderator_home.html';">
-              <div class="selector-holder">
-                 <i class="material-icons">location_on</i>
-                 <span>Map</span>
-              </div>
-           </button>
-           <button id="account" type="button" class="btn btn-secondary button-active"
-           onclick="window.location.href='./moderator_profile.html';">
-              <div class="selector-holder">
-                 <i class="material-icons">account_circle</i>
-                 <span>Account</span>
-              </div>
-           </button>
-           <button id="feed" type="button" class="btn btn-secondary button-inactive"
-           onclick="window.location.href='./moderator_post.html';">
-              <div class="selector-holder">
-                 <i class="material-icons">view_list</i>
-                 <span>Posts</span>
-              </div>
-           </button>
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./moderator_home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./moderator_profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./moderator_post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
 
-           <button id="feed" type="button" class="btn btn-secondary button-inactive"
-           onclick="window.location.href='./reported_post.html';">
-              <div class="selector-holder">
-                <i class="material-icons">feedback</i>
-                <span>Reports  <sup class="totalReport">0</sup></span>
-              </div>
-           </button>
+            <button id="feed" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./reported_post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">feedback</i>
+                    <span>Reports <sup class="totalReport">0</sup></span>
+                </div>
+            </button>
 
         </div>
-     </footer>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
