@@ -43,7 +43,10 @@ db.collection("reports").get().then(function (querySnapshot) {
 
 /**
  * Gets the posts' information and use it to display or delete data on database.
- * I have read the code for deleting data on database from stackoverflow and firebase document.
+ * 
+ * I found the code for delete the document of a collection on https://firebase.google.com
+ * @see https://firebase.google.com/docs/firestore/manage-data/delete-data
+ *
  * @param {*} postId 
  * @param {*} p1 
  * @param {*} p2 

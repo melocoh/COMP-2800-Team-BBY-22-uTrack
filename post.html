@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!------------------------>
@@ -42,6 +41,9 @@
     <!--  HTML Section -->
     <!----------------------->
 
+    <!----------------------------------------------->
+    <!--                Top navbar                 -->
+    <!----------------------------------------------->
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="./main.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
@@ -63,7 +65,9 @@
         </div>
     </nav>
 
-    <!-- Sign out modal -->
+    <!----------------------------------------------->
+    <!--               Sign out modal              -->
+    <!----------------------------------------------->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -88,13 +92,9 @@
         </div>
     </div>
 
-    <!-- New Post that shows in mobile view-->
-    <!-- <div id="newPost" style="margin-top: 100px;">
-        <button class="btn-primary newPostBtn" onclick="window.location.href='./posting.html'" >New post</button>
-    </div> -->
-
-
-    <!-- New Post button that shows in container, but can't see in container-->
+    <!----------------------------------------------->
+    <!--                   Post                    -->
+    <!----------------------------------------------->
     <div class="container" id="theContainer">
         <p id="titleContainer">Recent Posts</p>
         <div id="newPost">
@@ -102,7 +102,9 @@
         </div>
     </div>
 
-    <!-- Report Modal -->
+    <!----------------------------------------------->
+    <!--               Report Modal                -->
+    <!----------------------------------------------->
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

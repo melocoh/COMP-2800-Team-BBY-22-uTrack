@@ -49,8 +49,13 @@ let itemsCollec = db.collection("items");
 /** Firestore Stores Collection Reference */
 let storesCollec = db.collection("stores");
 
+/** Holds the id fileButton */
 var fileButton = document.getElementById('fileButton');
+
+/** Holds the user document id on database */
 let userId;
+
+/** Holds the user name on database */
 let userName;
 
 /** Slider input */
@@ -110,6 +115,9 @@ function checkbox() {
 
 /**
  * Add the data from user's input to severals collection on database.
+ * 
+ * I found the code for add new document to collection on https://firebase.google.com
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data
  */
 function setDataPost() {
     // iterate over each item in the items array and add them to the database
@@ -220,6 +228,10 @@ function save() {
 
 /**
  * Get the timestamp when the user posts.
+ * 
+ * We got this code on https://www.toptal.com/software/definitive-guide-to-datetime-manipulation
+ * @author Punit Jajodia
+ * @see https://www.toptal.com/software/definitive-guide-to-datetime-manipulation
  */
 function getTimeStamp() {
 
@@ -299,7 +311,8 @@ function move() {
 
     doc.update({
         points: incrementEXP
-    }); // increments points
+    }); 
+    // increments points
     updateExp();
 
     console.log("pressed");
@@ -394,7 +407,10 @@ output3.innerHTML = "none";
 
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
- * We have watched tutorial and read the document from firebase to use this code.
+ * 
+ * I found the codes through tutorial on youtube.com
+ * @author David East
+ * @see https://www.youtube.com/watch?v=SpxHVrpfGgU
  */
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {

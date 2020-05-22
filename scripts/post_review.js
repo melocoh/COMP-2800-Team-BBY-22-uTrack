@@ -12,6 +12,8 @@ let butval;
 
 /**
  * Displays every posts started from the recent one by read data from post collection on database.
+ * We got the code for get image from storage on https://firebase.google.com
+ * @see https://firebase.google.com/docs/storage/web/download-files
  */
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
@@ -32,14 +34,13 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#basicExampleModal");
         btn.setAttribute("alt", report_index);
-        btn.setAttribute("src","./images/exclamation.png");
-        btn.setAttribute("width","40px");
-        btn.setAttribute("height","40px");
-        btn.setAttribute("id","reportBtn");
-        console.log("report_index : " + report_index);
-        console.log("btn.value : " + btn.alt);
+        btn.setAttribute("src", "./images/exclamation.png");
+        btn.setAttribute("width", "40px");
+        btn.setAttribute("height", "40px");
+        btn.setAttribute("id", "reportBtn");
         btn.onclick = function () {
             butval = parseInt(btn.alt);
+            //get the report reason when the button is clicked
             $(".mess").click(function () {
                 var reason = $(this).val();
                 localStorage.setItem(0, reason);
@@ -71,7 +72,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
 
         storeLogo.getDownloadURL().then(function (url) {
             p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
-            //p1.innerHTML = `<img src="` + url + `" width="150px" height="40px">`;
             console.log(url);
         }).catch(function (error) {
             console.log(error);
@@ -100,8 +100,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         report_index++;
     })
 })
-
-// console.log(postlists);
 
 /**
  * Get store information from store reference in specific post document and display it.
@@ -140,8 +138,8 @@ function getItemInfo(storeItems, p4) {
                 imageItem = "./images/icon_handsantizer.png";
             }
 
-            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">`
-                    + `<span id="stockQuantity">` + stock + `</span>`;
+            list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` +
+                `<span id="stockQuantity">` + stock + `</span>`;
             list.style.listStyleType = "none";
             list.style.display = "flex";
             list.style.justifyContent = "space-around";
@@ -171,9 +169,15 @@ function setStyle(contain, p1) {
 /**
  * Set the style for some elements,
  * and add data to report collection when the report button is clicked.
+ * 
+ * I found the code for add new document to collection on https://firebase.google.com
+ * @see https://firebase.google.com/docs/firestore/manage-data/add-data
  */
 $(document).ready(function () {
-    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
+    $(".container").css({
+        "margin-top": "100px",
+        "margin-bottom": "70px"
+    });
     $("#newPost").css({
         "display": "flex",
         "justify-content": "flex-end",
@@ -184,24 +188,22 @@ $(document).ready(function () {
         console.log("submitButton is clicked");
 
         console.log("postlists[butval] : " + postlists[butval]);
-            db.collection("reports").add({
-                report_post: db.collection("posts/").doc(postlists[butval]),
-                report_reason: localStorage.getItem(0),
-                // report_user: "user.uid"
-            }).then(function (docRef) {
-                let reportId = db.collection("reports/").doc(docRef.id);
-                // console.log("reportId : " + reportId);
-                db.collection("posts/").doc(postlists[butval]).update({
-                    reported: reportId
-                })
-            }).catch(function (error) {
-                console.log("Error adding document: ", error);
+        db.collection("reports").add({
+            report_post: db.collection("posts/").doc(postlists[butval]),
+            report_reason: localStorage.getItem(0)
+        }).then(function (docRef) {
+            let reportId = db.collection("reports/").doc(docRef.id);
+            db.collection("posts/").doc(postlists[butval]).update({
+                reported: reportId
             })
-
-            console.log(butval);
-            console.log("localStorage.getItem(0): " + localStorage.getItem(0));
-            console.log(postlists[butval]);
+        }).catch(function (error) {
+            console.log("Error adding document: ", error);
         })
+
+        console.log(butval);
+        console.log("localStorage.getItem(0): " + localStorage.getItem(0));
+        console.log(postlists[butval]);
+    })
 });
 
 /**
@@ -215,7 +217,7 @@ $(document).ready(function () {
 function getUserInfo(userInfo, p5, span1, span2, span3) {
     userInfo.get().then(function (doc) {
         var userName = doc.get("name");
-       
+
         span2.innerHTML = `<b>` + userName + `</b>`;
         span2.style.color = "#0F52BA";
         span2.setAttribute("value", doc.uid);
@@ -228,26 +230,40 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
             switch (doc.get("level")) {
                 case 1:
                     $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 case 2:
                     $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 case 3:
                     $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 default:
                     $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
             }
             console.log(userName);
             console.log(doc.get("level"));
             $("#userName").html(userName);
-            $("#userLevel").html("<b>"+ "Lv." + doc.get("level") + "</b>");
-            $("#userLevel").css({"color":""});
+            $("#userLevel").html("<b>" + "Lv." + doc.get("level") + "</b>");
+            $("#userLevel").css({
+                "color": ""
+            });
         }
 
     })
