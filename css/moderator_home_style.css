@@ -14,15 +14,6 @@
 /* ------- Main and Children ------- */
 /* --------------------------------- */
 main {
-    /* Old code, keep as back-up */
-    /* position: absolute; */
-    /* top: 25%;
-    left: 5%;
-    width: 35%;
-    height: 60%;
-    border-radius: 20px;
-    padding: 20px;
-    color: white; */
     width: 100%;
     max-height: 100%;
 }
@@ -40,16 +31,11 @@ section {
 /* ----------- HERE Map ------------ */
 /* --------------------------------- */
 #homeMap {
-    /* Original Map Size: */
-    /* width: 640px; */
-    /* height: 480px; */
     width: 100vw;
-    /* matches with container height */
     height: 90vh;
 }
 
 canvas {
-    /* must set to 100% for dimensions */
     width: 100%;
     height: 100%;
 }
@@ -91,23 +77,15 @@ canvas {
 
 /* Tablet and Desktop View */
 @media (min-width: 420px) {
-    /* --------------------------------- */
-    /* ------- Geolocation Button ------ */
-    /* --------------------------------- */
     #reportButton {
-        /* 8px top and bottom; 10px left and right */
         padding: 15px;
-        /* circle border */
         border-radius: 50%;
         color: white;
         background-color: #1A73E8;
-        /* absolute from map */
         position: absolute;
         top: 7rem;
         right: 1rem;
-        /* send to front over map */
         z-index: 99999;
-        /* align i element to vertical center */
         display: flex;
         align-items: center;
     }
@@ -129,19 +107,14 @@ canvas {
     }
 
     #reportButton {
-        /* 8px top and bottom; 10px left and right */
         padding: 15px;
-        /* circle border */
         border-radius: 50%;
         color: white;
         background-color: #1A73E8;
-        /* absolute from map */
         position: absolute;
         bottom: 7rem;
         right: 1rem;
-        /* send to front over map */
         z-index: 99999;
-        /* align i element to vertical center */
         display: flex;
         align-items: center;
     }

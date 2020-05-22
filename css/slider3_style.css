@@ -1,9 +1,3 @@
-/* EXAMPLE 1 */
-/* #example1 .ui-slider-bg{
-    -webkit-transition:background-color 0.2s;
-    transition: background-color 0.2s;
-} */
-/* EXAMPLE 2 */
 .sliderBackColor {
     height: 100%;
     width: 33.33%;
@@ -37,7 +31,6 @@
     border-bottom-right-radius: 0.3125em;
 }
 
-/* EXAMPLE 2a */
 .sliderTickmarks {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -69,7 +62,6 @@
     border-right: 0;
 }
 
-/* EXAMPLE 3 */
 #example3 .ui-slider .ui-btn {
     -webkit-transition: box-shadow 0.25s;
     transition: box-shadow 0.25s;
@@ -91,7 +83,6 @@
     box-shadow: 0 0 12px #8EAC00;
 }
 
-/* EXAMPLE 4 */
 .full-width-slider input {
     display: none;
 }
@@ -100,7 +91,6 @@
     margin-left: 15px;
 }
 
-/* EXAMPLE 5 */
 #example5 .ui-slider-handle {
     -webkit-transition: left 0.1s;
     transition: left 0.1s;

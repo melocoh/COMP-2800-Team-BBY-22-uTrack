@@ -30,10 +30,8 @@
 }
 
 #profpic_container i {
-    /* set to center of div */
     top: 50%;
     left: 50%;
-    /* change origin point to center of icon */
     transform: translate(-50%, -50%);
     z-index: 9999;
     opacity: 0.70;

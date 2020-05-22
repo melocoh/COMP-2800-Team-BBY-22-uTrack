@@ -12,7 +12,6 @@ html {
 
     border-top: 1px solid transparent;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-    /* Mainly to upersede bottom part of home page map */
     z-index: 99999;
 }
 
