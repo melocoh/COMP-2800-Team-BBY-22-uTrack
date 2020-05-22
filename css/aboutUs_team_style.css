@@ -20,6 +20,7 @@
     margin-top: 35px;
     width:55%;
     max-height: 205px;
+    margin: 50px auto 0;
 }
 
 .profileText {
@@ -72,7 +73,8 @@
 
 .title {
   color: grey;
-  margin: -10px;
+  margin: 10px;
+  line-height: 30px;
 }
 
 .button {
