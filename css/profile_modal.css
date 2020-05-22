@@ -4,3 +4,21 @@
     top: 30%;
     text-align:center;
 }
+
+#congratulation{
+    position: fixed;
+    top: 23%;
+    text-align:center;
+}
+
+#congratsHeader, #congratsFooter{
+    margin:auto;
+    display:block;
+    border: none;
+}
+#trophyIcon{
+    width: 100px;
+    height: 100px;
+    margin:auto; 
+    display:block;
+}
