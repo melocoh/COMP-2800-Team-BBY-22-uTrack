@@ -36,6 +36,10 @@
 
 <body>
 
+    <!-- Facebook plugin that needs to be at the top of body -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0">
+    </script>
+
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar" id="myNavbar">
@@ -58,6 +62,7 @@
             <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
         </div>
     </div>
+
     <!-- Logout button on top-right -->
     <a href="./index.html" class="w3-bar-item w3-button" id="logoutBtn" onclick="firebase.auth().signOut();"
         style="position:absolute;right:5px;top:0px;z-index:9999;">
@@ -82,7 +87,7 @@
 
         <div class="gallery">
 
-            <img src="./images/hand_sanitizer.png" alt="Intro" width="500" height="300">
+            <img src="./images/phone.png" alt="Intro" width="500" height="300" style="margin-top: 3em;">
 
             <div class="desc" id="planningInfo">uTrack was developed by a group of CST students who aimed to solve the
                 prevalent issue of searching for vital supplies during the CoViD-19 pandemic. This is a problem we feel
@@ -100,7 +105,7 @@
 
             <div class="responsive">
                 <div class="gallery">
-                    <img src="./images/hand_sanitizer.png" alt="Supply Essentials" width="500" height="400"
+                    <img src="./images/info.png" alt="Supply Essentials" width="500" height="400"
                         style="width: 100%">
                     <div class="desc">Information regarding supply stocks is provided by the users who go out of their
                         way to
@@ -111,7 +116,7 @@
 
             <div class="responsive" style="margin-bottom: 20px">
                 <div class="gallery">
-                    <img src="./images/hand_sanitizer.png" alt="Community Engangement" width="500" height="400"
+                    <img src="./images/customize.png" alt="Community Engangement" width="500" height="400"
                         style="width: 100%">
                     <div class="desc">The more they post and contribute to their local community, the more points they
                         will
@@ -121,7 +126,7 @@
 
             <div id="goGallery" class="responsive">
                 <div class="gallery">
-                    <img src="./images/hand_sanitizer.png" alt="Gaming Experience" width="500" height="400"
+                    <img src="./images/toiletpaper.png" alt="Gaming Experience" width="500" height="400"
                         style="width: 100%">
                     <div class="desc">Associated items on demand pertain to hygienic, clinical, and dietary needs such
                         as
@@ -130,15 +135,7 @@
             </div>
 
             <div class="clearfix"></div>
-
-            <!--   Quote of the day     -->
-
-            <!-- <div id="mainQuote">
-            <p id = "quote"></p>
-            <p id="quoteWho">Billy Bob Joe<br> Next-door neighbour</p> -->
-            <!-- </div> -->
             <h2 id="team">Our Crew</h2>
-
             <br>
 
             <!--    Team members!    -->
@@ -151,8 +148,6 @@
                             <p class="title">Developer</p>
                             <p class="profileText">Just pittering and pattering through CST. Hoping to play more games
                                 with my team this weekend.</p>
-                            <!-- <p>Melody@mail.com</p> -->
-                            <!-- <p><button class="button">Contact</button></p> -->
                         </div>
                     </div>
                 </div>
@@ -167,8 +162,6 @@
                                 wishes to sharpen his collaborative skills
                                 and exert his very best efforts to create a well-established web application with his
                                 team!</p>
-                            <!-- <p>Kent@mail.com</p> -->
-                            <!-- <p><button class="button">Contact</button></p> -->
                         </div>
                     </div>
                 </div>
@@ -182,8 +175,6 @@
                                 successful developer in Tech field.
                                 I like traveling and taking photos while I’m traveling. In my free time, I like to watch
                                 drama or playing ukulele.</p>
-                            <!-- <p>Katherine@mail.com</p> -->
-                            <!-- <p><button class="button">Contact</button></p> -->
                         </div>
                     </div>
                 </div>
@@ -195,12 +186,32 @@
                             <p class="title">Developer / Loving Husband </p>
                             <p class="profileText">"Steven is a term 1 student. I love to create something from nothing.
                                 I like to play guitar."</p>
-                            <!-- <p>Stevenkim1989@mail.com</p> -->
-                            <!-- <p><button class="button">Contact</button></p> -->
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Social media plugin -->
+        <div class="footer">
+            
+            <p>Get social with us!</p>
+
+            <!-- Twitter -->
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+                data-text="Check this out this app to see item availability from stores near you! "
+                data-url="https://team22-project2.web.app/" data-hashtags="uTrackSupplies"
+                data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <br>
+
+            <!--Facebook -->
+            <div class="fb-share-button" data-href="https://team22-project2.web.app/" data-layout="button"
+                data-size="large">
+                <a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam22-project2.web.app%2F&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Share</a>
             </div>
         </div>
 
