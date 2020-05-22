@@ -181,9 +181,7 @@ canvas {
 
 /* Tablet and Desktop View */
 @media (min-width: 420px) {
-    /* --------------------------------- */
     /* Geolocation Button */
-    /* --------------------------------- */
     #reportButton {
         /* 8px top and bottom; 10px left and right */
         padding: 15px;
