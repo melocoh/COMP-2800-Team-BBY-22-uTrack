@@ -71,6 +71,9 @@ var slider3 = document.getElementById("sliderRange3");
 /** Slider Value Text */
 var output3 = document.getElementById("valueText3");
 
+/** Holds the setTimeout */
+var refresh;
+
 //invoke functions
 // removeQuantity();
 setInterval(function () {
@@ -276,9 +279,9 @@ function save() {
         .then(move());
     console.log("end promise chain");
     console.log("end of save()");
-    // setTimeout(function () {
-    //     window.location.href = "./post.html";
-    // }, TIME * 4);
+    refresh = setTimeout(function () {
+        window.location.href = "./post.html";
+    }, TIME * 3);
 }
 
 /**
@@ -380,6 +383,8 @@ function updateExp() {
         let exp = snap.data().points;
 
         if (exp >= 100) {
+            clearTimeout(refresh);
+            $(".pyro").css({"display":"inline"});
             let level = snap.data().level;
 
             db.collection('/users/').doc(user.uid).update({
@@ -387,10 +392,10 @@ function updateExp() {
             });
             db.collection('/users/').doc(user.uid).update({
                 level: level + 1
-            }); // increments level
+            }); 
+            // increments level
             $("#lv").html("Level: " + level);
             $("#levelReached").html(level + 1);
-            $(".pyro").css({"display":"inline"});
             $("#congratulation").modal("show");
         }
 

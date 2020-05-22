@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
     <link rel="stylesheet" type="text/css" href="./css/fireworks.css">
+    <link rel="stylesheet" type="text/css" href="./css/profile_modal.css">
 </head>
 
 <body>
@@ -238,20 +239,20 @@
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
     </div>
 
+    <!-- Level up modal -->
     <div class="modal" tabindex="-1" role="dialog" id="congratulation">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="congratsHeader">
                     <h5 class="modal-title" id="acceptTerm">Level up!</h5>
                 </div>
 
                 <div class="modal-body">
-                    <p id="icon"><img src="images/checkedicon.jpg" width="100px" height="100px"
-                            style="margin:auto; display:block;"></p>
+                    <p id="icon"><img src="images/trophy_icon.png" id="trophyIcon"></p>
                     <p>You have raised the level up to <span id="levelReached"></span></p>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer" id="congratsFooter">
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='./post.html'">Got it!</button>
                 </div>
             </div>
         </div>
