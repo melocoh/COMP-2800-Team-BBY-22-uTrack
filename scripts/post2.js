@@ -311,7 +311,8 @@ function move() {
 
     doc.update({
         points: incrementEXP
-    }); // increments points
+    }); 
+    // increments points
     updateExp();
 
     console.log("pressed");
