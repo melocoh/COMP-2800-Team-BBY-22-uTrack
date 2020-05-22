@@ -318,11 +318,4 @@ div.desc {
         background-image: url(../images/bg_test2.png);
         min-height: 100%;
     }
-
-    .clearfix:after {
-        content: "";
-        display: table;
-        clear: both;
-
-    }
 }
