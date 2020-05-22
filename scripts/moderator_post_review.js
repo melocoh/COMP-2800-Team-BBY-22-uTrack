@@ -3,7 +3,9 @@ let items = "";
 
 /**
  * Reads and displays data of posts collection on database based on the timestamp.
- * I have read the code for deleting data on database from stackoverflow and firebase document.
+ * 
+ * I found the code for delete the document of a collection on https://firebase.google.com
+ * @see https://firebase.google.com/docs/firestore/manage-data/delete-data
  */
 db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {

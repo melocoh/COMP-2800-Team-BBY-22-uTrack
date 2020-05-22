@@ -45,11 +45,10 @@
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <div class="pyro" id="pyro">
-        <div class="before"></div>
-        <div class="after"></div>
-    </div>
-
+    
+    <!----------------------------------------------->
+    <!--                Top navbar                 -->
+    <!----------------------------------------------->
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="./main.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
@@ -71,7 +70,9 @@
         </div>
     </nav>
 
-    <!-- Sign out modal -->
+    <!----------------------------------------------->
+    <!--               Sign out modal              -->
+    <!----------------------------------------------->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -96,7 +97,9 @@
         </div>
     </div>
 
-    <!-- Level System modal -->
+    <!----------------------------------------------->
+    <!--             Level System modal            -->
+    <!----------------------------------------------->
     <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -128,6 +131,9 @@
         </div>
     </div>
 
+    <!----------------------------------------------->
+    <!--               User profile                -->
+    <!----------------------------------------------->
     <div class="container">
         <div class="grid-container">
             <div class="grid-item item1">
@@ -142,7 +148,6 @@
             <div class="grid-item item2"><span id="levelSystem" onclick="displayLevelSystem()">
                     <img src="./images/questionmark.png" id="questionmark">
                 </span></div>
-            <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
 
             <div class="grid-item item3" id="displayLevel">Level</div>
             <div class="grid-item item4" style="width:100%">
@@ -153,13 +158,10 @@
             <div class="grid-item item5"><span id="displayName"> </span>
                 <div id="levelBadge" data-toggle="modal" data-target="#levelModal">
                     <span class="badge badge-pill badge-primary" id="beginner" style="display:none">Beginner</span>
-                    <!-- <span class="badge badge-pill badge-secondary">Secondary</span> -->
                     <span class="badge badge-pill badge-success" id="intermediate"
                         style="display:none">Intermediate</span>
                     <span class="badge badge-pill badge-danger" id="expert" style="display:none">Expert</span>
                     <span class="badge badge-pill badge-warning" id="advanced" style="display:none">Advanced</span>
-                    <!-- <span class="badge badge-pill badge-info">Info</span>
-                    <span class="badge badge-pill badge-light">Light</span> -->
                     <span class="badge badge-pill badge-dark" id="legend"
                         style="display:none; margin:auto;">Legend</span>
                 </div>
@@ -173,11 +175,11 @@
         </div>
     </div>
 
-
-    <!-- Small modal leveling system -->
+    <!----------------------------------------------->
+    <!--         Small modal leveling system       -->
+    <!----------------------------------------------->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Level System</h4>
@@ -200,10 +202,11 @@
         </div>
     </div>
 
-    <!-- Small modal gift card -->
+    <!----------------------------------------------->
+    <!--           Small modal gift card           -->
+    <!----------------------------------------------->
     <div id="giftModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Congratulations!</h4>
@@ -222,7 +225,9 @@
         </div>
     </div>
 
-    <!-- Bottom Nav Bar -->
+    <!----------------------------------------------->
+    <!--               Bottom navbar               -->
+    <!----------------------------------------------->
     <footer class="footer">
         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
             <button id="home" type="button" class="btn btn-secondary button-inactive"
@@ -278,7 +283,6 @@
     <script src="./scripts/profile.js"></script>
     <script src="./scripts/avatar/avatar_switch.js"></script>
     <script src="./scripts/avatar/avatar_ui_select.js"></script>
-    <!-- <script src="./scripts/post.js"></script> -->
 
 
     <!--------------------------------------------------------------------->
