@@ -1,52 +1,28 @@
 <!DOCTYPE html>
 <html>
 <style>
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
 </style>
+
 <body style="text-align:center;">
 
-<h2>Top Tooltip w/ Bottom Arrow</h2>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0">
+  </script>
 
-<div class="tooltip"><img src="./images/questionmark.png" id="questionmark" width="25px">
-  <span class="tooltiptext">None - 0<br>Few - 10<br>Many - 50<br>Plenty - 60</span>
-</div>
+  <h2>Top Tooltip w/ Bottom Arrow</h2>
 
+  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+    data-text="Check this out this app to see item availability from stores near you! "
+    data-url="https://team22-project2.web.app/" data-hashtags="uTrackSupplies" data-show-count="false">Tweet</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<!-- <span class="tooltiptext">None - 0<br>Few - 10<br>Many - 50<br>Plenty - 60</span> -->
+  <br>
+
+  <div class="fb-share-button" data-href="https://team22-project2.web.app/" data-layout="button" data-size="large"><a
+      target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam22-project2.web.app%2F&amp;src=sdkpreparse"
+      class="fb-xfbml-parse-ignore">Share</a></div>
 
 </body>
+
 </html>
