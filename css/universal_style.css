@@ -1,21 +1,7 @@
-/* --------------------------------- */
-/* Root Element (same level as HTML) */
-/* --------------------------------- */
 :root {
-    /* Calibri font master race */
     font-family: Calibri;
-    /* font-family: Comfortaa; */
-    /* 1 rem == 16px */
     font-size: 16px;
-
-    /* variables go below */
-    /* insert vars here */
 }
-
-/* -------------------------------- */
-/* HTML, BODY */
-/* -------------------------------- */
-/* container shouldn't be here */
 html,
 body {
     font-family: Comfortaa;
