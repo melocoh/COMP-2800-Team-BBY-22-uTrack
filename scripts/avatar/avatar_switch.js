@@ -56,6 +56,7 @@ function avatarSwitch(level, isProfile) {
     avatar.getDownloadURL().then(function (url) {
         console.log(url);
         console.log("isProfile: " + isProfile);
+
         // apply avatar image to associated HTML element
         if (isProfile) {
             $("#userProfilePic").attr("src", url);
@@ -63,38 +64,21 @@ function avatarSwitch(level, isProfile) {
             localStorage.setItem("avatarURL", url);
         }
     });
-
-    // if (!isProfile) {
-    //     return localURL;
-    // }
-
-    // OLD CODE (Avatar Placeholders):
-    // switch(level) {
-    //     case 1:
-    //         $("#userProfilePic").attr("src",  "./images/Avatar/level_1.png");
-    //         break;
-    //     case 2:
-    //         $("#userProfilePic").attr("src",  "./images/Avatar/level_2.png");
-    //         break;
-    //     case 3:
-    //         $("#userProfilePic").attr("src",  "./images/Avatar/level_3.png");
-    //         break;
-    //     default:
-    //         $("#userProfilePic").attr("src",  "./images/Avatar/level_4.png");
-    //         break;
-    // }
 }
 
 $(document).ready(function () {
-    // let promise = new Promise(function (req, res) {
     firebase.auth().onAuthStateChanged(function (user) {
         console.log("inside firebase auth for profile");
         db.collection("/users/").doc(user.uid).get().then(function (snap) {
+            // get the user's current level
             lv = snap.data().level;
+
             console.log(lv);
 
             // holds isProfile boolean for avatarSwitch()
             let isProfile = false;
+
+            // if current page is the profile page, then set boolean to indicate so
             if (window.location.href.includes("profile")) {
                 isProfile = true;
             }
@@ -103,11 +87,6 @@ $(document).ready(function () {
             avatarSwitch(parseInt(lv), isProfile);
         })
     });
-    // });
-    // console.log("beginning of promise chain");
-    // promise.then(setCurAvatar()).then(setListeners());
-    // console.log("end of promise chain");
+
     console.log("end of document ready for avatar_switch.js");
-    // setCurAvatar();
-    // setListeners();
 })
