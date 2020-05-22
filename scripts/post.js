@@ -504,13 +504,13 @@ function showSliderValue(a,output){
     if (a == 0){
         output.innerHTML = "none";
     } else if (a == 1){
-        output.innerHTML = "few ~ 10";
+        output.innerHTML = "few";
     } else if (a ==2){
-        output.innerHTML = "some ~ 20"
+        output.innerHTML = "some"
     } else if (a ==3){
-        output.innerHTML = "many ~ 50"
+        output.innerHTML = "many"
     } else if (a == 4){
-        output.innerHTML = "plenty ~ 70";
+        output.innerHTML = "plenty";
     }
 }
 
