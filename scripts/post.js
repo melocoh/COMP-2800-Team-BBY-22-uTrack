@@ -40,8 +40,13 @@ const TIME = 500;
 /** Holds the increment exp */
 const incrementEXP = firebase.firestore.FieldValue.increment(50);
 
+/** Holds the id fileButton */
 var fileButton = document.getElementById('fileButton');
+
+/** Holds the user document id on database */
 let userId;
+
+/** Holds the user name on database */
 let userName;
 
 /** Slider input */
@@ -76,8 +81,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         userName = user.displayName;
     }
 });
-//Invoke functions
-// removeQuantity();
+/** Invoke functions */
+
 setInterval(function () {
     checkbox();
 }, TIME);
@@ -91,8 +96,6 @@ let itemsCollec = db.collection("items");
 /** Firestore Stores Collection Reference */
 let storesCollec = db.collection("stores");
 
-//check if the check box is checked or not
-
 /**
  * Check if the check box is checked or not to hide the quantity boc
  */
@@ -100,7 +103,6 @@ function checkbox() {
 
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer1').style.display = "inline";
     } else {
         checked1 = false;
@@ -109,7 +111,6 @@ function checkbox() {
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer2').style.display = "inline";
     } else {
         checked2 = false;
@@ -118,18 +119,11 @@ function checkbox() {
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer3').style.display = "inline";
     } else {
         checked3 = false;
         document.querySelector('#sliderContainer3').style.display = "none";
     }
-
-    // if (!document.querySelector('#customCheck1:checked') &&
-    //     !document.querySelector('#customCheck2:checked') &&
-    //     !document.querySelector('#customCheck3:checked')) {
-    //     removeQuantity();
-    // }
 }
 
 /**
@@ -157,7 +151,6 @@ function setDataPost() {
             let itemId = db.collection("items/").doc(docRef.id);
             console.log(itemId);
             itemIDs.push(itemId);
-            // TERRIBLE FIX TO BLANK ARRAY OF ITEM REFERENCES:
             // add the store and post once the last item has been pushed to itemIDs array
             if (i == items.length - 1) {
                 db.collection("stores").add({
@@ -166,12 +159,6 @@ function setDataPost() {
                     store_name: document.getElementById("nameStore").value
                 }).then(function (docRef) {
                     storeId = db.collection("stores/").doc(docRef.id);
-                    // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-                    // storeId.set({
-                    //     location: locate,
-                    //     store_items: itemIDs,
-                    //     store_name: document.getElementById("nameStore").value
-                    // });
                     console.log(storeId);
                     db.collection("posts").add({
                         post_image: imgUrl,
@@ -183,12 +170,6 @@ function setDataPost() {
                         user_id: userId
                     }).then(function (docRef) {
                         postId = db.collection("posts/").doc(docRef.id);
-                        // userPost.push(postId);
-                        // firebase.auth().onAuthStateChanged(function (user) {
-                        //     db.collection("users/").doc(user.id).update({
-                        //         user_posts: userPost
-                        //     })
-                        // })
                     }).catch(function (error) {
                         console.log("Error adding document: ", error);
                     });
@@ -196,102 +177,6 @@ function setDataPost() {
             }
         });
     }
-
-    // for (let i = 0; i < items.length; i++) {
-    //     itemsCollec.add({
-    //         category: items[i],
-    //         item_name: items[i],
-    //         stock_number: stock[i]
-    //     }).then(function (itemRef) {
-    //         let itemId = db.collection("items/").doc(itemRef.id);
-    //         console.log("itemID: " + itemId);
-    //         itemIDs.push(itemId);
-    //         // Add the store and post once the last item has been pushed to itemIDs array
-    //         if (i == items.length - 1) {
-
-    //             // FOR TESTING PURPOSES
-    //             console.log("last item has been added");
-
-    //             // FOR TESTING PURPOSES
-    //             console.log("updating store");
-    //             console.log("storeID: " + storeId);
-
-    //             let storeName;
-
-    //             // update store
-    //             storesCollec.doc(storeId).update({
-    //                 store_items: itemIDs
-    //             });
-    //             // may need to use .then() promise for post addition
-
-    //             storesCollec.doc(storeId).get().then((storeDoc) => {
-    //                 let storeRef = db.collection("stores/").doc(storeDoc.id);
-
-    //                 console.log("store name: " + storeDoc.get("store_name"));
-    //                 storeName = storeDoc.get("store_name");
-
-    //                 // FOR TESTING PURPOSES
-    //                 console.log("adding post");
-    //                 console.log("storeDoc: " + storeDoc);
-
-    //                 // adding new post
-    //                 postsCollec.add({
-    //                     post_image: imgUrl,
-    //                     post_date: dateAndTime,
-    //                     timestamp: curTime,
-    //                     post_name: storeName,
-    //                     post_items: itemIDs,
-    //                     post_store: storeRef,
-    //                     user_id: userId
-    //                 }).then(function (postRef) {
-    //                     postId = postsCollec.doc(postRef.id);
-                        // userPost.push(postId);
-                        // firebase.auth().onAuthStateChanged(function (user) {
-                        //     db.collection("users/").doc(user.id).update({
-                        //         user_posts: userPost
-                        //     })
-                //         // })
-                //     }).catch(function (error) {
-                //         console.log("Error adding document: ", error);
-                //     });
-                // });
-
-
-                // db.collection("stores").add({
-                //     location: locate,
-                //     store_items: itemIDs,
-                //     store_name: document.getElementById("nameStore").value
-                // }).then(function (docRef) {
-                //     storeId = db.collection("stores/").doc(docRef.id);
-                //     // FOR TESTING PURPOSES (attempt to set itemIDs to store_items):
-                //     // storeId.set({
-                //     //     location: locate,
-                //     //     store_items: itemIDs,
-                //     //     store_name: document.getElementById("nameStore").value
-                //     // });
-                //     console.log(storeId);
-                // db.collection("posts").add({
-                //     post_image: imgUrl,
-                //     post_date: dateAndTime,
-                //     timestamp: curTime,
-                //     post_name: document.getElementById("nameStore").value,
-                //     post_items: itemIDs,
-                //     post_store: storeId
-                // }).then(function (docRef) {
-                //     postId = db.collection("posts/").doc(docRef.id);
-                //     // userPost.push(postId);
-                //     // firebase.auth().onAuthStateChanged(function (user) {
-                //     //     db.collection("users/").doc(user.id).update({
-                //     //         user_posts: userPost
-                //     //     })
-                //     // })
-                // }).catch(function (error) {
-                //     console.log("Error adding document: ", error);
-                // });
-                // });
-//             }
-//         });
-//     }
 }
 
 /**
@@ -300,32 +185,21 @@ function setDataPost() {
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
         let numValue = document.getElementById("sliderRange").value;
-        // let itemQuantity
         console.log(numValue);
         convertSliderValue(numValue);
-        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
         let numValue = document.getElementById("sliderRange2").value;
-        // let itemQuantity;
         convertSliderValue(numValue);
-        // console.log(itemQuantity);
-        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
         let numValue = document.getElementById("sliderRange3").value;
-        // let itemQuantity;
         convertSliderValue(numValue);
-        // console.log(itemQuantity);
-        // stock.push(itemQuantity);
     }
 }
 
@@ -468,32 +342,6 @@ function updateExp() {
 
     });
 }
-
-/**
- * Store the image that user has uploaded to firebase storage and gets the reference.
- */
-// $(document).ready(function () {
-//     fileButton.addEventListener('change', function (e) {
-//         var file = e.target.files[0];
-//         //create a storage ref
-//         var storageRef = firebase.storage().ref().child('Image/' + file.name);
-//         console.log("post storageRef: " + storageRef);
-
-// //     // store the storeID into the designated variable
-// //     storeId = curStoreId;
-
-// //     // FOR TESTING PURPOSES
-// //     console.log("storeID in post: " + storeId);
-// //     // console.log("current store: " + storesCollec.doc(storeId).get().then((doc) => {
-
-// //     // }));
-// //     // console.log("location: " + storesCollec.doc(storeId).get("location"));
-
-
-
-// //     // FOR TESTING PURPOSES
-// //     console.log("end of getStoreIdToPost()");
-// // }
 
 /**
  * Shows the slider value.

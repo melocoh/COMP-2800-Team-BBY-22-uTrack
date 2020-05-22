@@ -72,8 +72,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         userName = user.displayName;
     }
 });
-//Invoke functions
-// removeQuantity();
+
 setInterval(function () {
     checkbox();
 }, TIME);
@@ -120,13 +119,6 @@ function checkbox() {
         checked3 = false;
         document.querySelector('#sliderContainer3').style.display = "none";
     }
-}
-
-/**
- * Hide the quantity input box.
- */
-function removeQuantity() {
-    document.querySelector('#quantity').style.display = "none";
 }
 
 /**
