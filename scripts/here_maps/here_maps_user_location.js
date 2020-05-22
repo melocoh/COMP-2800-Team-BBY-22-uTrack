@@ -52,7 +52,7 @@ function getLocation() {
 
 /**
  * Shows the user's position via latitude and longitude values
- * @param {} position 
+ * @param {*} position 
  */
 function showPosition(position) {
 
@@ -67,16 +67,20 @@ function showPosition(position) {
 
 }
 
+// function getAvatar() {
+//     // Holds the Firebase Storage reference
+//     let avatarStorageRef = firebase.storage().ref().child("avatars");
+
+
+// }
+
 /**
  * Adds a marker to indicate the user's current location
  * @param {H.map} map 
  */
 function addUserMarker(map) {
     console.log("inside addUserMarker()");
-
-    // avatar storage image
-    let storageRef = firebase.storage().ref().child("Image/");
-
+    
     // Instantiate HTML Elements
     // let outerDiv = $("<div></div>");
     let outerDiv = document.createElement("div");
@@ -85,9 +89,18 @@ function addUserMarker(map) {
 
     // Set image
     let imgURL;
-    // imgURL = 
-    imgURL = "https://dummyimage.com/50x50/000/fff.jpg";
+    imgURL = localStorage.getItem("avatarURL");
+    // imgURL = avatarSwitch(parseInt(lv), false);
+    // imgURL = "https://dummyimage.com/50x50/000/fff.jpg";
+    console.log(imgURL);
     $(innerDiv).attr("src", imgURL);
+
+    // style marker image
+    $(innerDiv).css({
+        "width": "100px",
+        "height": "100px"
+    });
+
 
     // Append to Parent Div
     outerDiv.appendChild(innerDiv);

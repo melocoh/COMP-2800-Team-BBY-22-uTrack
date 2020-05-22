@@ -6,9 +6,10 @@ var lv;
 
 /**
  * Selects an avatar based on the user's current level
- * @param {Number} level 
+ * @param {Number} level
+ * @param {Boolean} isProfile
  */
-function avatarSwitch(level) {
+function avatarSwitch(level, isProfile) {
     // holds avatar image
     let avatar;
 
@@ -54,12 +55,18 @@ function avatarSwitch(level) {
     // get the download url of the avatar image reference
     avatar.getDownloadURL().then(function (url) {
         console.log(url);
-        
+        console.log("isProfile: " + isProfile);
         // apply avatar image to associated HTML element
-        $("#userProfilePic").attr("src", url);
+        if (isProfile) {
+            $("#userProfilePic").attr("src", url);
+        } else {
+            localStorage.setItem("avatarURL", url);
+        }
     });
 
-
+    // if (!isProfile) {
+    //     return localURL;
+    // }
 
     // OLD CODE (Avatar Placeholders):
     // switch(level) {
@@ -85,8 +92,15 @@ $(document).ready(function () {
         db.collection("/users/").doc(user.uid).get().then(function (snap) {
             lv = snap.data().level;
             console.log(lv);
+
+            // holds isProfile boolean for avatarSwitch()
+            let isProfile = false;
+            if (window.location.href.includes("profile")) {
+                isProfile = true;
+            }
+
             // designate user avatar based on level
-            avatarSwitch(parseInt(lv));
+            avatarSwitch(parseInt(lv), isProfile);
         })
     });
     // });
