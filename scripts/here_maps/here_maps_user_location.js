@@ -74,6 +74,9 @@ function showPosition(position) {
 function addUserMarker(map) {
     console.log("inside addUserMarker()");
 
+    // avatar storage image
+    let storageRef = firebase.storage().ref().child("Image/");
+
     // Instantiate HTML Elements
     // let outerDiv = $("<div></div>");
     let outerDiv = document.createElement("div");
@@ -81,7 +84,9 @@ function addUserMarker(map) {
     let innerDiv = document.createElement("img");
 
     // Set image
-    let imgURL = "https://dummyimage.com/50x50/000/fff.jpg";
+    let imgURL;
+    // imgURL = 
+    imgURL = "https://dummyimage.com/50x50/000/fff.jpg";
     $(innerDiv).attr("src", imgURL);
 
     // Append to Parent Div

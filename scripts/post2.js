@@ -476,13 +476,14 @@ $(document).ready(function () {
         console.log("post storageRef: " + storageRef);
         storageRef.put(file).then(() => {
             console.log("file uploaded!");
+            console.log("now attempting to get download url");
+            storageRef.getDownloadURL().then(function (url) {
+                console.log("storageRef downloadURL: " + url);
+                imgUrl = url;
+            });
         });
         // var task = storageRef.put(file);
 
-        storageRef.getDownloadURL().then(function (url) {
-            console.log("storageRef downloadURL: " + url);
-            imgUrl = url;
-        });
         // localStorage.setItem(0, storageRef);
         //upload file
 

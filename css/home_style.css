@@ -48,6 +48,7 @@ section {
     width: 100vw;
     /* matches with container height */
     height: 90vh;
+    /* height: 100%; */
 }
 
 canvas {
@@ -66,6 +67,8 @@ canvas {
 .modal-dialog {
     /* display: flex; */
     /* justify-content: center; */
+
+    /* center alignment for close button */
     text-align: center;
 }
 
@@ -74,7 +77,7 @@ canvas {
 }
 
 .modal-content > * {
-    /* remove borders */
+    /* remove inner content borders */
     border: 0;
 }
 
@@ -87,29 +90,37 @@ canvas {
 
 .modal-body {
     /* align ul and profile info div */
-    display: flex;
+    /* display: flex; */
     /* remove extra space */
     padding-bottom: 0;
+    width: 100%;
 }
 
 .modal-body ul {
+    /* margin: 0 auto; */
+    /* width: auto; */
+    /* OLD CODE */
     /* marginalize to the right as much as possible */
-    margin-right: auto;
+    /* margin-right: auto; */
     list-style: none;
-    padding-left: 1rem;
+    padding: 0;
+    /* padding-left: 1rem; */
 }
 
 .modal-body li {
     /* old width value */
-    /* width: 70%; */
+    width: 65%;
     padding: 10px;
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }
 
 .items {
     /* horizontal padding only */
-    padding: 0 1rem;
+    margin-left: 1rem;
+    width: 10rem;
+    text-align: left;
 }
 
 #profileInfo {
@@ -198,6 +209,7 @@ canvas {
         /* wack */
         /* margin-top: auto; */
         margin-top: auto;
+        height: 100vh;
     }
 
     #homeMap {
