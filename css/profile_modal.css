@@ -5,6 +5,7 @@
     text-align:center;
 }
 
+/** For congratulation modal box */
 #congratulation{
     position: fixed;
     top: 23%;

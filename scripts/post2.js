@@ -75,18 +75,16 @@ var output3 = document.getElementById("valueText3");
 var refresh;
 
 //invoke functions
-// removeQuantity();
 setInterval(function () {
     checkbox();
 }, TIME);
 
 /**
- * Check if the check box is checked or not to hide the quantity boc
+ * Check if the check box is checked or not to hide the quantity slider
  */
 function checkbox() {
     if (document.querySelector('#customCheck1:checked')) {
         checked1 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer1').style.display = "inline";
     } else {
         checked1 = false;
@@ -95,7 +93,6 @@ function checkbox() {
 
     if (document.querySelector('#customCheck2:checked')) {
         checked2 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer2').style.display = "inline";
     } else {
         checked2 = false;
@@ -104,63 +101,17 @@ function checkbox() {
 
     if (document.querySelector('#customCheck3:checked')) {
         checked3 = true;
-        // document.querySelector('#quantity').style.display = "inline";
         document.querySelector('#sliderContainer3').style.display = "inline";
     } else {
         checked3 = false;
         document.querySelector('#sliderContainer3').style.display = "none";
     }
-
-    // if (document.querySelector('#customCheck1:checked')) {
-    //     checked1 = true;
-    //     document.querySelector('#quantity').style.display = "inline";
-    //     document.querySelector('#textBox1').style.visibility = "visible";
-    // } else {
-    //     checked1 = false;
-    //     document.querySelector('#textBox1').style.visibility = "hidden";
-    // }
-
-    // if (document.querySelector('#customCheck2:checked')) {
-    //     checked2 = true;
-    //     document.querySelector('#quantity').style.display = "inline";
-    //     document.querySelector('#textBox2').style.visibility = "visible";
-    // } else {
-    //     checked2 = false;
-    //     document.querySelector('#textBox2').style.visibility = "hidden";
-    // }
-
-    // if (document.querySelector('#customCheck3:checked')) {
-    //     checked3 = true;
-    //     document.querySelector('#quantity').style.display = "inline";
-    //     document.querySelector('#textBox3').style.visibility = "visible";
-    // } else {
-    //     checked3 = false;
-    //     document.querySelector('#textBox3').style.visibility = "hidden";
-    // }
-
-    // if (!document.querySelector('#customCheck1:checked') &&
-    //     !document.querySelector('#customCheck2:checked') &&
-    //     !document.querySelector('#customCheck3:checked')) {
-    //     removeQuantity();
-    // }
 }
-
-/**
- * Hide the quantity input box.
- */
-// function removeQuantity() {
-//     document.querySelector('#quantity').style.display = "none";
-// }
 
 /**
  * Add the data from user's input to severals collection on database.
  */
 function setDataPost() {
-    // redundant code
-    // let locate = document.getElementById("address").value + ", " +
-    //     document.getElementById("province").value +
-    //     ", " + document.getElementById("zip").value;
-
     // iterate over each item in the items array and add them to the database
     for (let i = 0; i < items.length; i++) {
         itemsCollec.add({
@@ -211,10 +162,6 @@ function setDataPost() {
                     }).then(function (postRef) {
                         postId = postsCollec.doc(postRef.id);
                         userPost.push(postId);
-                        // firebase.auth().onAuthStateChanged(function (user) {
-                        // db.collection("users/").doc(user.id).update({
-                        //     user_posts: userPost
-                        // })
                     }).catch(function (error) {
                         console.log("Error adding document: ", error);
                     });
@@ -223,8 +170,6 @@ function setDataPost() {
         });
     }
 
-    // FOR TESTING PURPOSES:
-    // alert("For testing purposes: POSTED!");
 }
 
 /**
@@ -233,32 +178,21 @@ function setDataPost() {
 function getItemInfo() {
     if (document.querySelector('#customCheck1:checked')) {
         items.push(document.getElementById("customCheck1").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup1").value;
         let numValue = document.getElementById("sliderRange").value;
-        // let itemQuantity
         console.log(numValue);
         convertSliderValue(numValue);
-        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck2:checked')) {
         items.push(document.getElementById("customCheck2").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup2").value;
         let numValue = document.getElementById("sliderRange2").value;
-        // let itemQuantity;
         convertSliderValue(numValue);
-        // console.log(itemQuantity);
-        // stock.push(itemQuantity);
     }
 
     if (document.querySelector('#customCheck3:checked')) {
         items.push(document.getElementById("customCheck3").value);
-        // let itemQuantity = document.getElementById("inlineFormInputGroup3").value;
         let numValue = document.getElementById("sliderRange3").value;
-        // let itemQuantity;
         convertSliderValue(numValue);
-        // console.log(itemQuantity);
-        // stock.push(itemQuantity);
     }
 }
 
@@ -460,6 +394,7 @@ output3.innerHTML = "none";
 
 /**
  * Store the image that user has uploaded to firebase storage and gets the reference.
+ * We have watched tutorial and read the document from firebase to use this code.
  */
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -487,35 +422,6 @@ $(document).ready(function () {
                 imgUrl = url;
             });
         });
-        // var task = storageRef.put(file);
-
-        // localStorage.setItem(0, storageRef);
-        //upload file
-
-        //update progress bar
-        // task.on('state_changed',
-        //     function error(err) {
-        //         // A full list of error codes is available at
-        //         // https://firebase.google.com/docs/storage/web/handle-errors
-        //         switch (error.code) {
-        //             case 'storage/unauthorized':
-        //                 // User doesn't have permission to access the object
-        //                 break;
-        //             case 'storage/canceled':
-        //                 // User canceled the upload
-        //                 break;
-        //             case 'storage/unknown':
-        //                 // Unknown error occurred, inspect error.serverResponse
-        //                 break;
-        //         }
-        //     },
-        //     function complete() {
-        //         storageRef.getDownloadURL().then(function (url) {
-        //             console.log("downloadURL: " + url);
-        //             imgUrl = url;
-        //         });
-        //     }
-        // );
     });
 
     document.getElementById("postButton").onclick = function () {

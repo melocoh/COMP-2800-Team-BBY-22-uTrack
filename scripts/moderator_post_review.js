@@ -22,8 +22,7 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         let span3 = document.createElement("span");
         var storeInfo = doc.get("post_store");
         var listItem = doc.data().post_items;
-        // btn.setAttribute("data-toggle", "modal");
-        // btn.setAttribute("data-target", "#basicExampleModal");
+
         //delete the data on database. 
         function removePost() {
             contain.style.display = "none";
@@ -53,10 +52,6 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
             });
         }
         btn.onclick = removePost;
-
-        setStyle(contain, p1, p6, btn);
-
-        // p4.setAttribute("id", "itemName");
         p1.innerHTML = "<b>" + doc.data().post_name + "</b>";
         p2.src = doc.get("post_image");
         p2.style.width = "250px";
@@ -66,7 +61,11 @@ db.collection("posts").orderBy("timestamp", "desc").get().then(function (querySn
         btn.innerHTML = "Delete";
         var storeInfo = doc.get("post_store");
         var userInfo = doc.get("user_id");
+        //Set the style for some elements
+        setStyle(contain, p1, p6, btn);
+        //Gets the store information and display it
         getStoreInfo(storeInfo, p3, p4);
+        //Gets the user information and display it
         getUserInfo(userInfo, p5, span1, span2, span3);
 
         p6.appendChild(btn);
@@ -118,7 +117,6 @@ function getItemInfo(storeItems, p4) {
                 imageItem = "./images/icon_handsantizer.png";
             }
 
-            // list.innerHTML = items + name + ": " + stock;
             list.innerHTML = `<img src ="` + imageItem + `" style = "width: 70px; height: 70px">` + `<span>` + stock + `<span>`;
             list.style.listStyleType = "none";
             list.style.display = "flex";
@@ -138,7 +136,6 @@ function getItemInfo(storeItems, p4) {
  */
 function setStyle(contain, p1, p6, btn) {
     contain.style.textAlign = "center";
-    // contain.style.backgroundColor = "#D6EFFF";
     contain.style.margin = "15px";
     contain.style.padding = "10px";
     contain.style.borderRadius = "10px";
@@ -182,28 +179,16 @@ function deleteReport(report) {
  * Set the style for some elements.
  */
 $(document).ready(function () {
-    $(".container").css({"margin-top":"100px" , "margin-bottom":"70px"});
+    $(".container").css({
+        "margin-top": "100px",
+        "margin-bottom": "70px"
+    });
     $("#newPost").css({
         "display": "flex",
         "justify-content": "flex-end",
         "padding": "15px"
     });
 });
-
-/**
- * Read the total posts that have been reported from database and display it.
- */
-// db.collection("reports").get().then(function (snap) {
-//     document.getElementById("totalReport").innerHTML = snap.size;
-// });
-
-// $("#totalReport").css({
-//     "background-color": "white",
-//     "color": "black",
-//     "padding": "0px 5px",
-//     "border": "2px solid white",
-//     "borderRadius": "6px"
-// });
 
 /**
  * Get information of the user who posted the post and display it in modal.
@@ -216,7 +201,7 @@ $(document).ready(function () {
 function getUserInfo(userInfo, p5, span1, span2, span3) {
     userInfo.get().then(function (doc) {
         var userName = doc.get("name");
-       
+
         span2.innerHTML = `<b>` + userName + `</b>`;
         span2.style.color = "#0F52BA";
         span2.setAttribute("value", doc.uid);
@@ -229,26 +214,40 @@ function getUserInfo(userInfo, p5, span1, span2, span3) {
             switch (doc.get("level")) {
                 case 1:
                     $("#userAvatar").attr("src", "./images/Avatar/level_1.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 case 2:
                     $("#userAvatar").attr("src", "./images/Avatar/level_2.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 case 3:
                     $("#userAvatar").attr("src", "./images/Avatar/level_3.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
                 default:
                     $("#userAvatar").attr("src", "./images/Avatar/level_4.png");
-                    $("#userAvatar").css({"width":"150px","height":"150px"});
+                    $("#userAvatar").css({
+                        "width": "150px",
+                        "height": "150px"
+                    });
                     break;
             }
             console.log(userName);
             console.log(doc.get("level"));
             $("#userName").html(userName);
-            $("#userLevel").html("<b>"+ "Lv." + doc.get("level") + "</b>");
-            $("#userLevel").css({"color":""});
+            $("#userLevel").html("<b>" + "Lv." + doc.get("level") + "</b>");
+            $("#userLevel").css({
+                "color": ""
+            });
         }
 
     })
