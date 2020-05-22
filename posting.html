@@ -39,11 +39,13 @@
 
 <body>
     <!----------------------->
-    <!--  HTML Section -->
+    <!--  HTML Section    -->
     <!----------------------->
 
+    <!----------------------------------------------->
+    <!--                Top navbar                 -->
+    <!----------------------------------------------->
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <!-- <div class="container"> -->
         <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
@@ -62,7 +64,6 @@
                 </li>
             </ul>
         </div>
-        <!-- </div> -->
     </nav>
 
     <div class="pyro">
@@ -70,7 +71,9 @@
         <div class="after"></div>
     </div>
 
-    <!-- Sign out modal -->
+    <!----------------------------------------------->
+    <!--               Sign out modal              -->
+    <!----------------------------------------------->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -95,9 +98,12 @@
         </div>
     </div>
 
+    
+    <!----------------------------------------------->
+    <!--               Posting form                -->
+    <!----------------------------------------------->
     <div class="container py-3" id="postContainer1">
         <form>
-            <!-- Commented out for now. Get store name from passed store id later -->
             <div class="title">
                 <label for="nameStore"><b>Store name:</b></label>
                 <input type="text" class="form-control" id="nameStore" required>
@@ -214,59 +220,6 @@
 
         </div>
 
-        <!-- </div>
-        <div id="quantity">
-            <div>
-                <p><b>Estimated quantity:</b></p>
-                <p><i>Only insert the quantity of available items</i></p>
-            </div>
-            <div class="p-2">
-                <div>
-                    <label class="sr-only" for="inlineFormInputGroupUsername1">item unit</label>
-                    <div class="form-group">
-                        <select class="custom-select btn-light" id="quantity" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option value="None">None</option>
-                            <option value="Few">Few</option>
-                            <option value="Some">Some</option>
-                            <option value="Many">Many</option>
-                            <option value="Plenty">Plenty</option>
-                        </select>
-                        <div class="invalid-feedback">Please insert the quantity</div>
-                    </div>
-
-                    <br>
-                    <div>
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">item unit</label>
-                        <div class="input-group" id="textBox2">
-                            <select class="custom-select btn-light" id="quantity" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="None">None</option>
-                                <option value="Few">Few</option>
-                                <option value="Some">Some</option>
-                                <option value="Many">Many</option>
-                                <option value="Plenty">Plenty</option>
-                            </select>
-                            <div class="invalid-feedback">Please insert the quantity</div>
-                        </div>
-                        <br>
-                        <div>
-                            <label class="sr-only" for="inlineFormInputGroupUsername3">item unit</label>
-                            <div class="input-group" id="textBox3">
-                                <select class="custom-select btn-light" id="quantity" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option value="None">None</option>
-                                    <option value="Few">Few</option>
-                                    <option value="Some">Some</option>
-                                    <option value="Many">Many</option>
-                                    <option value="Plenty">Plenty</option>
-                                </select>
-                                <div class="invalid-feedback">Please insert the quantity</div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
         <div>
             <p>
                 <b>Image for Verification</b>
@@ -280,7 +233,9 @@
         <button class="btn btn-primary btn-block" type="submit" id="postButton">Post</button>
     </div>
 
-    <!-- Level up modal -->
+    <!----------------------------------------------->
+    <!--              Level up modal               -->
+    <!----------------------------------------------->
     <div class="modal" tabindex="-1" role="dialog" id="congratulation">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -299,7 +254,9 @@
         </div>
     </div>
 
-    <!-- Bottom Nav Bar -->
+    <!----------------------------------------------->
+    <!--               Bottom navbar               -->
+    <!----------------------------------------------->
     <footer class="footer">
         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
             <button id="home" type="button" class="btn btn-secondary button-inactive"
