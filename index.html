@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <title>About-Us</title>
     <meta charset="UTF-8">
+    <title>uTrack</title>
 
     <!----------------------------------------------->
     <!-----------------  Favicon  ------------------->
@@ -23,12 +23,12 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link type="text/css" rel="stylesheet" href="./css/aboutUs_style.css" />
     <link type="text/css" rel="stylesheet" href="./css/aboutUs_team_style.css" />
-
 </head>
 
 <body>
@@ -37,7 +37,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0">
     </script>
 
-    <!-- Navbar (sit on top) -->
+    <!-- Top Navbar -->
     <div class="w3-top">
         <div class="w3-bar" id="myNavbar">
             <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
@@ -54,7 +54,6 @@
             <a href="login.html" class="w3-bar-item w3-button" onclick="toggleFunction()">LOGIN</a>
             <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
             <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TEAM</a>
-            <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
         </div>
     </div>
 
@@ -64,8 +63,9 @@
             <span id="title">uTrack</span><img src="images/uTrack_logo_2.png"
                 style="width:50px;height:50px;margin-bottom:20px;">
 
-            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Join
-                    Now</button></a>
+            <a href="login.html" style="text-decoration: none">
+                <button id="start" type="button">Join Now</button>
+            </a>
         </div>
         <div id="learn"> <a href="#about"> Learn More </a></div>
     </div>
@@ -85,29 +85,27 @@
                 emergency reserves to sustain themselves during self-quarantine. Due to the pandemic, we have learned to
                 work remotely and have learned so much about back-end and front-end webapp development. When we are not
                 dying from debugging, you can usually find us playing games or hanging out in discord.
-            </div>
+            </div><br><br>
 
-            <!--   Our Mission in uTrack     -->
-            <br><br>
+            <!-- Our Mission in uTrack -->
             <h4 class="utrackHead"> &zwnj;</h4>
 
             <div class="responsive">
                 <div class="gallery">
                     <img src="./images/info.png" alt="Supply Essentials" width="500" height="400" style="width: 100%">
                     <div class="desc">Information regarding supply stocks is provided by the users who go out of their
-                        way to
-                        report the current status of items they find while shopping.</div>
+                        way to report the current status of items they find while shopping.
+                    </div>
                 </div>
             </div>
-
 
             <div class="responsive" style="margin-bottom: 20px">
                 <div class="gallery">
                     <img src="./images/customize.png" alt="Community Engangement" width="500" height="400"
                         style="width: 100%">
                     <div class="desc">The more they post and contribute to their local community, the more points they
-                        will
-                        accumulate, which can be redeemed for in-app cosmetics. </div>
+                        will accumulate, which can be redeemed for in-app cosmetics.
+                    </div>
                 </div>
             </div>
 
@@ -116,8 +114,8 @@
                     <img src="./images/toiletpaper.png" alt="Gaming Experience" width="500" height="400"
                         style="width: 100%">
                     <div class="desc">Associated items on demand pertain to hygienic, clinical, and dietary needs such
-                        as
-                        toilet paper, diapers, and hand sanitizers.</div>
+                        as toilet paper, diapers, and hand sanitizers.
+                    </div>
                 </div>
             </div>
 
@@ -125,7 +123,7 @@
             <h2 id="team">Our Crew</h2>
             <br>
 
-            <!--    Team members!    -->
+            <!-- Team members introduction -->
             <div class="row">
                 <div class="column">
                     <div class="card">
@@ -182,9 +180,9 @@
 
         <!-- Social media plugins -->
         <div class="footer">
-            
+
             <p>Get social with us!</p>
-            
+
             <!-- Twitter -->
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
                 data-text="Check this out this app to see item availability from stores near you! "
@@ -201,7 +199,6 @@
                     class="fb-xfbml-parse-ignore">Share</a>
             </div>
         </div>
-
 
         <!----------------------------------------------->
         <!-- JS: Boostrap, Firebase, API related    -->
@@ -227,33 +224,7 @@
         <!--------------------------------------------------------------------->
         <!-- JS files: Your own JavaScript functions included here    -->
         <!--------------------------------------------------------------------->
-
-
-        <script>
-            // Change style of navbar on scroll
-            window.onscroll = function () {
-                myFunction()
-            };
-
-            function myFunction() {
-                var navbar = document.getElementById("myNavbar");
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-                } else {
-                    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-                }
-            }
-
-            // Used to toggle the menu on small screens when clicking on the menu button
-            function toggleFunction() {
-                var x = document.getElementById("navDemo");
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
-        </script>
+        <script src="./scripts/main.js"></script>
 
 </body>
 

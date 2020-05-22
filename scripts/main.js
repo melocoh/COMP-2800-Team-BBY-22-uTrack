@@ -9,6 +9,15 @@ function showName() {
 // invoke display showName function
 showName();
 
+/**
+ * Performs smooth responsive animation on top navbar
+ * which toggles on scroll
+ * 
+ * @author
+ * @see https://www.w3schools.com/w3css/
+ * 
+ */
+
  // Change style of navbar on scroll
  window.onscroll = function () { myFunction() };
  function myFunction() {
