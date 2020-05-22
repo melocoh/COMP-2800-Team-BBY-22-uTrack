@@ -71,6 +71,9 @@ var slider3 = document.getElementById("sliderRange3");
 /** Slider Value Text */
 var output3 = document.getElementById("valueText3");
 
+/** Holds the setTimeout */
+var refresh;
+
 //invoke functions
 // removeQuantity();
 setInterval(function () {
@@ -276,9 +279,9 @@ function save() {
         .then(move());
     console.log("end promise chain");
     console.log("end of save()");
-    // setTimeout(function () {
-    //     window.location.href = "./post.html";
-    // }, TIME * 4);
+    refresh = setTimeout(function () {
+        window.location.href = "./post.html";
+    }, TIME * 3);
 }
 
 /**
@@ -380,6 +383,8 @@ function updateExp() {
         let exp = snap.data().points;
 
         if (exp >= 100) {
+            clearTimeout(refresh);
+            $(".pyro").css({"display":"inline"});
             let level = snap.data().level;
 
             db.collection('/users/').doc(user.uid).update({
@@ -387,10 +392,10 @@ function updateExp() {
             });
             db.collection('/users/').doc(user.uid).update({
                 level: level + 1
-            }); // increments level
+            }); 
+            // increments level
             $("#lv").html("Level: " + level);
             $("#levelReached").html(level + 1);
-            $(".pyro").css({"display":"inline"});
             $("#congratulation").modal("show");
         }
 
@@ -406,13 +411,13 @@ function showSliderValue(a,output){
     if (a == 0){
         output.innerHTML = "none";
     } else if (a == 1){
-        output.innerHTML = "few ~ 10";
+        output.innerHTML = "few";
     } else if (a ==2){
-        output.innerHTML = "some ~ 20"
+        output.innerHTML = "some";
     } else if (a ==3){
-        output.innerHTML = "many ~ 50"
+        output.innerHTML = "many";
     } else if (a == 4){
-        output.innerHTML = "plenty ~ 70";
+        output.innerHTML = "plenty";
     }
 }
 
@@ -425,13 +430,13 @@ function convertSliderValue(a){
     if (a == 0){
         stock.push("none");
     } else if (a == 1){
-        stock.push("few ~ 10");
+        stock.push("few");
     } else if (a == 2){
-        stock.push("some ~ 20");
+        stock.push("some");
     } else if (a == 3){
-        stock.push("some ~ 50");
+        stock.push("many");
     } else if (a == 4){
-        stock.push("plenty ~ 70");
+        stock.push("plenty");
     }
 }
 
@@ -476,13 +481,14 @@ $(document).ready(function () {
         console.log("post storageRef: " + storageRef);
         storageRef.put(file).then(() => {
             console.log("file uploaded!");
+            console.log("now attempting to get download url");
+            storageRef.getDownloadURL().then(function (url) {
+                console.log("storageRef downloadURL: " + url);
+                imgUrl = url;
+            });
         });
         // var task = storageRef.put(file);
 
-        storageRef.getDownloadURL().then(function (url) {
-            console.log("storageRef downloadURL: " + url);
-            imgUrl = url;
-        });
         // localStorage.setItem(0, storageRef);
         //upload file
 

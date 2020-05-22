@@ -83,16 +83,16 @@ html {
 
 
 #start {
-    text-align: center;
-    font-size: 17px;
-    border-radius: 15px;
-    border-style: none;
-    display: block;
-    margin: auto;
-    padding: 2px 33px;
-    color: white;
-    text-decoration: none;
-    background: linear-gradient(to right, pink, lightblue);
+text-align: center;
+font-size: .8em;
+border-radius: 15px;
+border-style: none;
+display: block;
+margin: auto;
+padding: 2px 33px;
+color: white;
+text-decoration: none;
+background: linear-gradient(to right, pink, lightblue);
 }
 
 #start:hover {

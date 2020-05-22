@@ -17,25 +17,48 @@ let profPicDiv = $("#profpic_container");
 // level indicator of avatar design
 let avatarLevelIndicator;
 
-// JSON of Available Avatars
-// const allAvatars = {
-//     "level1": "./images/Avatar/level_1.png",
-//     "level2": "./images/Avatar/level_2.png",
-//     "level3": "./images/Avatar/level_3.png",
-//     "level4": "./images/Avatar/level_4.png"
-// }
-
 /** Array that holds all the released avatar design image sources for the user */
-const allAvatars = [
-    "./images/Avatar/level_1.png",
-    "./images/Avatar/level_2.png",
-    "./images/Avatar/level_3.png",
-    "./images/Avatar/level_4.png"
-];
+const allAvatars = [];
+
+const numOfAvatarDesigns = 12;
+
+// OLD ALLAVATARS ARRAY
+// const allAvatars = [
+//     "./images/Avatar/level_1.png",
+//     "./images/Avatar/level_2.png",
+//     "./images/Avatar/level_3.png",
+//     "./images/Avatar/level_4.png"
+// ];
 
 /* --------------------------------- */
 /* SETTERS */
 /* --------------------------------- */
+
+function setAvatars() {
+    /* gets storage reference from avatar_switch.js and loops through all available avatar variations (12)
+        before storing them into the allAvatars array */
+    for (let i = 0; i < numOfAvatarDesigns; i++) {
+        // holds the iterating string for image reference
+        let childString = "level_" + (i + 1) + ".png";
+        if (i === numOfAvatarDesigns - 1) {
+            childString = "level_LEGENDARY.png";
+        }
+        console.log("childString: " + childString);
+        
+        // holds the avatar image reference
+        let avatarHolder = avatarStorageRef.child(childString);
+        avatarHolder.getDownloadURL().then(function (url) {
+            console.log(url);
+
+            // add avatar image download url to allAvatars array
+            allAvatars[i] = url;
+
+            console.log("succesfully pushed download url to allAvatars[]");
+        });
+        console.log("end of iteration " + i);
+    }
+    console.log(allAvatars);
+}
 
 /**
  * Checks for the user's level and determines if the current avatar showcased
@@ -47,19 +70,36 @@ const allAvatars = [
  * Otherwise, leave the avatar as it is
  */
 function setGreyscale() {
-    // TESTING NOTES
+    // TESTING NOTES (OLD)
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
     // . / i m a g e s / A v  a  t  a  r  /  l  e  v  e  l  _  1  .  p  n  g
 
-    avatarLevelIndicator = parseInt(newAvatar.substring(22, 23));
+    // holds the index location of the specified string in the download url
+    let substringStartPos = newAvatar.indexOf("level_") + 6;
 
-    // FOR TESTING PURPOSES
+    // extract level from avatar image download url
+    avatarLevelIndicator = newAvatar.substring(substringStartPos, substringStartPos + 2);
+    
+    // OLD CODE
+    // avatarLevelIndicator = newAvatar.substring(22, 24);
+    console.log("avatarindicator: " + avatarLevelIndicator);
+
+    // check to see if level is single digit or double
+    if (avatarLevelIndicator.substring(1) === ".") {
+        // cut substring even further if it is single digit
+        avatarLevelIndicator = avatarLevelIndicator.substring(0, 1);
+    } else if (avatarLevelIndicator.includes("LE")) {
+        avatarLevelIndicator = 12;
+    }
+
+    // parse into integer
+    avatarLevelIndicator = parseInt(avatarLevelIndicator);
+
     console.log("avatarLevelIndicator: " + avatarLevelIndicator);
 
     // external level variable (from avatar_switch.js)
     let level = parseInt(lv);
 
-    // FOR TESTING PURPOSES
     console.log("user's current level: " + level);
 
     // if level is less than avatar level indicator, set grayscale filter to avatar
@@ -123,12 +163,10 @@ function setCurAvatar() {
  * Sets the mouseclick event listeners to the left and right arrows
  */
 function setListeners() {
-    // FOR TESTING PURPOSES
     console.log("setting click listeners");
 
     // Left-arrow click listener
     $(lArrow).click(() => {
-        // FOR TESTING PURPOSES
         console.log("left arrow clicked");
 
         // Update the current avatar holder
@@ -145,17 +183,14 @@ function setListeners() {
             // set greyscale whenever necessary
             setGreyscale();
 
-            // FOR TESTING PURPOSES
             console.log("changed avatar img" + $(avatar).attr("src"));
         } else {
-            // FOR TESTING PURPOSES
             console.log("already the left-most design");
         }
     });
 
     // Right-arrow click listener
     $(rArrow).click(() => {
-        // FOR TESTING PURPOSES
         console.log("right arrow clicked");
 
         // Update the current avatar holder
@@ -172,7 +207,6 @@ function setListeners() {
             // set greyscale whenever necessary
             setGreyscale();
 
-            // FOR TESTING PURPOSES
             console.log("changed avatar img" + $(avatar).attr("src"));
         }
     });
@@ -206,7 +240,6 @@ function findMatch(direction) {
                 newAvatar = allAvatars[i + 1];
             }
 
-            // FOR TESTING PURPOSES
             console.log("ending for loop");
 
             // End for-loop
@@ -238,6 +271,6 @@ function findMatch(direction) {
 
 $(document).ready(() => {
     console.log("ui_select document is ready");
-
+    setAvatars();
     setListeners();
 });

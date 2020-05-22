@@ -38,7 +38,7 @@ var storeId;
 const TIME = 500;
 
 /** Holds the increment exp */
-const incrementEXP = firebase.firestore.FieldValue.increment(10);
+const incrementEXP = firebase.firestore.FieldValue.increment(50);
 
 var fileButton = document.getElementById('fileButton');
 let userId;
@@ -61,6 +61,10 @@ var slider3 = document.getElementById("sliderRange3");
 
 /** Slider Value Text */
 var output3 = document.getElementById("valueText3");
+
+/** Holds the setTimeout */
+var refresh;
+
 /**
  * Get user id and user name;
  */
@@ -342,9 +346,9 @@ function save() {
         .then(move());
     console.log("end promise chain");
     console.log("end of save()");
-    setTimeout(function () {
+        refresh = setTimeout(function () {
         window.location.href = "./post.html";
-    }, TIME * 4);
+    }, TIME * 3);
 }
 
 /**
@@ -446,6 +450,8 @@ function updateExp() {
         let exp = snap.data().points;
 
         if (exp >= 100) {
+            clearTimeout(refresh);
+            $(".pyro").css({"display":"inline"});
             let level = snap.data().level;
 
             db.collection('/users/').doc(user.uid).update({
@@ -453,10 +459,10 @@ function updateExp() {
             });
             db.collection('/users/').doc(user.uid).update({
                 level: level + 1
-            }); // increments level
+            }); 
+            // increments level
             $("#lv").html("Level: " + level);
             $("#levelReached").html(level + 1);
-            $(".pyro").css({"display":"inline"});
             $("#congratulation").modal("show");
         }
 
@@ -498,13 +504,13 @@ function showSliderValue(a,output){
     if (a == 0){
         output.innerHTML = "none";
     } else if (a == 1){
-        output.innerHTML = "few ~ 10";
+        output.innerHTML = "few";
     } else if (a ==2){
-        output.innerHTML = "some ~ 20"
+        output.innerHTML = "some"
     } else if (a ==3){
-        output.innerHTML = "many ~ 50"
+        output.innerHTML = "many"
     } else if (a == 4){
-        output.innerHTML = "plenty ~ 70";
+        output.innerHTML = "plenty";
     }
 }
 
