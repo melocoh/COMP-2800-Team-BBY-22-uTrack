@@ -1,6 +1,4 @@
 .container {
-    /* display: grid; */
-    /* margin-top: 70px; */
     height: 100%;
     padding: 1rem;
     margin-top: 70px;
@@ -15,15 +13,6 @@
 
 /* mobile view */
 @media (max-width: 399px) {
-
-    /* #postContainer1{
-        padding: 10px;
-    } */
-    #newPost {
-        /* redundant */
-        /* margin: 40px 0 -100px 0; */
-    }
-    
     .container {
        margin-bottom: 50px;
     }
@@ -57,10 +46,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-} */
-
-/* .container > * {
-    padding: 10px;
 } */
 
 #reportBtn {
@@ -131,7 +116,6 @@
   }
 
 /* Caption for images description */
-
   #caption{
       color: gray;
       font-size: 12px;

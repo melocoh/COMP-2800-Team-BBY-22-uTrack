@@ -27,7 +27,6 @@ html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-    /* background-image: url(../images/corona.jpg); */
     min-height: 100%;
 }
 
@@ -72,7 +71,6 @@ html {
     padding-right: 5%;
 }
 
-
 .utrackHead {
     text-align: center;
     margin: 0;
@@ -81,18 +79,17 @@ html {
     font-family: 'Comfortaa';
 }
 
-
 #start {
-text-align: center;
-font-size: .8em;
-border-radius: 15px;
-border-style: none;
-display: block;
-margin: auto;
-padding: 2px 33px;
-color: white;
-text-decoration: none;
-background: linear-gradient(to right, pink, lightblue);
+    text-align: center;
+    font-size: .8em;
+    border-radius: 15px;
+    border-style: none;
+    display: block;
+    margin: auto;
+    padding: 2px 33px;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(to right, pink, lightblue);
 }
 
 #start:hover {
@@ -175,18 +172,11 @@ background: linear-gradient(to right, pink, lightblue);
 
 #mainQuote {
     padding: 6px;
-    /* font-size: 35px; */
     width: 70%;
     border: 3px solid white;
     margin: 5% 15%;
 }
 
-/* #quoteWho {
-font-size: 20px;
-line-height: 25px;
-width: 45%;
-margin-left: 55%;
-} */
 .titleDiv {
     width: 80%;
     text-align: center;
@@ -292,8 +282,6 @@ div.desc {
     #goGallery {
         margin: 0;
     }
-
-
 }
 
 /** phone change on images */
@@ -323,6 +311,5 @@ div.desc {
         content: "";
         display: table;
         clear: both;
-
     }
 }
