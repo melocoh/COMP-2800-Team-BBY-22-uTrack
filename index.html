@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -29,11 +31,9 @@
 
 </head>
 
-<style>
-</style>
-
 <body>
 
+    <!-- Facebook plugin that needs to be at the top of body -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0">
     </script>
 
@@ -47,7 +47,6 @@
             <a href="#home" class="w3-bar-item w3-button">HOME</a>
             <a href="#team" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEAM</a>
             <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ABOUT</a>
-            <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
         </div>
 
         <!-- Navbar on small screens -->
@@ -62,10 +61,11 @@
     <!-- First Parallax Image with Logo Text -->
     <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
         <div class="w3-display-middle titleDiv">
-            <span id="title">uTrack</span>
-            <img src="images/uTrack_logo_2.png" style="width:50px;height:50px;margin-bottom:20px;">
+            <span id="title">uTrack</span><img src="images/uTrack_logo_2.png"
+                style="width:50px;height:50px;margin-bottom:20px;">
 
-            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Start now</button></a>
+            <a href="login.html" style="text-decoration: none"><button id="start" type="button">Join
+                    Now</button></a>
         </div>
         <div id="learn"> <a href="#about"> Learn More </a></div>
     </div>
@@ -76,7 +76,7 @@
 
         <div class="gallery">
 
-            <img src="./images/phone.png" alt="Intro" width="500" height="300">
+            <img src="./images/phone.png" alt="Intro" width="500" height="300" style="margin-top: 3em;">
 
             <div class="desc" id="planningInfo">uTrack was developed by a group of CST students who aimed to solve the
                 prevalent issue of searching for vital supplies during the CoViD-19 pandemic. This is a problem we feel
@@ -122,10 +122,8 @@
                 </div>
             </div>
 
-            <div class="clearfix">
-                <h2 id="team">Our Crew</h2>
-            </div>
-
+            <div class="clearfix"></div>
+            <h2 id="team">Our Crew</h2>
             <br>
 
             <!--    Team members!    -->
@@ -174,7 +172,8 @@
                         <div class="container">
                             <h2>Steven</h2>
                             <p class="title">Developer / Loving Husband </p>
-                            <p class="profileText">"I'm more than happy to be in this team"</p>
+                            <p class="profileText">"Steven is a term 1 student. I love to create something from nothing.
+                                I like to play guitar."</p>
                         </div>
                     </div>
                 </div>
@@ -182,7 +181,7 @@
             </div>
         </div>
 
-
+        <!-- Social media plugin -->
         <div class="footer">
             <p>Get social with us!</p>
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"

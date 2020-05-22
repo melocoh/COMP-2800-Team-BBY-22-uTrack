@@ -36,6 +36,7 @@
 
 <body>
 
+    <!-- Facebook plugin that needs to be at the top of body -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0">
     </script>
 
@@ -61,6 +62,7 @@
             <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
         </div>
     </div>
+
     <!-- Logout button on top-right -->
     <a href="./index.html" class="w3-bar-item w3-button" id="logoutBtn" onclick="firebase.auth().signOut();"
         style="position:absolute;right:5px;top:0px;z-index:9999;">
@@ -134,7 +136,6 @@
 
             <div class="clearfix"></div>
             <h2 id="team">Our Crew</h2>
-
             <br>
 
             <!--    Team members!    -->
