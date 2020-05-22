@@ -411,13 +411,13 @@ function showSliderValue(a,output){
     if (a == 0){
         output.innerHTML = "none";
     } else if (a == 1){
-        output.innerHTML = "few ~ 10";
+        output.innerHTML = "few";
     } else if (a ==2){
-        output.innerHTML = "some ~ 20"
+        output.innerHTML = "some";
     } else if (a ==3){
-        output.innerHTML = "many ~ 50"
+        output.innerHTML = "many";
     } else if (a == 4){
-        output.innerHTML = "plenty ~ 70";
+        output.innerHTML = "plenty";
     }
 }
 
@@ -430,13 +430,13 @@ function convertSliderValue(a){
     if (a == 0){
         stock.push("none");
     } else if (a == 1){
-        stock.push("few ~ 10");
+        stock.push("few");
     } else if (a == 2){
-        stock.push("some ~ 20");
+        stock.push("some");
     } else if (a == 3){
-        stock.push("some ~ 50");
+        stock.push("many");
     } else if (a == 4){
-        stock.push("plenty ~ 70");
+        stock.push("plenty");
     }
 }
 
