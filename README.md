@@ -24,12 +24,13 @@ We are the developers behind uTrack and comprise the entirety of Team 22. Below,
 uTrack is a mobile-first web application that can be used to notify and track the availability of essential CoViD-19-related utilities.
 
 Features Include:
-* insert feature
-* insert feature
-* insert feature
-* insert feature
-* insert feature
-* insert feature
+* Allows users to post and update the supply status of essential items in nearby
+stores
+* Tracks stores that carry items users want to purchase with the use of map APIs
+* Regulates user-uploaded posts with an admin and reporting system
+* Shows estimated quantity of products with ease of readability in mind
+* Implements a point-rewarding system that increments after every post from the
+users to gauge their participation and efforts
 
 ## Personal Environment Configurations
 This section explains the proper configurations for local app set-up in your environment.
