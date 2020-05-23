@@ -36,10 +36,6 @@ function setAvatars() {
         // holds the iterating string for image reference
         let childString = "level_" + (i + 1) + ".png";
 
-        // if it is the last avatar design, get the special one
-        if (i === numOfAvatarDesigns - 1) {
-            childString = "level_LEGENDARY.png";
-        }
         console.log("childString: " + childString);
         
         // holds the avatar image reference
@@ -87,8 +83,6 @@ function setGreyscale() {
     if (avatarLevelIndicator.substring(1) === ".") {
         // cut substring even further if it is single digit
         avatarLevelIndicator = avatarLevelIndicator.substring(0, 1);
-    } else if (avatarLevelIndicator.includes("LE")) {
-        avatarLevelIndicator = 12;
     }
 
     // parse into integer
