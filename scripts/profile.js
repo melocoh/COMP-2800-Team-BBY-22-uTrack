@@ -18,6 +18,8 @@ let displayPointbar = document.getElementById("userBar");
 
 /** Holds the number of click */
 let clickCount = 0;
+
+/** Holds the time */
 const timeout = 500;
 
 /** Display greeting if signed in. */ 
