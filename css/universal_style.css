@@ -1,21 +1,7 @@
-/* --------------------------------- */
-/* Root Element (same level as HTML) */
-/* --------------------------------- */
 :root {
-    /* Calibri font master race */
     font-family: Calibri;
-    /* font-family: Comfortaa; */
-    /* 1 rem == 16px */
     font-size: 16px;
-
-    /* variables go below */
-    /* insert vars here */
 }
-
-/* -------------------------------- */
-/* HTML, BODY */
-/* -------------------------------- */
-/* container shouldn't be here */
 html,
 body {
     font-family: Comfortaa;
@@ -23,35 +9,10 @@ body {
     padding: 0;
 }
 
-/* .container {
-    display: grid;
-    margin-top: 70px;
-    height: 90vh;
-} */
-
-/* header {
-    height: 60px;
-    display: block;
-} */
-
 #blank {
     height: 150px;
     display: block;
 }
-
-/* Navbar */
-/* .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10000;
-}
-
-.navbar-brand img {
-    width: 180px;
-    height: 60px;
-} */
 
 #menuNav {
     box-sizing: border-box;
@@ -107,12 +68,9 @@ body {
 
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
-
-    /* insert code here */
     #uTrack_logo {
         display: none;
     }
-
     .footer {
         display: none;
     }
@@ -123,21 +81,6 @@ body {
     .navbar-toggler {
         display: none;
     }
-
-    /* please don't use container in universal, it causes a lot of issues TT ^ TT */
-    /* .container {
-        margin-top: 10vh;
-        max-height: 90vh;
-    } */
-
-    /* this cause the navbar issue */
-    /* #menuNav { */
-        /* WARNING:
-        Setting a fixed height value for the navbar
-        will apply a bug to the background-colour
-        of the nav links */
-        /* height: auto;
-    } */
 
     #menuNav .navbar-right li:nth-child(1) {
         border-top: 1px solid black;

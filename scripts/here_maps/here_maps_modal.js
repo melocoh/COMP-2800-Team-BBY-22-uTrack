@@ -18,49 +18,38 @@ const maxItems = 3;
 
 /**
  * Pushes stores into the storeList array
- * @param {} store 
+ * @param {Firebase.Reference} store 
  */
 function initReadModal(store) {
+    // pushes stores into local array of stores
     storeList.push(store);
+
+    // sets current store holder to the passed store
     curStore = store;
-    // console.log("curStore: " + curStore);
+
     // sort by latest post relevant to store
     findAndSortPosts();
-
-    // show the store logo
-    // readStoreLogo();
-
-    // // show the item names
-    // readItemName();
-
-    // // show the item stocks
-    // readStockStatus();
 }
 
 /**
  * Updates the modal information based on the given store
- * @param {} cardIndex 
+ * @param {Number} cardIndex 
  */
 function getStore(cardIndex) {
-    // add to onAttach and onDetach for markers.js
-    // $("#reportButton").css("display", "none");
-
     console.log("getting store...");
+
+    // get the current store reference relative to its position in the array
     curStore = storeList[cardIndex - 1];
+
+    // gets current store's id
     curStoreId = curStore.id;
+
     console.log("cardIndex: " + cardIndex);
     console.log("curStore: " + curStore);
 
-    // sort by latest post relevant to store
-    // findAndSortPosts();
-
     readStoreLogo();
 
-    // readItemName();
-
     readStockStatus();
-
-    // readUserProfile();
 
     console.log("finished getting store...");
 }
@@ -78,14 +67,15 @@ function readLatest() {
  * Finds and sorts store posts for the latest one
  */
 function findAndSortPosts() {
-
+    // gets the current store's id
     curStoreId = db.collection("stores/").doc(curStore.id);
+
     console.log("curStoreId: " + curStoreId);
 
+    // gets the latest post reference
     let relevantPost = db.collection("posts").where("post_store", "==", curStoreId).orderBy("timeStamp", "desc").limit(1);
+    
     console.log("relevantPost: " + relevantPost);
-    latestPost = relevantPost;
-    console.log("latestPost: " + latestPost);
 }
 
 /**
@@ -116,6 +106,7 @@ function readStoreLogo() {
     // get the download url then modify the associated HTML element
     storeLogo.getDownloadURL().then(function (url) {
         $(".storeLogos").attr("src", url);
+
         console.log(url);
     }).catch(function (error) {
         console.log(error);
@@ -126,41 +117,45 @@ function readStoreLogo() {
  * Reads the current store's item names
  */
 function readItemName() {
-    // read each item
-
-    // OLD:
-    // curStore.get().then(function (doc) {
-
-    // var items = doc.get("store_items");
+    // gets the array of item references from current store reference
     let items = curStore.data().store_items;
+
     console.log("reading items;" + items);
 
+    // loops through all 3 types of items
     for (let i = 0; i < maxItems; i++) {
+        // holds the current item based on index
         let curItem;
+        
         console.log(i + 1);
-        // console.log(items[i].get("item_name"));
-        // items[i].get("item_name")
+
+        // checks to see if item references do exist
         if (items.length > 0 && i < items.length) {
+            // sets value to the associated HTML element
             items[i].get().then(function (doc) {
+                // get item name
                 curItem = doc.get("item_name");
+                
+                // place text into associated HTML element
                 $(".item" + (i + 1)).text(curItem);
+
                 console.log(doc.get("item_name"));
             });
         } else {
+            // placeholder text value for associated HTML element
             $(".item" + (i + 1)).text("Out of Stock");
         }
-
-        // console.log(curItem);
     }
-    // })
 }
 
 /**
  * Reads the current store's supply status
  */
 function readStockStatus() {
-    // curStore.get().then(function (doc) {
+    // code is very similar to readItemName() so refer to it for comments
+
     let items = curStore.data().store_items;
+
     console.log("reading stock status; " + items);
 
     for (let i = 0; i < maxItems; i++) {
@@ -169,7 +164,9 @@ function readStockStatus() {
         if (i < items.length) {
             items[i].get().then(function (doc) {
                 curItem = doc.get("stock_number");
+
                 $(".stock" + (i + 1)).text(curItem);
+
                 console.log(doc.get("stock_number"));
             });
         } else {
@@ -177,71 +174,24 @@ function readStockStatus() {
         }
 
     }
-    // })
 }
 
 /**
- * Reads the user information of latest post (OLD)
- */
-function readUserProfile() {
-    console.log("beginning of readUserProfile()");
-    // modal HTML elements
-    let modalUPic = $("#modalProfPic");
-    let modalUName = $("#modalFirstName");
-
-    // firebase user id reference
-    let userRef;
-    // firebase user name reference
-    let userName;
-    // firebase user level reference
-    let userLevel;
-
-
-    if (latestPost !== undefined) {
-        console.log("extracting user from latest post");
-        // extract the user of latest post
-        latestPost.get().then(function (docRef) {
-            userRef = docRef.get("user_id");
-            console.log("userRef: " + userRef);
-
-            console.log("extracting user information");
-            // extract user information
-            userRef.get().then(function (docRef) {
-                userLevel = docRef.get("level");
-                console.log("userLevel: " + userLevel);
-
-                userName = docRef.displayName;
-                console.log("userName: " + userName);
-
-                console.log("setting user name in modal");
-                $(modalUName).text(userName);
-            });
-        });
-    }
-
-    console.log("end of readUserProfile()");
-}
-
-/**
- * 
+ * Initializes the mouseclick event listener for the "Upload Post" button
+ * in the map marker modal
  */
 function initUploadButton() {
     $("#uploadPostButton").click(() => {
-        // FOR TESTING PURPOSES
         console.log("clicked upload post button");
 
-        // calls function from post.js to pass store id
-        // insert function here (this function stores the id into a global variable)
-        // getStoreIdToPost(curStoreId);
+        // sets the current store id to the local storage (to be accessed by post.js)
         localStorage.setItem("storeId", curStoreId);
 
-        // FOR TESING PURPOSES
         console.log("before window location change to post.html");
 
         // change window location to post page
         window.location.href = "./posting2.html";
 
-        // FOR TESTING PURPOSES
         console.log("after window location change to post.html: haha unreachable code.");
     });
 }

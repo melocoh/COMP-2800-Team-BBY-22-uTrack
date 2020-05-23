@@ -1,5 +1,5 @@
 /* --------------------------------- */
-/* HTML, Body and Container */
+/* -----HTML, Body and Container---- */
 /* --------------------------------- */
 .container {
     font-family: Comfortaa;
@@ -11,18 +11,9 @@
 }
 
 /* --------------------------------- */
-/* Main and Children */
+/* ---------Main and Children------- */
 /* --------------------------------- */
 main {
-    /* Old code, keep as back-up */
-    /* position: absolute; */
-    /* top: 25%;
-    left: 5%;
-    width: 35%; */
-    /* height: 60%;
-    border-radius: 20px;
-    padding: 20px;
-    color: white; */
     width: 100%;
     max-height: 100%;
 }
@@ -34,41 +25,29 @@ section {
     margin: 20px;
     padding: 20px;
     color: black;
-    /* background-color: orange; */
 }
 
 /* --------------------------------- */
-/* HERE Map */
+/* ----------  HERE Map  ----------- */
 /* --------------------------------- */
 #homeMap {
-    /* Original Map Size: */
-    /* width: 640px; */
-    /* height: 480px; */
-
     width: 100vw;
-    /* matches with container height */
     height: 90vh;
-    /* height: 100%; */
 }
 
 canvas {
-    /* must set to 100% for dimensions */
     width: 100%;
     height: 100%;
 }
 
 /* --------------------------------- */
-/* Map Modal */
+/* ------------- Map Modal --------- */
 /* --------------------------------- */
 .modal {
     z-index: 99999;
 }
 
 .modal-dialog {
-    /* display: flex; */
-    /* justify-content: center; */
-
-    /* center alignment for close button */
     text-align: center;
 }
 
@@ -77,38 +56,25 @@ canvas {
 }
 
 .modal-content > * {
-    /* remove inner content borders */
     border: 0;
 }
 
 .modal-header {
-    /* center store logos */
     justify-content: center;
-    /* remove extra space */
     padding-bottom: 0;
 }
 
 .modal-body {
-    /* align ul and profile info div */
-    /* display: flex; */
-    /* remove extra space */
     padding-bottom: 0;
     width: 100%;
 }
 
 .modal-body ul {
-    /* margin: 0 auto; */
-    /* width: auto; */
-    /* OLD CODE */
-    /* marginalize to the right as much as possible */
-    /* margin-right: auto; */
     list-style: none;
     padding: 0;
-    /* padding-left: 1rem; */
 }
 
 .modal-body li {
-    /* old width value */
     width: 65%;
     padding: 10px;
     display: flex;
@@ -117,7 +83,6 @@ canvas {
 }
 
 .items {
-    /* horizontal padding only */
     margin-left: 1rem;
     width: 10rem;
     text-align: left;
@@ -139,10 +104,6 @@ canvas {
 #modalFirstName {
     margin-top: 1rem;
     font-size: 0.75rem;
-}
-
-.storeLogos {
-    /* insert property to scale images lower */
 }
 
 .icons {
@@ -175,27 +136,21 @@ canvas {
 }
 
 /* --------------------------------- */
-/* Media Queries */
+/* ---------- Media Queries -------- */
 /* --------------------------------- */
 
 
 /* Tablet and Desktop View */
 @media (min-width: 420px) {
-    /* Geolocation Button */
     #reportButton {
-        /* 8px top and bottom; 10px left and right */
         padding: 15px;
-        /* circle border */
         border-radius: 50%;
         color: white;
         background-color: #1A73E8;
-        /* absolute from map */
         position: absolute;
         top: 7rem;
         right: 1rem;
-        /* send to front over map */
         z-index: 9999;
-        /* align i element to vertical center */
         display: flex;
         align-items: center;
     }
@@ -204,20 +159,11 @@ canvas {
 /* Mobile View */
 @media (max-width: 419px) {
     .container {
-        /* wack */
-        /* margin-top: auto; */
         margin-top: auto;
         height: 100vh;
     }
 
     #homeMap {
-        /* position: absolute; */
-        /* top: 50%;
-        left: 10%; */
-        /* width: 80%;
-        height: 30%; */
-        /* width: 100vw;
-        height: 100vh; */
         height: 100%;
     }
 
@@ -235,19 +181,14 @@ canvas {
     }
 
     #reportButton {
-        /* 8px top and bottom; 10px left and right */
         padding: 15px;
-        /* circle border */
         border-radius: 50%;
         color: white;
         background-color: #1A73E8;
-        /* absolute from map */
         position: absolute;
-        bottom: 6rem;  /*keep this at 6rem*/
+        bottom: 6rem;
         right: 1rem;
-        /* send to front over map */
         z-index: 99999;
-        /* align i element to vertical center */
         display: flex;
         align-items: center;
     }
@@ -256,15 +197,3 @@ canvas {
         text-align: center;
     }
 }
-
-
-/* --------------------------------- */
-/* For navbar */
-/* --------------------------------- */
-/* .selectors button{
-    border: 0;
-    border-radius: 0;
-    background-color: #f8f9fa !important;
-    width:33.33%;
-    margin-left: 0;
-} */

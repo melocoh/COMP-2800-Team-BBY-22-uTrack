@@ -7,7 +7,6 @@
 
     border-top: 1px solid transparent;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-    /* Mainly to upersede bottom part of home page map */
     z-index: 99999;
 }
 
@@ -80,8 +79,6 @@
 
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
-
-    /* insert code here */
     #uTrack_logo {
         display: none;
     }
@@ -96,6 +93,7 @@
     .footer {
         display: block;
     }
+    
     .navbar-toggler {
         display: none;
     }
@@ -106,10 +104,6 @@
     }
 
     #menuNav {
-        /* WARNING:
-        Setting a fixed height value for the navbar
-        will apply a bug to the background-colour
-        of the nav links */
         height: auto;
     }
 

@@ -7,7 +7,7 @@
 }
 
 .grid-container {
-    margin:auto;
+    margin: auto;
     border-radius: 30px;
     width: 100%;
 }
@@ -25,23 +25,19 @@
     width: 300px;
 }
 
-#profpic_container > * {
+#profpic_container>* {
     position: absolute;
 }
 
 #profpic_container i {
-    /* set to center of div */
     top: 50%;
     left: 50%;
-    /* change origin point to center of icon */
     transform: translate(-50%, -50%);
     z-index: 9999;
     opacity: 0.70;
 }
 
 #userProfilePic {
-    /* width: 300px;
-    height: 300px; */
     width: 100%;
     height: 100%;
     top: 0;
@@ -63,7 +59,7 @@
     opacity: 0.7;
 }
 
-.lvlreq_div > * {
+.lvlreq_div>* {
     margin: 0;
 }
 
@@ -71,7 +67,6 @@
     width: 20px;
     height: 20px;
 }
-
 
 /* regarding progress bar */
 #expBar {
@@ -117,9 +112,6 @@
         grid-template-columns: auto auto;
         padding: 10px;
         margin-top: 30px;
-        /* margin-left: 30px; */
-        /* border-radius: 30px; */
-        /* margin: 5px; */
     }
 
     .grid-item {
@@ -179,10 +171,6 @@
     #expBar {
         width: 80%;
     }
-    /* #userProfilePic {
-        width: 120px;
-        height: 120px;
-    } */
 
     .grid-container {
         display: grid;
@@ -211,7 +199,9 @@
         margin: -50px 0 -20px 0;
     }
 
-    .item2, .item3, .item4 {
+    .item2,
+    .item3,
+    .item4 {
         margin: -15px 0 -15px 0;
     }
 
@@ -239,12 +229,12 @@
     }
 
     #badgeInfo {
-        margin-left:50px;
+        margin-left: 50px;
     }
 
     .container {
-    display: grid;
-    margin-top: 70px;
-    height: 90vh;
+        display: grid;
+        margin-top: 70px;
+        height: 90vh;
     }
 }
