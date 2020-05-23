@@ -1,45 +1,42 @@
-/** Left and Right Arrow Element Holders */
+/** Left and Right Arrow Element Holders. */
 const lArrow = $("#left_arrow");
 const rArrow = $("#right_arrow");
 
-/** Avatar Image Object Holder */
+/** Avatar Image Object Holder. */
 var avatar = $("#userProfilePic");
 
-/** Current Avatar Image Source Holder */
+/** Current Avatar Image Source Holder. */
 var curAvatar;
 
-/** New Avatar Image Souce Holder */
+/** New Avatar Image Souce Holder. */
 var newAvatar;
 
-/** Profile picture div container */
+/** Profile picture div container. */
 let profPicDiv = $("#profpic_container");
 
-// level indicator of avatar design
+/** level indicator of avatar design. */
 let avatarLevelIndicator;
 
-/** Array that holds all the released avatar design image sources for the user */
+/** Array that holds all the released avatar design image sources for the user. */
 const allAvatars = [];
 
+/** Constant that holds the maximum number of avatar designs possible */
 const numOfAvatarDesigns = 12;
-
-// OLD ALLAVATARS ARRAY
-// const allAvatars = [
-//     "./images/Avatar/level_1.png",
-//     "./images/Avatar/level_2.png",
-//     "./images/Avatar/level_3.png",
-//     "./images/Avatar/level_4.png"
-// ];
 
 /* --------------------------------- */
 /* SETTERS */
 /* --------------------------------- */
-
+/**
+ * Pushes the avatar download URLs to a global array for future use.
+ */
 function setAvatars() {
     /* gets storage reference from avatar_switch.js and loops through all available avatar variations (12)
         before storing them into the allAvatars array */
     for (let i = 0; i < numOfAvatarDesigns; i++) {
         // holds the iterating string for image reference
         let childString = "level_" + (i + 1) + ".png";
+
+        // if it is the last avatar design, get the special one
         if (i === numOfAvatarDesigns - 1) {
             childString = "level_LEGENDARY.png";
         }
@@ -47,6 +44,8 @@ function setAvatars() {
         
         // holds the avatar image reference
         let avatarHolder = avatarStorageRef.child(childString);
+
+        // get the download url and set it to current index in array
         avatarHolder.getDownloadURL().then(function (url) {
             console.log(url);
 
@@ -55,8 +54,10 @@ function setAvatars() {
 
             console.log("succesfully pushed download url to allAvatars[]");
         });
+
         console.log("end of iteration " + i);
     }
+
     console.log(allAvatars);
 }
 
@@ -67,7 +68,7 @@ function setAvatars() {
  * If the user's level is strictly less than that of the avatar's level indicator,
  * include greyscale for that avatar to indicate a locked state.
  * 
- * Otherwise, leave the avatar as it is
+ * Otherwise, leave the avatar as it is.
  */
 function setGreyscale() {
     // TESTING NOTES (OLD)
@@ -80,8 +81,6 @@ function setGreyscale() {
     // extract level from avatar image download url
     avatarLevelIndicator = newAvatar.substring(substringStartPos, substringStartPos + 2);
     
-    // OLD CODE
-    // avatarLevelIndicator = newAvatar.substring(22, 24);
     console.log("avatarindicator: " + avatarLevelIndicator);
 
     // check to see if level is single digit or double
@@ -106,45 +105,68 @@ function setGreyscale() {
     if (level < avatarLevelIndicator) {
         // check for lock icon
         let checkLockIcon = $(".lock_icon");
+
         console.log(checkLockIcon.length);
+
+        // filter avatar image (greyscale)
         $(avatar).css("filter", "grayscale(95%)");
+
         if (checkLockIcon.length <= 0) {
             console.log("adding lock");
+
+            // add the lock icon
             setLock("add");
         }
+
+        // add the level requirement indicator
         setLevelReqIndicator("add");
     } else {
         // remove filter css property if avatar is unlocked by user
         $(avatar).css("filter", "");
+
         console.log("removing lock");
+
+        // remove the lock
         setLock("remove");
+
+        // remove the level requirement indicator
         setLevelReqIndicator("remove")
     }
 }
 
 /**
- * Sets the lock icon to the profile picture container
+ * Sets the lock icon to the profile picture container.
+ * @param {String} addOrRemove
  */
 function setLock(addOrRemove) {
     // lock icon html code
     let lockIcon = `<i class="fas fa-lock fa-2x lock_icon"></i>`;
 
+    // if passed argument is "add"; ie want to add the lock icon
     if (addOrRemove === "add") {
         console.log("adding lock");
+
         // append lock icon code to profile pic container
         $(profPicDiv).append(lockIcon);
-
-        // setLevelReqIndicator();
     } else {
         console.log("removing lock");
+
+        // remove the lock icon through class
         $(".fa-lock").remove();
-        // $(".lvlreq_div").remove();
     }
 }
 
+/**
+ * Sets the level requirement indicator for locked avatars
+ * @param {String} addOrRemove 
+ */
 function setLevelReqIndicator(addOrRemove) {
+    // if passed argument is "add"; ie want to add the indicator
     if (addOrRemove === "add") {
+        // set the div and text values for level indicator container
         let divIndicator = `<div class="lvlreq_div"><p>Level ` + avatarLevelIndicator + ` required to unlock this avatar</p></div>`;
+
+        // append it to avatar image HTML element
         $(profPicDiv).append(divIndicator);
     } else {
         $(".lvlreq_div").remove();
@@ -156,6 +178,7 @@ function setLevelReqIndicator(addOrRemove) {
  */
 function setCurAvatar() {
     curAvatar = $(avatar).attr("src");
+
     console.log("curAvatar src: " + curAvatar);
 }
 
@@ -228,9 +251,10 @@ function setListeners() {
  */
 function findMatch(direction) {
     for (let i = 0; i < allAvatars.length; i++) {
+
         console.log("currentIndex: " + i);
+
         if (curAvatar === allAvatars[i]) {
-            // console.log("found match: " + src);
             console.log("found match: " + allAvatars[i]);
 
             // Set new avatar as the matching source
@@ -242,35 +266,20 @@ function findMatch(direction) {
 
             console.log("ending for loop");
 
-            // End for-loop
+            // end for-loop prematurely (since array element has already been found)
             return;
         } else {
-            // console.log("no match: " + src);
             console.log("no match: " + allAvatars[i]);
         }
     }
-
-    // allAvatars.forEach(src => {
-    //     if (curAvatar === src) {
-    //         console.log("found match: " + src);
-
-    //         // Set new avatar as the matching source
-    //         newAvatar = allAvatars[];
-
-    //         // End for-loop
-    //         return;
-    //     } else {
-    //         console.log("no match: " + src);
-    //     }
-    // });
 }
-
-/* --------------------------------- */
-/* DOM DOCUMENT READY LISTENER */
-/* --------------------------------- */
 
 $(document).ready(() => {
     console.log("ui_select document is ready");
+
+    // set the avatar in profile
     setAvatars();
+
+    // set the mouseclick event listeners for left and rigth chevron arrows
     setListeners();
 });
