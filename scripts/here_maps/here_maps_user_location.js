@@ -1,46 +1,14 @@
-/** Geolocation of user */
-// var x = document.getElementById("demo");
-
-/** Holds the user location's latitude value */
+/** Holds the user location's latitude value. */
 var latData;
 
-/** Holds the user location's longitude value */
+/** Holds the user location's longitude value. */
 var lngData;
 
-/** Holds the user DOM marker */
+/** Holds the user DOM marker. */
 var userMarker;
 
-$(document).ready(() => {
-    /* Promise object that ensures the addition of user marker
-        is placed after getting the user location */
-    let markerPromise = new Promise((req, res) => {
-        console.log("starting promise");
-        getLocation();
-        console.log("ending promise");
-        // res("Success");
-    });
-
-    // Mouseclick event listener for location button
-    $("#reportButton").click(() => {
-        // removeUserMarker(map);
-        // console.log("getting user location");
-        // getLocation();
-        // console.log("adding user marker");
-        // addUserMarker(map);
-
-        // If a user marker already exists, delete it
-        if (userMarker !== undefined) {
-            removeUserMarker(map);
-        }
-
-        markerPromise.then(
-            addUserMarker(map)
-        );
-    });
-});
-
 /**
- * Gets the user's location
+ * Gets the user's location.
  */
 function getLocation() {
     if (navigator.geolocation) {
@@ -51,61 +19,54 @@ function getLocation() {
 }
 
 /**
- * Shows the user's position via latitude and longitude values
- * @param {} position 
+ * Shows the user's position via latitude and longitude values.
+ * @param {*} position 
  */
 function showPosition(position) {
-
     // saves data in these variables
     latData = position.coords.latitude;
     lngData = position.coords.longitude;
 
-    // test: prints out location tracking
     console.log("Latitude: " + latData +
         "\nLongitude: " + lngData);
-
-
 }
 
 /**
- * Adds a marker to indicate the user's current location
+ * Adds a marker to indicate the user's current location.
  * @param {H.map} map 
  */
 function addUserMarker(map) {
     console.log("inside addUserMarker()");
+    
+    // instantiate HTML Elements (map marker elements MUST be made using DOM)
 
-    // Instantiate HTML Elements
-    // let outerDiv = $("<div></div>");
+    // holds outer div of map marker
     let outerDiv = document.createElement("div");
-    // let innerDiv = $("<img>");
+    
+    // holds inner div of map marker
     let innerDiv = document.createElement("img");
 
-    // Set image
-    let imgURL = "https://dummyimage.com/50x50/000/fff.jpg";
+    // holds image download url through the local storage
+    let imgURL = localStorage.getItem("avatarURL");
+
+    console.log(imgURL);
+
     $(innerDiv).attr("src", imgURL);
+
+    // style marker image
+    $(innerDiv).css({
+        "width": "100px",
+        "height": "100px"
+    });
 
     // Append to Parent Div
     outerDiv.appendChild(innerDiv);
 
     // Instantiate DOM Icon
-    let domIcon = new H.map.DomIcon(outerDiv
-        // , {
-        // the function is called every time marker enters the viewport
-        // onAttach: function(clonedElement, domIcon, domMarker) {
-        //   clonedElement.addEventListener('mouseover', changeOpacity);
-        //   clonedElement.addEventListener('mouseout', changeOpacityToOne);
-        // },
-        // // the function is called every time marker leaves the viewport
-        // onDetach: function(clonedElement, domIcon, domMarker) {
-        //   clonedElement.removeEventListener('mouseover', changeOpacity);
-        //   clonedElement.removeEventListener('mouseout', changeOpacityToOne);
-        // }
-        //   }
-    );
+    let domIcon = new H.map.DomIcon(outerDiv);
 
+    // sets user marker to the newly created DOM marker
     userMarker = new H.map.DomMarker({
-        // lat: 49.249394,
-        // lng: -123.000788
         lat: latData,
         lng: lngData
     }, {
@@ -119,6 +80,10 @@ function addUserMarker(map) {
     setCenterToUser(map);
 }
 
+/**
+ * Sets map center to user's current location.
+ * @param {H.Map} map 
+ */
 function setCenterToUser(map) {
     map.setCenter({
         lat: latData,
@@ -126,15 +91,21 @@ function setCenterToUser(map) {
     }, true);
 }
 
+/**
+ * Remove the user marker from the map.
+ * @param {H.Map} map 
+ */
 function removeUserMarker(map) {
+    // removes object from the map
     map.removeObject(userMarker);
+
     console.log("removed user marker from map");
     console.log("userMarker: " + userMarker);
 }
 
 /**
- * Shows error messages via alert
- * @param {} error 
+ * Shows error messages via alert.
+ * @param {Error} error 
  */
 function showError(error) {
     switch (error.code) {
@@ -156,3 +127,25 @@ function showError(error) {
             break;
     }
 }
+
+$(document).ready(() => {
+    /* Promise object that ensures the addition of user marker
+        is placed after getting the user location */
+    let markerPromise = new Promise((req, res) => {
+        console.log("starting promise");
+        getLocation();
+        console.log("ending promise");
+    });
+
+    // Mouseclick event listener for location button
+    $("#reportButton").click(() => {
+        // If a user marker already exists, delete it
+        if (userMarker !== undefined) {
+            removeUserMarker(map);
+        }
+
+        markerPromise.then(
+            addUserMarker(map)
+        );
+    });
+});

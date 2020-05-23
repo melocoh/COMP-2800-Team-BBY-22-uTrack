@@ -1,20 +1,72 @@
 .container {
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
     margin-left: auto;
     margin-right: auto;
 }
 
 .grid-container {
-    margin:auto;
-    margin-top: 50px;
+    margin: auto;
     border-radius: 30px;
     width: 100%;
 }
 
-#userProfilePic {
-    width: 300px;
-    height: 300px;
+.item1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+#profpic_container {
+    position: relative;
+    display: inline-block;
+    height: 300px;
+    width: 300px;
+}
+
+#profpic_container>* {
+    position: absolute;
+}
+
+#profpic_container i {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    opacity: 0.70;
+}
+
+#userProfilePic {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.lvlreq_div {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+    width: 50%;
+    font-size: 0.5rem;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.lvlreq_div>* {
+    margin: 0;
+}
+
+#questionmark {
+    width: 20px;
+    height: 20px;
+}
 
 /* regarding progress bar */
 #expBar {
@@ -43,13 +95,23 @@
         grid-row: 1 / span 3;
     }
 
+    .item2 {
+        margin: 0 0 100px 300px;
+    }
+
+    .item3 {
+        margin-top: -100px;
+    }
+
+    .item4 {
+        margin-top: -100px;
+    }
+
     .grid-container {
         display: grid;
         grid-template-columns: auto auto;
         padding: 10px;
-        /* margin-left: 30px; */
-        /* border-radius: 30px; */
-        /* margin: 5px; */
+        margin-top: 30px;
     }
 
     .grid-item {
@@ -59,8 +121,15 @@
         text-align: center;
     }
 
-    
-    
+    #levelBadge {
+        width: 180px;
+        display: block;
+        margin: auto;
+    }
+
+    #logoutBtn {
+        background-color: #d9f5ff;
+    }
 }
 
 /* tablet view */
@@ -84,16 +153,23 @@
         font-size: 30px;
         text-align: center;
     }
+
+    #levelBadge {
+        width: 180px;
+        display: block;
+        margin: auto;
+    }
 }
 
 /* mobile view */
 @media (max-width: 419px) {
+    .container {
+        margin-top: 10vh;
+        max-height: 90vh;
+    }
+
     #expBar {
         width: 80%;
-    }
-    #userProfilePic {
-        width: 120px;
-        height: 120px;
     }
 
     .grid-container {
@@ -120,24 +196,45 @@
     }
 
     .item1 {
-        margin-bottom: -20px;
+        margin: -50px 0 -20px 0;
     }
 
-    .item2, .item3, .item4 {
+    .item2,
+    .item3,
+    .item4 {
         margin: -15px 0 -15px 0;
     }
 
-    .item5 {
+    .item4 {
         font-size: 25px;
         border-bottom: 1px solid grey;
     }
 
-    .item4 {
-        grid-area: two;
+    .item6 {
+        margin-top: -20px;
     }
 
-    .item5 {
-        grid-area: three;
+
+    .item2 {
+        grid-area: one;
+        margin: -30px 0 -30px 0;
+        width: 100%;
+        text-align: right;
     }
 
+    #levelBadge {
+        width: 180px;
+        display: block;
+        margin-top: 20px;
+    }
+
+    #badgeInfo {
+        margin-left: 50px;
+    }
+
+    .container {
+        display: grid;
+        margin-top: 70px;
+        height: 90vh;
+    }
 }

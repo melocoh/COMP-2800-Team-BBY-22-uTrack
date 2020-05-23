@@ -1,58 +1,18 @@
-/* --------------------------------- */
-/* Root Element (same level as HTML) */
-/* --------------------------------- */
 :root {
-    /* Calibri font master race */
     font-family: Calibri;
-    /* font-family: Comfortaa; */
-    /* 1 rem == 16px */
     font-size: 16px;
-
-    /* variables go below */
-    /* insert vars here */
 }
-
-/* -------------------------------- */
-/* HTML, BODY */
-/* -------------------------------- */
-/* container shouldn't be here */
 html,
-body
- {
+body {
     font-family: Comfortaa;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    display: grid;
-    margin-top: 70px;
-    height: 90vh;
-}
-
-/* header {
-    height: 60px;
-    display: block;
-} */
-
 #blank {
     height: 150px;
     display: block;
 }
-
-/* Navbar */
-/* .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10000;
-}
-
-.navbar-brand img {
-    width: 180px;
-    height: 60px;
-} */
 
 #menuNav {
     box-sizing: border-box;
@@ -64,6 +24,7 @@ body
     color: black;
     display: inline-block;
     line-height: 2em;
+    padding: 0 30px 0 30px;
 }
 
 .active {
@@ -73,7 +34,6 @@ body
     display: inline-block;
     line-height: 2em;
 }
-
 
 #search_text {
     background-color: white;
@@ -98,28 +58,38 @@ body
     width: 30%;
 }
 
+
+/* desktop view */
+@media (min-width: 1025px) {
+    .footer {
+        display: none;
+    }
+}
+
 /* tablet view */
 @media (min-width: 420px) and (max-width: 1024px) {
-    /* insert code here */
+    #uTrack_logo {
+        display: none;
+    }
+    .footer {
+        display: none;
+    }
 }
 
 /* mobile view */
 @media (min-width: 0px) and (max-width: 419px) {
-    .container {
-        margin-top: 10vh;
-        max-height: 90vh;
+    .navbar-toggler {
+        display: none;
     }
 
-    #menuNav {
-        /* WARNING:
-        Setting a fixed height value for the navbar
-        will apply a bug to the background-colour
-        of the nav links */
-        height: auto;
+    #menuNav .navbar-right li:nth-child(1) {
+        border-top: 1px solid black;
+        padding: 15px 0 15px 0;
     }
 
     nav ul li {
         justify-content: center;
+        text-align: center;
         width: 100%;
     }
 
@@ -129,7 +99,7 @@ body
     }
 
     .nav-active {
-        border-radius: 5px;
+        border-radius: 25px;
         background-color: #d9f5ff;
         padding: 3px;
         color: white;

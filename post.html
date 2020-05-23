@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -32,6 +32,8 @@
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/post_style.css">
     <link rel="stylesheet" type="text/css" href="./css/report_modal.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/profile_modal.css">
 </head>
 
 <body>
@@ -39,37 +41,33 @@
     <!--  HTML Section -->
     <!----------------------->
 
+    <!----------------------------------------------->
+    <!--                Top navbar                 -->
+    <!----------------------------------------------->
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+        <a class="navbar-brand" href="./main.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar1">
-            <ul class="navbar-nav nav nav-fill w-100">
+            <ul class="navbar-nav nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home</a>
+                    <a class="nav-link" href="./home.html">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./profile.html">Profile</a>
+                    <a class="nav-link" href="./profile.html">Account</a>
                 </li>
                 <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./post.html">Posting</a>
+                    <a class="nav-link" href="./post.html">Posts</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
-                </li>
-            </ul>
-            <!-- <li class="nav-item">
-                    <input type="text" id="search_text" class="search_bar" placeholder="Search items">
-                    <input type="button" id="search_btn" class="search_bar" value="Search">
-                </li> -->
         </div>
     </nav>
 
-    <!-- Sign out modal -->
+    <!----------------------------------------------->
+    <!--               Sign out modal              -->
+    <!----------------------------------------------->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -94,12 +92,19 @@
         </div>
     </div>
 
+    <!----------------------------------------------->
+    <!--                   Post                    -->
+    <!----------------------------------------------->
     <div class="container" id="theContainer">
+        <p id="titleContainer">Recent Posts</p>
         <div id="newPost">
-            <button class="btn-primary" onclick="window.location.href='./posting.html'">New post</button>
+            <button class="btn-primary newPostBtn" onclick="window.location.href='./posting.html'">New post</button>
         </div>
     </div>
 
+    <!----------------------------------------------->
+    <!--               Report Modal                -->
+    <!----------------------------------------------->
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -117,13 +122,6 @@
                         <button type="button" name="2" value="This has been flagged as false information."
                             class="btn btn-lg btn-block mess">False information</button>
                         <br>
-                        <!-- Group of default radios - option 1 -->
-                        <div class="custom-control custom-radio">
-                            <input type="checkbox" class="custom-control-input" id="termsConditions" required>
-                            <label class="custom-control-label" for="termsConditions">I agree to the terms of agreements
-                                yada yada</label>
-
-                        </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -134,38 +132,90 @@
                 </form>
             </div>
         </div>
+    </div>
 
-        <!----------------------------------------------->
-        <!-- JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
+    <!----------------------------------------------->
+    <!--            User profiles view             -->
+    <!----------------------------------------------->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <img id="userAvatar">
+                        <div id="userName"></div>
+                        <div id="userLevel"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!----------------------------------------------->
+    <!--               Bottom navbar               -->
+    <!----------------------------------------------->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
-        <!--------------------------------------------------------------------->
-        <!-- JS files: Your own JavaScript functions included here    -->
-        <!--------------------------------------------------------------------->
-        <script src="./scripts/firebase_api_uTrack.js"> </script>
-        <script src="./scripts/post_review.js"></script>
-        <script src="./scripts/auth_check.js"></script>
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-        <!--------------------------------------------------------------------->
-        <!-- Make calls to your own JavaScript functions, here below-->
-        <!---------------------------------------------------------------------->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-storage.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/firebase_api_uTrack.js"> </script>
+    <script src="./scripts/post_review.js"></script>
+    <script src="./scripts/auth_check.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
 </body>
 
 </html>

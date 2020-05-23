@@ -30,65 +30,63 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" type="text/css" href="./css/universal_style.css">
     <link rel="stylesheet" type="text/css" href="./css/profile_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
 </head>
 
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-
+    
+    <!----------------------------------------------->
+    <!--                Top navbar                 -->
+    <!----------------------------------------------->
     <nav id="menuNav" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
+        <a class="navbar-brand" href="./main.html"><img src="./images/uTrack_logo.png" width="180" height="60px"
                 id="uTrack_logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar1">
-            <ul class="navbar-nav nav nav-fill w-100">
+            <ul class="navbar-nav nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.html">Home</a>
+                    <a class="nav-link" href="./home.html">Map</a>
                 </li>
                 <li class="nav-item active nav-active">
-                    <a class="nav-link" href="./profile.html">Profile</a>
+                    <a class="nav-link" href="./profile.html">Account</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./post.html">Posting</a>
+                    <a class="nav-link" href="./post.html">Posts</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html" data-toggle="modal" data-target="#logoutModal">logout</a>
-                </li>
-            </ul>
-                <!-- <li class="nav-item">
-                    <input type="text" id="search_text" class="search_bar" placeholder="Search items">
-                    <input type="button" id="search_btn" class="search_bar" value="Search">
-                </li> -->
         </div>
     </nav>
 
-    <!-- Sign out modal -->
+    <!----------------------------------------------->
+    <!--               Sign out modal              -->
+    <!----------------------------------------------->
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Log Out <i class="fa fa-lock"></i></h4>
+                    <h4>Logout <i class="fa fa-lock"></i></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    
+
                 </div>
                 <div class="modal-body">
-                    <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
+                    <p><i class="fa fa-question-circle"></i> Are you sure you want to logout? <br /></p>
                     <div class="actionsBtns">
                         <form action="/logout" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal"
-                                value="Logout" onclick="firebase.auth().signOut();" />
+                            <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" value="Logout"
+                                onclick="firebase.auth().signOut();" />
                             <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
@@ -97,58 +95,99 @@
         </div>
     </div>
 
+    <!----------------------------------------------->
+    <!--             Level System modal            -->
+    <!----------------------------------------------->
+    <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4><span class="material-icons">
+                            emoji_people
+                        </span>Badge</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <p id="badgeInfo">
+                        <br><br>
+                        Level 1&nbsp; : <span class="badge badge-pill badge-primary">beginner</span><br>
+                        Level 2 : <span class="badge badge-pill badge-success">Intermediate</span><br>
+                        Level 3 : <span class="badge badge-pill badge-danger">Expert</span><br>
+                        Level 4 : <span class="badge badge-pill badge-warning">Advanced</span><br>
+                        Level 5 : <span class="badge badge-pill badge-dark">Legend</span><br>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------->
+    <!--               User profile                -->
+    <!----------------------------------------------->
     <div class="container">
-        <!-- <div id="content">
-        
-        <div id="content">
-            <h1 id="useronlyname"></h1><img src="./images/user.jpg" width="80px" height="80px">
-        </div> -->
-
-        <!--
-        <div class="container">
-                <img src="./images/penguin.png" id="userPrifilePic">
-
-            <section>
-                <p id="userName" class="text-center"></p>
-                <p>Level: <span id="lv"></span></p>
-                <p>Point: <span id="point"></span></p>
-                <p>Posts: <span id="postNum"></span></p>
-            </section>
-        </div> -->
         <div class="grid-container">
             <div class="grid-item item1">
                 <!-- Insert left arrow here -->
-                <i id="left_arrow" class="fas fa-chevron-left arrow"></i>
-                <img id="userProfilePic">
+                <i id="left_arrow" class="fas fa-chevron-left"></i>
+                <div id="profpic_container">
+                    <img id="userProfilePic">
+                </div>
                 <!-- Insert right arrow here -->
                 <i id="right_arrow" class="fas fa-chevron-right"></i>
             </div>
-            <div class="grid-item item2" id="displayLevel">Level</div>
-            <!-- <div class="grid-item item3" id="displayPosting">Posting</div> -->
+            <div class="grid-item item2"><span id="levelSystem" onclick="displayLevelSystem()">
+                    <img src="./images/questionmark.png" id="questionmark">
+                </span></div>
 
-            <div class="grid-item item3" id="displayPoint">Points</div>
+            <div class="grid-item item3" id="displayLevel">Level</div>
             <div class="grid-item item4" style="width:100%">
                 <div id="expBar" style="margin:auto;display:block">
                     <div id="userBar"></div>
                 </div>
             </div>
-            <div class="grid-item item5" id="displayName"></div>
-            <div class="grid-item item6" id="displayEmail"></div>
+            <div class="grid-item item5"><span id="displayName"> </span>
+                <div id="levelBadge" data-toggle="modal" data-target="#levelModal">
+                    <span class="badge badge-pill badge-primary" id="beginner" style="display:none">Beginner</span>
+                    <span class="badge badge-pill badge-success" id="intermediate"
+                        style="display:none">Intermediate</span>
+                    <span class="badge badge-pill badge-danger" id="expert" style="display:none">Expert</span>
+                    <span class="badge badge-pill badge-warning" id="advanced" style="display:none">Advanced</span>
+                    <span class="badge badge-pill badge-dark" id="legend"
+                        style="display:none; margin:auto;">Legend</span>
+                </div>
+            </div>
+            <div class="grid-item item6"><span id="displayEmail"></span><br><br>
+                <a href="./index.html" data-toggle="modal" data-target="#logoutModal" id="logoutBtn">
+                    <h4>Logout</h4>
+                </a>
+            </div>
+
         </div>
     </div>
 
-
-    <!-- Small modal leveling system -->
+    <!----------------------------------------------->
+    <!--         Small modal leveling system       -->
+    <!----------------------------------------------->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Level System</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>레벨업하는방법, 포인트설명</p>
+                    <p id="paraLevelSystem"><br>
+                        You get 10 points by uploading a post.<br>
+                        You need 100 points to level up.<br>
+                        You will get a new badge and a new avatar when you level up.<br><br>
+                        <br>
+                    </p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -158,10 +197,11 @@
         </div>
     </div>
 
-    <!-- Small modal gift card -->
+    <!----------------------------------------------->
+    <!--           Small modal gift card           -->
+    <!----------------------------------------------->
     <div id="giftModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Congratulations!</h4>
@@ -179,6 +219,35 @@
 
         </div>
     </div>
+
+    <!----------------------------------------------->
+    <!--               Bottom navbar               -->
+    <!----------------------------------------------->
+    <footer class="footer">
+        <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+            <button id="home" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./home.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">location_on</i>
+                    <span>Map</span>
+                </div>
+            </button>
+            <button id="account" type="button" class="btn btn-secondary button-active"
+                onclick="window.location.href='./profile.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">account_circle</i>
+                    <span>Account</span>
+                </div>
+            </button>
+            <button id="feed" type="button" class="btn btn-secondary button-inactive"
+                onclick="window.location.href='./post.html';">
+                <div class="selector-holder">
+                    <i class="material-icons">view_list</i>
+                    <span>Posts</span>
+                </div>
+            </button>
+        </div>
+    </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -208,7 +277,7 @@
     <script src="./scripts/auth_check.js"></script>
     <script src="./scripts/profile.js"></script>
     <script src="./scripts/avatar/avatar_switch.js"></script>
-    <!-- <script src="./scripts/post.js"></script> -->
+    <script src="./scripts/avatar/avatar_ui_select.js"></script>
 
 
     <!--------------------------------------------------------------------->

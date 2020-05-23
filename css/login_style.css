@@ -1,91 +1,49 @@
+#img_logo {
+    width: 5%;
+    height: 5%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.bgimg-1 {
+    background-image: url(../images/bg_test2.png);
+    min-height: 100%;
+}
+
+.w3-display-middle {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+#topLogo, #slogan, #footer_img  {
+    display: block;
+    text-align: center;
+}
+
+#img_logo {
+    margin-bottom: 50px;
+}
+
 /* desktop and tablet view */
 @media (min-width: 400px) {
-    #img_back {
-        border-radius: 25px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-        height: 90%;
-        z-index: -1;
-    }
-    #img_logo {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 250px;
-        height: 100px;
-    }
-    #logincontainer {
-        border-radius: 25px;
-        /* background-color: white; */
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 350px;
-        height: 170px;   
-    }
-    #img_corona {
-        display: none;
-    }
-    #img_mask {
-        display: none;
-    }
-    #img_toiletpaper {
-        display: none;
-    }
-    #img_handsanitizer {
-        display: none;
-    }
-
+    
 }
 
 /* mobile view */
 @media (max-width: 399px) {
-    #img_back {
-        display: none;
+    #topLogo {
+        padding-top: 30px;
     }
+
     #img_logo {
-        display: block;
-        margin: auto;  
-        margin-top: 2em;
-        width: auto;
-        height: 4em;
+        width: 50px;
+        height: 50px;
+        margin-top: 20px;
     }
-    #logincontainer {
-        display: block;
-        margin: auto;  
-        position: absolute;
-        bottom: 2em;
-    }
-    #img_corona {
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50%;
-        height: 30%;
-        z-index: -1;
-        opacity: 20%;
-    }
-    #img_mask {
-        margin-top: 10em;
-        margin-left: 3em;
-        width: 5em;
-        height: 5em;
-    }
-    #img_toiletpaper {
-        margin-top: 10em;
-        margin-left: 1em;
-        width: 5em;
-        height: 5em;
-    }
-    #img_handsanitizer {
-        margin-top: 10em;
-        width: 6em;
-        height: 5em;
+
+    #slogan {
+        margin: -20px 0 40px 0;
     }
 }

@@ -1,16 +1,19 @@
 /* --------------------------------- */
-/* Main and Children */
+/* -----HTML, Body and Container---- */
+/* --------------------------------- */
+.container {
+    font-family: Comfortaa;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 70px;
+    height: 90vh;
+}
+
+/* --------------------------------- */
+/* ---------Main and Children------- */
 /* --------------------------------- */
 main {
-    /* Old code, keep as back-up */
-    /* position: absolute; */
-    /* top: 25%;
-    left: 5%;
-    width: 35%; */
-    /* height: 60%;
-    border-radius: 20px;
-    padding: 20px;
-    color: white; */
     width: 100%;
     max-height: 100%;
 }
@@ -22,70 +25,85 @@ section {
     margin: 20px;
     padding: 20px;
     color: black;
-    /* background-color: orange; */
 }
-.container{
-    font-family: Comfortaa;
-    margin: 0;
-    padding: 0;
-}
+
 /* --------------------------------- */
-/* HERE Map */
+/* ----------  HERE Map  ----------- */
 /* --------------------------------- */
 #homeMap {
-    /* Original Map Size: */
-    /* width: 640px; */
-    /* height: 480px; */
-
     width: 100vw;
-    /* matches with container height */
     height: 90vh;
 }
 
 canvas {
-    /* must set to 100% for dimensions */
     width: 100%;
     height: 100%;
 }
 
 /* --------------------------------- */
-/* Geolocation Button */
+/* ------------- Map Modal --------- */
 /* --------------------------------- */
-#reportButton {
-    /* 8px top and bottom; 10px left and right */
-    padding: 8px 10px;
-    /* circle border */
-    border-radius: 50%;
-    color: white;
-    background-color: #1A73E8;
-    /* absolute from map */
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    /* send to front over map */
+.modal {
     z-index: 99999;
-    /* align i element to vertical center */
-    display: flex;
-    align-items: center;
 }
 
-/* --------------------------------- */
-/* Map Modal */
-/* --------------------------------- */
+.modal-dialog {
+    text-align: center;
+}
+
+.modal-content {
+    border-radius: 50px;
+}
+
+.modal-content > * {
+    border: 0;
+}
+
+.modal-header {
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.modal-body {
+    padding-bottom: 0;
+    width: 100%;
+}
+
 .modal-body ul {
     list-style: none;
+    padding: 0;
 }
 
 .modal-body li {
-    width: 70%;
+    width: 65%;
     padding: 10px;
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }
 
-.modal-body li span {
-    padding-left: 5px;
-    padding-right: 5px;
+.items {
+    margin-left: 1rem;
+    width: 10rem;
+    text-align: left;
+}
+
+#profileInfo {
+    width: auto;
+    padding: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#modalProfPic {
+    border-radius: 50%;
+}
+
+#modalFirstName {
+    margin-top: 1rem;
+    font-size: 0.75rem;
 }
 
 .icons {
@@ -93,28 +111,89 @@ canvas {
     max-height: 50px;
 }
 
-span:last-child {
-    margin-left: auto;
-}
-
 .modal-footer {
     justify-content: center;
+    flex-direction: column;
+}
+
+.modal-footer button {
+    box-sizing: border-box;
+    width: 180px;
+}
+
+#closeMarker {
+    float: none;
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+    margin: 1rem;
+    font-size: 4rem;
+    color: white;
+    background-color: red;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    opacity: 1;
 }
 
 /* --------------------------------- */
-/* Media Queries */
+/* ---------- Media Queries -------- */
 /* --------------------------------- */
+
+
+/* Tablet and Desktop View */
+@media (min-width: 420px) {
+    #reportButton {
+        padding: 15px;
+        border-radius: 50%;
+        color: white;
+        background-color: #1A73E8;
+        position: absolute;
+        top: 7rem;
+        right: 1rem;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+    }
+}
 
 /* Mobile View */
 @media (max-width: 419px) {
+    .container {
+        margin-top: auto;
+        height: 100vh;
+    }
+
     #homeMap {
-        /* position: absolute; */
-        /* top: 50%;
-        left: 10%; */
-        /* width: 80%;
-        height: 30%; */
-        /* width: 100vw;
-        height: 100vh; */
-        height: 80vh;
+        height: 100%;
+    }
+
+    .items {
+        display: none;
+    }
+
+    .stocks {
+        padding: 0 1rem;
+    }
+
+    #reportButton {
+        bottom: 2rem;
+        right: 2rem;
+    }
+
+    #reportButton {
+        padding: 15px;
+        border-radius: 50%;
+        color: white;
+        background-color: #1A73E8;
+        position: absolute;
+        bottom: 6rem;
+        right: 1rem;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        text-align: center;
     }
 }
