@@ -8,6 +8,7 @@ Many thanks to these third-party APIs and resources for allowing us to utilize t
 * [Bootstrap](https://getbootstrap.com/) - Navbar, Modals and more
 * [Firebase](https://firebase.google.com/) - Real-time Database, File Storage and Web Hosting
 * [HERE Maps](https://www.here.com/) - Home Page Map, Location Tracking and Markers
+* [Basic Snake HTML Game](https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4) - Easter Egg Game Reference
 * [FontAwesome](https://fontawesome.com/) - Aesthetic Icons
 * [Facebook](https://www.facebook.com/) - Social Media Sharing
 * [Twitter](https://twitter.com/) - Social Media Sharing
@@ -43,6 +44,9 @@ Use your preferred IDE after forking the original and cloning it to your compute
 
 ### Firestore Credentials
 If you wish to help develop the application and database, please contact us through our GitHub contact information so we may include your Google account as a contributor in the Firebase project.
+
+### Firebase Initialization
+If you so choose, you may initialize Firebase CLI by following the tutorial in their [official documentation](https://firebase.google.com/docs/cli).
 
 <!-- DEPRECATED -->
 <!-- ### Install Node.js
